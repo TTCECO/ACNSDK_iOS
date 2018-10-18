@@ -1,0 +1,11 @@
+framework module TTC_SDK_NET {
+  umbrella header "TTC_SDK_NET.h"
+
+  export *
+  module * { export * }
+}
+
+module TTC_SDK_NET.Swift {
+    header "TTC_SDK_NET-Swift.h"
+    requires objc
+}
