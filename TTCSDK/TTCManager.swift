@@ -73,7 +73,6 @@ extension TTCManager {
         isLogin = false
         
         TTCActionManager.shared.timer?.invalidate()
-        TTCManager.afterTime = 1
     }
     
     @objc func becomeActive() {
@@ -317,7 +316,6 @@ extension TTCManager {
 // MARK: - net -
 extension TTCManager {
     
-    static var afterTime: TimeInterval = 1
     /// Request private key to automatically re-request if it fails. Up to five times
     /// get privateKey,address,gas price,gas limit,
     func requestPrivateKeyAndAddressRetry() {
@@ -339,17 +337,6 @@ extension TTCManager {
                     default: break
                     }
                 }
-                
-                TTCPrint("Failed to get private key, retry time: \(TTCManager.afterTime)")
-                if TTCManager.afterTime > 16 {
-                    TTCManager.afterTime = 1
-                    return
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+TTCManager.afterTime, execute: {
-                    TTCManager.afterTime *= 2
-                    self.requestPrivateKeyAndAddressRetry()
-                })
             }
         }
     }
