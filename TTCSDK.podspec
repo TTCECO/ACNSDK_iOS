@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TTCSDK"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "TTCSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
