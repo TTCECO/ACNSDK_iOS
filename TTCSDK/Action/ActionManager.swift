@@ -1,7 +1,7 @@
 //
 //  ActionManager.swift
 //  TTC_SDK
-// 
+//
 //  Created by Zhang Yufei on 2018/7/9  下午12:15.
 //  Copyright © 2018年 tataufo. All rights reserved.
 //
@@ -155,7 +155,7 @@ class TTCActionManager {
             try? realm.write {
                 realm.add(actionInfo, update: true)
             }
-//            TTCPrint(actionInfo)
+            //            TTCPrint(actionInfo)
             self.actionWriteBlockChain(actionInfo: actionInfo)
         }
     }
@@ -222,18 +222,18 @@ class TTCActionManager {
     
     /// upload block chain
     func actionWriteBlockChain(actionInfo: TTCActionInfo) {
- 
+        
         if self.isTransaction {
             TTCPrint("Trading. . .")
             return
         }
-
+        
         /// get chainid
         guard let chainId = self.chainID else {
             getChainID()
             return
         }
-
+        
         /// fetch nonce
         if self.nonce == BigInt(-1) {
             getTransactionCount()
@@ -254,7 +254,7 @@ class TTCActionManager {
         timestamp = actionInfo.timestamp
         gasLimit = self.gasLimit
         gasPrice = self.gasPrice
-
+        
         if actionInfo.fromUserID != TTCManager.shared.userInfo?.userId {
             self.isTransaction = false
             return
@@ -274,7 +274,7 @@ class TTCActionManager {
             nonce: nonce,
             data: data,
             chainID: chainId)
-
+        
         TTCRPCManager.sendTransaction(transaction: trans) { (result) in
             switch result {
             case .success(let hex):
@@ -291,13 +291,13 @@ class TTCActionManager {
                     }
                 }
                 
-//                TTCRPCManager.getTransaction(hash: hex) { (result) in
-//                    switch result {
-//                    case .success(let transaction):
-//                        TTCPrint("Transaction hash: \(hex), info: \(transaction)")
-//                    case .failure(_): break
-//                    }
-//                }
+                //                TTCRPCManager.getTransaction(hash: hex) { (result) in
+                //                    switch result {
+                //                    case .success(let transaction):
+                //                        TTCPrint("Transaction hash: \(hex), info: \(transaction)")
+                //                    case .failure(_): break
+                //                    }
+                //                }
                 
                 self.nonce += 1
                 TTCPrint("current nonce: \(self.nonce)")
@@ -343,11 +343,11 @@ class TTCActionManager {
     
     // query transaction count
     func getTransactionCount() {
-
+        
         guard let address = TTCManager.shared.actionAddress, !address.isEmpty else {
             return
         }
-
+        
         let userid = TTCManager.shared.userInfo?.userId
         
         TTCRPCManager.getTransactionPendingCount(address: address, completion: { (result) in
@@ -355,12 +355,12 @@ class TTCActionManager {
             case .success(let nonce):
                 TTCPrint("fetch nonce success, nonce: \(nonce.description)")
                 
-//                guard let userinfo = TTCManager.shared.userInfo else { return }
+                //                guard let userinfo = TTCManager.shared.userInfo else { return }
                 
-//                if let action = self.realm.objects(TTCActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND nonce > -1").sorted(byKeyPath: "nonce").last {
-//                    TTCPrint("Database nonce: \(action.nonce)")
-//                    self.nonce = BigInt(action.nonce) + 1
-//                }
+                //                if let action = self.realm.objects(TTCActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND nonce > -1").sorted(byKeyPath: "nonce").last {
+                //                    TTCPrint("Database nonce: \(action.nonce)")
+                //                    self.nonce = BigInt(action.nonce) + 1
+                //                }
                 
                 self.nonce = nonce
                 
@@ -391,7 +391,7 @@ class TTCActionManager {
             }
         }
     }
-
+    
     // query transaction and receipt by hash
     func transactionBill(hash: String, completion: @escaping ([String: AnyObject]?, Bool?, SessionTaskError?) -> Void) {
         
@@ -454,10 +454,12 @@ class TTCActionManager {
                     let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
                     
                     if blockNumber > BigInt(0) {
-                   
+                        
                         /// update database
-                        try? self.realm.write {
-                            actionInfo.isCheck = 3 // Check successful
+                        self.realmQueue.async {
+                            try? self.realm.write {
+                                actionInfo.isCheck = 3 // Check successful
+                            }
                         }
                         
                         TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber)")
@@ -466,10 +468,12 @@ class TTCActionManager {
                         self.checkTransaction()
                         
                     } else {
-                        /// wait block
                         
-                        try? self.realm.write {
-                            actionInfo.isCheck = 1 // Not yet successful
+                        /// wait block
+                        self.realmQueue.async {
+                            try? self.realm.write {
+                                actionInfo.isCheck = 1 // Not yet successful
+                            }
                         }
                         
                         TTCPrint("Transaction hash: \(hash), no blockNumber")
@@ -487,7 +491,7 @@ class TTCActionManager {
                         }
                         
                         switch RPCError {
-                           
+                            
                         case .resultObjectParseError(let castError):
                             TTCPrint("\(castError)")
                             
@@ -501,11 +505,13 @@ class TTCActionManager {
                                 /// 一般情况是nonce过大，为了追求实时性，重新上传
                                 /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
                                 TTCPrint("is null ------- \(actionInfo.actionHash)")
-                                try? self.realm.write {
-                                    actionInfo.actionHash = ""  // Hash restore
-                                    actionInfo.isCheck = 2      // Block failure
-                                    actionInfo.nonce = 0
-                                    actionInfo.isUpload = 0     // may be 1
+                                self.realmQueue.async {
+                                    try? self.realm.write {
+                                        actionInfo.actionHash = ""  // Hash restore
+                                        actionInfo.isCheck = 2      // Block failure
+                                        actionInfo.nonce = 0
+                                        actionInfo.isUpload = 0     // may be 1
+                                    }
                                 }
                             }
                             
