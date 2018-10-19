@@ -1,5 +1,8 @@
 # TTCSDK_iOS
 
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/TTCSDK.svg)](https://img.shields.io/cocoapods/v/TTCSDK.svg)
+![Platform](https://img.shields.io/cocoapods/p/TTCSDK.svg?style=flat)
+
 ## Install
 Install by CocoaPods
 
