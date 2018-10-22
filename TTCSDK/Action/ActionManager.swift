@@ -441,6 +441,7 @@ class TTCActionManager {
             
             if userid != userinfo.userId { return }
             
+            let timestamp = actionInfo.timestamp
             let hash = actionInfo.actionHash
             
             TTCRPCManager.getTransaction(hash: hash) { (result) in
@@ -456,8 +457,13 @@ class TTCActionManager {
                     if blockNumber > BigInt(0) {
                         
                         /// update database
-                        try? self.realm.write {
-                            actionInfo.isCheck = 3 // Check successful
+                        self.realmQueue.async {
+                            let tmpRealm = self.realm
+                            if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
+                                try? tmpRealm.write {
+                                    info.isCheck = 3 // Check successful
+                                }
+                            }
                         }
                         
                         TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber)")
@@ -468,10 +474,14 @@ class TTCActionManager {
                     } else {
                         
                         /// wait block
-                        try? self.realm.write {
-                            actionInfo.isCheck = 1 // Not yet successful
+                        self.realmQueue.async {
+                            let tmpRealm = self.realm
+                            if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
+                                try? tmpRealm.write {
+                                    info.isCheck = 1 // Not yet successful
+                                }
+                            }
                         }
-                    
                         
                         TTCPrint("Transaction hash: \(hash), no blockNumber")
                     }
@@ -502,13 +512,17 @@ class TTCActionManager {
                                 /// 一般情况是nonce过大，为了追求实时性，重新上传
                                 /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
                                 TTCPrint("is null ------- \(actionInfo.actionHash)")
-                                try? self.realm.write {
-                                    actionInfo.actionHash = ""  // Hash restore
-                                    actionInfo.isCheck = 2      // Block failure
-                                    actionInfo.nonce = 0
-                                    actionInfo.isUpload = 0     // may be 1
+                                self.realmQueue.async {
+                                    let tmpRealm = self.realm
+                                    if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
+                                        try? tmpRealm.write {
+                                            info.actionHash = ""  // Hash restore
+                                            info.isCheck = 2      // Block failure
+                                            info.nonce = 0
+                                            info.isUpload = 0     // may be 1
+                                        }
+                                    }
                                 }
-                                
                             }
                             
                             /// Continue to check
