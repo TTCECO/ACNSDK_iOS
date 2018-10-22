@@ -456,7 +456,6 @@ class TTCActionManager {
                     if blockNumber > BigInt(0) {
                         
                         /// update database
-                        self.realmQueue.async {
                         try? self.realm.write {
                             actionInfo.isCheck = 3 // Check successful
                         }
