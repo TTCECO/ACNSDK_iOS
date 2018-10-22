@@ -457,10 +457,10 @@ class TTCActionManager {
                         
                         /// update database
                         self.realmQueue.async {
-                            try? self.realm.write {
-                                actionInfo.isCheck = 3 // Check successful
-                            }
+                        try? self.realm.write {
+                            actionInfo.isCheck = 3 // Check successful
                         }
+                        
                         
                         TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber)")
                         
@@ -470,11 +470,10 @@ class TTCActionManager {
                     } else {
                         
                         /// wait block
-                        self.realmQueue.async {
-                            try? self.realm.write {
-                                actionInfo.isCheck = 1 // Not yet successful
-                            }
+                        try? self.realm.write {
+                            actionInfo.isCheck = 1 // Not yet successful
                         }
+                    
                         
                         TTCPrint("Transaction hash: \(hash), no blockNumber")
                     }
@@ -505,14 +504,13 @@ class TTCActionManager {
                                 /// 一般情况是nonce过大，为了追求实时性，重新上传
                                 /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
                                 TTCPrint("is null ------- \(actionInfo.actionHash)")
-                                self.realmQueue.async {
-                                    try? self.realm.write {
-                                        actionInfo.actionHash = ""  // Hash restore
-                                        actionInfo.isCheck = 2      // Block failure
-                                        actionInfo.nonce = 0
-                                        actionInfo.isUpload = 0     // may be 1
-                                    }
+                                try? self.realm.write {
+                                    actionInfo.actionHash = ""  // Hash restore
+                                    actionInfo.isCheck = 2      // Block failure
+                                    actionInfo.nonce = 0
+                                    actionInfo.isUpload = 0     // may be 1
                                 }
+                                
                             }
                             
                             /// Continue to check
