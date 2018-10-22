@@ -459,7 +459,6 @@ class TTCActionManager {
                         /// update database
                         self.realmQueue.async {
                             let tmpRealm = self.realm
-                            if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
                             if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
                                 try? tmpRealm.write {
                                     info.isCheck = 3 // Check successful
