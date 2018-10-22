@@ -461,7 +461,6 @@ class TTCActionManager {
                             actionInfo.isCheck = 3 // Check successful
                         }
                         
-                        
                         TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber)")
                         
                         /// Continue to check
