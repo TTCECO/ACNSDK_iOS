@@ -460,6 +460,7 @@ class TTCActionManager {
                         self.realmQueue.async {
                             let tmpRealm = self.realm
                             if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
+                            if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
                                 try? tmpRealm.write {
                                     info.isCheck = 3 // Check successful
                                 }
@@ -476,7 +477,7 @@ class TTCActionManager {
                         /// wait block
                         self.realmQueue.async {
                             let tmpRealm = self.realm
-                            if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
+                            if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
                                 try? tmpRealm.write {
                                     info.isCheck = 1 // Not yet successful
                                 }
@@ -514,7 +515,7 @@ class TTCActionManager {
                                 TTCPrint("is null ------- \(actionInfo.actionHash)")
                                 self.realmQueue.async {
                                     let tmpRealm = self.realm
-                                    if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = '\(timestamp)'").first {
+                                    if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
                                         try? tmpRealm.write {
                                             info.actionHash = ""  // Hash restore
                                             info.isCheck = 2      // Block failure
