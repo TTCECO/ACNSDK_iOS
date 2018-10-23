@@ -425,13 +425,9 @@ class TTCActionManager {
         }
     }
     
-    @objc func checkAndupload() {
-        checkTransaction()
-        queriesActionAndUpload()
-    }
-    
     @objc func checkTransaction() {
         
+        if !TTCManager.shared.SDKEnabled { return }
         if !TTCManager.shared.isRegister { return }
         guard let userinfo = TTCManager.shared.userInfo else { return }
         

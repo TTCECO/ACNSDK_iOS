@@ -36,7 +36,19 @@ internal class TTCManager {
     var walletLanguage: String = "en"
 
     /// SDK is available
-    var SDKEnabled: Bool = true
+    var SDKEnabled: Bool = true {
+        didSet {
+            if !SDKEnabled {
+                TTCActionManager.shared.timer?.invalidate()
+            } else {
+                if TTCManager.shared.isLogin {
+                    TTCActionManager.shared.timer?.invalidate()
+                    TTCActionManager.shared.timer = nil
+                    TTCActionManager.shared.runScheduledTimer()
+                }
+            }
+        }
+    }
     /// SDK is log
     var logEnable: Bool = false
     

@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TTCSDK"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "TTCSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/TTCECO/TTCSDK_iOS.git", :tag => "#{s.version}" }
   s.source_files  = "TTCSDK/**/*.swift"
-  s.resources = "TTCSDKBundle/*"
+  s.resources = "TTCSDKBundle.bundle"
   s.frameworks = "Foundation", 'UIKit'
   s.vendored_frameworks = 'TTC_SDK_NET.framework'
 
