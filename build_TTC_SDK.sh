@@ -48,9 +48,16 @@ clean build
 # Copy framework
 cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework" "${SDK}"
 
+SIMULATOR_SWIFT_MODULES_DIR="${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/Modules/${PRODUCT_NAME}.swiftmodule/."
+if [ -d "${SIMULATOR_SWIFT_MODULES_DIR}" ]; then
+cp -R "${SIMULATOR_SWIFT_MODULES_DIR}" "${SDK}/Modules/${PRODUCT_NAME}.swiftmodule"
+fi
+
 # Merge iphone and simulator
 echo "merge iphone and simulator"
-lipo -create "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" -output "${SDK}/${PRODUCT_NAME}"
+#lipo -create "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" -output "${SDK}/${PRODUCT_NAME}"
+
+lipo -create -output "${SDK}/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}"
 
 # Copy bundle
 cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/TTCSDKBundle.bundle" "${OUTPUT_DIR}/${CUR_TIME}TTCSDKBundle.bundle"
