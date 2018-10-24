@@ -635,7 +635,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TTC_SDK_iOS_Demo/Pods-TTC_SDK_iOS_Demo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TTC_SDK_iOS_Demo/Pods-TTC_SDK_iOS_Demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/APIKit/APIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
@@ -664,7 +664,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TTC_SDK_iOS_Demo/Pods-TTC_SDK_iOS_Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTC_SDK_iOS_Demo/Pods-TTC_SDK_iOS_Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		67C904B0CF971F538D947E23 /* [CP] Check Pods Manifest.lock */ = {

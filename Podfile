@@ -10,9 +10,9 @@ target 'TTCSDK' do
     pod 'SwiftProtobuf', '1.0.3'
     
     pod 'BigInt', '~> 3.0' # 任意宽度整数
-    pod 'JSONRPCKit' #RPC json库
-    pod 'APIKit' #网络请求
-    pod 'CryptoSwift' #加密库
+    pod 'JSONRPCKit', :git=> 'https://github.com/Easoncc/JSONRPCKit.git' #RPC json库
+    pod 'APIKit', '~> 4.0.0'#网络请求
+    pod 'CryptoSwift', '0.12.0'#加密库
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.6'
     pod 'RealmSwift', '3.7.5' #数据库
