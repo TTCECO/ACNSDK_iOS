@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'SwiftProtobuf', '1.0.3'
   s.dependency 'BigInt', '3.1.0'
-  s.dependency 'JSONRPCKit', :git=> 'https://github.com/Easoncc/JSONRPCKit.git'
-  s.dependency 'APIKit', '~> 4.0.0'
+  s.dependency 'JSONRPCKit'
+  s.dependency 'APIKit', '~> 3.2.0'
   s.dependency 'CryptoSwift', '0.12.0'
   s.dependency 'TrustCore', '0.0.7'
   s.dependency 'TrezorCrypto', '0.0.6'

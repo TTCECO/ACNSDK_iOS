@@ -1,17 +1,17 @@
 PODS:
-  - APIKit (4.0.0):
-    - Result (~> 4.0)
+  - APIKit (3.2.1):
+    - Result (~> 3.0)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.12.0)
   - JSONRPCKit (3.0.0):
-    - Result (~> 4.0.0)
+    - Result (~> 3.2.0)
   - Realm (3.7.5):
     - Realm/Headers (= 3.7.5)
   - Realm/Headers (3.7.5)
   - RealmSwift (3.7.5):
     - Realm (= 3.7.5)
-  - Result (4.0.0)
+  - Result (3.2.4)
   - SipHash (1.2.2)
   - SwiftLint (0.26.0)
   - SwiftProtobuf (1.0.3)
@@ -21,10 +21,10 @@ PODS:
     - TrezorCrypto
 
 DEPENDENCIES:
-  - APIKit (~> 4.0.0)
+  - APIKit (~> 3.2.0)
   - BigInt (~> 3.0)
   - CryptoSwift (= 0.12.0)
-  - JSONRPCKit (from `https://github.com/Easoncc/JSONRPCKit.git`)
+  - JSONRPCKit
   - RealmSwift (= 3.7.5)
   - SwiftLint (= 0.26.0)
   - SwiftProtobuf (= 1.0.3)
@@ -36,6 +36,7 @@ SPEC REPOS:
     - APIKit
     - BigInt
     - CryptoSwift
+    - JSONRPCKit
     - Realm
     - RealmSwift
     - Result
@@ -45,29 +46,20 @@ SPEC REPOS:
     - TrezorCrypto
     - TrustCore
 
-EXTERNAL SOURCES:
-  JSONRPCKit:
-    :git: https://github.com/Easoncc/JSONRPCKit.git
-
-CHECKOUT OPTIONS:
-  JSONRPCKit:
-    :commit: 53c8234afc877223ef3864acc9c18bd7ea5e6d02
-    :git: https://github.com/Easoncc/JSONRPCKit.git
-
 SPEC CHECKSUMS:
-  APIKit: 23ddce4be7eccd746d2ab3c62713cd80d5846d5a
+  APIKit: a39ff72ac44efc15513fd1b98800f63c525be61b
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 1c07ca50843dd48bc54e6ea53d7a4dba3b645716
-  JSONRPCKit: eb41d88efb88d4cbf2b66aa6c34fb62339c0ef14
+  JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
   TrezorCrypto: bea2dab002f9a5fe885df004694b9ece52dc088b
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
 
-PODFILE CHECKSUM: 119b96baa8fa065f3548bbe0395e46d1ffdbf02c
+PODFILE CHECKSUM: ff3c0d0317eb6a0c26972c7da18ebcd3eb88503b
 
 COCOAPODS: 1.6.0.beta.2
