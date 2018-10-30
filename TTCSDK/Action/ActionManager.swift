@@ -9,8 +9,8 @@
 import Foundation
 import RealmSwift
 import BigInt
+import Alamofire
 import JSONRPCKit
-import APIKit
 import TTC_SDK_NET
 
 class TTCActionInfo: Object {
@@ -291,13 +291,13 @@ class TTCActionManager {
                     }
                 }
                 
-                //                TTCRPCManager.getTransaction(hash: hex) { (result) in
-                //                    switch result {
-                //                    case .success(let transaction):
-                //                        TTCPrint("Transaction hash: \(hex), info: \(transaction)")
-                //                    case .failure(_): break
-                //                    }
-                //                }
+//                TTCRPCManager.getTransaction(hash: hex) { (result) in
+//                    switch result {
+//                    case .success(let transaction):
+//                        TTCPrint("Transaction hash: \(hex), info: \(transaction)")
+//                    case .failure(_): break
+//                    }
+//                }
                 
                 self.nonce += 1
                 TTCPrint("current nonce: \(self.nonce)")
@@ -392,39 +392,6 @@ class TTCActionManager {
         }
     }
     
-    // query transaction and receipt by hash
-    func transactionBill(hash: String, completion: @escaping ([String: AnyObject]?, Bool?, SessionTaskError?) -> Void) {
-        
-        TTCRPCManager.getTransaction(hash: hash) { (result) in
-            switch result {
-            case .success(let transaction):
-                TTCPrint("Transaction hash: \(hash), info: \(transaction)")
-                
-                let blockNumberStr = transaction["blockNumber"] as? String ?? ""
-                let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
-                if blockNumber > BigInt(0) {
-                    
-                    TTCRPCManager.getTransactionReceipt(hash: hash, completion: { (result) in
-                        switch result {
-                        case .success(let receipt):
-                            TTCPrint("Get receipt succedd, hash:\(hash), receipt.status: \(receipt.status)")
-                            completion(transaction, receipt.status, nil)
-                        case .failure(let error):
-                            TTCPrint("Get receipt failed: \(error)")
-                            completion(transaction, nil, error)
-                        }
-                    })
-                } else {
-                    TTCPrint("Transaction hash: \(hash), the timer has passed, no blockNumber")
-                    completion(transaction, nil, nil)
-                }
-            case .failure(let error):
-                TTCPrint("Get transaction failed, hash:\(hash), failed: \(error)")
-                completion(nil, nil, error)
-            }
-        }
-    }
-    
     @objc func checkTransaction() {
         
         if !TTCManager.shared.SDKEnabled { return }
@@ -486,51 +453,35 @@ class TTCActionManager {
                     
                     TTCPrint("Get transaction failed, hash:\(hash), failed: \(error)")
                     
-                    switch error {
-                    case .responseError(let e):
-                        
-                        guard let RPCError: JSONRPCError = e as? JSONRPCError else {
-                            return
-                        }
-                        
-                        switch RPCError {
-                            
-                        case .resultObjectParseError(let castError):
-                            TTCPrint("\(castError)")
-                            
-                            guard let cast = castError as? CastError<[String: AnyObject]> else {
-                                return
-                            }
-                            
-                            TTCPrint("\(cast.actualValue)")
-                            
-                            if cast.actualValue is NSNull  {
-                                /// 一般情况是nonce过大，为了追求实时性，重新上传
-                                /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
-                                TTCPrint("is null ------- \(actionInfo.actionHash)")
-                                self.realmQueue.async {
-                                    let tmpRealm = self.realm
-                                    if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
-                                        try? tmpRealm.write {
-                                            info.actionHash = ""  // Hash restore
-                                            info.isCheck = 2      // Block failure
-                                            info.nonce = 0
-                                            info.isUpload = 0     // may be 1
-                                        }
+                    guard let RPCError: TTCRPCError = error as? TTCRPCError else {
+                        return
+                    }
+                    
+                    switch RPCError {
+                    case .RPCSuccessError(let code, _):
+                        if code == RPCErrorType.null.rawValue {
+                            /// 一般情况是nonce过大，为了追求实时性，重新上传
+                            /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
+                            TTCPrint("is null ------- \(actionInfo.actionHash)")
+                            self.realmQueue.async {
+                                let tmpRealm = self.realm
+                                if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
+                                    try? tmpRealm.write {
+                                        info.actionHash = ""  // Hash restore
+                                        info.isCheck = 2      // Block failure
+                                        info.nonce = 0
+                                        info.isUpload = 0     // may be 1
                                     }
                                 }
                             }
-                            
-                            /// Continue to check
-                            self.checkTransaction()
-                            /// re-upload
-                            self.getTransactionCount()
-                            
-                        default:
-                            break
                         }
-                    default:
-                        break
+                        
+                        /// Continue to check
+                        self.checkTransaction()
+                        /// re-upload
+                        self.getTransactionCount()
+                        
+                    default:break
                     }
                 }
             }
@@ -539,9 +490,9 @@ class TTCActionManager {
     
     
     /// MARK: - json rpc error
-    func dealwithRPCError(error: JSONRPCError) {
+    func dealwithRPCError(error: TTCRPCError) {
         switch error {
-        case .responseError(code: _, message: let message, data: _):
+        case .RPCSuccessError(_, let message):
             // nonce, Have problems re-query "replacement transaction underpriced"？？？
             if message == "nonce too low" {
                 self.getTransactionCount()
@@ -552,19 +503,12 @@ class TTCActionManager {
     }
     
     /// return SessionTaskError and jsonrpc
-    func doError(error: SessionTaskError) {
-        switch error {
-        case .responseError(let e):
-            
-            guard let RPCError: JSONRPCError = e as? JSONRPCError else {
-                return
-            }
-            
-            self.dealwithRPCError(error: RPCError)
-            
-        default:
-            break
+    func doError(error: Error) {
+        guard let RPCError: TTCRPCError = error as? TTCRPCError else {
+            return
         }
+        
+        self.dealwithRPCError(error: RPCError)
     }
     
 }

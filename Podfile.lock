@@ -1,6 +1,5 @@
 PODS:
-  - APIKit (3.2.1):
-    - Result (~> 3.0)
+  - Alamofire (4.7.3)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.12.0)
@@ -21,7 +20,7 @@ PODS:
     - TrezorCrypto
 
 DEPENDENCIES:
-  - APIKit (~> 3.2.0)
+  - Alamofire
   - BigInt (~> 3.0)
   - CryptoSwift (= 0.12.0)
   - JSONRPCKit
@@ -33,7 +32,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - APIKit
+    - Alamofire
     - BigInt
     - CryptoSwift
     - JSONRPCKit
@@ -47,7 +46,7 @@ SPEC REPOS:
     - TrustCore
 
 SPEC CHECKSUMS:
-  APIKit: a39ff72ac44efc15513fd1b98800f63c525be61b
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 1c07ca50843dd48bc54e6ea53d7a4dba3b645716
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
@@ -60,6 +59,6 @@ SPEC CHECKSUMS:
   TrezorCrypto: bea2dab002f9a5fe885df004694b9ece52dc088b
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
 
-PODFILE CHECKSUM: ff3c0d0317eb6a0c26972c7da18ebcd3eb88503b
+PODFILE CHECKSUM: 24bead82a0d35aea6ddf4e8ddfd324758cbd9afb
 
 COCOAPODS: 1.6.0.beta.2

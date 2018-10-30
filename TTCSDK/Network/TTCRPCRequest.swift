@@ -8,11 +8,13 @@
 
 import Foundation
 import JSONRPCKit
-import APIKit
+import Alamofire
 
 enum TTCRPCError: Error {
     case getBalanceError
     case failedToSignTransaction
+    case RPCSuccessError(Int32, String)    // 网络成功，但是服务器返回业务错误
+    case RPCError(Error)                   // 网路都没成功
     
     var errorDescription: String? {
         switch self {
@@ -20,47 +22,29 @@ enum TTCRPCError: Error {
             return "Failed to get balance"
         case .failedToSignTransaction:
             return "Failed to sign transaction"
+        case .RPCSuccessError(_, let description):
+            return description
+        case .RPCError(let e):
+            return e.localizedDescription
         }
     }
 }
 
-struct TTCServiceRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
+class TTCServiceRequest<Batch: JSONRPCKit.Batch>: NSObject {
+    
     let batch: Batch
-
-    typealias Response = Batch.Responses
-
-    var timeoutInterval: Double
-    var url: String = ""
-
-    init(batch: Batch, timeoutInterval: Double = 30.0, url: String = ttcServer.actionURL) {
+    let url: String
+    
+    init(batch: Batch, url: String) {
         self.batch = batch
-        self.timeoutInterval = timeoutInterval
         self.url = url
     }
-
-    var baseURL: URL {
-        return URL(string: self.url) ?? URL(fileURLWithPath: "")
+    
+    func getRequest() -> DataRequest? {
+        
+        let patameter = batch.requestObject as? [String: Any]
+        
+        return Alamofire.request(url, method: HTTPMethod.post, parameters: patameter, encoding: JSONEncoding.default, headers: nil)
     }
-
-    var method: HTTPMethod {
-        return .post
-    }
-
-    var path: String {
-        return "/"
-    }
-
-    var parameters: Any? {
-        return batch.requestObject
-    }
-
-    func intercept(urlRequest: URLRequest) throws -> URLRequest {
-        var urlRequest = urlRequest
-        urlRequest.timeoutInterval = timeoutInterval
-        return urlRequest
-    }
-
-    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        return try batch.responses(from: object)
-    }
+    
 }
