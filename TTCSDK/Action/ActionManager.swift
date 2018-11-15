@@ -462,7 +462,7 @@ class TTCActionManager {
                         if code == RPCErrorType.null.rawValue {
                             /// 一般情况是nonce过大，为了追求实时性，重新上传
                             /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
-                            TTCPrint("is null ------- \(actionInfo.actionHash)")
+                            TTCPrint("is null ------- \(hash)")
                             self.realmQueue.async {
                                 let tmpRealm = self.realm
                                 if let info = tmpRealm.objects(TTCActionInfo.self).filter("timestamp = \(timestamp)").first {
