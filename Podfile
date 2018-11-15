@@ -14,7 +14,7 @@ target 'TTCSDK' do
     pod 'Alamofire' #网络请求
     pod 'CryptoSwift', '0.12.0'#加密库
     pod 'TrustCore', '~> 0.0.7'
-    pod 'TrezorCrypto', '0.0.6'
+    pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '3.7.5' #数据库
     
     #代码格式工具
