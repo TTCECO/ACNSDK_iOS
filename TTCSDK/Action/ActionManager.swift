@@ -92,6 +92,8 @@ class TTCActionManager {
     var isUploadAction: Bool = false
     /// is transaction?
     var isTransaction: Bool = false
+    /// is checking transaction?
+    var isChecking: Bool = false
     /// error count for 'requestPrivateKeyAndAddress'
     var transactionErrorCount: Int {
         didSet {
@@ -102,7 +104,10 @@ class TTCActionManager {
         }
     }
     
-    var timeInterval: TimeInterval = 30
+    /// creat queue of checking transaction
+    let checkQueue: DispatchQueue = DispatchQueue(label: "com.ttc.eco.checkQueue")
+    
+    var timeInterval: TimeInterval = 15
     
     static let shared = TTCActionManager()
     
@@ -128,7 +133,8 @@ class TTCActionManager {
     }
     
     func runScheduledTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(checkTransaction), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(chechkAndupload), userInfo: nil, repeats: true)
+        self.timer?.fire()
     }
     
     
@@ -143,7 +149,6 @@ class TTCActionManager {
         self.timer?.invalidate()
         self.timer = nil
         self.timeInterval = 30
-        
         runScheduledTimer()
         
     }
@@ -392,17 +397,36 @@ class TTCActionManager {
         }
     }
     
-    @objc func checkTransaction() {
+    func afterCheck(afterTime: Int = 2) {
+        
+        let time = DispatchTime.now() + DispatchTimeInterval.seconds(afterTime)
+        
+        self.checkQueue.asyncAfter(deadline: time) {
+            TTCPrint("start checking time >>>>>>>>> : \(Date().timeIntervalSince1970.description)")
+            self.checkTransaction()
+        }
+    }
+    
+    // check transaction and upload action
+    @objc func chechkAndupload() {
+        afterCheck()
+        getTransactionCount()
+    }
+    
+    // check transaction
+    func checkTransaction() {
         
         if !TTCManager.shared.SDKEnabled { return }
         if !TTCManager.shared.isRegister { return }
         guard let userinfo = TTCManager.shared.userInfo else { return }
-        
         let userid = TTCManager.shared.userInfo?.userId
-        
+
         if let actionInfo = self.realm.objects(TTCActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isCheck < 3").sorted(byKeyPath: "nonce").first {
             
             if userid != userinfo.userId { return }
+            
+            if isChecking { return }
+            isChecking = true
             
             let timestamp = actionInfo.timestamp
             let hash = actionInfo.actionHash
@@ -410,12 +434,16 @@ class TTCActionManager {
             TTCRPCManager.getTransaction(hash: hash) { (result) in
                 switch result {
                 case .success(let transaction):
-                    TTCPrint("Transaction hash: \(hash), info: \(transaction)")
+//                    TTCPrint("Transaction hash: \(hash), info: \(transaction)")
                     
-                    if userid != userinfo.userId { return }
+                    if userid != userinfo.userId { self.isChecking = false; return }
+                    
+                    self.isChecking = false
                     
                     let blockNumberStr = transaction["blockNumber"] as? String ?? ""
                     let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
+                    let nonceString = transaction["nonce"] as? String ?? ""
+                    let nonce = BigInt(nonceString.drop0x, radix: 16) ?? BigInt(0)
                     
                     if blockNumber > BigInt(0) {
                         
@@ -427,12 +455,12 @@ class TTCActionManager {
                                     info.isCheck = 3 // Check successful
                                 }
                             }
+                            
+                            /// Continue to check
+                            self.afterCheck()
                         }
                         
-                        TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber)")
-                        
-                        /// Continue to check
-                        self.checkTransaction()
+                        TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber), nonce : \(nonce.description)")
                         
                     } else {
                         
@@ -444,18 +472,20 @@ class TTCActionManager {
                                     info.isCheck = 1 // Not yet successful
                                 }
                             }
+                            
+                            /// Continue to check
+                            self.afterCheck(afterTime: 5)
                         }
                         
-                        TTCPrint("Transaction hash: \(hash), no blockNumber")
+                        TTCPrint("Transaction hash: \(hash), no blockNumber, nonce : \(nonce.description)")
                     }
                     
                 case .failure(let error):
                     
                     TTCPrint("Get transaction failed, hash:\(hash), failed: \(error)")
                     
-                    guard let RPCError: TTCRPCError = error as? TTCRPCError else {
-                        return
-                    }
+                    guard let RPCError: TTCRPCError = error as? TTCRPCError else { self.isChecking = false; return }
+                    self.isChecking = false
                     
                     switch RPCError {
                     case .RPCSuccessError(let code, _):
@@ -473,13 +503,13 @@ class TTCActionManager {
                                         info.isUpload = 0     // may be 1
                                     }
                                 }
+                                
+                                /// Continue to check
+                                self.afterCheck()
+                                /// re-upload
+                                self.getTransactionCount()
                             }
                         }
-                        
-                        /// Continue to check
-                        self.checkTransaction()
-                        /// re-upload
-                        self.getTransactionCount()
                         
                     default:break
                     }
