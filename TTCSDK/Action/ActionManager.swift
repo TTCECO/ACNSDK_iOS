@@ -419,13 +419,13 @@ class TTCActionManager {
         if !TTCManager.shared.SDKEnabled { return }
         if !TTCManager.shared.isRegister { return }
         guard let userinfo = TTCManager.shared.userInfo else { return }
+        if isChecking { return }
+        
         let userid = TTCManager.shared.userInfo?.userId
-
+        
         if let actionInfo = self.realm.objects(TTCActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isCheck < 3").sorted(byKeyPath: "nonce").first {
             
             if userid != userinfo.userId { return }
-            
-            if isChecking { return }
             isChecking = true
             
             let timestamp = actionInfo.timestamp
@@ -437,8 +437,6 @@ class TTCActionManager {
 //                    TTCPrint("Transaction hash: \(hash), info: \(transaction)")
                     
                     if userid != userinfo.userId { self.isChecking = false; return }
-                    
-                    self.isChecking = false
                     
                     let blockNumberStr = transaction["blockNumber"] as? String ?? ""
                     let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
@@ -456,6 +454,7 @@ class TTCActionManager {
                                 }
                             }
                             
+                            self.isChecking = false
                             /// Continue to check
                             self.afterCheck()
                         }
@@ -473,6 +472,7 @@ class TTCActionManager {
                                 }
                             }
                             
+                            self.isChecking = false
                             /// Continue to check
                             self.afterCheck(afterTime: 5)
                         }
@@ -485,7 +485,6 @@ class TTCActionManager {
                     TTCPrint("Get transaction failed, hash:\(hash), failed: \(error)")
                     
                     guard let RPCError: TTCRPCError = error as? TTCRPCError else { self.isChecking = false; return }
-                    self.isChecking = false
                     
                     switch RPCError {
                     case .RPCSuccessError(let code, _):
@@ -504,14 +503,17 @@ class TTCActionManager {
                                     }
                                 }
                                 
+                                self.isChecking = false
                                 /// Continue to check
                                 self.afterCheck()
                                 /// re-upload
                                 self.getTransactionCount()
                             }
+                        } else {
+                            self.isChecking = false
                         }
-                        
-                    default:break
+                    default:
+                        self.isChecking = false
                     }
                 }
             }
