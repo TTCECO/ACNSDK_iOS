@@ -18,7 +18,7 @@ target 'TTCSDK' do
     pod 'RealmSwift', '3.7.5' #数据库
     
     #代码格式工具
-    pod 'SwiftLint', '0.26.0'
+    pod 'SwiftLint', '0.28.1'
 end
 
 target 'TTC_SDK_iOS_Demo' do
