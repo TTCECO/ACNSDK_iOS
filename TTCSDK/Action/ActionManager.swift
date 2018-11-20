@@ -92,7 +92,7 @@ class TTCActionManager {
     var isUploadAction: Bool = false
     /// is transaction?
     var isTransaction: Bool = false
-    /// is checking transaction?
+    /// is checking transaction?, Ensure this is changed in main queue
     var isChecking: Bool = false
     /// error count for 'requestPrivateKeyAndAddress'
     var transactionErrorCount: Int {
@@ -133,7 +133,7 @@ class TTCActionManager {
     }
     
     func runScheduledTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(chechkAndupload), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(checkAndupload), userInfo: nil, repeats: true)
         self.timer?.fire()
     }
     
@@ -296,13 +296,13 @@ class TTCActionManager {
                     }
                 }
                 
-//                TTCRPCManager.getTransaction(hash: hex) { (result) in
-//                    switch result {
-//                    case .success(let transaction):
-//                        TTCPrint("Transaction hash: \(hex), info: \(transaction)")
-//                    case .failure(_): break
-//                    }
-//                }
+                //                TTCRPCManager.getTransaction(hash: hex) { (result) in
+                //                    switch result {
+                //                    case .success(let transaction):
+                //                        TTCPrint("Transaction hash: \(hex), info: \(transaction)")
+                //                    case .failure(_): break
+                //                    }
+                //                }
                 
                 self.nonce += 1
                 TTCPrint("current nonce: \(self.nonce)")
@@ -408,7 +408,7 @@ class TTCActionManager {
     }
     
     // check transaction and upload action
-    @objc func chechkAndupload() {
+    @objc func checkAndupload() {
         afterCheck()
         getTransactionCount()
     }
@@ -434,7 +434,7 @@ class TTCActionManager {
             TTCRPCManager.getTransaction(hash: hash) { (result) in
                 switch result {
                 case .success(let transaction):
-//                    TTCPrint("Transaction hash: \(hash), info: \(transaction)")
+                    //                    TTCPrint("Transaction hash: \(hash), info: \(transaction)")
                     
                     if userid != userinfo.userId { self.isChecking = false; return }
                     
@@ -454,9 +454,12 @@ class TTCActionManager {
                                 }
                             }
                             
-                            self.isChecking = false
-                            /// Continue to check
-                            self.afterCheck()
+                            DispatchQueue.main.async {
+                                self.isChecking = false
+                                
+                                /// Continue to check
+                                self.afterCheck()
+                            }
                         }
                         
                         TTCPrint("Transaction hash: \(hash), blockNumber = \(blockNumber), nonce : \(nonce.description)")
@@ -472,9 +475,11 @@ class TTCActionManager {
                                 }
                             }
                             
-                            self.isChecking = false
-                            /// Continue to check
-                            self.afterCheck(afterTime: 5)
+                            DispatchQueue.main.async {
+                                self.isChecking = false
+                                /// Continue to check
+                                self.afterCheck(afterTime: 5)
+                            }
                         }
                         
                         TTCPrint("Transaction hash: \(hash), no blockNumber, nonce : \(nonce.description)")
@@ -503,11 +508,13 @@ class TTCActionManager {
                                     }
                                 }
                                 
-                                self.isChecking = false
-                                /// Continue to check
-                                self.afterCheck()
-                                /// re-upload
-                                self.getTransactionCount()
+                                DispatchQueue.main.async {
+                                    self.isChecking = false
+                                    /// Continue to check
+                                    self.afterCheck()
+                                    /// re-upload
+                                    self.getTransactionCount()
+                                }
                             }
                         } else {
                             self.isChecking = false
