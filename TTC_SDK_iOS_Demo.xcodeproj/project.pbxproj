@@ -696,7 +696,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n#echo \"${SRCROOT}\"\n#echo \"${BUILD_DIR}\"\n${SRCROOT}/build_TTC_SDK.sh";
+			shellScript = "\n#echo \"${SRCROOT}\"\n#echo \"${BUILD_DIR}\"\n${SRCROOT}/build_TTC_SDK.sh\n";
 		};
 		C6613FDB20F307FA008CF626 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;

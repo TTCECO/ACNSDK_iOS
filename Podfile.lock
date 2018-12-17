@@ -12,9 +12,8 @@ PODS:
     - Realm (= 3.7.5)
   - Result (3.2.4)
   - SipHash (1.2.2)
-  - SwiftLint (0.26.0)
   - SwiftProtobuf (1.0.3)
-  - TrezorCrypto (0.0.6)
+  - TrezorCrypto (0.0.9)
   - TrustCore (0.0.7):
     - BigInt
     - TrezorCrypto
@@ -25,9 +24,8 @@ DEPENDENCIES:
   - CryptoSwift (= 0.12.0)
   - JSONRPCKit
   - RealmSwift (= 3.7.5)
-  - SwiftLint (= 0.26.0)
   - SwiftProtobuf (= 1.0.3)
-  - TrezorCrypto (= 0.0.6)
+  - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
 
 SPEC REPOS:
@@ -40,7 +38,6 @@ SPEC REPOS:
     - RealmSwift
     - Result
     - SipHash
-    - SwiftLint
     - SwiftProtobuf
     - TrezorCrypto
     - TrustCore
@@ -54,11 +51,10 @@ SPEC CHECKSUMS:
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
-  TrezorCrypto: bea2dab002f9a5fe885df004694b9ece52dc088b
+  TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
 
-PODFILE CHECKSUM: 24bead82a0d35aea6ddf4e8ddfd324758cbd9afb
+PODFILE CHECKSUM: 61f05c933c571dd99410cc04411d7c01489e0696
 
 COCOAPODS: 1.6.0.beta.2

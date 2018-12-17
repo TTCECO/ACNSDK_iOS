@@ -39,7 +39,7 @@ xcuserdata/
 # Package.pins
 # Package.resolved
 .build/
-Products/
+TTCFramework/
 
 # CocoaPods
 #
