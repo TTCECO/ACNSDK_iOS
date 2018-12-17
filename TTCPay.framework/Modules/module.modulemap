@@ -1,0 +1,11 @@
+framework module TTCPay {
+  umbrella header "TTCPay.h"
+
+  export *
+  module * { export * }
+}
+
+module TTCPay.Swift {
+    header "TTCPay-Swift.h"
+    requires objc
+}

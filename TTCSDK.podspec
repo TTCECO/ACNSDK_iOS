@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source_files  = "TTCSDK/**/*.swift"
   s.resources = "TTCSDKBundle.bundle"
   s.frameworks = "Foundation", 'UIKit'
-  s.vendored_frameworks = 'TTC_SDK_NET.framework'
+  s.vendored_frameworks = 'TTC_SDK_NET.framework', 'TTCPay.framework'
 
   s.dependency 'SwiftProtobuf', '1.0.3'
   s.dependency 'BigInt', '3.1.0'
@@ -27,5 +27,6 @@ Pod::Spec.new do |s|
   s.dependency 'TrustCore', '0.0.7'
   s.dependency 'TrezorCrypto', '0.0.6'
   s.dependency 'RealmSwift', '3.7.5'
+  s.dependency 'SwiftyRSA'
 
 end

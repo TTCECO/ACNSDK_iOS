@@ -16,9 +16,10 @@ target 'TTCSDK' do
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '3.7.5' #数据库
+    pod 'SwiftyRSA'   #RSA加密签名等
     
     #代码格式工具
-#    pod 'SwiftLint'
+    pod 'SwiftLint', '0.26.0'
 end
 
 target 'TTC_SDK_iOS_Demo' do
