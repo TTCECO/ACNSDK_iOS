@@ -14,6 +14,9 @@ PODS:
   - SipHash (1.2.2)
   - SwiftLint (0.28.1)
   - SwiftProtobuf (1.0.3)
+  - SwiftyRSA (1.5.0):
+    - SwiftyRSA/ObjC (= 1.5.0)
+  - SwiftyRSA/ObjC (1.5.0)
   - TrezorCrypto (0.0.9)
   - TrustCore (0.0.7):
     - BigInt
@@ -27,6 +30,7 @@ DEPENDENCIES:
   - RealmSwift (= 3.7.5)
   - SwiftLint (= 0.28.1)
   - SwiftProtobuf (= 1.0.3)
+  - SwiftyRSA
   - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
 
@@ -42,6 +46,7 @@ SPEC REPOS:
     - SipHash
     - SwiftLint
     - SwiftProtobuf
+    - SwiftyRSA
     - TrezorCrypto
     - TrustCore
 
@@ -56,9 +61,10 @@ SPEC CHECKSUMS:
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
   SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
+  SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
 
-PODFILE CHECKSUM: 61014ec7b822e6595a15e9660adb1bdf5c0d0d86
+PODFILE CHECKSUM: fecfc92f82b88fb9c050b7fb1ed37ffa4b6640d0
 
 COCOAPODS: 1.6.0.beta.2

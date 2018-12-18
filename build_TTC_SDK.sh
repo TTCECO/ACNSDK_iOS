@@ -1,65 +1,57 @@
 #!/bin/sh
 
-# Create framework and bundle
 PRODUCT_NAME="TTCSDK"
 
-# Output directory
-OUTPUT_DIR="./Products"
+UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal
 
-if [ -d "${OUTPUT_DIR}" ]; then
-    rm -rf "${OUTPUT_DIR}/*"
-else
-    mkdir "${OUTPUT_DIR}"
-fi
+rm -rf "./TTCFramework/${PRODUCT_NAME}.framework"
+rm -rf "./TTCFramework/${PRODUCT_NAME}.bundle"
 
-CUR_TIME=$(date "+%Y-%m-%d-%H-%M-%S")
+mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
 
-# Target file
-SDK=${OUTPUT_DIR}/${CUR_TIME}${PRODUCT_NAME}${CONFIGURATION}.framework
+echo "编译环境：${CONFIGURATION}"
 
-if [[ -d "${SDK}" ]]; then
-    rm -rf "${SDK}"
-fi
-
-echo "configuration：${CONFIGURATION}"
-
-# Build devices and simulator architectures
-echo "iphone"
+#build devices and simulator architectures
+echo "编译真机"
 xcodebuild \
 -workspace TTC_SDK_iOS_Demo.xcworkspace \
 -scheme TTCSDK \
 -configuration "${CONFIGURATION}" \
 -sdk iphoneos \
+-UseModernBuildSystem=NO \
+ONLY_ACTIVE_ARCH=NO \
 BUILD_DIR="${BUILD_DIR}" \
 BUILD_ROOT="${BUILD_ROOT}" \
 clean build
 
-
-echo "simulator"
+echo "编译模拟器"
 xcodebuild \
 -workspace TTC_SDK_iOS_Demo.xcworkspace \
 -scheme TTCSDK \
 -configuration "${CONFIGURATION}" \
 -sdk iphonesimulator \
+-UseModernBuildSystem=NO \
+ONLY_ACTIVE_ARCH=NO \
 BUILD_DIR="${BUILD_DIR}" \
 BUILD_ROOT="${BUILD_ROOT}" \
 clean build
 
-# Copy framework
-cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework" "${SDK}"
+#拷备framework
+cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}"
 
 SIMULATOR_SWIFT_MODULES_DIR="${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/Modules/${PRODUCT_NAME}.swiftmodule/."
 if [ -d "${SIMULATOR_SWIFT_MODULES_DIR}" ]; then
-cp -R "${SIMULATOR_SWIFT_MODULES_DIR}" "${SDK}/Modules/${PRODUCT_NAME}.swiftmodule"
+cp -R "${SIMULATOR_SWIFT_MODULES_DIR}" "${UNIVERSAL_OUTPUTFOLDER}/${PRODUCT_NAME}.framework/Modules/${PRODUCT_NAME}.swiftmodule"
 fi
 
-# Merge iphone and simulator
-echo "merge iphone and simulator"
-#lipo -create "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" -output "${SDK}/${PRODUCT_NAME}"
+echo "合并真机与模拟器"
 
-lipo -create -output "${SDK}/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}"
+# 合成真机和模拟器
+lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}"
 
-# Copy bundle
-cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/TTCSDKBundle.bundle" "${OUTPUT_DIR}/${CUR_TIME}TTCSDKBundle.bundle"
+# 复制到目录下
+cp -R "${UNIVERSAL_OUTPUTFOLDER}/${PRODUCT_NAME}.framework" "./TTCFramework/${PRODUCT_NAME}.framework"
+cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/TTCSDKBundle.bundle" "./TTCFramework/${PRODUCT_NAME}.bundle"
 
-open "${SDK}"
+# 打开文件夹
+open "${PROJECT_DIR}"

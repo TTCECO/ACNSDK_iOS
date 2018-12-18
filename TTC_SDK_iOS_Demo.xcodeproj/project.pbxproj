@@ -21,12 +21,28 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		07A3E54C3454D0FE05B1F460 /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB55E930FF8CCDF5DC89FF18 /* Pods_TTC_SDK_Pay_Demo.framework */; };
 		363AFFB10E5261A523CDBD4E /* Pods_TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3205AE5C5AE26996802C14 /* Pods_TTCSDK.framework */; };
 		42039BF4216F44AF001398D6 /* TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; };
 		42039BF5216F44AF001398D6 /* TTCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4245D8B62175C452004BE3DD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245D8B52175C452004BE3DD /* UserDefaults.swift */; };
 		427D6985211441C3006AE7AD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D6984211441C3006AE7AD /* Error.swift */; };
 		428428BB217ECE76008B809D /* TTCSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428428BA217ECE76008B809D /* TTCSDKBundle.bundle */; };
+		428A565321C7AFD800742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
+		428A565621C7B56900742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
+		428A565721C7B56900742FE6 /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		428A565F21C7B8F900742FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A565E21C7B8F900742FE6 /* AppDelegate.swift */; };
+		428A566121C7B8F900742FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A566021C7B8F900742FE6 /* ViewController.swift */; };
+		428A566421C7B8F900742FE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428A566221C7B8F900742FE6 /* Main.storyboard */; };
+		428A566621C7B8FA00742FE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428A566521C7B8FA00742FE6 /* Assets.xcassets */; };
+		428A566921C7B8FA00742FE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428A566721C7B8FA00742FE6 /* LaunchScreen.storyboard */; };
+		428A566E21C7B97200742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
+		428A566F21C7B97200742FE6 /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		428A567121C7B98000742FE6 /* TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; };
+		428A567221C7B98000742FE6 /* TTCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		428A567521C7B98300742FE6 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
+		428A567621C7B98300742FE6 /* TTC_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		428A567821C7BC8B00742FE6 /* TTCSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A567721C7BC8A00742FE6 /* TTCSign.swift */; };
 		42A1AAE3211BEC80007D0D0D /* TTCSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1AAE2211BEC80007D0D0D /* TTCSDKTests.swift */; };
 		42A1AAE5211BEC80007D0D0D /* TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; };
 		42D149AD2188446800C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
@@ -93,6 +109,13 @@
 			remoteGlobalIDString = C699406920FEF974007E96C8;
 			remoteInfo = TTCSDK;
 		};
+		428A567321C7B98000742FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 979780EB20EA14AC007FA763 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C699406920FEF974007E96C8;
+			remoteInfo = TTCSDK;
+		};
 		42A1AAE6211BEC80007D0D0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 979780EB20EA14AC007FA763 /* Project object */;
@@ -118,6 +141,20 @@
 			files = (
 				42039BF5216F44AF001398D6 /* TTCSDK.framework in Embed Frameworks */,
 				42D149AF2188447D00C3E452 /* TTC_SDK_NET.framework in Embed Frameworks */,
+				428A565721C7B56900742FE6 /* TTCPay.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		428A567021C7B97200742FE6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				428A566F21C7B97200742FE6 /* TTCPay.framework in Embed Frameworks */,
+				428A567221C7B98000742FE6 /* TTCSDK.framework in Embed Frameworks */,
+				428A567621C7B98300742FE6 /* TTC_SDK_NET.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,15 +162,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		1F3205AE5C5AE26996802C14 /* Pods_TTCSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTCSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		420656D2216C8AF800179FC8 /* TTC_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTC_SDK_NET.framework; path = TTCSDK/Network/TTC_SDK_NET.framework; sourceTree = "<group>"; };
 		42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTC_SDK_NET.framework; sourceTree = SOURCE_ROOT; };
 		4245D8B52175C452004BE3DD /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		427D6984211441C3006AE7AD /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		428428BA217ECE76008B809D /* TTCSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TTCSDKBundle.bundle; sourceTree = SOURCE_ROOT; };
+		428A565221C7AFD800742FE6 /* TTCPay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTCPay.framework; sourceTree = SOURCE_ROOT; };
+		428A565C21C7B8F900742FE6 /* TTC_SDK_Pay_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTC_SDK_Pay_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		428A565E21C7B8F900742FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		428A566021C7B8F900742FE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		428A566321C7B8F900742FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		428A566521C7B8FA00742FE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		428A566821C7B8FA00742FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		428A566A21C7B8FA00742FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		428A567721C7BC8A00742FE6 /* TTCSign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTCSign.swift; sourceTree = "<group>"; };
 		42A1AAE0211BEC80007D0D0D /* TTCSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTCSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A1AAE2211BEC80007D0D0D /* TTCSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCSDKTests.swift; sourceTree = "<group>"; };
 		42A1AAE4211BEC80007D0D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		5B06C178065E512896EF9FE3 /* Pods-TTCSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTCSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTCSDK/Pods-TTCSDK.release.xcconfig"; sourceTree = "<group>"; };
 		7F576C501839F63F2B330048 /* Pods_TTC_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTC_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9766CEBA20FDF08D00A873D8 /* TTCActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCActionCell.swift; sourceTree = "<group>"; };
@@ -193,10 +241,22 @@
 		C699409B20FEF9A6007E96C8 /* TTCConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTCConstant.swift; sourceTree = "<group>"; };
 		C699409D20FEF9A6007E96C8 /* ActionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
 		D7B3DD86817847CA1B005E46 /* Pods-TTC_SDK_iOS_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_iOS_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_iOS_Demo/Pods-TTC_SDK_iOS_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		DB55E930FF8CCDF5DC89FF18 /* Pods_TTC_SDK_Pay_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTC_SDK_Pay_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA74329C3BD626B8DA51B164 /* Pods-TTC_SDK_iOS_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_iOS_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_iOS_Demo/Pods-TTC_SDK_iOS_Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		428A565921C7B8F900742FE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				428A566E21C7B97200742FE6 /* TTCPay.framework in Frameworks */,
+				428A567121C7B98000742FE6 /* TTCSDK.framework in Frameworks */,
+				428A567521C7B98300742FE6 /* TTC_SDK_NET.framework in Frameworks */,
+				07A3E54C3454D0FE05B1F460 /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42A1AADD211BEC80007D0D0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53B60593F43024B4E44CC20F /* Pods_TTC_SDK_iOS_Demo.framework in Frameworks */,
+				428A565621C7B56900742FE6 /* TTCPay.framework in Frameworks */,
 				42039BF4216F44AF001398D6 /* TTCSDK.framework in Frameworks */,
 				42D149AE2188447D00C3E452 /* TTC_SDK_NET.framework in Frameworks */,
 			);
@@ -228,6 +289,7 @@
 			files = (
 				363AFFB10E5261A523CDBD4E /* Pods_TTCSDK.framework in Frameworks */,
 				42D149AD2188446800C3E452 /* TTC_SDK_NET.framework in Frameworks */,
+				428A565321C7AFD800742FE6 /* TTCPay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,8 +303,24 @@
 				5B06C178065E512896EF9FE3 /* Pods-TTCSDK.release.xcconfig */,
 				D7B3DD86817847CA1B005E46 /* Pods-TTC_SDK_iOS_Demo.debug.xcconfig */,
 				FA74329C3BD626B8DA51B164 /* Pods-TTC_SDK_iOS_Demo.release.xcconfig */,
+				49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */,
+				067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		428A565D21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */ = {
+			isa = PBXGroup;
+			children = (
+				428A565E21C7B8F900742FE6 /* AppDelegate.swift */,
+				428A566021C7B8F900742FE6 /* ViewController.swift */,
+				428A567721C7BC8A00742FE6 /* TTCSign.swift */,
+				428A566221C7B8F900742FE6 /* Main.storyboard */,
+				428A566521C7B8FA00742FE6 /* Assets.xcassets */,
+				428A566721C7B8FA00742FE6 /* LaunchScreen.storyboard */,
+				428A566A21C7B8FA00742FE6 /* Info.plist */,
+			);
+			path = TTC_SDK_Pay_Demo;
 			sourceTree = "<group>";
 		};
 		42A1AAE1211BEC80007D0D0D /* TTCSDKTests */ = {
@@ -260,6 +338,7 @@
 				420656D2216C8AF800179FC8 /* TTC_SDK_NET.framework */,
 				1F3205AE5C5AE26996802C14 /* Pods_TTCSDK.framework */,
 				7F576C501839F63F2B330048 /* Pods_TTC_SDK_iOS_Demo.framework */,
+				DB55E930FF8CCDF5DC89FF18 /* Pods_TTC_SDK_Pay_Demo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -268,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				979780F520EA14AC007FA763 /* TTC_SDK_iOS_Demo */,
+				428A565D21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */,
 				C699406B20FEF974007E96C8 /* TTCSDK */,
 				C6993FE820FEF1EE007E96C8 /* TTCSDKBundle */,
 				42A1AAE1211BEC80007D0D0D /* TTCSDKTests */,
@@ -284,6 +364,7 @@
 				C6993FE720FEF1EE007E96C8 /* TTCSDKBundle.bundle */,
 				C699406A20FEF974007E96C8 /* TTCSDK.framework */,
 				42A1AAE0211BEC80007D0D0D /* TTCSDKTests.xctest */,
+				428A565C21C7B8F900742FE6 /* TTC_SDK_Pay_Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +433,7 @@
 				C699408020FEF9A6007E96C8 /* Utils */,
 				C699406D20FEF974007E96C8 /* Info.plist */,
 				428428BA217ECE76008B809D /* TTCSDKBundle.bundle */,
+				428A565221C7AFD800742FE6 /* TTCPay.framework */,
 				42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */,
 			);
 			path = TTCSDK;
@@ -459,6 +541,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		428A565B21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 428A566D21C7B8FA00742FE6 /* Build configuration list for PBXNativeTarget "TTC_SDK_Pay_Demo" */;
+			buildPhases = (
+				DDEFC6A46856CFCB0AD790E5 /* [CP] Check Pods Manifest.lock */,
+				428A565821C7B8F900742FE6 /* Sources */,
+				428A565921C7B8F900742FE6 /* Frameworks */,
+				428A565A21C7B8F900742FE6 /* Resources */,
+				428A567021C7B97200742FE6 /* Embed Frameworks */,
+				BE78315932540E91FF6FBD62 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				428A567421C7B98000742FE6 /* PBXTargetDependency */,
+			);
+			name = TTC_SDK_Pay_Demo;
+			productName = TTC_SDK_Pay_Demo;
+			productReference = 428A565C21C7B8F900742FE6 /* TTC_SDK_Pay_Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		42A1AADF211BEC80007D0D0D /* TTCSDKTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42A1AAE8211BEC80007D0D0D /* Build configuration list for PBXNativeTarget "TTCSDKTests" */;
@@ -543,10 +646,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TTC;
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = tataufo;
 				TargetAttributes = {
+					428A565B21C7B8F900742FE6 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					42A1AADF211BEC80007D0D0D = {
 						CreatedOnToolsVersion = 9.4;
 					};
@@ -579,6 +685,7 @@
 			projectRoot = "";
 			targets = (
 				979780F220EA14AC007FA763 /* TTC_SDK_iOS_Demo */,
+				428A565B21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */,
 				C699406920FEF974007E96C8 /* TTCSDK */,
 				C6993FE620FEF1EE007E96C8 /* TTCSDKBundle */,
 				9766CCEC20FC4BE800A873D8 /* TTC_SDK_BUILD */,
@@ -588,6 +695,16 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		428A565A21C7B8F900742FE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				428A566921C7B8FA00742FE6 /* LaunchScreen.storyboard in Resources */,
+				428A566621C7B8FA00742FE6 /* Assets.xcassets in Resources */,
+				428A566421C7B8F900742FE6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42A1AADE211BEC80007D0D0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -645,6 +762,7 @@
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/TrustCore/TrustCore.framework",
 			);
@@ -659,6 +777,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustCore.framework",
 			);
@@ -696,7 +815,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n#echo \"${SRCROOT}\"\n#echo \"${BUILD_DIR}\"\n${SRCROOT}/build_TTC_SDK.sh";
+			shellScript = "\n#echo \"${SRCROOT}\"\n#echo \"${BUILD_DIR}\"\n${SRCROOT}/build_TTC_SDK.sh\n";
+		};
+		BE78315932540E91FF6FBD62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONRPCKit/JSONRPCKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
+				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
+				"${BUILT_PRODUCTS_DIR}/TrustCore/TrustCore.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONRPCKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		C6613FDB20F307FA008CF626 /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -710,7 +873,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		D15C539503AB9B70F6D8CF2F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -730,9 +893,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DDEFC6A46856CFCB0AD790E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TTC_SDK_Pay_Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		428A565821C7B8F900742FE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				428A566121C7B8F900742FE6 /* ViewController.swift in Sources */,
+				428A565F21C7B8F900742FE6 /* AppDelegate.swift in Sources */,
+				428A567821C7BC8B00742FE6 /* TTCSign.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42A1AADC211BEC80007D0D0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -812,6 +1007,11 @@
 			target = C699406920FEF974007E96C8 /* TTCSDK */;
 			targetProxy = 42039BF6216F44AF001398D6 /* PBXContainerItemProxy */;
 		};
+		428A567421C7B98000742FE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C699406920FEF974007E96C8 /* TTCSDK */;
+			targetProxy = 428A567321C7B98000742FE6 /* PBXContainerItemProxy */;
+		};
 		42A1AAE7211BEC80007D0D0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C699406920FEF974007E96C8 /* TTCSDK */;
@@ -825,6 +1025,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		428A566221C7B8F900742FE6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				428A566321C7B8F900742FE6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		428A566721C7B8FA00742FE6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				428A566821C7B8FA00742FE6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		979780FF20EA14AD007FA763 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -836,6 +1052,59 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		428A566B21C7B8FA00742FE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AS4N82Q9E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.payDemo.TTC-SDK-Pay-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		428A566C21C7B8FA00742FE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AS4N82Q9E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.payDemo.TTC-SDK-Pay-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		42A1AAE9211BEC80007D0D0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1241,6 +1510,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		428A566D21C7B8FA00742FE6 /* Build configuration list for PBXNativeTarget "TTC_SDK_Pay_Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				428A566B21C7B8FA00742FE6 /* Debug */,
+				428A566C21C7B8FA00742FE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		42A1AAE8211BEC80007D0D0D /* Build configuration list for PBXNativeTarget "TTCSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
