@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire'
   s.dependency 'CryptoSwift', '0.12.0'
   s.dependency 'TrustCore', '0.0.7'
-  s.dependency 'TrezorCrypto', '0.0.6'
+  s.dependency 'TrezorCrypto', '0.0.9'
   s.dependency 'RealmSwift', '3.7.5'
   s.dependency 'SwiftyRSA'
 
