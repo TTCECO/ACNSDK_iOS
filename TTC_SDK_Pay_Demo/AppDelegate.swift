@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         TTCPay.shared.appId = "MeiTuan"
         TTCPay.shared.secretKey = "f0ec9e54bded7d60838f8d39c12e1db2"
-        TTCPay.shared.scheme = "SDKPayDemo"
         
         return true
     }

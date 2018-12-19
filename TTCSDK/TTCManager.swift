@@ -54,7 +54,7 @@ internal class TTCManager {
     var logEnable: Bool = false
     
     /// Register to start the SDK
-    func register(appId: String, secretKey: String, scheme: String = "") {
+    func register(appId: String, secretKey: String) {
 
         self.appId = appId
         self.secretKey = secretKey
@@ -70,7 +70,6 @@ internal class TTCManager {
         TTCPay.shared.appId = appId
         TTCPay.shared.secretKey = secretKey
         TTCPay.shared.apiURL = ttcServer.apiURL
-        TTCPay.shared.scheme = scheme
         
         // get chainID
         TTCActionManager.shared.getChainID()
