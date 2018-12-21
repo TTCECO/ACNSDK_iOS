@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TTCPay.shared.appId = "MeiTuan"
         TTCPay.shared.secretKey = "f0ec9e54bded7d60838f8d39c12e1db2"
         
+//        TTCPay.shared.appId = "TTCMallDemo"
+//        TTCPay.shared.secretKey = "6d1b957a8df22a935987b7e761b3d368"
+//        TTCPay.setEnvironment(environment: 2)
+        
         return true
     }
 

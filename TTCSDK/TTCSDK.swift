@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TTCPay
 
 @objc public class TTCSDKError: NSObject {
     /// Error number
@@ -99,6 +100,19 @@ public class TTCSDK: NSObject {
     @objc(logEnabled:) public static func log(isEnabled: Bool) {
         
         TTCManager.shared.logEnable = isEnabled
+    }
+    
+    /// set environment
+    /// 1 - development 2 - production
+    @objc public static func setEnvironment(environment: Int) {
+        
+        if environment == 2 {
+            ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")
+        } else {
+            ttcServer = TTCServer(apiURL: "http://sdk-ft.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")
+        }
+        
+        TTCPay.setEnvironment(environment: environment)
     }
 }
 

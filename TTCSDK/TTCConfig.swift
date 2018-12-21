@@ -22,7 +22,7 @@ struct TTCServer {
 // api : 后台服务使用
 // actionUR : 上传行为使用的链地址
 // TTCURL : ttc余额的链地址
-let ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")
+var ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")
 
 
 
