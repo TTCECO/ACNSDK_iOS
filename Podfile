@@ -17,6 +17,7 @@ target 'TTCSDK' do
     pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '3.7.5' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
+    pod 'Google-Mobile-Ads-SDK'
     
     #代码格式工具
     pod 'SwiftLint', '0.28.1'
@@ -30,4 +31,12 @@ end
 target 'TTC_SDK_Pay_Demo' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+end
+
+target 'TTC_SDK_admob_Demo' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  
+  pod 'SnapKit'
+  
 end

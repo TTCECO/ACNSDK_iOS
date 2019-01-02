@@ -58,6 +58,7 @@ import TTCPay
     }
 }
 
+// MARK: - Initialize
 public class TTCSDK: NSObject {
 
     /// Initialize SDK
@@ -116,7 +117,7 @@ public class TTCSDK: NSObject {
     }
 }
 
-// MARK: - - user
+// MARK: - User
 extension TTCSDK {
 
     /// login with userid
