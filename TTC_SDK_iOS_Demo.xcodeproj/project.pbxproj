@@ -62,6 +62,7 @@
 		42C61C7221D7742D001A7FFD /* TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; };
 		42C61C7321D7742D001A7FFD /* TTCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42C61C7721DC7460001A7FFD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7621DC7460001A7FFD /* HomeViewController.swift */; };
+		42C61C7921DCA6BD001A7FFD /* TTCInterstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7821DCA6BD001A7FFD /* TTCInterstitial.swift */; };
 		42D149AD2188446800C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
 		42D149AE2188447D00C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
 		42D149AF2188447D00C3E452 /* TTC_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -232,6 +233,7 @@
 		42C61C6721D773AE001A7FFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42C61C6921D773AE001A7FFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42C61C7621DC7460001A7FFD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		42C61C7821DCA6BD001A7FFD /* TTCInterstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCInterstitial.swift; sourceTree = "<group>"; };
 		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		5B06C178065E512896EF9FE3 /* Pods-TTCSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTCSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTCSDK/Pods-TTCSDK.release.xcconfig"; sourceTree = "<group>"; };
 		60C6FB8EF6DEF2D6AEFBA835 /* Pods-TTC_SDK_admob_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_admob_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_admob_Demo/Pods-TTC_SDK_admob_Demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			children = (
 				42C61C4621D631A9001A7FFD /* TTCAdMob.swift */,
 				42C61C4921D731B3001A7FFD /* TTCBanner.swift */,
+				42C61C7821DCA6BD001A7FFD /* TTCInterstitial.swift */,
 				42C61C4B21D74E5B001A7FFD /* TTCAdSize.swift */,
 				42C61C4D21D75D53001A7FFD /* TTCBannerDelegate.swift */,
 			);
@@ -1193,6 +1196,7 @@
 				C69940A820FEF9A6007E96C8 /* TTCRPCRequest.swift in Sources */,
 				976D86512109A8080092CF88 /* GetTransactionReceiptRequest.swift in Sources */,
 				97723A4D2105888000063D38 /* TTCImage.swift in Sources */,
+				42C61C7921DCA6BD001A7FFD /* TTCInterstitial.swift in Sources */,
 				976D864F210867B00092CF88 /* GetTransactionRequest.swift in Sources */,
 				C69940A720FEF9A6007E96C8 /* TTCRPCManager.swift in Sources */,
 				42C61C4721D631A9001A7FFD /* TTCAdMob.swift in Sources */,
