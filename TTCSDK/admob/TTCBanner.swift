@@ -50,6 +50,10 @@ public class TTCBanner: NSObject {
         }
     }
     
+    @objc public override init() {
+        bannerView = GADBannerView()
+    }
+    
     @objc public convenience init(adSize: TTCAdSize) {
         self.init(adSize: adSize, origin: CGPoint(x: 0, y: 0))
     }
@@ -81,7 +85,16 @@ extension TTCBanner {
     
     /// Makes an ad request. The request object supplies targeting information.
     @objc public func loadRequest() {
-        (bannerView as! GADBannerView).load(GADRequest())
+        let request = GADRequest()
+        (bannerView as! GADBannerView).load(request)
+    }
+    
+    /// Makes an ad request. The request object supplies targeting information.
+    /// Test ads will be returned for devices with device IDs specified in this array.
+    @objc public func loadRequest(testDevuces: NSArray) {
+        let request = GADRequest()
+        request.testDevices = testDevuces as? [Any]
+        (bannerView as! GADBannerView).load(request)
     }
 }
 

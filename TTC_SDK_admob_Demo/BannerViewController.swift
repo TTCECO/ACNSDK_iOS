@@ -15,8 +15,8 @@ class BannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let banner = TTCBanner(adSize: .LargeBanner)
+//        let banner = TTCBanner(adSize: .LargeBanner)
+        let banner = TTCBanner()
         banner.rootViewController = self
         banner.delegate = self
         banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
@@ -26,6 +26,8 @@ class BannerViewController: UIViewController {
         banner.bannerView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.bottom.equalTo(-34)
+            make.width.equalTo(320)
+            make.height.equalTo(100)
         }
     }
 }
