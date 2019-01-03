@@ -18,5 +18,5 @@
 @objc public protocol TTCAdSizeDelegate {
     
     /// Called before the ad view changes to the new size.
-    func adViewWillChangeAdSize(bannerView: TTCBanner, size: CGSize)
+    func adViewWillChangeAdSize(bannerView: TTCAdBanner, size: CGSize)
 }

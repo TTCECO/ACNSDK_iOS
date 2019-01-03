@@ -11,7 +11,7 @@ import GoogleMobileAds
 
 /// The view that displays banner ads. A minimum implementation to get an ad from within a
 /// UIViewController class is:
-public class TTCBanner: NSObject {
+public class TTCAdBanner: NSObject {
 
     @objc public var bannerView: UIView!
     
@@ -71,7 +71,7 @@ public class TTCBanner: NSObject {
     
     /// Optional delegate object that receives state change notifications from this TTCBanner.
     /// Typically this is a UIViewController.
-    @objc public weak var delegate: TTCBannerDelegate?
+    @objc public weak var delegate: TTCAdBannerDelegate?
 //        didSet {
 //            (bannerView as! GADBannerView).delegate = self
 //        }
@@ -131,7 +131,7 @@ public class TTCBanner: NSObject {
 }
 
 //MARK: - load
-extension TTCBanner: TTCAdLoadProtocol {
+extension TTCAdBanner: TTCAdLoadProtocol {
     
     /// Makes an ad request. The request object supplies targeting information.
     @objc public func loadRequest(requset: TTCAdRequest) {
@@ -141,7 +141,7 @@ extension TTCBanner: TTCAdLoadProtocol {
 }
 
 //MARK: - GADBannerViewDelegate
-extension TTCBanner: GADBannerViewDelegate {
+extension TTCAdBanner: GADBannerViewDelegate {
     
     /// Tells the delegate that an ad request successfully received an ad. The delegate may want to add
     /// the banner view to the view hierarchy if it hasn't been added yet.
@@ -182,7 +182,7 @@ extension TTCBanner: GADBannerViewDelegate {
 }
 
 //MARK: - GADAdSizeDelegate
-extension TTCBanner: GADAdSizeDelegate {
+extension TTCAdBanner: GADAdSizeDelegate {
     
     /// Called before the ad view changes to the new size.
     public func adView(_ bannerView: GADBannerView, willChangeAdSizeTo size: GADAdSize) {
