@@ -6,8 +6,6 @@
 //  Copyright © 2018 tataufo. All rights reserved.
 //
 
-import UIKit
-
 @objc public enum TTCAdSize: NSInteger {
     case Banner = 1                 /// iPhone and iPod Touch ad size. Typically 320x50.
     case LargeBanner = 2            /// Taller version of kTTCAdSizeBanner. Typically 320x100.
@@ -17,7 +15,7 @@ import UIKit
     case Fluid = 6                  /// An ad size that spans the full width of its container, with a height dynamically determined by  the ad.
 }
 
-@objc public protocol TTCAdSizeDelegate: NSObjectProtocol {
+@objc public protocol TTCAdSizeDelegate {
     
     /// Called before the ad view changes to the new size.
     func adViewWillChangeAdSize(bannerView: TTCBanner, size: CGSize)

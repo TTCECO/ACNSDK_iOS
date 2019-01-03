@@ -29,7 +29,9 @@ class BannerViewController: UIViewController {
             make.bottom.equalTo(-34)
         }
         
-        banner.loadRequest(testDevices: ["90cd7779ad573d00217a76a411ee2ca6"])
+        let request = TTCAdRequest()
+        request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
+        banner.loadRequest(requset: request)
     }
 }
 

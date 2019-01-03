@@ -6,9 +6,7 @@
 //  Copyright © 2018 tataufo. All rights reserved.
 //
 
-import UIKit
-
-@objc public protocol TTCBannerDelegate: NSObjectProtocol {
+@objc public protocol TTCBannerDelegate {
  
     //MARK: - Ad Request Lifecycle Notifications
     

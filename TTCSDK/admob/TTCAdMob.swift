@@ -6,8 +6,9 @@
 //  Copyright © 2018 tataufo. All rights reserved.
 //
 
-import UIKit
 import GoogleMobileAds
+
+public let TTCkAdSimulatorID = kGADSimulatorID
 
 public class TTCAdMob: NSObject {
 

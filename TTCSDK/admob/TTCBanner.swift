@@ -131,21 +131,13 @@ public class TTCBanner: NSObject {
 }
 
 //MARK: - load
-extension TTCBanner {
+extension TTCBanner: TTCAdLoadProtocol {
     
     /// Makes an ad request. The request object supplies targeting information.
-    @objc public func loadRequest() {
-        let request = GADRequest()
-        (bannerView as! GADBannerView).load(request)
+    @objc public func loadRequest(requset: TTCAdRequest) {
+        (bannerView as! GADBannerView).load(requset.gadRequest)
     }
     
-    /// Makes an ad request. The request object supplies targeting information.
-    /// Test ads will be returned for devices with device IDs specified in this array.
-    @objc public func loadRequest(testDevices: NSArray) {
-        let request = GADRequest()
-        request.testDevices = testDevices as? [Any]
-        (bannerView as! GADBannerView).load(request)
-    }
 }
 
 //MARK: - GADBannerViewDelegate

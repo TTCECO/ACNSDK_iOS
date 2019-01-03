@@ -22,6 +22,8 @@
                                 <rect key="frame" x="107" y="164" width="200" height="80"/>
                                 <color key="backgroundColor" red="0.4941176471" green="0.36374240450000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="1YD-n8-kL6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="7cq-FM-FmZ"/>
                                     <constraint firstAttribute="width" constant="200" id="Lte-WD-37d"/>
                                     <constraint firstAttribute="height" constant="80" id="loZ-cf-Dm5"/>
                                 </constraints>
@@ -32,11 +34,27 @@
                                     <segue destination="tWd-xj-7mp" kind="push" id="QJ3-p4-rmj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amm-zZ-hdO">
+                                <rect key="frame" x="107" y="324" width="200" height="85"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ksy-tn-cKt"/>
+                                    <constraint firstAttribute="height" constant="85" id="uJD-am-vfK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="interstitial"/>
+                                <connections>
+                                    <segue destination="uRP-w9-Wss" kind="push" id="X29-gD-4zS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6vr-GH-Uuy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="XRE-8Y-5Jj"/>
                             <constraint firstItem="6vr-GH-Uuy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fyO-np-7id"/>
+                            <constraint firstItem="Amm-zZ-hdO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g52-8M-woe"/>
+                            <constraint firstItem="Amm-zZ-hdO" firstAttribute="top" secondItem="6vr-GH-Uuy" secondAttribute="bottom" constant="80" id="lRB-PD-ZgC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -60,7 +78,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4L-aL-OJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="27"/>
+            <point key="canvasLocation" x="2219" y="-591"/>
+        </scene>
+        <!--Ad Interstitial View Controller-->
+        <scene sceneID="DVm-aR-pbD">
+            <objects>
+                <viewController id="uRP-w9-Wss" customClass="TTCAdInterstitialViewController" customModule="TTC_SDK_admob_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TwT-hk-ncL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-cD-PQv">
+                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.4941176471" green="1" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="7j9-gw-DTe"/>
+                                    <constraint firstAttribute="width" constant="100" id="rCR-9a-6Tl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="load">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.4941176471" green="0.36374240450000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.4941176471" green="0.36374240450000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadTap:" destination="uRP-w9-Wss" eventType="touchUpInside" id="wwY-qk-bdG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uWH-cD-PQv" firstAttribute="centerX" secondItem="TwT-hk-ncL" secondAttribute="centerX" id="Dqm-WO-VY2"/>
+                            <constraint firstItem="uWH-cD-PQv" firstAttribute="centerY" secondItem="TwT-hk-ncL" secondAttribute="centerY" id="Yfi-GR-TyR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vqu-mk-h29"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Nbl-3o-Ncw"/>
+                    <connections>
+                        <outlet property="button" destination="uWH-cD-PQv" id="KpW-dC-zDn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pJ-dC-nQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2218.840579710145" y="145.92391304347828"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xPY-LF-JSa">
