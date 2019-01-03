@@ -12,65 +12,56 @@ import SnapKit
 
 class BannerViewController: UIViewController {
 
+    var banner: TTCBanner!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let banner = TTCBanner(adSize: .LargeBanner)
-//        let banner = TTCBanner()
+        
+        banner = TTCBanner(adSize: .LargeBanner)
         banner.rootViewController = self
         banner.delegate = self
         banner.adSizeDelegate = self
         banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        banner.loadRequest()
-        banner.isAutoloadEnabled = true
         view.addSubview(banner.bannerView)
-        
         banner.bannerView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.bottom.equalTo(-34)
-//            make.width.equalTo(320)
-//            make.height.equalTo(100)
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
-//            banner.bannerView.snp.makeConstraints({ (make) in
-//                make.height.equalTo(200)
-//            })
-            banner.adSize = .Banner
-        }
-        
+        banner.loadRequest(testDevices: ["90cd7779ad573d00217a76a411ee2ca6"])
     }
 }
 
 extension BannerViewController: TTCBannerDelegate {
     
     func adViewDidReceiveAd(_ banner: TTCBanner) {
-        
+        print("adViewDidReceiveAd")
     }
     
     func adViewDidFailToReceiveAd(banner: TTCBanner, error: Error) {
-        
+        print("adViewDidFailToReceiveAd")
     }
     
     func adViewWillPresentScreen(banner: TTCBanner) {
-        
+        print("adViewWillPresentScreen")
     }
     
     func adViewWillDismissScreen(banner: TTCBanner) {
-        
+        print("adViewWillDismissScreen")
     }
     
     func adViewDidDismissScreen(banner: TTCBanner) {
-        
+        print("adViewDidDismissScreen")
     }
     
     func adViewWillLeaveApplication(banner: TTCBanner) {
-        
+        print("adViewWillLeaveApplication")
     }
 }
 
 extension BannerViewController: TTCAdSizeDelegate {
     func adViewWillChangeAdSize(bannerView: TTCBanner, size: CGSize) {
-        
+        print("adViewWillChangeAdSize")
     }
 }

@@ -55,7 +55,7 @@ public class TTCBanner: NSObject {
     /// Required reference to the root view controller for the banner view. This is the view controller
     /// the banner will present from if necessary (for example, presenting a landing page after a user
     /// click). Most commonly, this is the view controller the banner is displayed in.
-    @objc public var rootViewController: UIViewController? {
+    @objc public weak var rootViewController: UIViewController? {
         didSet {
             (bannerView as! GADBannerView).rootViewController = rootViewController
         }
@@ -71,18 +71,18 @@ public class TTCBanner: NSObject {
     
     /// Optional delegate object that receives state change notifications from this TTCBanner.
     /// Typically this is a UIViewController.
-    @objc public var delegate: TTCBannerDelegate? {
-        didSet {
-            (bannerView as! GADBannerView).delegate = self
-        }
-    }
+    @objc public weak var delegate: TTCBannerDelegate?
+//        didSet {
+//            (bannerView as! GADBannerView).delegate = self
+//        }
+//    }
     
     /// Optional delegate that is notified when creatives cause the banner to change size.
-    @objc public var adSizeDelegate: TTCAdSizeDelegate? {
-        didSet {
-            (bannerView as! GADBannerView).adSizeDelegate = self
-        }
-    }
+    @objc public weak var adSizeDelegate: TTCAdSizeDelegate?
+//        didSet {
+//            (bannerView as! GADBannerView).adSizeDelegate = self
+//        }
+//    }
     
     // --------------------------------------
     
@@ -90,7 +90,11 @@ public class TTCBanner: NSObject {
     @objc public override init() {
         isAutoloadEnabled = false
         adSize = .Banner
+        super.init()
+        
         bannerView = GADBannerView()
+        (bannerView as! GADBannerView).delegate = self
+        (bannerView as! GADBannerView).adSizeDelegate = self
     }
     
     /// init with asSize
@@ -120,6 +124,9 @@ public class TTCBanner: NSObject {
         default:
             bannerView = GADBannerView()
         }
+        
+        (bannerView as! GADBannerView).delegate = self
+        (bannerView as! GADBannerView).adSizeDelegate = self
     }
 }
 
@@ -134,9 +141,9 @@ extension TTCBanner {
     
     /// Makes an ad request. The request object supplies targeting information.
     /// Test ads will be returned for devices with device IDs specified in this array.
-    @objc public func loadRequest(testDevuces: NSArray) {
+    @objc public func loadRequest(testDevices: NSArray) {
         let request = GADRequest()
-        request.testDevices = testDevuces as? [Any]
+        request.testDevices = testDevices as? [Any]
         (bannerView as! GADBannerView).load(request)
     }
 }
