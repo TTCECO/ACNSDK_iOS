@@ -22,8 +22,6 @@
                                 <rect key="frame" x="107" y="164" width="200" height="80"/>
                                 <color key="backgroundColor" red="0.4941176471" green="0.36374240450000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="1YD-n8-kL6"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="7cq-FM-FmZ"/>
                                     <constraint firstAttribute="width" constant="200" id="Lte-WD-37d"/>
                                     <constraint firstAttribute="height" constant="80" id="loZ-cf-Dm5"/>
                                 </constraints>
@@ -35,12 +33,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amm-zZ-hdO">
-                                <rect key="frame" x="107" y="324" width="200" height="85"/>
+                                <rect key="frame" x="107" y="324" width="200" height="80"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="ksy-tn-cKt"/>
-                                    <constraint firstAttribute="height" constant="85" id="uJD-am-vfK"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="interstitial"/>
@@ -48,13 +42,31 @@
                                     <segue destination="uRP-w9-Wss" kind="push" id="X29-gD-4zS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sog-j8-12M">
+                                <rect key="frame" x="107" y="484" width="200" height="80"/>
+                                <color key="backgroundColor" red="0.4941176471" green="1" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="reward">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DgQ-W4-gIg" kind="push" id="QbQ-UQ-IwE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Amm-zZ-hdO" firstAttribute="width" secondItem="6vr-GH-Uuy" secondAttribute="width" id="C2G-Eg-wAN"/>
+                            <constraint firstItem="Amm-zZ-hdO" firstAttribute="top" secondItem="6vr-GH-Uuy" secondAttribute="bottom" constant="80" id="NSQ-oh-43U"/>
+                            <constraint firstItem="sog-j8-12M" firstAttribute="height" secondItem="6vr-GH-Uuy" secondAttribute="height" id="OQY-GT-UKX"/>
+                            <constraint firstItem="sog-j8-12M" firstAttribute="width" secondItem="6vr-GH-Uuy" secondAttribute="width" id="OrP-Z4-Ddo"/>
+                            <constraint firstItem="Amm-zZ-hdO" firstAttribute="height" secondItem="6vr-GH-Uuy" secondAttribute="height" id="SBA-Sq-Vzq"/>
                             <constraint firstItem="6vr-GH-Uuy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="XRE-8Y-5Jj"/>
+                            <constraint firstItem="sog-j8-12M" firstAttribute="top" secondItem="Amm-zZ-hdO" secondAttribute="bottom" constant="80" id="bze-n4-4av"/>
                             <constraint firstItem="6vr-GH-Uuy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fyO-np-7id"/>
                             <constraint firstItem="Amm-zZ-hdO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g52-8M-woe"/>
-                            <constraint firstItem="Amm-zZ-hdO" firstAttribute="top" secondItem="6vr-GH-Uuy" secondAttribute="bottom" constant="80" id="lRB-PD-ZgC"/>
+                            <constraint firstItem="sog-j8-12M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rvN-zq-P4b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -63,6 +75,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="959.4202898550725" y="26.90217391304348"/>
+        </scene>
+        <!--Reward Based Video Ad View Controller-->
+        <scene sceneID="uJC-FB-FDw">
+            <objects>
+                <viewController id="DgQ-W4-gIg" customClass="RewardBasedVideoAdViewController" customModule="TTC_SDK_admob_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ie1-3q-mna">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnH-lt-iVC">
+                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.4941176471" green="0.36374240450000001" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="N6l-iS-1mj"/>
+                                    <constraint firstAttribute="width" constant="100" id="hkz-Wg-5wI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="load">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.4941176471" green="1" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTap:" destination="DgQ-W4-gIg" eventType="touchUpInside" id="Zds-N5-893"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NnH-lt-iVC" firstAttribute="centerY" secondItem="ie1-3q-mna" secondAttribute="centerY" id="KrA-Zj-LKe"/>
+                            <constraint firstItem="NnH-lt-iVC" firstAttribute="centerX" secondItem="ie1-3q-mna" secondAttribute="centerX" id="U5i-AS-Xax"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wcY-Id-8uK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nMa-Dm-zlI"/>
+                    <connections>
+                        <outlet property="button" destination="NnH-lt-iVC" id="iOT-Ts-lZi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRw-Ah-3Wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2216" y="71"/>
         </scene>
         <!--Banner View Controller-->
         <scene sceneID="t4q-fV-Bfx">
@@ -78,12 +133,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4L-aL-OJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2219" y="-591"/>
+            <point key="canvasLocation" x="1739" y="-607"/>
         </scene>
-        <!--Ad Interstitial View Controller-->
+        <!--Interstitial View Controller-->
         <scene sceneID="DVm-aR-pbD">
             <objects>
-                <viewController id="uRP-w9-Wss" customClass="TTCAdInterstitialViewController" customModule="TTC_SDK_admob_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uRP-w9-Wss" customClass="InterstitialViewController" customModule="TTC_SDK_admob_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TwT-hk-ncL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6pJ-dC-nQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2218.840579710145" y="145.92391304347828"/>
+            <point key="canvasLocation" x="2490" y="-607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xPY-LF-JSa">

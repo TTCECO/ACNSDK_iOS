@@ -9,7 +9,7 @@
 import UIKit
 import TTCSDK
 
-class TTCAdInterstitialViewController: UIViewController {
+class InterstitialViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
     
@@ -57,7 +57,7 @@ class TTCAdInterstitialViewController: UIViewController {
     }
 }
 
-extension TTCAdInterstitialViewController: TTCAdInterstitialDelegate {
+extension InterstitialViewController: TTCAdInterstitialDelegate {
     func interstitialDidReceiveAd(ad: TTCAdInterstitial) {
         print("interstitialDidReceiveAd")
     }

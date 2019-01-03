@@ -66,7 +66,11 @@
 		42C61C7B21DDCADF001A7FFD /* TTCAdRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7A21DDCADF001A7FFD /* TTCAdRequest.swift */; };
 		42C61C7D21DDCD30001A7FFD /* TTCAdLoadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7C21DDCD30001A7FFD /* TTCAdLoadProtocol.swift */; };
 		42C61C7F21DDDD33001A7FFD /* TTCAdInterstitialDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7E21DDDD33001A7FFD /* TTCAdInterstitialDelegate.swift */; };
-		42C61C8121DDE0D4001A7FFD /* TTCAdInterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8021DDE0D4001A7FFD /* TTCAdInterstitialViewController.swift */; };
+		42C61C8121DDE0D4001A7FFD /* InterstitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8021DDE0D4001A7FFD /* InterstitialViewController.swift */; };
+		42C61C8521DDF698001A7FFD /* TTCAdRewardBasedVideoAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8421DDF698001A7FFD /* TTCAdRewardBasedVideoAd.swift */; };
+		42C61C8721DDFA21001A7FFD /* TTCAdReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */; };
+		42C61C8921DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8821DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift */; };
+		42C61C8B21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8A21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift */; };
 		42D149AD2188446800C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
 		42D149AE2188447D00C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
 		42D149AF2188447D00C3E452 /* TTC_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -241,7 +245,11 @@
 		42C61C7A21DDCADF001A7FFD /* TTCAdRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdRequest.swift; sourceTree = "<group>"; };
 		42C61C7C21DDCD30001A7FFD /* TTCAdLoadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdLoadProtocol.swift; sourceTree = "<group>"; };
 		42C61C7E21DDDD33001A7FFD /* TTCAdInterstitialDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdInterstitialDelegate.swift; sourceTree = "<group>"; };
-		42C61C8021DDE0D4001A7FFD /* TTCAdInterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdInterstitialViewController.swift; sourceTree = "<group>"; };
+		42C61C8021DDE0D4001A7FFD /* InterstitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialViewController.swift; sourceTree = "<group>"; };
+		42C61C8421DDF698001A7FFD /* TTCAdRewardBasedVideoAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdRewardBasedVideoAd.swift; sourceTree = "<group>"; };
+		42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdReward.swift; sourceTree = "<group>"; };
+		42C61C8821DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdRewardBasedVideoAdDelegate.swift; sourceTree = "<group>"; };
+		42C61C8A21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBasedVideoAdViewController.swift; sourceTree = "<group>"; };
 		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		5B06C178065E512896EF9FE3 /* Pods-TTCSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTCSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTCSDK/Pods-TTCSDK.release.xcconfig"; sourceTree = "<group>"; };
 		60C6FB8EF6DEF2D6AEFBA835 /* Pods-TTC_SDK_admob_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_admob_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_admob_Demo/Pods-TTC_SDK_admob_Demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -422,6 +430,7 @@
 				42C61C4621D631A9001A7FFD /* TTCAdMob.swift */,
 				42C61C4921D731B3001A7FFD /* TTCAdBanner.swift */,
 				42C61C7821DCA6BD001A7FFD /* TTCAdInterstitial.swift */,
+				42C61C8421DDF698001A7FFD /* TTCAdRewardBasedVideoAd.swift */,
 				42C61C8321DDF548001A7FFD /* common */,
 				42C61C8221DDF526001A7FFD /* protocol */,
 			);
@@ -434,7 +443,8 @@
 				42C61C5D21D773AC001A7FFD /* AppDelegate.swift */,
 				42C61C7621DC7460001A7FFD /* HomeViewController.swift */,
 				42C61C5F21D773AC001A7FFD /* BannerViewController.swift */,
-				42C61C8021DDE0D4001A7FFD /* TTCAdInterstitialViewController.swift */,
+				42C61C8021DDE0D4001A7FFD /* InterstitialViewController.swift */,
+				42C61C8A21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift */,
 				42C61C6121D773AC001A7FFD /* Main.storyboard */,
 				42C61C6421D773AE001A7FFD /* Assets.xcassets */,
 				42C61C6621D773AE001A7FFD /* LaunchScreen.storyboard */,
@@ -449,6 +459,7 @@
 				42C61C4D21D75D53001A7FFD /* TTCAdBannerDelegate.swift */,
 				42C61C7E21DDDD33001A7FFD /* TTCAdInterstitialDelegate.swift */,
 				42C61C7C21DDCD30001A7FFD /* TTCAdLoadProtocol.swift */,
+				42C61C8821DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -458,6 +469,7 @@
 			children = (
 				42C61C4B21D74E5B001A7FFD /* TTCAdSize.swift */,
 				42C61C7A21DDCADF001A7FFD /* TTCAdRequest.swift */,
+				42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1178,8 +1190,9 @@
 			files = (
 				42C61C6021D773AC001A7FFD /* BannerViewController.swift in Sources */,
 				42C61C5E21D773AC001A7FFD /* AppDelegate.swift in Sources */,
+				42C61C8B21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift in Sources */,
 				42C61C7721DC7460001A7FFD /* HomeViewController.swift in Sources */,
-				42C61C8121DDE0D4001A7FFD /* TTCAdInterstitialViewController.swift in Sources */,
+				42C61C8121DDE0D4001A7FFD /* InterstitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C61C8521DDF698001A7FFD /* TTCAdRewardBasedVideoAd.swift in Sources */,
 				C69940AB20FEF9A6007E96C8 /* EtherNumberFormatter.swift in Sources */,
 				C69940BC20FEF9A6007E96C8 /* ActionManager.swift in Sources */,
 				C69940BA20FEF9A6007E96C8 /* TTCUploadAction.swift in Sources */,
@@ -1228,6 +1242,7 @@
 				97723A4D2105888000063D38 /* TTCImage.swift in Sources */,
 				42C61C7921DCA6BD001A7FFD /* TTCAdInterstitial.swift in Sources */,
 				976D864F210867B00092CF88 /* GetTransactionRequest.swift in Sources */,
+				42C61C8921DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift in Sources */,
 				C69940A720FEF9A6007E96C8 /* TTCRPCManager.swift in Sources */,
 				42C61C4721D631A9001A7FFD /* TTCAdMob.swift in Sources */,
 				C69940AF20FEF9A6007E96C8 /* Transaction.swift in Sources */,
@@ -1246,6 +1261,7 @@
 				C69940A120FEF9A6007E96C8 /* TTCNavigationController.swift in Sources */,
 				427D6985211441C3006AE7AD /* Error.swift in Sources */,
 				C69940A520FEF9A6007E96C8 /* String.swift in Sources */,
+				42C61C8721DDFA21001A7FFD /* TTCAdReward.swift in Sources */,
 				C69940A320FEF9A6007E96C8 /* TTCWindow.swift in Sources */,
 				C69940B020FEF9A6007E96C8 /* TransactionSigning.swift in Sources */,
 				C69940B320FEF9A6007E96C8 /* BalanceRequest.swift in Sources */,

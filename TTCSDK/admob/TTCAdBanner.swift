@@ -147,37 +147,37 @@ extension TTCAdBanner: GADBannerViewDelegate {
     /// the banner view to the view hierarchy if it hasn't been added yet.
     public func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print(bannerView.adNetworkClassName!)
-        self.delegate?.adViewDidReceiveAd(self)
+        self.delegate?.adViewDidReceiveAd?(self)
     }
     
     /// Tells the delegate that an ad request failed. The failure is normally due to network
     /// connectivity or ad availablility (i.e., no fill).
     public func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        self.delegate?.adViewDidFailToReceiveAd(banner: self, error: error)
+        self.delegate?.adViewDidFailToReceiveAd?(banner: self, error: error)
     }
     
     /// Tells the delegate that a full screen view will be presented in response to the user clicking on
     /// an ad. The delegate may want to pause animations and time sensitive interactions.
     public func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-        self.delegate?.adViewWillPresentScreen(banner: self)
+        self.delegate?.adViewWillPresentScreen?(banner: self)
     }
     
     /// Tells the delegate that the full screen view will be dismissed.
     public func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-        self.delegate?.adViewWillDismissScreen(banner: self)
+        self.delegate?.adViewWillDismissScreen?(banner: self)
     }
     
     /// Tells the delegate that the full screen view has been dismissed. The delegate should restart
     /// anything paused while handling adViewWillPresentScreen:.
     public func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-        self.delegate?.adViewDidDismissScreen(banner: self)
+        self.delegate?.adViewDidDismissScreen?(banner: self)
     }
     
     /// Tells the delegate that the user click will open another app, backgrounding the current
     /// application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
     /// are called immediately before this method is called.
     public func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-        self.delegate?.adViewWillLeaveApplication(banner: self)
+        self.delegate?.adViewWillLeaveApplication?(banner: self)
     }
 }
 

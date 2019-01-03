@@ -85,30 +85,30 @@ extension TTCAdInterstitial: TTCAdLoadProtocol {
 extension TTCAdInterstitial: GADInterstitialDelegate {
 
     public func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        self.delegate?.interstitialDidReceiveAd(ad: self)
+        self.delegate?.interstitialDidReceiveAd?(ad: self)
     }
     
     public func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
-        self.delegate?.interstitialDidReceiveAd(ad: self)
+        self.delegate?.interstitialDidReceiveAd?(ad: self)
     }
     
     public func interstitialWillPresentScreen(_ ad: GADInterstitial) {
-        self.delegate?.interstitialWillPresentScreen(ad: self)
+        self.delegate?.interstitialWillPresentScreen?(ad: self)
     }
     
     public func interstitialDidFail(toPresentScreen ad: GADInterstitial) {
-        self.delegate?.interstitialDidFailToPresentScreen(ad: self)
+        self.delegate?.interstitialDidFailToPresentScreen?(ad: self)
     }
     
     public func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        self.delegate?.interstitialWillDismissScreen(ad: self)
+        self.delegate?.interstitialWillDismissScreen?(ad: self)
     }
     
     public func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        self.delegate?.interstitialDidDismissScreen(ad: self)
+        self.delegate?.interstitialDidDismissScreen?(ad: self)
     }
     
     public func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
-        self.delegate?.interstitialWillLeaveApplication(ad: self)
+        self.delegate?.interstitialWillLeaveApplication?(ad: self)
     }
 }

@@ -7,5 +7,6 @@
 //
 
 @objc public protocol TTCAdLoadProtocol {
+    
     func loadRequest(requset: TTCAdRequest)
 }
