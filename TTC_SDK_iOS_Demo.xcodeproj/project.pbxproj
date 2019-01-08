@@ -71,6 +71,7 @@
 		42C61C8721DDFA21001A7FFD /* TTCAdReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */; };
 		42C61C8921DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8821DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift */; };
 		42C61C8B21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8A21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift */; };
+		42C61C8D21E49130001A7FFD /* TTCAdupload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8C21E49130001A7FFD /* TTCAdupload.swift */; };
 		42D149AD2188446800C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
 		42D149AE2188447D00C3E452 /* TTC_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; };
 		42D149AF2188447D00C3E452 /* TTC_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -250,6 +251,7 @@
 		42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdReward.swift; sourceTree = "<group>"; };
 		42C61C8821DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdRewardBasedVideoAdDelegate.swift; sourceTree = "<group>"; };
 		42C61C8A21DE0076001A7FFD /* RewardBasedVideoAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBasedVideoAdViewController.swift; sourceTree = "<group>"; };
+		42C61C8C21E49130001A7FFD /* TTCAdupload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCAdupload.swift; sourceTree = "<group>"; };
 		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		5B06C178065E512896EF9FE3 /* Pods-TTCSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTCSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTCSDK/Pods-TTCSDK.release.xcconfig"; sourceTree = "<group>"; };
 		60C6FB8EF6DEF2D6AEFBA835 /* Pods-TTC_SDK_admob_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_admob_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_admob_Demo/Pods-TTC_SDK_admob_Demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				42C61C4B21D74E5B001A7FFD /* TTCAdSize.swift */,
 				42C61C7A21DDCADF001A7FFD /* TTCAdRequest.swift */,
 				42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */,
+				42C61C8C21E49130001A7FFD /* TTCAdupload.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1230,6 +1233,7 @@
 				C69940B920FEF9A6007E96C8 /* TTCManager.swift in Sources */,
 				C69940AC20FEF9A6007E96C8 /* Data.swift in Sources */,
 				C69940B120FEF9A6007E96C8 /* GetTransactionCountRequest.swift in Sources */,
+				42C61C8D21E49130001A7FFD /* TTCAdupload.swift in Sources */,
 				C699409F20FEF9A6007E96C8 /* TTCViewController.swift in Sources */,
 				C69940A220FEF9A6007E96C8 /* TTCAppIcon.swift in Sources */,
 				97723A902105DF9500063D38 /* TTCLog.swift in Sources */,

@@ -27,10 +27,10 @@ class InterstitialViewController: UIViewController {
 
     @IBAction func loadTap(_ sender: Any) {
 
-        interstitial = TTCAdInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
+        interstitial = TTCAdInterstitial(adUnitID: "ca-app-pub-3081086010287406/6838185997")
         interstitial.delegate = self
         let request = TTCAdRequest()
-        request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
+//        request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
         interstitial.loadRequest(requset: request)
         
         timeLeft = timeLenght

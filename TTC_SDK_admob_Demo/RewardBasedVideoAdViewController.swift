@@ -35,8 +35,8 @@ class RewardBasedVideoAdViewController: UIViewController {
         if !adRequestInProgress {
             
             let request = TTCAdRequest()
-            request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
-            rewardBasedVideo.loadRequest(request: request, adUnitID: "ca-app-pub-3940256099942544/1712485313")
+//            request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
+            rewardBasedVideo.loadRequest(request: request, adUnitID: "ca-app-pub-3081086010287406/2909838839")
             
             timeLeft = timeLenght
             button.setTitle("\(timeLeft)", for: .normal)
@@ -81,22 +81,22 @@ extension RewardBasedVideoAdViewController: TTCAdRewardBasedVideoAdDelegate {
     }
     
     func rewardBasedVideoAdDidOpen(rewardBasedVideoAd: TTCAdRewardBasedVideoAd) {
-        
+        print("rewardBasedVideoAdDidOpen")
     }
     
     func rewardBasedVideoAdDidStartPlaying(rewardBasedVideoAd: TTCAdRewardBasedVideoAd) {
-        
+        print("rewardBasedVideoAdDidStartPlaying")
     }
     
     func rewardBasedVideoAdDidCompletePlaying(rewardBasedVideoAd: TTCAdRewardBasedVideoAd) {
-        
+        print("rewardBasedVideoAdDidCompletePlaying")
     }
     
     func rewardBasedVideoAdDidClose(rewardBasedVideoAd: TTCAdRewardBasedVideoAd) {
-        
+        print("rewardBasedVideoAdDidClose")
     }
     
     func rewardBasedVideoAdWillLeaveApplication(rewardBasedVideoAd: TTCAdRewardBasedVideoAd) {
-        
+        print("rewardBasedVideoAdWillLeaveApplication")
     }
 }

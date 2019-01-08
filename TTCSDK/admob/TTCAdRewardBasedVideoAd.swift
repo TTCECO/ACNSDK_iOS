@@ -14,6 +14,7 @@ import GoogleMobileAds
     @objc public static let sharedInstance: TTCAdRewardBasedVideoAd = TTCAdRewardBasedVideoAd()
     
     var rewardBasedVideo: GADRewardBasedVideoAd = GADRewardBasedVideoAd.sharedInstance()
+    var adUnitID: String?
     
     override init() {
         super.init()
@@ -54,6 +55,7 @@ extension TTCAdRewardBasedVideoAd {
     /// targeting information and must not be nil. The adUnitID is the ad unit id used for fetching an
     /// ad and must not be nil.
     @objc public func loadRequest(request: TTCAdRequest, adUnitID: String) {
+        self.adUnitID = adUnitID
         rewardBasedVideo.load(request.gadRequest, withAdUnitID: adUnitID)
     }
 }
@@ -62,6 +64,9 @@ extension TTCAdRewardBasedVideoAd {
     
     /// Presents the reward based video ad with the provided view controller.
     @objc public func present(rootViewController: UIViewController) {
+        if rewardBasedVideo.isReady {
+            TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
+        }
         rewardBasedVideo.present(fromRootViewController: rootViewController)
     }
 }

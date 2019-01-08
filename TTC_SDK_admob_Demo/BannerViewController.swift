@@ -11,7 +11,7 @@ import TTCSDK
 import SnapKit
 
 class BannerViewController: UIViewController {
-
+    
     var banner: TTCAdBanner!
     
     override func viewDidLoad() {
@@ -22,15 +22,17 @@ class BannerViewController: UIViewController {
         banner.rootViewController = self
         banner.delegate = self
         banner.adSizeDelegate = self
-        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        banner.adUnitID = "ca-app-pub-3081086010287406/7452359703"
         view.addSubview(banner.bannerView)
         banner.bannerView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
             make.bottom.equalTo(-34)
         }
-        
+    }
+    
+    @IBAction func loadClick(_ sender: Any) {
         let request = TTCAdRequest()
-        request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
+//        request.testDevices = [TTCkAdSimulatorID, "90cd7779ad573d00217a76a411ee2ca6"]
         banner.loadRequest(requset: request)
     }
 }

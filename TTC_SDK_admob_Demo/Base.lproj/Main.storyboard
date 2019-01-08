@@ -126,7 +126,28 @@
                     <view key="view" contentMode="scaleToFill" id="ydQ-5U-noh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAB-Sl-1rG">
+                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.4941176471" green="1" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Ho3-bn-jYK"/>
+                                    <constraint firstAttribute="height" constant="100" id="PlS-YO-FM5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="load">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadClick:" destination="tWd-xj-7mp" eventType="touchUpInside" id="tFr-rS-Gb9"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qAB-Sl-1rG" firstAttribute="centerX" secondItem="ydQ-5U-noh" secondAttribute="centerX" id="84U-VZ-YNu"/>
+                            <constraint firstItem="qAB-Sl-1rG" firstAttribute="centerY" secondItem="ydQ-5U-noh" secondAttribute="centerY" id="RXm-1M-AIF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Jha-nn-82e"/>
                     </view>
                     <navigationItem key="navigationItem" id="9yD-wA-QVB"/>

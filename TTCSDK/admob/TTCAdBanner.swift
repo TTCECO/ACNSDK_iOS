@@ -72,17 +72,9 @@ public class TTCAdBanner: NSObject {
     /// Optional delegate object that receives state change notifications from this TTCBanner.
     /// Typically this is a UIViewController.
     @objc public weak var delegate: TTCAdBannerDelegate?
-//        didSet {
-//            (bannerView as! GADBannerView).delegate = self
-//        }
-//    }
     
     /// Optional delegate that is notified when creatives cause the banner to change size.
     @objc public weak var adSizeDelegate: TTCAdSizeDelegate?
-//        didSet {
-//            (bannerView as! GADBannerView).adSizeDelegate = self
-//        }
-//    }
     
     // --------------------------------------
     
@@ -146,7 +138,7 @@ extension TTCAdBanner: GADBannerViewDelegate {
     /// Tells the delegate that an ad request successfully received an ad. The delegate may want to add
     /// the banner view to the view hierarchy if it hasn't been added yet.
     public func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print(bannerView.adNetworkClassName!)
+        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
         self.delegate?.adViewDidReceiveAd?(self)
     }
     
@@ -177,6 +169,7 @@ extension TTCAdBanner: GADBannerViewDelegate {
     /// application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
     /// are called immediately before this method is called.
     public func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 2)
         self.delegate?.adViewWillLeaveApplication?(banner: self)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import GoogleMobileAds
+import TTC_SDK_NET
 
 @objc public class TTCAdInterstitial: NSObject {
 
@@ -65,6 +66,11 @@ extension TTCAdInterstitial {
     /// window to show the interstitial and restored when done. After the interstitial has been removed,
     /// the delegate's interstitialDidDismissScreen: will be called.
     @objc public func present(rootViewController: UIViewController) {
+        
+        if interstitial.isReady {
+            TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
+        }
+        
         interstitial.present(fromRootViewController: rootViewController)
     }
 }
@@ -109,6 +115,7 @@ extension TTCAdInterstitial: GADInterstitialDelegate {
     }
     
     public func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 2)
         self.delegate?.interstitialWillLeaveApplication?(ad: self)
     }
 }

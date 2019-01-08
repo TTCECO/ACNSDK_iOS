@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AdSupport
 
 extension String {
     var drop0x: String {
@@ -61,5 +62,9 @@ extension String {
         let options: NSStringDrawingOptions = [.truncatesLastVisibleLine, .usesLineFragmentOrigin, .usesFontLeading]
         let stringSize = self.boundingRect(with: size, options: options, attributes: dict, context: nil).size
         return CGFloat(ceilf(Float(stringSize.height)))
+    }
+    
+    static func getUUID() -> String {
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
 }

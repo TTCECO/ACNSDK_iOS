@@ -11,12 +11,17 @@ import GoogleMobileAds
 public let TTCkAdSimulatorID = kGADSimulatorID
 
 public class TTCAdMob: NSObject {
-
+    
+    /// Returns the shared TTCAdMob instance.
+    @objc public static let sharedInstance: TTCAdMob = TTCAdMob()
+    
+    var isConfig: Bool = false
+    
     /// Initialize the Ads SDK.
     /// Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
     @objc public static func configure(appID: String) {
         GADMobileAds.configure(withApplicationID: appID)
+        TTCAdMob.sharedInstance.isConfig = true
     }
-    
     
 }
