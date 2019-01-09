@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "979780F220EA14AC007FA763"
-               BuildableName = "TTC_SDK_iOS_Demo.app"
-               BlueprintName = "TTC_SDK_iOS_Demo"
+               BlueprintIdentifier = "42C61C5A21D773AC001A7FFD"
+               BuildableName = "TTC_SDK_admob_Demo.app"
+               BlueprintName = "TTC_SDK_admob_Demo"
                ReferencedContainer = "container:TTC_SDK_iOS_Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "979780F220EA14AC007FA763"
-            BuildableName = "TTC_SDK_iOS_Demo.app"
-            BlueprintName = "TTC_SDK_iOS_Demo"
+            BlueprintIdentifier = "42C61C5A21D773AC001A7FFD"
+            BuildableName = "TTC_SDK_admob_Demo.app"
+            BlueprintName = "TTC_SDK_admob_Demo"
             ReferencedContainer = "container:TTC_SDK_iOS_Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "979780F220EA14AC007FA763"
-            BuildableName = "TTC_SDK_iOS_Demo.app"
-            BlueprintName = "TTC_SDK_iOS_Demo"
+            BlueprintIdentifier = "42C61C5A21D773AC001A7FFD"
+            BuildableName = "TTC_SDK_admob_Demo.app"
+            BlueprintName = "TTC_SDK_admob_Demo"
             ReferencedContainer = "container:TTC_SDK_iOS_Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,9 +81,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "979780F220EA14AC007FA763"
-            BuildableName = "TTC_SDK_iOS_Demo.app"
-            BlueprintName = "TTC_SDK_iOS_Demo"
+            BlueprintIdentifier = "42C61C5A21D773AC001A7FFD"
+            BuildableName = "TTC_SDK_admob_Demo.app"
+            BlueprintName = "TTC_SDK_admob_Demo"
             ReferencedContainer = "container:TTC_SDK_iOS_Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
