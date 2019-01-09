@@ -63,11 +63,11 @@ public class TTCAdBanner: NSObject {
     
     /// A Boolean value that determines whether autoloading of ads in the receiver is enabled. If
     /// enabled, you do not need to call the loadRequest: method to load ads.
-    @objc public var isAutoloadEnabled: Bool {
-        didSet {
-            (bannerView as! GADBannerView).isAutoloadEnabled = isAutoloadEnabled
-        }
-    }
+//    @objc public var isAutoloadEnabled: Bool {
+//        didSet {
+//            (bannerView as! GADBannerView).isAutoloadEnabled = isAutoloadEnabled
+//        }
+//    }
     
     /// Optional delegate object that receives state change notifications from this TTCBanner.
     /// Typically this is a UIViewController.
@@ -80,7 +80,7 @@ public class TTCAdBanner: NSObject {
     
     /// init
     @objc public override init() {
-        isAutoloadEnabled = false
+//        isAutoloadEnabled = false
         adSize = .Banner
         super.init()
         
@@ -96,7 +96,7 @@ public class TTCAdBanner: NSObject {
     
     /// init with asSize and origin
     @objc public init(adSize: TTCAdSize, origin: CGPoint) {
-        isAutoloadEnabled = false
+//        isAutoloadEnabled = false
         self.adSize = adSize
         super.init()
         
