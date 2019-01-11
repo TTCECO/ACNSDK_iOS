@@ -55,17 +55,33 @@ class HomeViewController: UIViewController {
             
         } else {
             
-            let user = TTCUserInfo(userId: Int(Date().timeIntervalSince1970).description)
-            TTCSDK.login(userInfo: user, result: { (success, error, user) in
-                if success, let u = user {
-                    self.userID = u.userId
-                    self.userLabel.text = userIDP + u.userId.description
-                    self.addressLabel.text = addressP + (u.address ?? "null")
-                    
-                    let rightItem = UIBarButtonItem.init(title: "logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.rightClick))
-                    self.navigationItem.rightBarButtonItem = rightItem
+            let alert = UIAlertController(title: "login", message: nil, preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.placeholder = "please input"
+            }
+            
+            let done = UIAlertAction(title: "done", style: .destructive) { (a) in
+                if let textField = alert.textFields?.first, let text = textField.text {
+                    let user = TTCUserInfo(userId: text)
+                    TTCSDK.login(userInfo: user, result: { (success, error, user) in
+                        if success, let u = user {
+                            self.userID = u.userId
+                            self.userLabel.text = userIDP + u.userId.description
+                            self.addressLabel.text = addressP + (u.address ?? "null")
+                            
+                            let rightItem = UIBarButtonItem.init(title: "logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.rightClick))
+                            self.navigationItem.rightBarButtonItem = rightItem
+                        }
+                    })
                 }
-            })
+            }
+            
+            let cancel = UIAlertAction(title: "cancel", style: .cancel) { (a) in
+                
+            }
+            alert.addAction(cancel)
+            alert.addAction(done)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

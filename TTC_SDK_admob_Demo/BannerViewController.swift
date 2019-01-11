@@ -32,7 +32,7 @@ class BannerViewController: UIViewController {
     
     @IBAction func loadClick(_ sender: Any) {
         let request = TTCAdRequest()
-        request.testDevices = [TTCkAdSimulatorID, "a6f4cc131cbe0effa815572262d24262"]
+//        request.testDevices = [TTCkAdSimulatorID, "a6f4cc131cbe0effa815572262d24262"]
         banner.loadRequest(requset: request)
     }
 }
