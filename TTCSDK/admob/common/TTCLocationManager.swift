@@ -17,7 +17,7 @@ class TTCLocationManager: NSObject {
     static func isCanLocation() -> Bool {
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
         // denied = 拒绝，notDetermined = 未做出选择
-        if status == .notDetermined {
+        if status == .denied || status == .notDetermined {
             return false
         }
         
