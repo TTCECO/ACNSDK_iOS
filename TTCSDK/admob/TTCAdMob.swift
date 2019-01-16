@@ -19,6 +19,7 @@ public class TTCAdMob: NSObject {
     /// Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
     @objc public static func configure(appID: String) {
         GADMobileAds.configure(withApplicationID: appID)
+        let _ = TTCAdupload.shared
     }
     
 }

@@ -26,6 +26,7 @@
 		363AFFB10E5261A523CDBD4E /* Pods_TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3205AE5C5AE26996802C14 /* Pods_TTCSDK.framework */; };
 		42039BF4216F44AF001398D6 /* TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; };
 		42039BF5216F44AF001398D6 /* TTCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		422CF9D621EF311B000A38D2 /* TTCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CF9D521EF311B000A38D2 /* TTCLocationManager.swift */; };
 		4245D8B62175C452004BE3DD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245D8B52175C452004BE3DD /* UserDefaults.swift */; };
 		427D6985211441C3006AE7AD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D6984211441C3006AE7AD /* Error.swift */; };
 		428428BB217ECE76008B809D /* TTCSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428428BA217ECE76008B809D /* TTCSDKBundle.bundle */; };
@@ -215,6 +216,7 @@
 		35F6E738FD018E6C59160C92 /* Pods-TTC_SDK_admob_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_admob_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_admob_Demo/Pods-TTC_SDK_admob_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		420656D2216C8AF800179FC8 /* TTC_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTC_SDK_NET.framework; path = TTCSDK/Network/TTC_SDK_NET.framework; sourceTree = "<group>"; };
 		42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTC_SDK_NET.framework; sourceTree = SOURCE_ROOT; };
+		422CF9D521EF311B000A38D2 /* TTCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCLocationManager.swift; sourceTree = "<group>"; };
 		4245D8B52175C452004BE3DD /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		427D6984211441C3006AE7AD /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		428428BA217ECE76008B809D /* TTCSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TTCSDKBundle.bundle; sourceTree = SOURCE_ROOT; };
@@ -473,6 +475,7 @@
 				42C61C7A21DDCADF001A7FFD /* TTCAdRequest.swift */,
 				42C61C8621DDFA21001A7FFD /* TTCAdReward.swift */,
 				42C61C8C21E49130001A7FFD /* TTCAdupload.swift */,
+				422CF9D521EF311B000A38D2 /* TTCLocationManager.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				976D864F210867B00092CF88 /* GetTransactionRequest.swift in Sources */,
 				42C61C8921DDFBB6001A7FFD /* TTCAdRewardBasedVideoAdDelegate.swift in Sources */,
 				C69940A720FEF9A6007E96C8 /* TTCRPCManager.swift in Sources */,
+				422CF9D621EF311B000A38D2 /* TTCLocationManager.swift in Sources */,
 				42C61C4721D631A9001A7FFD /* TTCAdMob.swift in Sources */,
 				C69940AF20FEF9A6007E96C8 /* Transaction.swift in Sources */,
 				42C61C4A21D731B3001A7FFD /* TTCAdBanner.swift in Sources */,
