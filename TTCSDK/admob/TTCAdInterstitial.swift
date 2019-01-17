@@ -67,7 +67,7 @@ extension TTCAdInterstitial {
     /// the delegate's interstitialDidDismissScreen: will be called.
     @objc public func present(rootViewController: UIViewController) {
         
-        if interstitial.isReady {
+        if interstitial.isReady, !interstitial.hasBeenUsed {
             TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
         }
         

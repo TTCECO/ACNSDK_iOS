@@ -19,13 +19,10 @@ class TTCAdupload {
     }
     
     func upload(adUnitID: String, handleType: Int32) {
-        print(location.countryCode)
         let behavior = TTCAdBehavior()
         behavior.adUnitID = adUnitID
         behavior.handleType = handleType
         behavior.countryCode = location.countryCode
-        TTCNetworkManager.uploadAdBehavior(behavior: behavior) { (success, error) in
-            print("")
-        }
+        TTCNetworkManager.uploadAdBehavior(behavior: behavior) { (success, error) in }
     }
 }

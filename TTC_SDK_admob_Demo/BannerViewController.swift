@@ -40,7 +40,7 @@ class BannerViewController: UIViewController {
 extension BannerViewController: TTCAdBannerDelegate {
     
     func adViewDidReceiveAd(_ banner: TTCAdBanner) {
-        print("adViewDidReceiveAd")
+        print("adViewDidReceiveAd:"+Date().description)
     }
     
     func adViewDidFailToReceiveAd(banner: TTCAdBanner, error: Error) {
