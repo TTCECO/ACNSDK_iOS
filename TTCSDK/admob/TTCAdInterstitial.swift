@@ -66,11 +66,6 @@ extension TTCAdInterstitial {
     /// window to show the interstitial and restored when done. After the interstitial has been removed,
     /// the delegate's interstitialDidDismissScreen: will be called.
     @objc public func present(rootViewController: UIViewController) {
-        
-        if interstitial.isReady, !interstitial.hasBeenUsed {
-            TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
-        }
-        
         interstitial.present(fromRootViewController: rootViewController)
     }
 }
@@ -99,6 +94,7 @@ extension TTCAdInterstitial: GADInterstitialDelegate {
     }
     
     public func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
         self.delegate?.interstitialWillPresentScreen?(ad: self)
     }
     

@@ -64,9 +64,6 @@ extension TTCAdRewardBasedVideoAd {
     
     /// Presents the reward based video ad with the provided view controller.
     @objc public func present(rootViewController: UIViewController) {
-        if rewardBasedVideo.isReady {
-            TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
-        }
         rewardBasedVideo.present(fromRootViewController: rootViewController)
     }
 }
@@ -87,6 +84,7 @@ extension TTCAdRewardBasedVideoAd: GADRewardBasedVideoAdDelegate {
     }
     
     public func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
         self.delegate?.rewardBasedVideoAdDidOpen?(rewardBasedVideoAd: self)
     }
     

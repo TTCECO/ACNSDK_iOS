@@ -76,6 +76,8 @@ public class TTCAdBanner: NSObject {
     /// Optional delegate that is notified when creatives cause the banner to change size.
     @objc public weak var adSizeDelegate: TTCAdSizeDelegate?
     
+    fileprivate var tapCount: Int = 0
+    
     // --------------------------------------
     
     /// init
@@ -138,6 +140,7 @@ extension TTCAdBanner: GADBannerViewDelegate {
     /// Tells the delegate that an ad request successfully received an ad. The delegate may want to add
     /// the banner view to the view hierarchy if it hasn't been added yet.
     public func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        tapCount = 0
         TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
         self.delegate?.adViewDidReceiveAd?(self)
     }
@@ -169,6 +172,10 @@ extension TTCAdBanner: GADBannerViewDelegate {
     /// application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
     /// are called immediately before this method is called.
     public func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        if tapCount >= 1 {
+            return
+        }
+        tapCount += 1
         TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 2)
         self.delegate?.adViewWillLeaveApplication?(banner: self)
     }

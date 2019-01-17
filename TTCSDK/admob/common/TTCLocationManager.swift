@@ -12,7 +12,7 @@ import CoreLocation
 class TTCLocationManager: NSObject {
     
     var locationManager: CLLocationManager = CLLocationManager()
-    var countryCode = Locale.current.currencyCode ?? ""
+    var countryCode = Locale.current.regionCode ?? ""
     
     static func isCanLocation() -> Bool {
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -53,13 +53,9 @@ class TTCLocationManager: NSObject {
         let geocoder: CLGeocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(currLocation) { (placemark, error) -> Void in
             
-            if error == nil, let mark = placemark?[0], let dic = mark.addressDictionary as? [String: Any] {
-                
-                if let countryCode = dic["CountryCode"] as? String {
-                    self.countryCode = countryCode
-                }
-                
-                print(dic)
+            if error == nil, let mark = placemark?[0], let countryCode = mark.isoCountryCode {
+                self.countryCode = countryCode
+                print(countryCode)
             }
         }
     }
