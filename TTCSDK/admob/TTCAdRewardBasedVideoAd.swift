@@ -74,7 +74,7 @@ extension TTCAdRewardBasedVideoAd {
 extension TTCAdRewardBasedVideoAd: GADRewardBasedVideoAdDelegate {
     
     public func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 2)
+        TTCAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 3)
         self.delegate?.rewardBasedVideoAd(rewardBasedVideoAd: self, didRewardUserWithReward: TTCAdReward(reward: reward))
     }
     
