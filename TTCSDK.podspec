@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.resources = "TTCSDKBundle.bundle"
   s.frameworks = "Foundation", 'UIKit'
   s.vendored_frameworks = 'TTC_SDK_NET.framework', 'TTCPay.framework'
+  s.static_framework = true
 
   s.dependency 'SwiftProtobuf', '1.0.3'
   s.dependency 'BigInt', '3.1.0'
