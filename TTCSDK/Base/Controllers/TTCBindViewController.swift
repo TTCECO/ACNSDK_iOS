@@ -48,7 +48,7 @@ internal class TTCBindViewController: TTCViewController {
     let appIcon = TTCAppIcon()
     let arrow = UIImageView(frame: CGRect(x: 170, y: 170, width: 36, height: 20))
     let bindBtn = UIButton(frame: CGRect(x: 20, y: 272, width: 335, height: 34))
-    let importBtn = UIButton()
+//    let importBtn = UIButton()
     
     init(language: String) {
         self.language = language
@@ -65,7 +65,7 @@ internal class TTCBindViewController: TTCViewController {
         view.addSubview(arrow)
         view.addSubview(appIcon)
         view.addSubview(bindBtn)
-        view.addSubview(importBtn)
+//        view.addSubview(importBtn)
         
         closeBtn.setTitleColor(UIColor.black, for: .normal)
         closeBtn.setImage(UIImage.TTCImg(name: "close_normal"), for: .normal)
@@ -100,15 +100,15 @@ internal class TTCBindViewController: TTCViewController {
         bindBtn.layer.masksToBounds = true
         bindBtn.addTarget(self, action: #selector(bindBtnClick(_:)), for: .touchUpInside)
         
-        importBtn.setTitle(Language.AutomaticImportTTC.title(key: language), for: .normal)
-        importBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-//        importBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
-        importBtn.setTitleColor(UIColor(red: 43/255.0, green: 46/255.0, blue: 61/255.0, alpha: 1), for: .normal)
-        importBtn.setImage(UIImage.TTCImg(name: "select"), for: .normal)
-        importBtn.setImage(UIImage.TTCImg(name: "selected"), for: .selected)
-        importBtn.isSelected = true
-        importBtn.addTarget(self, action: #selector(importBtnClick(_:)), for: .touchUpInside)
-        importBtn.frame = CGRect(x: 100, y: 318, width: (importBtn.currentTitle!.textWidth(font: importBtn.titleLabel!.font!) + 30), height: 42)
+//        importBtn.setTitle(Language.AutomaticImportTTC.title(key: language), for: .normal)
+//        importBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+////        importBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+//        importBtn.setTitleColor(UIColor(red: 43/255.0, green: 46/255.0, blue: 61/255.0, alpha: 1), for: .normal)
+//        importBtn.setImage(UIImage.TTCImg(name: "select"), for: .normal)
+//        importBtn.setImage(UIImage.TTCImg(name: "selected"), for: .selected)
+//        importBtn.isSelected = true
+//        importBtn.addTarget(self, action: #selector(importBtnClick(_:)), for: .touchUpInside)
+//        importBtn.frame = CGRect(x: 100, y: 318, width: (importBtn.currentTitle!.textWidth(font: importBtn.titleLabel!.font!) + 30), height: 42)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -140,13 +140,13 @@ internal class TTCBindViewController: TTCViewController {
         let arrowY = iconY + (appIcon.appIcon.frame.size.height - arrow.frame.size.height) / 2.0 + appIcon.appIcon.frame.origin.y
         arrow.frame = CGRect(origin: CGPoint(x: iconX + appIcon.frame.size.width, y: arrowY), size: arrow.frame.size)
         appIcon.frame = CGRect(origin: CGPoint(x: iconX + appIcon.frame.size.width + arrow.frame.size.width, y: iconY), size: walletIcon.frame.size)
-        importBtn.frame = CGRect(origin: CGPoint(x: (x - importBtn.frame.size.width) / 2.0, y: bindBtn.frame.maxY), size: importBtn.frame.size)
+//        importBtn.frame = CGRect(origin: CGPoint(x: (x - importBtn.frame.size.width) / 2.0, y: bindBtn.frame.maxY), size: importBtn.frame.size)
     }
 
     @objc private func bindBtnClick(_ sender: UIButton) {
 
         sender.isEnabled = false
-        TTCNetworkManager.bindingDapp(isBind: true, walletAddress: TTCManager.shared.walletAddress!, autoTransaction: importBtn.isSelected) { (success, error) -> Void in
+        TTCNetworkManager.bindingDapp(isBind: true, walletAddress: TTCManager.shared.walletAddress!, autoTransaction: true) { (success, error) -> Void in
             sender.isEnabled = true
             
             if success {
