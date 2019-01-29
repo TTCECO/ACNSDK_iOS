@@ -26,6 +26,9 @@
 		363AFFB10E5261A523CDBD4E /* Pods_TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3205AE5C5AE26996802C14 /* Pods_TTCSDK.framework */; };
 		42039BF4216F44AF001398D6 /* TTCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; };
 		42039BF5216F44AF001398D6 /* TTCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* TTCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		421445CD2200533700ED4726 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421445CA2200533700ED4726 /* KeychainSwift.swift */; };
+		421445CE2200533700ED4726 /* KeychainSwiftAccessOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421445CB2200533700ED4726 /* KeychainSwiftAccessOptions.swift */; };
+		421445CF2200533700ED4726 /* TegKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421445CC2200533700ED4726 /* TegKeychainConstants.swift */; };
 		422CF9D621EF311B000A38D2 /* TTCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CF9D521EF311B000A38D2 /* TTCLocationManager.swift */; };
 		4245D8B62175C452004BE3DD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245D8B52175C452004BE3DD /* UserDefaults.swift */; };
 		427D6985211441C3006AE7AD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D6984211441C3006AE7AD /* Error.swift */; };
@@ -215,6 +218,9 @@
 		1F3205AE5C5AE26996802C14 /* Pods_TTCSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTCSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F6E738FD018E6C59160C92 /* Pods-TTC_SDK_admob_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_admob_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_admob_Demo/Pods-TTC_SDK_admob_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		420656D2216C8AF800179FC8 /* TTC_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTC_SDK_NET.framework; path = TTCSDK/Network/TTC_SDK_NET.framework; sourceTree = "<group>"; };
+		421445CA2200533700ED4726 /* KeychainSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
+		421445CB2200533700ED4726 /* KeychainSwiftAccessOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftAccessOptions.swift; sourceTree = "<group>"; };
+		421445CC2200533700ED4726 /* TegKeychainConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegKeychainConstants.swift; sourceTree = "<group>"; };
 		42209A0C2172F7FA0091EAD4 /* TTC_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTC_SDK_NET.framework; sourceTree = SOURCE_ROOT; };
 		422CF9D521EF311B000A38D2 /* TTCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCLocationManager.swift; sourceTree = "<group>"; };
 		4245D8B52175C452004BE3DD /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -394,6 +400,16 @@
 				35F6E738FD018E6C59160C92 /* Pods-TTC_SDK_admob_Demo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		421445C92200531D00ED4726 /* third */ = {
+			isa = PBXGroup;
+			children = (
+				421445CA2200533700ED4726 /* KeychainSwift.swift */,
+				421445CB2200533700ED4726 /* KeychainSwiftAccessOptions.swift */,
+				421445CC2200533700ED4726 /* TegKeychainConstants.swift */,
+			);
+			path = third;
 			sourceTree = "<group>";
 		};
 		428A565D21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */ = {
@@ -619,6 +635,7 @@
 		C699408020FEF9A6007E96C8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				421445C92200531D00ED4726 /* third */,
 				42C61C4521D62EF8001A7FFD /* common */,
 				C699408120FEF9A6007E96C8 /* Extension */,
 				97723A8F2105DF9500063D38 /* TTCLog.swift */,
@@ -1232,6 +1249,8 @@
 				42C61C8521DDF698001A7FFD /* TTCAdRewardBasedVideoAd.swift in Sources */,
 				C69940AB20FEF9A6007E96C8 /* EtherNumberFormatter.swift in Sources */,
 				C69940BC20FEF9A6007E96C8 /* ActionManager.swift in Sources */,
+				421445CD2200533700ED4726 /* KeychainSwift.swift in Sources */,
+				421445CE2200533700ED4726 /* KeychainSwiftAccessOptions.swift in Sources */,
 				C69940BA20FEF9A6007E96C8 /* TTCUploadAction.swift in Sources */,
 				C69940B920FEF9A6007E96C8 /* TTCManager.swift in Sources */,
 				C69940AC20FEF9A6007E96C8 /* Data.swift in Sources */,
@@ -1241,6 +1260,7 @@
 				C69940A220FEF9A6007E96C8 /* TTCAppIcon.swift in Sources */,
 				97723A902105DF9500063D38 /* TTCLog.swift in Sources */,
 				9766CEC32100601500A873D8 /* TTCConfig.swift in Sources */,
+				421445CF2200533700ED4726 /* TegKeychainConstants.swift in Sources */,
 				C69940A020FEF9A6007E96C8 /* TTCBindViewController.swift in Sources */,
 				C69940A920FEF9A6007E96C8 /* CastError.swift in Sources */,
 				42C61C7D21DDCD30001A7FFD /* TTCAdLoadProtocol.swift in Sources */,

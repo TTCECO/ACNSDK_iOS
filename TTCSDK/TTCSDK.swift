@@ -105,7 +105,7 @@ public class TTCSDK: NSObject {
     
     /// set environment
     /// 1 - development 2 - production
-    @objc public static func setEnvironment(environment: Int) {
+    @objc public static func setEnvironment(environment: Int = 1) {
         
         if environment == 2 {
             ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")

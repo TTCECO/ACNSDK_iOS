@@ -445,18 +445,44 @@ extension TTCManager {
         TTCNetworkManager.registerUser { (success, error, dataMessage) -> Void in
 
             if success, let data = dataMessage {
+                var isHashUnique = false
                 for KVInfo in data {
 
                     if KVInfo.key == "wallet", !KVInfo.value.isEmpty {
                         self.userInfo?.wallet = KVInfo.value
                     } else if KVInfo.key == "address", !KVInfo.value.isEmpty {
                         self.userInfo?.address = KVInfo.value
+                    } else if KVInfo.key == "clientId" {
+                        isHashUnique = true
                     }
                 }
+                
+                // 上传设备表示
+                if !isHashUnique {
+                    let keyChain = KeychainSwift(keyPrefix: keychainKeyPrefix)
+                    let key = "sdk_unique_key"
+                    let unique = keyChain.get(key)
+                    if let u = unique, !u.isEmpty {
+                        self.updateUnique(uuid: u)
+                    } else if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+                        keyChain.set(uuid, forKey: key)
+                        self.updateUnique(uuid: uuid)
+                    }
+                }
+                
                 result(true, nil)
             } else {
                 result(false, error)
             }
         }
+    }
+}
+
+fileprivate extension TTCManager {
+    func updateUnique(uuid: String) {
+        let kvInfo = TTCNETKVInfo()
+        kvInfo.key = "clientId"
+        kvInfo.value = uuid
+        TTCNetworkManager.updateUserInfo(InfoArr: [kvInfo]) { (success, error, userInfoList) -> Void in}
     }
 }
