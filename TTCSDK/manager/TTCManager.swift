@@ -52,6 +52,8 @@ internal class TTCManager {
     }
     /// SDK is log
     var logEnable: Bool = false
+    // location
+    let location = TTCLocationManager()
     
     /// Register to start the SDK
     func register(appId: String, secretKey: String) {
@@ -73,6 +75,8 @@ internal class TTCManager {
         
         // get chainID
         TTCActionManager.shared.getChainID()
+        // Open positioning
+        location.locate()
     }
 }
 
@@ -446,16 +450,21 @@ extension TTCManager {
 
             if success, let data = dataMessage {
                 var isHashUnique = false
+                var isHashPosition = false
+                
                 for KVInfo in data {
-
                     if KVInfo.key == "wallet", !KVInfo.value.isEmpty {
                         self.userInfo?.wallet = KVInfo.value
                     } else if KVInfo.key == "address", !KVInfo.value.isEmpty {
                         self.userInfo?.address = KVInfo.value
                     } else if KVInfo.key == "clientId" {
                         isHashUnique = true
+                    } else if KVInfo.key == "countryCode" {
+                        isHashPosition = true
                     }
                 }
+                
+                var infoArr: [TTCNETKVInfo] = []
                 
                 // 上传设备表示
                 if !isHashUnique {
@@ -463,12 +472,22 @@ extension TTCManager {
                     let key = "sdk_unique_key"
                     let unique = keyChain.get(key)
                     if let u = unique, !u.isEmpty {
-                        self.updateUnique(uuid: u)
+                        infoArr.append(self.getUnique(uuid: u))
                     } else if let uuid = UIDevice.current.identifierForVendor?.uuidString {
                         keyChain.set(uuid, forKey: key)
-                        self.updateUnique(uuid: uuid)
+                        infoArr.append(self.getUnique(uuid: uuid))
                     }
                 }
+                
+                // add position
+                if !isHashPosition {
+                    let kvInfo = TTCNETKVInfo()
+                    kvInfo.key = "countryCode"
+                    kvInfo.value = self.location.countryCode
+                    infoArr.append(kvInfo)
+                }
+                
+                self.updateInfo(InfoArr: infoArr)
                 
                 result(true, nil)
             } else {
@@ -479,10 +498,15 @@ extension TTCManager {
 }
 
 fileprivate extension TTCManager {
-    func updateUnique(uuid: String) {
+    func getUnique(uuid: String) -> TTCNETKVInfo {
         let kvInfo = TTCNETKVInfo()
         kvInfo.key = "clientId"
         kvInfo.value = uuid
-        TTCNetworkManager.updateUserInfo(InfoArr: [kvInfo]) { (success, error, userInfoList) -> Void in}
+        return kvInfo
+    }
+    
+    func updateInfo(InfoArr: [TTCNETKVInfo]) {
+        if InfoArr.isEmpty { return }
+        TTCNetworkManager.updateUserInfo(InfoArr: InfoArr) { (success, error, userInfoList) -> Void in}
     }
 }

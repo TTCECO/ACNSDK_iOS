@@ -12,17 +12,17 @@ import TTC_SDK_NET
 class TTCAdupload {
     
     static let shared: TTCAdupload = TTCAdupload()
-    fileprivate let location = TTCLocationManager()
-    
-    init() {
-        location.locate()
-    }
+//    fileprivate let location = TTCLocationManager()
+//
+//    init() {
+//        location.locate()
+//    }
     
     func upload(adUnitID: String, handleType: Int32) {
         let behavior = TTCAdBehavior()
         behavior.adUnitID = adUnitID
         behavior.handleType = handleType
-        behavior.countryCode = location.countryCode
+        behavior.countryCode = TTCManager.shared.location.countryCode
         TTCNetworkManager.uploadAdBehavior(behavior: behavior) { (success, error) in }
     }
 }
