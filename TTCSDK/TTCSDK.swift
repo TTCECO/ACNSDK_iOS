@@ -67,8 +67,11 @@ public class TTCSDK: NSObject {
     /// - appId: AppId assigned by the TTC platform, cannot be nil
     /// - secretKey: The SecretKey assigned by the TTC platform cannot be nil
     /// - scheme: Use the scheme, wallet jump dapp, scheme default is empty, if it is empty, it will not jump.
+    /// - environment: set environment 1 - development 2 - production default=2
     /// - result:
-    @objc public static func register(appId: String, secretKey: String, result: ((Bool, TTCSDKError?) -> Void )? ) {
+    @objc public static func register(appId: String, secretKey: String, environment: Int = 2, result: ((Bool, TTCSDKError?) -> Void )? ) {
+        
+        setEnvironment(environment: environment)
         
         if !TTCManager.shared.SDKEnabled {
             result?(false, TTCSDKError(type: .SDKDisable))
@@ -105,7 +108,7 @@ public class TTCSDK: NSObject {
     
     /// set environment
     /// 1 - development 2 - production
-    @objc public static func setEnvironment(environment: Int = 1) {
+    static func setEnvironment(environment: Int = 2) {
         
         if environment == 2 {
             ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")

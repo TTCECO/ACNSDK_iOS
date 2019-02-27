@@ -35,6 +35,7 @@ internal class TTCManager {
     var walletAddress: String?
     var walletScheme: String?
     var walletLanguage: String = "en"
+    var reward: Int = 0
 
     /// SDK is available
     var SDKEnabled: Bool = true {
@@ -74,7 +75,7 @@ internal class TTCManager {
         TTCPay.shared.apiURL = ttcServer.apiURL
         
         // get chainID
-        TTCActionManager.shared.getChainID()
+//        TTCActionManager.shared.getChainID()
         // Open positioning
         location.locate()
     }
@@ -287,6 +288,7 @@ extension TTCManager {
         self.walletAddress = params["address"]
         self.walletScheme = params["wltScheme"]
         self.walletLanguage = params["language"] ?? "en"
+        self.reward = Int(params["reward"] ?? "0") ?? 0
 
         if self.isLogin {
             TTCPrint("bind - go to binding page")
@@ -300,7 +302,7 @@ extension TTCManager {
     /// back wallet -1 cancel， 0 faile，1 success，
     func backWallet(bindState: Int) {
         
-        let walletUrlStr = (self.walletScheme ?? "") + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)"
+        let walletUrlStr = (self.walletScheme ?? "") + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(TTCManager.shared.reward)"
         let walletUrl = URL(string: walletUrlStr)
 
         guard let wltUrl = walletUrl else { return }
@@ -349,6 +351,7 @@ extension TTCManager {
             
             self.isRegister = success
             if success {
+                TTCActionManager.shared.getChainID()
                 TTCActionManager.shared.getTransactionCount()
             } else {
                 if error != nil {
@@ -382,6 +385,8 @@ extension TTCManager {
                     result(false, .responseDataParseError)
                     return
                 }
+                
+                ttcServer = TTCServer(apiURL: ttcServer.apiURL, actionURL: data.sideChainRpcurl, TTCURL: data.mainChainRpcurl)
                 
                 if !data.uploadOperationLogGasPrice.isEmpty, data.uploadOperationLogGasLimit != 0 {
                     TTCActionManager.shared.gasPrice = BigInt(data.uploadOperationLogGasPrice) ?? BigInt("500000000000")

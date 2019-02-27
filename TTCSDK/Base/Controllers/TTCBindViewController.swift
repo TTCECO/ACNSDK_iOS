@@ -12,18 +12,21 @@ import TTC_SDK_NET
 enum Language {
     case TTCWallet
     case Bind
-    case AutomaticImportTTC
+    case Title
     
-    func title(key: String) -> String {
+    func title(key: String, reward: Int = 0) -> String {
         
-        if key == "cn" {
+        if key == "zh" {
             switch self {
             case .TTCWallet:
                 return "TTC Connect"
             case .Bind:
                 return "绑定"
-            case .AutomaticImportTTC:
-                return " 自动导入TTC"
+            case .Title:
+                if reward == 0 {
+                    return "绑定"
+                }
+                return "绑定后领取\(reward)TTC"
             }
         } else {
             switch self {
@@ -31,8 +34,11 @@ enum Language {
                 return "TTC Connect"
             case .Bind:
                 return "Bind"
-            case .AutomaticImportTTC:
-                return " Automatic import TTC"
+            case .Title:
+                if reward == 0 {
+                    return "Bind"
+                }
+                return "Receive \(reward)TTC after binding"
             }
         }
     }
@@ -48,7 +54,6 @@ internal class TTCBindViewController: TTCViewController {
     let appIcon = TTCAppIcon()
     let arrow = UIImageView(frame: CGRect(x: 170, y: 170, width: 36, height: 20))
     let bindBtn = UIButton(frame: CGRect(x: 20, y: 272, width: 335, height: 34))
-//    let importBtn = UIButton()
     
     init(language: String) {
         self.language = language
@@ -65,7 +70,6 @@ internal class TTCBindViewController: TTCViewController {
         view.addSubview(arrow)
         view.addSubview(appIcon)
         view.addSubview(bindBtn)
-//        view.addSubview(importBtn)
         
         closeBtn.setTitleColor(UIColor.black, for: .normal)
         closeBtn.setImage(UIImage.TTCImg(name: "close_normal"), for: .normal)
@@ -73,7 +77,7 @@ internal class TTCBindViewController: TTCViewController {
         closeBtn.addTarget(self, action: #selector(closeBtnClick(_:)), for: .touchUpInside)
         
         titleLabel.textAlignment = .center
-        titleLabel.text = Language.Bind.title(key: language)
+        titleLabel.text = Language.Title.title(key: language, reward: TTCManager.shared.reward)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = UIColor(red: 43/255.0, green: 46/255.0, blue: 61/255.0, alpha: 1)
         
@@ -100,15 +104,6 @@ internal class TTCBindViewController: TTCViewController {
         bindBtn.layer.masksToBounds = true
         bindBtn.addTarget(self, action: #selector(bindBtnClick(_:)), for: .touchUpInside)
         
-//        importBtn.setTitle(Language.AutomaticImportTTC.title(key: language), for: .normal)
-//        importBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-////        importBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
-//        importBtn.setTitleColor(UIColor(red: 43/255.0, green: 46/255.0, blue: 61/255.0, alpha: 1), for: .normal)
-//        importBtn.setImage(UIImage.TTCImg(name: "select"), for: .normal)
-//        importBtn.setImage(UIImage.TTCImg(name: "selected"), for: .selected)
-//        importBtn.isSelected = true
-//        importBtn.addTarget(self, action: #selector(importBtnClick(_:)), for: .touchUpInside)
-//        importBtn.frame = CGRect(x: 100, y: 318, width: (importBtn.currentTitle!.textWidth(font: importBtn.titleLabel!.font!) + 30), height: 42)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -135,12 +130,13 @@ internal class TTCBindViewController: TTCViewController {
             iconY = 100
             bindBtn.frame = CGRect(x: (x - 335) / 2.0, y: iconY + walletIcon.frame.size.height + 40, width: 335, height: 34)
         }
-        titleLabel.frame = CGRect(x: (x - 50)/2.0, y: 22, width: 50, height: 40)
+        
+        let width = titleLabel.text!.textWidth(font: titleLabel.font)
+        titleLabel.frame = CGRect(x: (x - width)/2.0, y: 22+iPhoneXNavBarOffset, width: width, height: 40)
         walletIcon.frame = CGRect(origin: CGPoint(x: iconX, y: iconY), size: walletIcon.frame.size)
         let arrowY = iconY + (appIcon.appIcon.frame.size.height - arrow.frame.size.height) / 2.0 + appIcon.appIcon.frame.origin.y
         arrow.frame = CGRect(origin: CGPoint(x: iconX + appIcon.frame.size.width, y: arrowY), size: arrow.frame.size)
         appIcon.frame = CGRect(origin: CGPoint(x: iconX + appIcon.frame.size.width + arrow.frame.size.width, y: iconY), size: walletIcon.frame.size)
-//        importBtn.frame = CGRect(origin: CGPoint(x: (x - importBtn.frame.size.width) / 2.0, y: bindBtn.frame.maxY), size: importBtn.frame.size)
     }
 
     @objc private func bindBtnClick(_ sender: UIButton) {

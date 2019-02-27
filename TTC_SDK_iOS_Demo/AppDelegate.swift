@@ -20,9 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        TTCRegister.sdk(isEnabled: false)
         TTCSDK.log(isEnabled: true)
-        TTCSDK.setEnvironment(environment: 1)
         
-        TTCSDK.register(appId: "SDKTest", secretKey: "9d1990b8fc9cf1328d88af73b8f89e4d") { (result, error) in
+        TTCSDK.register(appId: "SDKTest", secretKey: "9d1990b8fc9cf1328d88af73b8f89e4d", environment: 1) { (result, error) in
             if result {
                 print("register success")
             } else {
