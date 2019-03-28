@@ -111,7 +111,7 @@ public class TTCSDK: NSObject {
     static func setEnvironment(environment: Int = 2) {
         
         if environment == 2 {
-            ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")
+            ttcServer = TTCServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://ttcnet.io/")
         } else {
             ttcServer = TTCServer(apiURL: "http://sdk-ft.ttcnet.io/", actionURL: "http://test.ttcnet.io/", TTCURL: "http://test.ttcnet.io/")
         }

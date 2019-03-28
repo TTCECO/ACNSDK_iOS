@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TTCSDK"
-  s.version      = "0.0.18"
+  s.version      = "0.1.0"
   s.summary      = "TTCSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
   s.dependency 'TrezorCrypto', '0.0.9'
   s.dependency 'RealmSwift', '3.7.5'
   s.dependency 'SwiftyRSA'
-  s.dependency 'Google-Mobile-Ads-SDK'
+  s.dependency 'Google-Mobile-Ads-SDK', '7.37.0'
 	
 end

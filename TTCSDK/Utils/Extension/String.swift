@@ -21,6 +21,31 @@ extension String {
     var add0x: String {
         return "0x" + self
     }
+    
+    var isHex: Bool {
+        
+        if self.hasPrefix("t") {
+            return true
+        } else if self.hasPrefix("0x") {
+            return true
+        }
+        
+        return false
+    }
+    
+    var withOutHex: String {
+        
+        if isHex {
+            return String(self.dropFirst(2))
+        }
+        
+        return self
+    }
+    
+    var to0x: String {
+        
+        return "0x" + self.withOutHex
+    }
 }
 
 extension String {

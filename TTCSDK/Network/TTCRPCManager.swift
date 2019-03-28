@@ -59,7 +59,7 @@ class TTCRPCManager: NSObject {
     
     // MARK: - RPC request
     static func getEthBalance(for address: String, completion: @escaping (Result<Balance>) -> Void) {
-        TTCServiceRequest(batch: BatchFactory().create(BalanceRequest(address: address)), url: ttcServer.TTCURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        TTCServiceRequest(batch: BatchFactory().create(BalanceRequest(address: address.to0x)), url: ttcServer.TTCURL).getRequest()?.validate().responseJSON(completionHandler: { response in
             
             switch TTCRPCManager.isRespondError(result: response.result) {
             case .success(let responseValue):
@@ -76,7 +76,7 @@ class TTCRPCManager: NSObject {
     /// fetch latest Nonce
     static func getTransactionCount(address: String, completion: @escaping (Result<BigInt>) -> Void) {
         
-        TTCServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(address: address, state: "latest")), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        TTCServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(address: address.to0x, state: "latest")), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
             
             switch TTCRPCManager.isRespondError(result: response.result) {
             case .success(let responseValue):
@@ -93,7 +93,7 @@ class TTCRPCManager: NSObject {
     /// fetch pending Nonce
     static func getTransactionPendingCount(address: String, completion: @escaping (Result<BigInt>) -> Void) {
         
-        TTCServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(address: address, state: "pending")), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        TTCServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(address: address.to0x, state: "pending")), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
             
             switch TTCRPCManager.isRespondError(result: response.result) {
             case .success(let responseValue):
@@ -141,21 +141,23 @@ class TTCRPCManager: NSObject {
     static private func signTransaction(_ transaction: Transaction) -> Data? {
         let signer: Signer = EIP155Signer(chainId: BigInt(transaction.chainID))
         
-        let hash = signer.hash(transaction: transaction)
+        let tmptrans = Transaction.init(from: transaction.from.to0x, to: transaction.to.to0x, gasLimit: transaction.gasLimit, gasPrice: transaction.gasPrice, value: transaction.value, nonce: transaction.nonce, data: transaction.data, chainID: transaction.chainID)
+        
+        let hash = signer.hash(transaction: tmptrans)
         
         guard let keyData = Data(hexString: TTCManager.shared.privateKey ?? "") else {
             return nil
         }
         
         let signature = EthereumCrypto.sign(hash: hash, privateKey: keyData)
-        let (r, s, v) = signer.values(transaction: transaction, signature: signature)
+        let (r, s, v) = signer.values(transaction: tmptrans, signature: signature)
         let data = RLP.encode([
-            transaction.nonce,
-            transaction.gasPrice,
-            transaction.gasLimit,
-            Data(hexString: transaction.to) ?? Data(),
-            transaction.value,
-            transaction.data,
+            tmptrans.nonce,
+            tmptrans.gasPrice,
+            tmptrans.gasLimit,
+            Data(hexString: tmptrans.to) ?? Data(),
+            tmptrans.value,
+            tmptrans.data,
             v, r, s
             ])
         return data
@@ -178,7 +180,7 @@ class TTCRPCManager: NSObject {
     
     static func getTransaction(hash: String, completion: @escaping (Result<[String: Any]>) -> Void) {
         
-        TTCServiceRequest(batch: BatchFactory().create(GetTransactionRequest(hash: hash)), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        TTCServiceRequest(batch: BatchFactory().create(GetTransactionRequest(hash: hash.to0x)), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
             
             switch TTCRPCManager.isRespondError(result: response.result) {
             case .success(let responseValue):
@@ -193,7 +195,7 @@ class TTCRPCManager: NSObject {
     
     static func getTransactionReceipt(hash: String, completion: @escaping (Result<TransactionReceipt>) -> Void) {
         
-        TTCServiceRequest(batch: BatchFactory().create(GetTransactionReceiptRequest(hash: hash)), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        TTCServiceRequest(batch: BatchFactory().create(GetTransactionReceiptRequest(hash: hash.to0x)), url: ttcServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
             
             switch TTCRPCManager.isRespondError(result: response.result) {
             case .success(let responseValue):

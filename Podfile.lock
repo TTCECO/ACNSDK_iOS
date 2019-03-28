@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.8.2)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.12.0)
@@ -28,7 +28,7 @@ DEPENDENCIES:
   - Alamofire
   - BigInt (~> 3.0)
   - CryptoSwift (= 0.12.0)
-  - Google-Mobile-Ads-SDK
+  - Google-Mobile-Ads-SDK (= 7.37.0)
   - JSONRPCKit
   - RealmSwift (= 3.7.5)
   - SnapKit
@@ -57,7 +57,7 @@ SPEC REPOS:
     - TrustCore
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 1c07ca50843dd48bc54e6ea53d7a4dba3b645716
   Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
@@ -73,6 +73,6 @@ SPEC CHECKSUMS:
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
 
-PODFILE CHECKSUM: 389bc5936a5a5ddebc1564ab3bdecd3024f95235
+PODFILE CHECKSUM: dc3f45858c9171d85a7e1c5bf8076bf2309e1b70
 
 COCOAPODS: 1.6.0.beta.2

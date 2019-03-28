@@ -137,7 +137,6 @@ extension TTCManager {
                 NotificationCenter.default.addObserver(self, selector: #selector(self.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
                 
                 TTCActionManager.shared.setDefaultManager()
-                self.becomeActive()
                 self.requestPrivateKeyAndAddressRetry()
                 
             } else {
@@ -351,6 +350,7 @@ extension TTCManager {
             
             self.isRegister = success
             if success {
+                self.becomeActive()
                 TTCActionManager.shared.getChainID()
                 TTCActionManager.shared.getTransactionCount()
             } else {
@@ -386,7 +386,9 @@ extension TTCManager {
                     return
                 }
                 
-                ttcServer = TTCServer(apiURL: ttcServer.apiURL, actionURL: data.sideChainRpcurl, TTCURL: data.mainChainRpcurl)
+                if !data.sideChainRpcurl.isEmpty, !data.mainChainRpcurl.isEmpty {
+                    ttcServer = TTCServer(apiURL: ttcServer.apiURL, actionURL: data.sideChainRpcurl, TTCURL: data.mainChainRpcurl)
+                }
                 
                 if !data.uploadOperationLogGasPrice.isEmpty, data.uploadOperationLogGasLimit != 0 {
                     TTCActionManager.shared.gasPrice = BigInt(data.uploadOperationLogGasPrice) ?? BigInt("500000000000")
