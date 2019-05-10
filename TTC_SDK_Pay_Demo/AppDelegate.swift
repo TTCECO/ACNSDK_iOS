@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        TTCPay.shared.appId = "TTCMallDemo"
 //        TTCPay.shared.secretKey = "6d1b957a8df22a935987b7e761b3d368"
-//        TTCPay.setEnvironment(environment: 2)
+        TTCPay.setEnvironment(environment: 1)
         
         return true
     }

@@ -1,0 +1,11 @@
+framework module ACN_SDK_NET {
+  umbrella header "ACN_SDK_NET.h"
+
+  export *
+  module * { export * }
+}
+
+module ACN_SDK_NET.Swift {
+    header "ACN_SDK_NET-Swift.h"
+    requires objc
+}

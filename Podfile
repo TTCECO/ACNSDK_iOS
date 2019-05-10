@@ -2,7 +2,7 @@ platform :ios, '9.0'
 inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
-target 'TTCSDK' do
+target 'ACNSDK' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
     
@@ -20,10 +20,10 @@ target 'TTCSDK' do
     pod 'Google-Mobile-Ads-SDK', '7.37.0'
     
     #代码格式工具
-    pod 'SwiftLint', '0.28.1'
+#    pod 'SwiftLint', '0.26.0'
 end
 
-target 'TTC_SDK_iOS_Demo' do
+target 'ACN_SDK_iOS_Demo' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
 end
@@ -33,7 +33,7 @@ target 'TTC_SDK_Pay_Demo' do
   use_frameworks!
 end
 
-target 'TTC_SDK_admob_Demo' do
+target 'ACN_SDK_admob_Demo' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   
