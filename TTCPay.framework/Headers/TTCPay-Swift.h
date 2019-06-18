@@ -203,7 +203,7 @@ SWIFT_CLASS("_TtC6TTCPay14TTCCreateOrder")
 @property (nonatomic) int64_t createTime;
 /// Order deadline (in milliseconds)
 @property (nonatomic) int64_t expireTime;
-/// 1-TTC支付(默认是1)
+/// 0-TTC支付 1-ACN支付(默认是0)
 @property (nonatomic) int32_t payType;
 /// Whether it is the customer’s own page (if it is custom, only return the QR code 1-custom 2-general)
 @property (nonatomic) int32_t sellerDefinedPage;
@@ -280,8 +280,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TTCPay * _No
 /// Create an order and jump to the wallet to pay
 - (void)createOrderAndPayWithCreateOrder:(TTCCreateOrder * _Nonnull)createOrder result:(void (^ _Nonnull)(BOOL, TTCCreateOrderResult * _Nullable, TTCPayError * _Nullable))result;
 /// Query TTC price
-/// 1-CNY  2- USD 3-KRW 4-VND
-- (void)fetchPriceWithCurrencyType:(int32_t)currencyType result:(void (^ _Nonnull)(BOOL, NSString * _Nullable, TTCPayError * _Nullable))result;
+/// currencyType: 1-CNY  2- USD 3-KRW 4-VND
+/// currencyID: 0-TTC 1-ACN
+- (void)fetchPriceWithCurrencyType:(int32_t)currencyType currencyID:(int32_t)currencyID result:(void (^ _Nonnull)(BOOL, NSString * _Nullable, TTCPayError * _Nullable))result;
 /// Query order information
 - (void)fetchOrderWithOrderId:(NSString * _Nonnull)orderId result:(void (^ _Nonnull)(BOOL, TTCOrder * _Nullable, TTCPayError * _Nullable))result;
 /// Wallet payment complete callback and query order information.

@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        TTCPay.shared.fetchPrice(currencyType: 4) { (success, value, error) in
+        TTCPay.shared.fetchPrice(currencyType: 4, currencyID: 1) { (success, value, error) in
             if success {
                 print(value ?? "")
             } else {
@@ -88,6 +88,7 @@ class ViewController: UIViewController {
         createOrder.outTradeNo = num.description
         createOrder.totalFee = total.description
         createOrder.requestSign = TTCSign.signOrder(order: createOrder)
+
         
         self.createOrder = createOrder
         
