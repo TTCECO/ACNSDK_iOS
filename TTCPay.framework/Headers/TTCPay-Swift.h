@@ -203,7 +203,7 @@ SWIFT_CLASS("_TtC6TTCPay14TTCCreateOrder")
 @property (nonatomic) int64_t createTime;
 /// Order deadline (in milliseconds)
 @property (nonatomic) int64_t expireTime;
-/// 0-TTC支付 1-ACN支付(默认是0)
+/// 0-TTC pay 1-ACN pay (default = 0)
 @property (nonatomic) int32_t payType;
 /// Whether it is the customer’s own page (if it is custom, only return the QR code 1-custom 2-general)
 @property (nonatomic) int32_t sellerDefinedPage;
@@ -249,6 +249,8 @@ SWIFT_CLASS("_TtC6TTCPay8TTCOrder")
 @property (nonatomic) uint32_t payGasLimit;
 /// Paid gas price
 @property (nonatomic, copy) NSString * _Nonnull payGasPrice;
+/// 1-TTC pay, 2-ACN pay
+@property (nonatomic) int32_t payType;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -267,11 +269,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TTCPay * _No
 @property (nonatomic, copy) NSString * _Nonnull appId;
 /// Version
 @property (nonatomic, readonly) int32_t SDKVersion;
-@property (nonatomic, copy) NSString * _Nonnull apiURL;
 /// Your app scheme
 @property (nonatomic, copy) NSString * _Nonnull scheme;
 /// Callback query order after successful payment
 @property (nonatomic, copy) void (^ _Nullable payBack)(BOOL, TTCOrder * _Nullable, TTCPayError * _Nullable);
+@property (nonatomic, copy) NSString * _Nonnull apiURL;
+/// 1 = development 2 = production
+@property (nonatomic) int32_t environment;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -290,7 +294,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TTCPay * _No
 + (BOOL)receivePayCallBackWithUrl:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 /// set environment
 /// 1 = development 2 = production
-+ (void)setEnvironmentWithEnvironment:(NSInteger)environment;
++ (void)setEnvironmentWithEnvironment:(int32_t)environment;
 @end
 
 

@@ -116,7 +116,7 @@ public class ACNSDK: NSObject {
             acnServer = ACNServer(apiURL: "http://sdk-ft.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://test.ttcnet.io/")
         }
         
-        TTCPay.setEnvironment(environment: environment)
+        TTCPay.setEnvironment(environment: Int32(environment))
     }
 }
 

@@ -87,6 +87,7 @@ class ViewController: UIViewController {
         createOrder.description_p = "\(jiaType.name)，\(latiaoType.name)辣条，\(count)包"
         createOrder.outTradeNo = num.description
         createOrder.totalFee = total.description
+        createOrder.payType = 1
         createOrder.requestSign = TTCSign.signOrder(order: createOrder)
 
         
