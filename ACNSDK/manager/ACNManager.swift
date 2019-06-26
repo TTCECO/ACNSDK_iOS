@@ -36,6 +36,8 @@ internal class ACNManager {
     var walletScheme: String?
     var walletLanguage: String = "en"
     var reward: Int = 0
+    /// 1 - development 2 - production
+    var environment: Int32 = 1
 
     /// SDK is available
     var SDKEnabled: Bool = true {
@@ -247,7 +249,7 @@ extension ACNManager {
         }
     }
     
-    /// query wallet balance
+    /// query wallet TTC balance
     func queryWalletBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
         
         ACNRPCManager.getEthBalance(for: self.userInfo?.wallet ?? "") { (result) in
@@ -260,6 +262,23 @@ extension ACNManager {
                 resulted(false, ACNSDKError(description: String(describing: error)), "0")
             }
         }
+    }
+    
+    /// query wallet ACN balance
+    func queryWalletACNBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
+        
+        ACNTokenManager.shared.banlance(self.userInfo?.wallet ?? "") { (result) in
+            switch result {
+            case .success(let b):
+                let balance = Balance(value: BigInt(b))
+                ACNPrint("query wallet balance successfully, balance: \(balance.amountFull)")
+                resulted(true, nil, balance.amountFull)
+            case .failure(let error):
+                ACNPrint("query wallet balance faile: \(error)")
+                resulted(false, ACNSDKError(description: String(describing: error)), "0")
+            }
+        }
+        
     }
     
     /// handle user action
@@ -331,6 +350,19 @@ extension ACNManager {
                 ACNPrint("Unbind wallet failed: \(String(describing: error?.errorDescription))")
                 result(false, ACNSDKError(error: error))
             }
+        }
+    }
+    
+    // sdk绑定钱包
+    func bindWallet() {
+        
+        let walletUrlStr = (self.walletScheme ?? "") + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")"
+        let walletUrl = URL(string: walletUrlStr)
+        
+        guard let wltUrl = walletUrl else { return }
+        
+        if !UIApplication.shared.openURL(wltUrl) {
+            ACNPrint("bind - Return failure")
         }
     }
 }

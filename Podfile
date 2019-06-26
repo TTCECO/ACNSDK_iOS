@@ -18,6 +18,7 @@ target 'ACNSDK' do
     pod 'RealmSwift', '3.7.5' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK', '7.37.0'
+    pod 'web3swift.pod', :git=>'https://github.com/TTCOffical/web3swift.git', :branch=>'TTC'
     
     #代码格式工具
 #    pod 'SwiftLint', '0.26.0'
