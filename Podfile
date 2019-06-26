@@ -12,7 +12,8 @@ target 'ACNSDK' do
     pod 'BigInt', '~> 3.0' # 任意宽度整数
     pod 'JSONRPCKit' #RPC json库
     pod 'Alamofire' #网络请求
-    pod 'CryptoSwift', '0.12.0'#加密库
+#    pod 'CryptoSwift', '0.12.0'#加密库
+    pod 'CryptoSwift', :git=>'https://github.com/Easoncc/CryptoSwift', :branch=>'newCC' #加密函数
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '3.7.5' #数据库

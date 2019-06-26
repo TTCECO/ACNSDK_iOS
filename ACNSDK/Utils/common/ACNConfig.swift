@@ -24,6 +24,6 @@ struct ACNServer {
 // ACNURL : ACN余额的链地址
 var acnServer = ACNServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://test.ttcnet.io/")
 
-
+var acnContractAddress = ""
 
 

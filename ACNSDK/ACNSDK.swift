@@ -9,6 +9,11 @@
 import Foundation
 import TTCPay
 
+@objc public enum ACNENV: Int32 {
+    case develop = 1
+    case product = 2
+}
+
 @objc public class ACNSDKError: NSObject {
     /// Error number
     @objc public var code: String = ""
@@ -69,7 +74,7 @@ public class ACNSDK: NSObject {
     /// - scheme: Use the scheme, wallet jump dapp, scheme default is empty, if it is empty, it will not jump.
     /// - environment: set environment 1 - development 2 - production default=2
     /// - result:
-    @objc public static func register(appId: String, secretKey: String, environment: Int = 2, result: ((Bool, ACNSDKError?) -> Void )? ) {
+    @objc public static func register(appId: String, secretKey: String, environment: ACNENV = .develop, result: ((Bool, ACNSDKError?) -> Void )? ) {
         
         setEnvironment(environment: environment)
         
@@ -108,16 +113,16 @@ public class ACNSDK: NSObject {
     
     /// set environment
     /// 1 - development 2 - production
-    static func setEnvironment(environment: Int = 2) {
+    static func setEnvironment(environment: ACNENV = .develop) {
         
-        if environment == 2 {
+        if environment == .product {
             acnServer = ACNServer(apiURL: "http://sdk-pro.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://ttcnet.io/")
         } else {
             acnServer = ACNServer(apiURL: "http://sdk-ft.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://test.ttcnet.io/")
         }
         
-        ACNManager.shared.environment = Int32(environment)
-        TTCPay.setEnvironment(environment: Int32(environment))
+        ACNManager.shared.environment = Int32(environment.rawValue)
+        TTCPay.setEnvironment(environment: Int32(environment.rawValue))
     }
 }
 

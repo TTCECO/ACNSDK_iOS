@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.8.2)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
-  - CryptoSwift (0.12.0)
+  - CryptoSwift (1.0.0)
   - Google-Mobile-Ads-SDK (7.37.0)
   - JSONRPCKit (3.0.0):
     - Result (~> 3.2.0)
@@ -44,7 +44,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BigInt (~> 3.0)
-  - CryptoSwift (= 0.12.0)
+  - CryptoSwift (from `https://github.com/Easoncc/CryptoSwift`, branch `newCC`)
   - Google-Mobile-Ads-SDK (= 7.37.0)
   - JSONRPCKit
   - RealmSwift (= 3.7.5)
@@ -59,7 +59,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - BigInt
-    - CryptoSwift
     - Google-Mobile-Ads-SDK
     - JSONRPCKit
     - keccak.c
@@ -77,11 +76,17 @@ SPEC REPOS:
     - TrustCore
 
 EXTERNAL SOURCES:
+  CryptoSwift:
+    :branch: newCC
+    :git: https://github.com/Easoncc/CryptoSwift
   web3swift.pod:
     :branch: TTC
     :git: https://github.com/TTCOffical/web3swift.git
 
 CHECKOUT OPTIONS:
+  CryptoSwift:
+    :commit: ac838d623ce91ed6a82d89557450751fabc24590
+    :git: https://github.com/Easoncc/CryptoSwift
   web3swift.pod:
     :commit: 0cb42d056b6b426757408d40fdd08a38c4fe4400
     :git: https://github.com/TTCOffical/web3swift.git
@@ -89,7 +94,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
-  CryptoSwift: 1c07ca50843dd48bc54e6ea53d7a4dba3b645716
+  CryptoSwift: b91cc3e6902875f4baa91fdf1042c1344108a53b
   Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   keccak.c: 859583afdaccb4e4fcc0f0096064d101580313f4
@@ -107,6 +112,6 @@ SPEC CHECKSUMS:
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
   web3swift.pod: 0b6b48f4e9bfc54ee8545c94e8271b1af8658e98
 
-PODFILE CHECKSUM: 988d8bf21881a56a86f36d9d9b6c4c86764ff475
+PODFILE CHECKSUM: de97aa2d6a72e72798a7d13c7eb50412ff8d93d3
 
 COCOAPODS: 1.7.1

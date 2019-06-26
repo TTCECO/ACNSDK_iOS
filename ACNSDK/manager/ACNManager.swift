@@ -418,6 +418,8 @@ extension ACNManager {
                     return
                 }
                 
+                acnContractAddress = data.acnContractAddress
+                
                 if !data.sideChainRpcurl.isEmpty, !data.mainChainRpcurl.isEmpty {
                     acnServer = ACNServer(apiURL: acnServer.apiURL, actionURL: data.sideChainRpcurl, ACNURL: data.mainChainRpcurl)
                 }

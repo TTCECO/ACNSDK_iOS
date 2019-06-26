@@ -58,7 +58,7 @@ class ACNTokenManager: NSObject {
     
     override init() {
         
-        let address: String = ""
+        let address: String = acnContractAddress
         
         tokenAddress = Address(address)
     }
@@ -98,6 +98,10 @@ class ACNTokenManager: NSObject {
             self.connet(complete: { (isConnect) in
                 if isConnect {
                     do {
+                        
+//                        if self.tokenAddress {
+//
+//                        }
                         
                         let from = Address(address)
                         let banlance = try self.tokenAddress.call(ACNERC20Method.balance.name, from, options: self.options).wait().uint256()
