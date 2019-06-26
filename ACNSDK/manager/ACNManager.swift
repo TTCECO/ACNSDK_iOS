@@ -36,6 +36,9 @@ internal class ACNManager {
     var walletScheme: String?
     var walletLanguage: String = "en"
     var reward: Int = 0
+    var bindStartTime: TimeInterval = 0
+    var bindBackBlock: ((Bool, ACNSDKError?, _ address: String?) -> Void)?
+    
     /// 1 - development 2 - production
     var environment: Int32 = 1
 
@@ -303,17 +306,32 @@ extension ACNManager {
     /// Wallet binding
     func handleWalletBind(params: [String: String]) {
 
-        self.walletAddress = params["address"]
-        self.walletScheme = params["wltScheme"]
-        self.walletLanguage = params["language"] ?? "en"
-        self.reward = Int(params["reward"] ?? "0") ?? 0
-
-        if self.isLogin {
-            ACNPrint("bind - go to binding page")
-            let bindVC = ACNBindViewController(language: self.walletLanguage)
-            ACNWindow.shared.rootViewController?.present(bindVC, animated: true, completion: nil)
-        } else {
-            ACNPrint("bind - User not login")
+        let scheme = params["wltScheme"]
+        
+        if scheme == "TTCWallet" {
+            self.walletAddress = params["address"]
+            self.walletScheme = params["wltScheme"]
+            self.walletLanguage = params["language"] ?? "en"
+            self.reward = Int(params["reward"] ?? "0") ?? 0
+            
+            if self.isLogin {
+                ACNPrint("bind - go to binding page")
+                let bindVC = ACNBindViewController(language: self.walletLanguage)
+                ACNWindow.shared.rootViewController?.present(bindVC, animated: true, completion: nil)
+            } else {
+                ACNPrint("bind - User not login")
+            }
+        } else if scheme == "bindBack" {
+            
+            if let bindBlock = self.bindBackBlock {
+                let date = Date().timeIntervalSince1970
+                if (date - self.bindStartTime) < 180 {
+                    bindBlock(true, nil, params["address"])
+                }
+                
+                self.bindStartTime = 0
+                self.bindBackBlock = nil
+            }
         }
     }
 
@@ -354,7 +372,7 @@ extension ACNManager {
     }
     
     // sdk绑定钱包
-    func bindWallet() {
+    func bindWallet(_ result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
         
         let walletUrlStr = (self.walletScheme ?? "") + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")"
         let walletUrl = URL(string: walletUrlStr)
@@ -363,6 +381,9 @@ extension ACNManager {
         
         if !UIApplication.shared.openURL(wltUrl) {
             ACNPrint("bind - Return failure")
+        } else {
+            self.bindBackBlock = result
+            self.bindStartTime = Date().timeIntervalSince1970
         }
     }
 }

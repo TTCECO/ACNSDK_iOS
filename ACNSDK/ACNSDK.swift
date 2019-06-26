@@ -324,7 +324,7 @@ extension ACNSDK {
         }
 
         let appScheme = "TTC-" + (Bundle.main.bundleIdentifier ?? "")
-        if urlScheme != appScheme || !urlHost.hasPrefix("TTCWallet") {
+        if urlScheme != appScheme {
             ACNPrint("Not ACN Wallet")
             return false
         }
@@ -380,11 +380,27 @@ extension ACNSDK {
         ACNManager.shared.unBindWallet(usetId: userId, result: result)
     }
     
-    
-    @objc public static func bindWallet() {
+    /// SDK bind wallet and block wallet's address
+    @objc public static func bindWallet(result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
         
+        if !ACNManager.shared.SDKEnabled {
+            result(false, ACNSDKError(type: .SDKDisable), nil)
+            return
+        }
         
+        if ACNManager.shared.appId == nil
+            || ACNManager.shared.appId.isEmpty
+            || ACNManager.shared.secretKey == nil
+            || ACNManager.shared.secretKey.isEmpty {
+            result(false, ACNSDKError(type: .RegisterNo), nil)
+            return
+        }
         
+        guard let _ = ACNManager.shared.userInfo?.userId else {
+            result(false, ACNSDKError(type: .LoginNo), nil)
+            return
+        }
         
+        ACNManager.shared.bindWallet(result)
     }
 }
