@@ -11,7 +11,7 @@ import ACNSDK
 
 class ViewController: UIViewController {
     
-    let dataArr = ["Login", "Logout", "Update", "Querry account balance", "Querry wallet balance", "Unbind", "Upload", "open/close SDK"]
+    let dataArr = ["Login", "Logout", "Update", "Querry account balance", "Querry wallet balance", "Unbind", "Upload", "open/close SDK", "BindWallet", "Querry wallet ACN balance"]
     var itemSize: CGSize?
     var enabled: Bool = true
     
@@ -68,10 +68,32 @@ class ViewController: UIViewController {
         }
     }
     
+    func queryWalletACNBalance() {
+        
+        ACNSDK.queryWalletACNBalance { (success, error, balance) in
+            if success {
+                TWToast.showToast(text: "acn wallet balance: \(balance)")
+            } else {
+                TWToast.showToast(text: "error: \(String(describing: error?.errorDescription))")
+            }
+        }
+        
+    }
+    
     func unBindWallet() {
         ACNSDK.unBindWallet { (success, error) in
             if success {
                 TWToast.showToast(text: "unbind success")
+            } else {
+                TWToast.showToast(text: "error: \(String(describing: error?.errorDescription))")
+            }
+        }
+    }
+    
+    func bindWallet() {
+        ACNSDK.bindWallet(iconUrl: "") { (success, error, address) in
+            if success {
+                TWToast.showToast(text: "bind success: "+(address ?? ""))
             } else {
                 TWToast.showToast(text: "error: \(String(describing: error?.errorDescription))")
             }
@@ -168,6 +190,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
             enabled = !enabled
             ACNSDK.sdk(isEnabled: enabled)
             TWToast.showToast(text: "SDK state \(enabled)")
+        case 8:
+            print(dataArr[8])
+            bindWallet()
+        case 9:
+            print(dataArr[9])
+            queryWalletACNBalance()
         default: break
         }
     }

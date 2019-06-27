@@ -27,7 +27,7 @@
 			<string>TTC-wallet</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>TTC-com.tataufo.TTC-SDK-iOS-Demo</string>
+				<string>TTC-com.tataufo.ACN-SDK-iOS-Demo</string>
 			</array>
 		</dict>
 	</array>

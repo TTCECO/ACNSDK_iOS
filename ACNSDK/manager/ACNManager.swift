@@ -321,12 +321,18 @@ extension ACNManager {
             } else {
                 ACNPrint("bind - User not login")
             }
-        } else if scheme == "bindBack" {
+        } else if scheme == "TTCBindBack" {
             
             if let bindBlock = self.bindBackBlock {
+                
                 let date = Date().timeIntervalSince1970
                 if (date - self.bindStartTime) < 180 {
-                    bindBlock(true, nil, params["address"])
+                    
+                    if let success = params["success"], success == "true" {
+                        bindBlock(true, nil, params["address"])
+                    } else {
+                        bindBlock(false, ACNSDKError(description: "bind failure"), nil)
+                    }
                 }
                 
                 self.bindStartTime = 0
@@ -372,9 +378,21 @@ extension ACNManager {
     }
     
     // sdk绑定钱包
-    func bindWallet(_ result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
+    func bindWallet(iconUrl: String, result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
         
-        let walletUrlStr = (self.walletScheme ?? "") + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")"
+        var appName = ""
+        let info = Bundle.main.infoDictionary
+        if info != nil, ((info!["CFBundleDisplayName"] as? String) != nil) {
+            appName = info!["CFBundleDisplayName"] as! String
+        }
+        
+        var scheme = "FTWallet"
+        
+        if self.environment == 2 {
+            scheme = "TTCWallet"
+        }
+        
+        let walletUrlStr = scheme + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")&icon=\(iconUrl)&name=\(appName)"
         let walletUrl = URL(string: walletUrlStr)
         
         guard let wltUrl = walletUrl else { return }

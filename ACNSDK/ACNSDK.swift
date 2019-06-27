@@ -381,7 +381,7 @@ extension ACNSDK {
     }
     
     /// SDK bind wallet and block wallet's address
-    @objc public static func bindWallet(result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
+    @objc public static func bindWallet(iconUrl: String, result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
         
         if !ACNManager.shared.SDKEnabled {
             result(false, ACNSDKError(type: .SDKDisable), nil)
@@ -401,6 +401,6 @@ extension ACNSDK {
             return
         }
         
-        ACNManager.shared.bindWallet(result)
+        ACNManager.shared.bindWallet(iconUrl: "", result: result)
     }
 }
