@@ -8,6 +8,7 @@
 
 
 import Foundation
+import ACN_SDK_NET
 
 /// sdk version，modify when upgrading
 let SDKVersion: Int32 = 1
@@ -24,6 +25,5 @@ struct ACNServer {
 // ACNURL : ACN余额的链地址
 var acnServer = ACNServer(apiURL: "http://sdk.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://test.ttcnet.io/")
 
-var acnContractAddress = ""
-
+var contracts: [ACNContract] = []
 

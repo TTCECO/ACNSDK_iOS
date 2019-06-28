@@ -329,6 +329,7 @@ extension ACNManager {
                 if (date - self.bindStartTime) < 180 {
                     
                     if let success = params["success"], success == "true" {
+                        self.userInfo?.wallet = params["address"]
                         bindBlock(true, nil, params["address"])
                     } else {
                         bindBlock(false, ACNSDKError(description: "bind failure"), nil)
@@ -457,7 +458,7 @@ extension ACNManager {
                     return
                 }
                 
-                acnContractAddress = data.acnContractAddress
+                contracts = data.contracts
                 
                 if !data.sideChainRpcurl.isEmpty, !data.mainChainRpcurl.isEmpty {
                     acnServer = ACNServer(apiURL: acnServer.apiURL, actionURL: data.sideChainRpcurl, ACNURL: data.mainChainRpcurl)

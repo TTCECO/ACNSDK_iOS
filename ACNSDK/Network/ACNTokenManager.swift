@@ -10,16 +10,31 @@ import UIKit
 import web3swift
 import BigInt
 import Alamofire
+import ACN_SDK_NET
 
 enum ACNTokenError: Error {
     case connectError
+    case noContract
     
     var errorDescription: String? {
         switch self {
         case .connectError:
             return "Failed to connect"
+        case .noContract:
+            return "no contract"
         }
     }
+}
+
+enum exchangeMethod {
+    case balance
+    var name: String {
+        switch self {
+        case .balance:
+            return "getAccountBalance"
+        }
+    }
+    
 }
 
 enum ACNERC20Method {
@@ -51,17 +66,9 @@ class ACNTokenManager: NSObject {
     
     fileprivate let global = DispatchQueue.global()
     fileprivate let main = DispatchQueue.main
-    fileprivate let tokenAddress: Address
     fileprivate var options: Web3Options = .default
     fileprivate var isConnecting = false //是否正在连接
     fileprivate var ancUrl = ""
-    
-    override init() {
-        
-        let address: String = acnContractAddress
-        
-        tokenAddress = Address(address)
-    }
     
     // 连接
     fileprivate func connet(_ count: Int32 = 3, complete: @escaping (Bool) -> Void) {
@@ -99,17 +106,27 @@ class ACNTokenManager: NSObject {
                 if isConnect {
                     do {
                         
-//                        if self.tokenAddress {
-//
-//                        }
-                        
-                        let from = Address(address)
-                        let banlance = try self.tokenAddress.call(ACNERC20Method.balance.name, from, options: self.options).wait().uint256()
-                        
-                        self.main.async {
-                            complete(Result.success(banlance))
+                        if let exchange = self.getExchange(), let ACN = self.getACNContract() {
+                            let from = Address(address)
+                            
+                            let contract = try Web3.default.contract(exchange.abi, at: Address(exchange.contractAddress))
+                            let inter: TransactionIntermediate = try contract.method(exchangeMethod.balance.name, parameters: [Address(ACN.contractAddress), from], options: Web3Options.default)
+                            let result: Web3Response = try inter.call(options: Web3Options.default)
+                            
+                            var balance: BigUInt = 0
+                            let first = try result.uint256()
+                            let second = try result.uint256()
+                            balance = first+second
+                            
+                            self.main.async {
+                                complete(Result.success(balance))
+                            }
+                            
+                        } else {
+                            self.main.async {
+                                complete(Result.failure(ACNTokenError.noContract))
+                            }
                         }
-                        
                     } catch let error {
                         self.main.async {
                             complete(Result.failure(error))
@@ -123,4 +140,32 @@ class ACNTokenManager: NSObject {
             })
         }
     }
+}
+
+
+extension ACNTokenManager {
+    
+    // 获取交易所合约
+    func getExchange() -> ACNContract? {
+        return self.getContract("exchange")
+    }
+    
+    // 获取acn合约
+    func getACNContract() -> ACNContract? {
+        return self.getContract("acn")
+    }
+    
+    // 找到合约
+    func getContract(_ name: String) -> ACNContract? {
+        
+        for contract in contracts {
+            if contract.name.lowercased() == name {
+                return contract
+            }
+        }
+        
+        return nil
+    }
+    
+    
 }
