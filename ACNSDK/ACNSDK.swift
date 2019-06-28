@@ -401,6 +401,6 @@ extension ACNSDK {
             return
         }
         
-        ACNManager.shared.bindWallet(iconUrl: "", result: result)
+        ACNManager.shared.bindWallet(iconUrl: iconUrl, result: result)
     }
 }

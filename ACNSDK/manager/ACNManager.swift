@@ -393,7 +393,12 @@ extension ACNManager {
             scheme = "TTCWallet"
         }
         
-        let walletUrlStr = scheme + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")&icon=\(iconUrl)&name=\(appName)"
+        var iconString = ""
+        if let iconData = iconUrl.data(using: .utf8) {
+            iconString = iconData.base64EncodedString()
+        }
+        
+        let walletUrlStr = scheme + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")&icon=\(iconString)&name=\(appName)"
         let walletUrl = URL(string: walletUrlStr)
         
         guard let wltUrl = walletUrl else { return }

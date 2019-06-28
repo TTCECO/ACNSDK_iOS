@@ -91,7 +91,7 @@ class ViewController: UIViewController {
     }
     
     func bindWallet() {
-        ACNSDK.bindWallet(iconUrl: "") { (success, error, address) in
+        ACNSDK.bindWallet(iconUrl: "http://img.freepik.com/free-icon/facebook-logo-button_318-84980.jpg") { (success, error, address) in
             if success {
                 TWToast.showToast(text: "bind success: "+(address ?? ""))
             } else {
