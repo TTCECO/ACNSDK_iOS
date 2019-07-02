@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CryptoSwift
 import BigInt
 import ACN_SDK_NET
 import TTCPay

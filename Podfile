@@ -13,13 +13,13 @@ target 'ACNSDK' do
     pod 'JSONRPCKit' #RPC json库
     pod 'Alamofire' #网络请求
 #    pod 'CryptoSwift', '0.12.0'#加密库
-    pod 'CryptoSwift', :git=>'https://github.com/Easoncc/CryptoSwift', :branch=>'newCC' #加密函数
+#    pod 'CryptoSwift', :git=>'https://github.com/Easoncc/CryptoSwift', :branch=>'newCC' #加密函数
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '3.7.5' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK', '7.37.0'
-    pod 'web3swift.pod', :git=>'https://github.com/TTCOffical/web3swift.git', :branch=>'TTC'
+    pod 'web3swift.pod'
     
     #代码格式工具
 #    pod 'SwiftLint', '0.26.0'

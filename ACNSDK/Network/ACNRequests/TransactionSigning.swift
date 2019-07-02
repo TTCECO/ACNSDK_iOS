@@ -1,7 +1,6 @@
 // Copyright SIX DAY LLC. All rights reserved.
 
-import BigInt
-import CryptoSwift
+import BigInt 
 import TrustCore
 
 protocol Signer {
@@ -66,5 +65,5 @@ func rlpHash(_ element: Any) -> Data? {
     guard let data = RLP.encode(element) else {
         return nil
     }
-    return Data(bytes: sha3.calculate(for: data.bytes))
+    return Data(bytes: sha3.calculate(for: data.cyptoBytes))
 }

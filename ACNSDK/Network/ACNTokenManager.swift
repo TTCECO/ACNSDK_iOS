@@ -107,10 +107,10 @@ class ACNTokenManager: NSObject {
                     do {
                         
                         if let exchange = self.getExchange(), let ACN = self.getACNContract() {
-                            let from = Address(address)
+                            let from = Address(address.to0x)
                             
-                            let contract = try Web3.default.contract(exchange.abi, at: Address(exchange.contractAddress))
-                            let inter: TransactionIntermediate = try contract.method(exchangeMethod.balance.name, parameters: [Address(ACN.contractAddress), from], options: Web3Options.default)
+                            let contract = try Web3.default.contract(exchange.abi, at: Address(exchange.contractAddress.to0x))
+                            let inter: TransactionIntermediate = try contract.method(exchangeMethod.balance.name, parameters: [Address(ACN.contractAddress.to0x), from], options: Web3Options.default)
                             let result: Web3Response = try inter.call(options: Web3Options.default)
                             
                             var balance: BigUInt = 0
