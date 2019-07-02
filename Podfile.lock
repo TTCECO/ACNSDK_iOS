@@ -33,7 +33,7 @@ PODS:
   - TrustCore (0.0.7):
     - BigInt
     - TrezorCrypto
-  - web3swift.pod (2.1.10):
+  - web3swift.pod (2.1.5):
     - BigInt (~> 3.1)
     - keccak.c (~> 0.1)
     - PromiseKit (~> 6.4)
@@ -51,7 +51,7 @@ DEPENDENCIES:
   - SwiftyRSA
   - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
-  - web3swift.pod
+  - web3swift.pod (= 2.1.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -92,8 +92,8 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
-  web3swift.pod: e3bd1c18a84e9fc1c4bfab8ebc0754b0806a7bcd
+  web3swift.pod: df222a050e67b767529d2c81e0a87d979e5b7c5f
 
-PODFILE CHECKSUM: 09cfc673eb4d0b5f35cff95750d92d0570a3c96a
+PODFILE CHECKSUM: 912176b3d2d651a3736ea56f2d1da3dfc3cfce06
 
 COCOAPODS: 1.7.1

@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.author             = { "chenchao" => "chenchao@tataufo.com" }
 
   s.ios.deployment_target = '9.0'
-  s.swift_version    = "4.1"
+  s.swift_version    = "4"
   s.platform         = :ios
   s.ios.deployment_target = '9.0'
 
@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
   s.dependency 'RealmSwift', '3.7.5'
   s.dependency 'SwiftyRSA'
   s.dependency 'Google-Mobile-Ads-SDK', '7.37.0'
-  s.dependency 'web3swift.pod'
+  s.dependency 'web3swift.pod', '2.1.5'
 	
 end
