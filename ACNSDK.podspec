@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK"
-  s.version      = "0.2.0"
+  s.version      = "0.2.2"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -24,11 +24,11 @@ Pod::Spec.new do |s|
   s.dependency 'BigInt', '3.1.0'
   s.dependency 'JSONRPCKit'
   s.dependency 'Alamofire'
-  s.dependency 'CryptoSwift', '0.12.0'
   s.dependency 'TrustCore', '0.0.7'
   s.dependency 'TrezorCrypto', '0.0.9'
   s.dependency 'RealmSwift', '3.7.5'
   s.dependency 'SwiftyRSA'
   s.dependency 'Google-Mobile-Ads-SDK', '7.37.0'
+  s.dependency 'web3swift.pod'
 	
 end
