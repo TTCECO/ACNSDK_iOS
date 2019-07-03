@@ -20,6 +20,7 @@ target 'ACNSDK' do
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK', '7.37.0'
     pod 'web3swift.pod', '2.1.5'
+    pod 'PromiseKit', '6.8.0'
     
     #代码格式工具
 #    pod 'SwiftLint', '0.26.0'

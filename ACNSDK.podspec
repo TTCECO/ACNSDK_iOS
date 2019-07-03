@@ -30,5 +30,6 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftyRSA'
   s.dependency 'Google-Mobile-Ads-SDK', '7.37.0'
   s.dependency 'web3swift.pod', '2.1.5'
+  s.dependency 'PromiseKit', '6.8.0'
 	
 end
