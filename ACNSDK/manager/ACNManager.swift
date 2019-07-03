@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CryptoSwift
 import BigInt
 import ACN_SDK_NET
 import TTCPay
@@ -36,6 +35,11 @@ internal class ACNManager {
     var walletScheme: String?
     var walletLanguage: String = "en"
     var reward: Int = 0
+    var bindStartTime: TimeInterval = 0
+    var bindBackBlock: ((Bool, ACNSDKError?, _ address: String?) -> Void)?
+    
+    /// 1 - development 2 - production
+    var environment: Int32 = 1
 
     /// SDK is available
     var SDKEnabled: Bool = true {
@@ -247,7 +251,7 @@ extension ACNManager {
         }
     }
     
-    /// query wallet balance
+    /// query wallet TTC balance
     func queryWalletBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
         
         ACNRPCManager.getEthBalance(for: self.userInfo?.wallet ?? "") { (result) in
@@ -260,6 +264,23 @@ extension ACNManager {
                 resulted(false, ACNSDKError(description: String(describing: error)), "0")
             }
         }
+    }
+    
+    /// query wallet ACN balance
+    func queryWalletACNBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
+        
+        ACNTokenManager.shared.banlance(self.userInfo?.wallet ?? "") { (result) in
+            switch result {
+            case .success(let b):
+                let balance = Balance(value: BigInt(b))
+                ACNPrint("query wallet balance successfully, balance: \(balance.amountFull)")
+                resulted(true, nil, balance.amountFull)
+            case .failure(let error):
+                ACNPrint("query wallet balance faile: \(error)")
+                resulted(false, ACNSDKError(description: String(describing: error)), "0")
+            }
+        }
+        
     }
     
     /// handle user action
@@ -284,17 +305,39 @@ extension ACNManager {
     /// Wallet binding
     func handleWalletBind(params: [String: String]) {
 
-        self.walletAddress = params["address"]
-        self.walletScheme = params["wltScheme"]
-        self.walletLanguage = params["language"] ?? "en"
-        self.reward = Int(params["reward"] ?? "0") ?? 0
-
-        if self.isLogin {
-            ACNPrint("bind - go to binding page")
-            let bindVC = ACNBindViewController(language: self.walletLanguage)
-            ACNWindow.shared.rootViewController?.present(bindVC, animated: true, completion: nil)
-        } else {
-            ACNPrint("bind - User not login")
+        let scheme = params["wltScheme"]
+        
+        if scheme == "TTCWallet" {
+            self.walletAddress = params["address"]
+            self.walletScheme = params["wltScheme"]
+            self.walletLanguage = params["language"] ?? "en"
+            self.reward = Int(params["reward"] ?? "0") ?? 0
+            
+            if self.isLogin {
+                ACNPrint("bind - go to binding page")
+                let bindVC = ACNBindViewController(language: self.walletLanguage)
+                ACNWindow.shared.rootViewController?.present(bindVC, animated: true, completion: nil)
+            } else {
+                ACNPrint("bind - User not login")
+            }
+        } else if scheme == "TTCBindBack" {
+            
+            if let bindBlock = self.bindBackBlock {
+                
+                let date = Date().timeIntervalSince1970
+                if (date - self.bindStartTime) < 180 {
+                    
+                    if let success = params["success"], success == "true" {
+                        self.userInfo?.wallet = params["address"]
+                        bindBlock(true, nil, params["address"])
+                    } else {
+                        bindBlock(false, ACNSDKError(description: "bind failure"), nil)
+                    }
+                }
+                
+                self.bindStartTime = 0
+                self.bindBackBlock = nil
+            }
         }
     }
 
@@ -331,6 +374,39 @@ extension ACNManager {
                 ACNPrint("Unbind wallet failed: \(String(describing: error?.errorDescription))")
                 result(false, ACNSDKError(error: error))
             }
+        }
+    }
+    
+    // sdk绑定钱包
+    func bindWallet(iconUrl: String, result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
+        
+        var appName = ""
+        let info = Bundle.main.infoDictionary
+        if info != nil, ((info!["CFBundleDisplayName"] as? String) != nil) {
+            appName = info!["CFBundleDisplayName"] as! String
+        }
+        
+        var scheme = "FTWallet"
+        
+        if self.environment == 2 {
+            scheme = "TTCWallet"
+        }
+        
+        var iconString = ""
+        if let iconData = iconUrl.data(using: .utf8) {
+            iconString = iconData.base64EncodedString()
+        }
+        
+        let walletUrlStr = scheme + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")&icon=\(iconString)&name=\(appName)"
+        let walletUrl = URL(string: walletUrlStr)
+        
+        guard let wltUrl = walletUrl else { return }
+        
+        if !UIApplication.shared.openURL(wltUrl) {
+            ACNPrint("bind - Return failure")
+        } else {
+            self.bindBackBlock = result
+            self.bindStartTime = Date().timeIntervalSince1970
         }
     }
 }
@@ -385,6 +461,8 @@ extension ACNManager {
                     result(false, .responseDataParseError)
                     return
                 }
+                
+                contracts = data.contracts
                 
                 if !data.sideChainRpcurl.isEmpty, !data.mainChainRpcurl.isEmpty {
                     acnServer = ACNServer(apiURL: acnServer.apiURL, actionURL: data.sideChainRpcurl, ACNURL: data.mainChainRpcurl)

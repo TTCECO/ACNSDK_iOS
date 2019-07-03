@@ -9,6 +9,11 @@
 import Foundation
 import TTCPay
 
+@objc public enum ACNENV: Int32 {
+    case develop = 1
+    case product = 2
+}
+
 @objc public class ACNSDKError: NSObject {
     /// Error number
     @objc public var code: String = ""
@@ -69,7 +74,7 @@ public class ACNSDK: NSObject {
     /// - scheme: Use the scheme, wallet jump dapp, scheme default is empty, if it is empty, it will not jump.
     /// - environment: set environment 1 - development 2 - production default=2
     /// - result:
-    @objc public static func register(appId: String, secretKey: String, environment: Int = 2, result: ((Bool, ACNSDKError?) -> Void )? ) {
+    @objc public static func register(appId: String, secretKey: String, environment: ACNENV = .develop, result: ((Bool, ACNSDKError?) -> Void )? ) {
         
         setEnvironment(environment: environment)
         
@@ -108,15 +113,16 @@ public class ACNSDK: NSObject {
     
     /// set environment
     /// 1 - development 2 - production
-    static func setEnvironment(environment: Int = 2) {
+    static func setEnvironment(environment: ACNENV = .develop) {
         
-        if environment == 2 {
+        if environment == .product {
             acnServer = ACNServer(apiURL: "http://sdk-pro.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://ttcnet.io/")
         } else {
             acnServer = ACNServer(apiURL: "http://sdk-ft.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://test.ttcnet.io/")
         }
         
-        TTCPay.setEnvironment(environment: Int32(environment))
+        ACNManager.shared.environment = Int32(environment.rawValue)
+        TTCPay.setEnvironment(environment: Int32(environment.rawValue))
     }
 }
 
@@ -214,7 +220,7 @@ extension ACNSDK {
         }
     }
 
-    /// Query the balance of the current user's wallet
+    /// Query the TTC balance of the current user's wallet
     ///
     /// - Parameter result: Return balance
     @objc public static func queryWalletBalance(result: @escaping (Bool, ACNSDKError?, String) -> Void ) {
@@ -241,6 +247,59 @@ extension ACNSDK {
         }
 
     }
+    
+    /// Query the ACN balance of the current user's wallet
+    ///
+    /// - Parameter result: Return balance
+    @objc public static func queryWalletACNBalance(result: @escaping (Bool, ACNSDKError?, String) -> Void ) {
+        
+        if !ACNManager.shared.SDKEnabled {
+            result(false, ACNSDKError(type: .SDKDisable), "0")
+            return
+        }
+        
+        if ACNManager.shared.appId == nil
+            || ACNManager.shared.appId.isEmpty
+            || ACNManager.shared.secretKey == nil
+            || ACNManager.shared.secretKey.isEmpty {
+            result(false, ACNSDKError(type: .RegisterNo), "0")
+            return
+        }
+        
+        if !ACNManager.shared.isLogin {
+            result(false, ACNSDKError(type: .LoginNo), "0")
+        } else if ACNManager.shared.userInfo?.wallet == nil {
+            result(false, ACNSDKError(type: .Unbind), "0")
+        } else {
+            ACNManager.shared.queryWalletACNBalance(resulted: result)
+        }
+        
+    }
+    
+    /// Query the current user's wallet address
+    @objc public static func getBindWalletAddress(result: @escaping (Bool, ACNSDKError?, String?) -> Void ) {
+        
+        if !ACNManager.shared.SDKEnabled {
+            result(false, ACNSDKError(type: .SDKDisable), nil)
+            return
+        }
+        
+        if ACNManager.shared.appId == nil
+            || ACNManager.shared.appId.isEmpty
+            || ACNManager.shared.secretKey == nil
+            || ACNManager.shared.secretKey.isEmpty {
+            result(false, ACNSDKError(type: .RegisterNo), nil)
+            return
+        }
+        
+        if !ACNManager.shared.isLogin {
+            result(false, ACNSDKError(type: .LoginNo), nil)
+        } else if ACNManager.shared.userInfo?.wallet == nil {
+            result(false, ACNSDKError(type: .Unbind), nil)
+        } else {
+            result(true, nil, ACNManager.shared.userInfo?.wallet)
+        }
+    }
 }
 
 // MARK: - Binding wallet
@@ -265,7 +324,7 @@ extension ACNSDK {
         }
 
         let appScheme = "TTC-" + (Bundle.main.bundleIdentifier ?? "")
-        if urlScheme != appScheme || !urlHost.hasPrefix("TTCWallet") {
+        if urlScheme != appScheme {
             ACNPrint("Not ACN Wallet")
             return false
         }
@@ -319,5 +378,29 @@ extension ACNSDK {
         }
 
         ACNManager.shared.unBindWallet(usetId: userId, result: result)
+    }
+    
+    /// SDK bind wallet and block wallet's address
+    @objc public static func bindWallet(iconUrl: String, result: @escaping (Bool, ACNSDKError?, _ address: String?) -> Void) {
+        
+        if !ACNManager.shared.SDKEnabled {
+            result(false, ACNSDKError(type: .SDKDisable), nil)
+            return
+        }
+        
+        if ACNManager.shared.appId == nil
+            || ACNManager.shared.appId.isEmpty
+            || ACNManager.shared.secretKey == nil
+            || ACNManager.shared.secretKey.isEmpty {
+            result(false, ACNSDKError(type: .RegisterNo), nil)
+            return
+        }
+        
+        guard let _ = ACNManager.shared.userInfo?.userId else {
+            result(false, ACNSDKError(type: .LoginNo), nil)
+            return
+        }
+        
+        ACNManager.shared.bindWallet(iconUrl: iconUrl, result: result)
     }
 }

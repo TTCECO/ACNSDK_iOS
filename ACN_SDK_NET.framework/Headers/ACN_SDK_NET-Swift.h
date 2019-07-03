@@ -194,6 +194,12 @@ SWIFT_CLASS("_TtC11ACN_SDK_NET11ACNBaseData")
 @end
 
 
+SWIFT_CLASS("_TtC11ACN_SDK_NET11ACNContract")
+@interface ACNContract : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC11ACN_SDK_NET16ACNNETActionInfo")
 @interface ACNNETActionInfo : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
