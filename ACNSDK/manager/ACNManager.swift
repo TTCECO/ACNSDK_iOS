@@ -397,10 +397,18 @@ extension ACNManager {
             iconString = iconData.base64EncodedString()
         }
         
-        let walletUrlStr = scheme + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")&icon=\(iconString)&name=\(appName)"
+        var nameVBase64 = ""
+        if let iconData = appName.data(using: .utf8) {
+            nameVBase64 = iconData.base64EncodedString()
+        }
+        
+        let walletUrlStr = scheme + "://BindWallet?bundleID=\(Bundle.main.bundleIdentifier ?? "")&appID=\(self.appId.description)&userID=\(self.userInfo?.userId ?? "")&icon=\(iconString)&name=\(nameVBase64)"
         let walletUrl = URL(string: walletUrlStr)
         
-        guard let wltUrl = walletUrl else { return }
+        guard let wltUrl = walletUrl else {
+            result(false, ACNSDKError(description: "not url"), nil)
+            return
+        }
         
         if !UIApplication.shared.openURL(wltUrl) {
             ACNPrint("bind - Return failure")
