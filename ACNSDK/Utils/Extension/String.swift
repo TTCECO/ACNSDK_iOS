@@ -67,7 +67,7 @@ extension String {
         let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: font.lineHeight)
 
         #if swift(>=4.0)
-        let dict = [NSAttributedStringKey.font: font]
+        let dict = [NSAttributedString.Key.font: font]
         #else
         let dict = [NSFontAttributeName: font]
         #endif
@@ -80,7 +80,7 @@ extension String {
     func textHeight(font: UIFont, maxWidth: CGFloat) -> CGFloat {
         let size = CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)
         #if swift(>=4.0)
-        let dict = [NSAttributedStringKey.font: font]
+        let dict = [NSAttributedString.Key.font: font]
         #else
         let dict = [NSFontAttributeName: font]
         #endif

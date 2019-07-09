@@ -138,7 +138,7 @@ extension ACNManager {
                 ACNPrint("login successful userId: \(String(describing: self.userInfo?.userId))")
                 result(true, nil, self.userInfo)
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(self.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.becomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
                 
                 ACNActionManager.shared.setDefaultManager()
                 self.requestPrivateKeyAndAddressRetry()

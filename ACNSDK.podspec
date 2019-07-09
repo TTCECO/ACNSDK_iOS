@@ -2,14 +2,14 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK"
-  s.version      = "0.2.2"
+  s.version      = "0.2.4"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "chenchao" => "chenchao@tataufo.com" }
 
   s.ios.deployment_target = '9.0'
-  s.swift_version    = "4"
+  s.swift_version    = "4.2"
   s.platform         = :ios
   s.ios.deployment_target = '9.0'
 
