@@ -855,8 +855,8 @@
 				C699408020FEF9A6007E96C8 /* Utils */,
 				C699406D20FEF974007E96C8 /* Info.plist */,
 				4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */,
-				428258AD2282C7DB0050A0F8 /* ACNSDKBundle.bundle */,
 				428A565221C7AFD800742FE6 /* TTCPay.framework */,
+				428258AD2282C7DB0050A0F8 /* ACNSDKBundle.bundle */,
 			);
 			path = ACNSDK;
 			sourceTree = "<group>";

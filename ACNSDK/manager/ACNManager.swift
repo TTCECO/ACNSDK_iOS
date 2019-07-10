@@ -342,9 +342,14 @@ extension ACNManager {
     }
 
     /// back wallet -1 cancel， 0 faile，1 success，
-    func backWallet(bindState: Int) {
+    func backWallet(bindState: Int, reward: Int32, symbol: String) {
         
-        let walletUrlStr = (self.walletScheme ?? "") + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)"
+        var scheme = "FTWallet"
+        if self.environment == 2 {
+            scheme = self.walletScheme ?? ""
+        }
+        
+        let walletUrlStr = scheme + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)&symbol=\(symbol)"
         let walletUrl = URL(string: walletUrlStr)
 
         guard let wltUrl = walletUrl else { return }
@@ -358,7 +363,7 @@ extension ACNManager {
 
         let userid = ACNManager.shared.userInfo?.userId
         
-        ACNNetworkManager.bindingDapp(isBind: false, walletAddress: self.userInfo?.wallet ?? "") { (success, error) -> Void in
+        ACNNetworkManager.bindingDapp(isBind: false, walletAddress: self.userInfo?.wallet ?? "") { (success, error, info) -> Void in
 
             if success {
                 
