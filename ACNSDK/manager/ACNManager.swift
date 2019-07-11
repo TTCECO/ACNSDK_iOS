@@ -346,7 +346,7 @@ extension ACNManager {
         
         var scheme = "FTWallet"
         if self.environment == 2 {
-            scheme = self.walletScheme ?? ""
+            scheme = "TTCWallet"
         }
         
         let walletUrlStr = scheme + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)&symbol=\(symbol)"
