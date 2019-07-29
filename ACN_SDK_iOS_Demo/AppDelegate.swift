@@ -21,13 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        ACNRegister.sdk(isEnabled: false)
         ACNSDK.log(isEnabled: true)
         
-        ACNSDK.register(appId: "SDKTest", secretKey: "9d1990b8fc9cf1328d88af73b8f89e4d", environment: .develop) { (result, error) in
+        let TTC_APPID = "tataufo"
+        let TTC_SECRET_KEY = "9d1990b8fc9cf1328d88af73b8f89e4d"
+        ACNSDK.register(appId: TTC_APPID, secretKey: TTC_SECRET_KEY, environment: .develop) { (result, error) in
             if result {
                 print("register success")
             } else {
                 print("register faile\(String(describing: error?.errorDescription))")
             }
         }
+        
+//        ACNSDK.register(appId: "SDKTest", secretKey: "9d1990b8fc9cf1328d88af73b8f89e4d", environment: .develop) { (result, error) in
+//            if result {
+//                print("register success")
+//            } else {
+//                print("register faile\(String(describing: error?.errorDescription))")
+//            }
+//        }
 
         let vc = ViewController()
         window!.rootViewController = vc
