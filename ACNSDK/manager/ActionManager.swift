@@ -259,7 +259,7 @@ class ACNActionManager {
         nonce = self.nonce
         data = actionInfo.hashData()
         timestamp = actionInfo.timestamp
-        gasLimit = self.gasLimit*3
+        gasLimit = self.gasLimit
         gasPrice = self.gasPrice
         
         if actionInfo.fromUserID != ACNManager.shared.userInfo?.userId {
