@@ -213,6 +213,7 @@ class ACNActionManager {
                     act.isUpload = 1
                 }
             }
+            self.isUploadAction = false
         }
     }
     
@@ -342,10 +343,9 @@ class ACNActionManager {
                 self.updateAction(actionInfos: ecoActions)
                 self.queriesActionAndUpload()
             } else {
+                self.isUploadAction = false
                 ACNPrint("Upload behavior failed: \(String(describing: error?.errorDescription))")
             }
-            
-            self.isUploadAction = false
         })
     }
     
