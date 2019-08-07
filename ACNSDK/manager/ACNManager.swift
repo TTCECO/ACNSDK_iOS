@@ -101,25 +101,6 @@ extension ACNManager {
         ACNActionManager.shared.timer?.invalidate()
     }
     
-    @objc func becomeActive() {
-        ACNPrint("becomeActive")
-        
-        if !ACNManager.shared.SDKEnabled {
-            return
-        }
-        
-        let time: TimeInterval = Date().timeIntervalSince1970
-        let currentDay = Int(ceil(time/86400))
-        
-        if UserDefaults.lastDayNumber < currentDay {
-            ACNUploadAction.uploadAction(actionType: actionTypeLogin, extra: "") { (success, error) in
-                if success {
-                    UserDefaults.lastDayNumber = currentDay
-                }
-            }
-        }
-    }
-    
     func login(userInfo: ACNUserInfo, result: @escaping (Bool, ACNSDKError?, ACNUserInfo?) -> Void) {
         
         setDefault()
@@ -138,8 +119,6 @@ extension ACNManager {
                 ACNPrint("login successful userId: \(String(describing: self.userInfo?.userId))")
                 result(true, nil, self.userInfo)
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(self.becomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-                
                 ACNActionManager.shared.setDefaultManager()
                 self.requestPrivateKeyAndAddressRetry()
                 
@@ -156,8 +135,6 @@ extension ACNManager {
         ACNPrint("sign out")
         /// user logout
         setDefault()
-        NotificationCenter.default.removeObserver(self)
-        
     }
 
     func update(userInfo: ACNUserInfo, result: @escaping (Bool, ACNSDKError?, ACNUserInfo?) -> Void) {
@@ -431,7 +408,6 @@ extension ACNManager {
             
             self.isRegister = success
             if success {
-                self.becomeActive()
                 ACNActionManager.shared.getChainID()
                 ACNActionManager.shared.getTransactionCount()
             } else {

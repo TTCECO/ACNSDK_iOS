@@ -12,7 +12,6 @@ import ACN_SDK_NET
 
 /// sdk version，modify when upgrading
 let SDKVersion: Int32 = 1
-let actionTypeLogin: Int32 = 112
 
 struct ACNServer {
     let apiURL: String
