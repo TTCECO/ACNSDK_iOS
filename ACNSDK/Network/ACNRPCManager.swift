@@ -145,7 +145,7 @@ class ACNRPCManager: NSObject {
         
         let hash = signer.hash(transaction: tmptrans)
         
-        guard let keyData = Data(hexString: ACNManager.shared.privateKey?.to0x ?? "") else {
+        guard let pk = ACNManager.shared.privateKey?.to0x, let keyData = Data(hexString: pk) else {
             return nil
         }
         
