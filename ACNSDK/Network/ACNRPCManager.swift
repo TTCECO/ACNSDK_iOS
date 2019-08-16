@@ -201,10 +201,13 @@ class ACNRPCManager: NSObject {
             case .success(let responseValue):
                 
                 let value = responseValue as! [String: Any]
-                let gasUsedString = value["gasUsed"] as! String
-                let statusString = value["status"] as! String
-                let gasUsed = BigInt(gasUsedString.drop0x, radix: 16) ?? BigInt(0)
-                let receipt = TransactionReceipt(gasUsed: gasUsed.description, status: statusString == "0x1" ? true : false )
+                let result = value["result"] as! [String: Any]
+                
+                let blockNumberString = result["blockNumber"] as! String
+                let statusString = result["status"] as! String
+                let blockNumber = BigInt(blockNumberString.drop0x, radix: 16) ?? BigInt(0)
+                
+                let receipt = TransactionReceipt(status: statusString == "0x1" ? true : false, blockNumber: blockNumber)
                 
                 completion(Result.success(receipt))
             case .failure(let error):
@@ -212,4 +215,23 @@ class ACNRPCManager: NSObject {
             }
         })
     }
+    
+    static func getBlockNumber(completion: @escaping (Result<BigInt>) -> Void) {
+        
+        ACNServiceRequest(batch: BatchFactory().create(BlockNumberRequest()), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+            
+            switch ACNRPCManager.isRespondError(result: response.result) {
+            case .success(let responseValue):
+                
+                let value = responseValue as! [String: Any]
+                let result: String = value["result"] as! String
+                let number = BigInt(result.drop0x, radix: 16) ?? BigInt()
+                
+                completion(Result.success(number))
+            case .failure(let error):
+                completion(Result.failure(error))
+            }
+        })
+    }
+    
 }

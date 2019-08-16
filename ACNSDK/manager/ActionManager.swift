@@ -31,6 +31,8 @@ class ACNActionInfo: Object {
     @objc dynamic var isCheck: Int = 0
     /// upload time
     @objc dynamic var uptime: Int64 = 0
+    /// block Number when get TransactionRecipt Error
+    @objc dynamic var blockNumber: Int32 = 0
     /// time
     @objc dynamic var timestamp: Int64 = Int64(Date().timeIntervalSince1970 * 1000)
     /// Database primary key
@@ -125,8 +127,8 @@ class ACNActionManager {
         let i = key.index(key.startIndex, offsetBy: 64)
         key = String(key.prefix(upTo: i))
         let data = key.data(using: .utf8) ?? Data()
-        cfg = Realm.Configuration.init(fileURL: URL(string: realmPath), encryptionKey: data, readOnly: false, schemaVersion: 3, migrationBlock: { migration, oldSchemaVersion in
-            if oldSchemaVersion < 3 {
+        cfg = Realm.Configuration.init(fileURL: URL(string: realmPath), encryptionKey: data, readOnly: false, schemaVersion: 4, migrationBlock: { migration, oldSchemaVersion in
+            if oldSchemaVersion < 4 {
                 
             }
         }, deleteRealmIfMigrationNeeded: false, shouldCompactOnLaunch: nil, objectTypes: nil)
@@ -143,14 +145,14 @@ class ACNActionManager {
     func setDefaultManager() {
         
         self.gasLimit = BigInt(210000)
-        self.gasPrice = BigInt("500000000000") // 500 gwei
+        self.gasPrice = BigInt("5000000000") // 500 gwei
         self.nonce = BigInt(-1)
         
         self.transactionErrorCount = 0
         
         self.timer?.invalidate()
         self.timer = nil
-        self.timeInterval = 30
+        self.timeInterval = 20
         runScheduledTimer()
         
     }
@@ -223,8 +225,12 @@ class ACNActionManager {
             if self.isTransaction { return }
             guard let userinfo = ACNManager.shared.userInfo else { return }
             
-            guard let actionInfo = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = ''").first else { return }
-            self.actionWriteBlockChain(actionInfo: actionInfo)
+            if let actionInfo = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = '' AND nonce != 0").first {
+                self.actionWriteBlockChain(actionInfo: actionInfo)
+            } else {
+                guard let actionInfo = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = ''").first else { return }
+                self.actionWriteBlockChain(actionInfo: actionInfo)
+            }
         }
     }
     
@@ -251,13 +257,17 @@ class ACNActionManager {
         /// start transaction
         self.isTransaction = true
         
-        let nonce: BigInt
+        var nonce: BigInt
         let data: Data
         let timestamp: Int64
         let gasLimit: BigInt
         let gasPrice: BigInt
         
         nonce = self.nonce
+        if actionInfo.nonce != 0, actionInfo.nonce != -1 {
+            nonce = BigInt(actionInfo.nonce)
+        }
+        
         data = actionInfo.hashData()
         timestamp = actionInfo.timestamp
         gasLimit = self.gasLimit
@@ -337,7 +347,7 @@ class ACNActionManager {
         }
         
         ACNNetworkManager.uploadAction(actionInfoList: ecoActions, result: { (success, error) in
-            
+
             if success {
                 ACNPrint("Upload behavior succeeded")
                 self.updateAction(actionInfos: ecoActions)
@@ -357,7 +367,7 @@ class ACNActionManager {
         }
         
         let userid = ACNManager.shared.userInfo?.userId
-        ACNRPCManager.getTransactionCount(address: address) { (result) in
+        ACNRPCManager.getTransactionPendingCount(address: address) { (result) in
             switch result {
             case .success(let nonce):
                 ACNPrint("fetch nonce success, nonce: \(nonce.description)")
@@ -422,12 +432,12 @@ class ACNActionManager {
         }
     }
     
-    func afterCheck(afterTime: Int = 2) {
+    func afterCheck(_ afterTime: Int = 2) {
         
         let time = DispatchTime.now() + DispatchTimeInterval.seconds(afterTime)
         
         self.checkQueue.asyncAfter(deadline: time) {
-            ACNPrint("start checking time >>>>>>>>> : \(Date().timeIntervalSince1970.description)")
+            ACNPrint("will start checking >>>>>>>>> ")
             self.checkTransaction()
         }
     }
@@ -455,23 +465,16 @@ class ACNActionManager {
             
             let timestamp = actionInfo.timestamp
             let hash = actionInfo.actionHash
-            let uptime = actionInfo.uptime
+//            let uptime = actionInfo.uptime
+            let transactionNonce = actionInfo.nonce
+            let lastBlockNumber = actionInfo.blockNumber
             
-            ACNRPCManager.getTransaction(hash: hash) { (result) in
+            ACNPrint("In checking, getTransactionReceipt, time: \(Date().timeIntervalSince1970.description)")
+            ACNRPCManager.getTransactionReceipt(hash: hash) { (result) in
                 switch result {
-                case .success(let transaction):
-                    //                    ACNPrint("Transaction hash: \(hash), info: \(transaction)")
+                case .success(let recepit):
                     
-                    if userid != userinfo.userId { self.isChecking = false; return }
-                    
-                    let blockNumberStr = transaction["blockNumber"] as? String ?? ""
-                    let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
-                    let nonceString = transaction["nonce"] as? String ?? ""
-                    let nonce = BigInt(nonceString.drop0x, radix: 16) ?? BigInt(0)
-                    
-                    if blockNumber > BigInt(0) {
-                        
-                        /// update database
+                    if recepit.status {
                         self.realmQueue.async {
                             let tmpRealm = self.realm
                             if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
@@ -488,80 +491,139 @@ class ACNActionManager {
                             }
                         }
                         
-                        ACNPrint("Transaction hash: \(hash), blockNumber = \(blockNumber), nonce : \(nonce.description)")
-                        
+                        ACNPrint("Transaction success:\n hash: \(hash) \n blockNumber = \(recepit.blockNumber) \n nonce = \(transactionNonce)")
                     } else {
-                        
-                        let curr = Int64(Date().timeIntervalSince1970*1000)
-                        let upt = uptime == 0 ? timestamp : uptime
-                        if curr > (upt+60*1000) {
-                            self.resetHash(timestamp)
-                            ACNPrint("Transaction hash: \(hash), hash timeout, reset")
-                        } else {
-                            /// wait block
-                            self.realmQueue.async {
-                                let tmpRealm = self.realm
-                                if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
-                                    try? tmpRealm.write {
-                                        info.isCheck = 1 // Not yet successful
-                                    }
-                                }
-                                
-                                DispatchQueue.main.async {
-                                    self.isChecking = false
-                                    /// Continue to check
-                                    self.afterCheck(afterTime: 5)
-                                }
-                            }
-                            
-                            ACNPrint("Transaction hash: \(hash), blockNumber: 0, nonce : \(nonce.description)")
-                        }
+                        ACNPrint("status false, reset ------- \(hash)")
+                        self.resetHash(timestamp)
                     }
                     
                 case .failure(let error):
-                    
-                    ACNPrint("Get transaction failed, hash:\(hash), failed: \(error)")
-                    
-                    guard let RPCError: ACNRPCError = error as? ACNRPCError else { self.isChecking = false; return }
-                    
-                    switch RPCError {
-                    case .RPCSuccessError(let code, _):
-                        if code == RPCErrorType.null.rawValue {
-                            /// 一般情况是nonce过大，为了追求实时性，重新上传
-                            /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
-                            ACNPrint("is null, reset ------- \(hash)")
-                            self.resetHash(timestamp)
-                        } else {
-                            let curr = Int64(Date().timeIntervalSince1970*1000)
-                            let upt = uptime == 0 ? timestamp : uptime
-                            if curr > (upt+60*1000) {
-                                self.resetHash(timestamp)
-                                ACNPrint("Transaction hash: \(hash), hash timeout, reset")
-                            }
-                        }
-                    default:
-                        let curr = Int64(Date().timeIntervalSince1970*1000)
-                        let upt = uptime == 0 ? timestamp : uptime
-                        if curr > (upt+60*1000) {
-                            self.resetHash(timestamp)
-                            ACNPrint("Transaction hash: \(hash), hash timeout, reset")
-                        }
-                    }
+                    guard let _: ACNRPCError = error as? ACNRPCError else { self.isChecking = false; return }
+                    self.gerReciptError(timestamp, lastBlockNumber: lastBlockNumber, hash: hash)
                 }
             }
+            
+//            ACNRPCManager.getTransaction(hash: hash) { (result) in
+//                switch result {
+//                case .success(let transaction):
+//                    //                    ACNPrint("Transaction hash: \(hash), info: \(transaction)")
+//
+//                    if userid != userinfo.userId { self.isChecking = false; return }
+//
+//                    let blockNumberStr = transaction["blockNumber"] as? String ?? ""
+//                    let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
+//                    let nonceString = transaction["nonce"] as? String ?? ""
+//                    let nonce = BigInt(nonceString.drop0x, radix: 16) ?? BigInt(0)
+//
+//                    if blockNumber > BigInt(0) {
+//
+//                        /// update database
+//                        self.realmQueue.async {
+//                            let tmpRealm = self.realm
+//                            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
+//                                try? tmpRealm.write {
+//                                    info.isCheck = 3 // Check successful
+//                                }
+//                            }
+//
+//                            DispatchQueue.main.async {
+//                                self.isChecking = false
+//
+//                                /// Continue to check
+//                                self.afterCheck()
+//                            }
+//                        }
+//
+//                        ACNPrint("Transaction hash: \(hash), blockNumber = \(blockNumber), nonce : \(nonce.description)")
+//
+//                    } else {
+//
+//                        /// wait block
+//                        self.realmQueue.async {
+//                            let tmpRealm = self.realm
+//                            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
+//                                try? tmpRealm.write {
+//                                    info.isCheck = 1 // Not yet successful
+//                                }
+//                            }
+//
+//                            DispatchQueue.main.async {
+//                                self.isChecking = false
+//                                /// Continue to check
+//                                self.afterCheck(10)
+//                            }
+//                        }
+//
+//                        ACNPrint("Transaction hash: \(hash), blockNumber: 0, nonce : \(nonce.description)")
+//                    }
+//
+//                case .failure(let error):
+//
+//                    ACNPrint("Get transaction failed, hash:\(hash), failed: \(error)")
+//
+//                    guard let RPCError: ACNRPCError = error as? ACNRPCError else { self.isChecking = false; return }
+//
+//                    switch RPCError {
+//                    case .RPCSuccessError(let code, _):
+//                        if code == RPCErrorType.null.rawValue {
+//                            /// 一般情况是nonce过大，为了追求实时性，重新上传
+//                            /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
+//                            ACNPrint("is null, reset ------- \(hash)")
+//                            self.resetHash(timestamp)
+//                        } else {
+//                            let curr = Int64(Date().timeIntervalSince1970*1000)
+//                            let upt = uptime == 0 ? timestamp : uptime
+//                            if curr > (upt+60*60*2*1000) {
+//                                self.resetHash(timestamp)
+//                                ACNPrint("Transaction hash: \(hash), hash timeout, reset")
+//                            }
+//                        }
+//                    default:
+//                        let curr = Int64(Date().timeIntervalSince1970*1000)
+//                        let upt = uptime == 0 ? timestamp : uptime
+//                        if curr > (upt+60*60*2*1000) {
+//                            self.resetHash(timestamp)
+//                            ACNPrint("Transaction hash: \(hash), hash timeout, reset")
+//                        }
+//                    }
+//                }
+//            }
+        } else {
+            ACNPrint("all is checked")
         }
     }
     
     /// 上传出错，重置
     func resetHash(_ timestamp: Int64) {
+        
+        guard let address = ACNManager.shared.actionAddress, !address.isEmpty else {
+            return
+        }
+        
+        ACNRPCManager.getTransactionCount(address: address) { (result) in
+            switch result {
+            case .success(let nonce):
+                ACNPrint("fetch nonce success, nonce: \(nonce.description)")
+                self.resetHahsWithNonce(timestamp, nonce: Int64(nonce))
+            case .failure(let error):
+                ACNPrint("Get nonce failed: \(error)")
+                self.resetHahsWithNonce(timestamp, nonce: 0)
+            }
+        }
+        
+    }
+    
+    func resetHahsWithNonce(_ timestamp: Int64, nonce: Int64) {
+        
         self.realmQueue.async {
             let tmpRealm = self.realm
             if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
                 try? tmpRealm.write {
                     info.actionHash = ""  // Hash restore
                     info.isCheck = 2      // Block failure
-                    info.nonce = 0
+                    info.nonce = nonce
                     info.isUpload = 0     // may be 1
+                    info.blockNumber = 0   // reset block number
                 }
             }
             
@@ -598,5 +660,55 @@ class ACNActionManager {
         
         self.dealwithRPCError(error: RPCError)
     }
-    
+ 
+    func gerReciptError(_ timestamp: Int64, lastBlockNumber: Int32, hash: String) {
+        
+        ACNRPCManager.getBlockNumber(completion: { (result) in
+            switch result {
+            case .success(let number):
+                
+                ACNPrint("get block number: \(number)")
+                
+                let blockNumber = Int32(number)
+                if lastBlockNumber == 0 {
+                    
+                    ACNPrint("save block number")
+                    
+                    self.realmQueue.async {
+                        let tmpRealm = self.realm
+                        if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
+                            try? tmpRealm.write {
+                                info.isCheck = 3 // Check successful
+                                info.blockNumber = blockNumber
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.isChecking = false
+                            /// Continue to check
+                            self.afterCheck(10)
+                        }
+                    }
+                } else if blockNumber > lastBlockNumber + 1000 {
+                    ACNPrint("block number is too big, reset transaction ------- \(hash)")
+                    self.resetHash(timestamp)
+                } else {
+                    ACNPrint("block is normal")
+                    DispatchQueue.main.async {
+                        self.isChecking = false
+                        /// Continue to check
+                        self.afterCheck(10)
+                    }
+                }
+            case .failure(let error):
+                ACNPrint("get block number error: \(error)")
+                DispatchQueue.main.async {
+                    self.isChecking = false
+                    
+                    /// Continue to check
+                    self.afterCheck()
+                }
+            }
+        })
+    }
 }
