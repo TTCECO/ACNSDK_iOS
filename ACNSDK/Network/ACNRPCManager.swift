@@ -73,6 +73,21 @@ class ACNRPCManager: NSObject {
         })
     }
     
+    static func getSideBalance(for address: String, completion: @escaping (Result<Balance>) -> Void) {
+        ACNServiceRequest(batch: BatchFactory().create(BalanceRequest(address: address.to0x)), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+            
+            switch ACNRPCManager.isRespondError(result: response.result) {
+            case .success(let responseValue):
+                let value = responseValue as! [String: Any]
+                let result: String = value["result"] as! String
+                let balance = Balance(value: BigInt(result.drop0x, radix: 16) ?? BigInt(0))
+                completion(Result.success(balance))
+            case .failure(let error):
+                completion(Result.failure(error))
+            }
+        })
+    }
+    
     /// fetch latest Nonce
     static func getTransactionCount(address: String, completion: @escaping (Result<BigInt>) -> Void) {
         

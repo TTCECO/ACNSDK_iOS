@@ -11,7 +11,7 @@ import Foundation
 import ACN_SDK_NET
 
 /// sdk version，modify when upgrading
-let SDKVersion: Int32 = 1
+let SDKVersion: Int32 = 5
 
 struct ACNServer {
     let apiURL: String

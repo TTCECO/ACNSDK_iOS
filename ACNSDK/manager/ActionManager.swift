@@ -98,6 +98,8 @@ class ACNActionManager {
     var isTransaction: Bool = false
     /// is checking transaction?, Ensure this is changed in main queue
     var isChecking: Bool = false
+    /// balance is enough
+    var isBalance: Bool = true
     /// error count for 'requestPrivateKeyAndAddress'
     var transactionErrorCount: Int {
         didSet {
@@ -254,6 +256,11 @@ class ACNActionManager {
             return
         }
         
+        if !self.isBalance {
+            self.isEnoughBalance()
+            return
+        }
+        
         /// start transaction
         self.isTransaction = true
         
@@ -331,6 +338,7 @@ class ACNActionManager {
                 self.isTransaction = false
                 self.transactionErrorCount += 1
                 
+                self.isEnoughBalance()
                 self.doError(error: error)
             }
         }
@@ -389,34 +397,6 @@ class ACNActionManager {
                 ACNPrint("Get nonce failed: \(error)")
             }
         }
-        
-//        ACNRPCManager.getTransactionPendingCount(address: address, completion: { (result) in
-//            switch result {
-//            case .success(let nonce):
-//                ACNPrint("fetch nonce success, nonce: \(nonce.description)")
-//
-//                //                guard let userinfo = ACNManager.shared.userInfo else { return }
-//
-//                //                if let action = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND nonce > -1").sorted(byKeyPath: "nonce").last {
-//                //                    ACNPrint("Database nonce: \(action.nonce)")
-//                //                    self.nonce = BigInt(action.nonce) + 1
-//                //                }
-//
-//                self.nonce = nonce
-//
-//                if userid != ACNManager.shared.userInfo?.userId {
-//                    self.nonce = BigInt(-1)
-//                }
-//
-//                ACNPrint("Used nonce: \(self.nonce.description)")
-//
-//                self.queriesActionAndTransaction()
-//                self.deleteAction()
-//
-//            case .failure(let error):
-//                ACNPrint("Get nonce failed: \(error)")
-//            }
-//        })
     }
     
     // version
@@ -659,6 +639,25 @@ class ACNActionManager {
         }
         
         self.dealwithRPCError(error: RPCError)
+    }
+    
+    func isEnoughBalance() {
+        
+        if let address = ACNManager.shared.actionAddress, !address.isEmpty {
+            ACNRPCManager.getSideBalance(for: address, completion: { (result) in
+                switch result {
+                case .success(let b):
+                    let gas = self.gasLimit*self.gasPrice
+                    if b.value < gas {
+                        self.isBalance = false
+                    } else {
+                        self.isBalance = true
+                    }
+                case .failure(_):
+                    break
+                }
+            })
+        }
     }
  
     func gerReciptError(_ timestamp: Int64, lastBlockNumber: Int32, hash: String) {

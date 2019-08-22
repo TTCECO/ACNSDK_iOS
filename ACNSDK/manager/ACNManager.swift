@@ -10,12 +10,15 @@ import Foundation
 import BigInt
 import ACN_SDK_NET
 import TTCPay
+import web3swift
 
 internal class ACNManager {
 
     static let shared = ACNManager()
     /// Dapp Private key
     var privateKey: String?
+    /// current Private key·s address
+    var currentAddress: String?
     /// Dapp address
     var actionAddress: String?
     var isRequestPrivatekey: Bool = false
@@ -408,6 +411,7 @@ extension ACNManager {
             
             self.isRegister = success
             if success {
+                ACNActionManager.shared.isEnoughBalance()
                 ACNActionManager.shared.getChainID()
                 ACNActionManager.shared.getTransactionCount()
             } else {
