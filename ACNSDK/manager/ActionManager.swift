@@ -133,7 +133,7 @@ class ACNActionManager {
             if oldSchemaVersion < 4 {
                 
             }
-        }, deleteRealmIfMigrationNeeded: false, shouldCompactOnLaunch: nil, objectTypes: nil)
+        }, deleteRealmIfMigrationNeeded: false, shouldCompactOnLaunch: nil, objectTypes: [ACNActionInfo.self])
         
         transactionErrorCount = 0
     }
