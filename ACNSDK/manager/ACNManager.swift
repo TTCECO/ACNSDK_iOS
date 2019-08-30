@@ -387,11 +387,29 @@ extension ACNManager {
         
         guard let wltUrl = walletUrl else { return }
         
-        if !UIApplication.shared.openURL(wltUrl) {
-            ACNPrint("bind - Return failure")
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(wltUrl, options: [:]) { (success) in
+                if success {
+                    self.bindBackBlock = result
+                    self.bindStartTime = Date().timeIntervalSince1970
+                } else {
+                    ACNPrint("bind - Return failure")
+                    result(false, ACNSDKError(description: "not open TTC Connect"), nil)
+                    guard let downloadURL = URL(string: "https://wallet.ttc.eco/download?appID=\(self.appId.description)") else { return }
+                    UIApplication.shared.open(downloadURL, options: [:]) { (_) in
+                    }
+                }
+            }
         } else {
-            self.bindBackBlock = result
-            self.bindStartTime = Date().timeIntervalSince1970
+            if !UIApplication.shared.openURL(wltUrl) {
+                ACNPrint("bind - Return failure")
+                result(false, ACNSDKError(description: "not open TTC Connect"), nil)
+                guard let downloadURL = URL(string: "https://wallet.ttc.eco/download?appID=\(self.appId.description)") else { return }
+                UIApplication.shared.openURL(downloadURL)
+            } else {
+                self.bindBackBlock = result
+                self.bindStartTime = Date().timeIntervalSince1970
+            }
         }
     }
 }
