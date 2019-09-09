@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftProtobuf', '1.0.3'
   s.dependency 'BigInt', '3.1.0'
   s.dependency 'JSONRPCKit'
-  s.dependency 'Alamofire'
+  s.dependency 'Alamofire', '4.9.0'
   s.dependency 'TrustCore', '0.0.7'
   s.dependency 'TrezorCrypto', '0.0.9'
   s.dependency 'RealmSwift', '3.7.5'
