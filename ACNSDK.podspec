@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK"
-  s.version      = "0.2.15"
+  s.version      = "0.2.16"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
