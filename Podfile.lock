@@ -47,7 +47,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BigInt (~> 3.0)
-  - Google-Mobile-Ads-SDK (= 7.37.0)
+  - Google-Mobile-Ads-SDK
   - GoogleMobileAdsMediationFacebook
   - JSONRPCKit
   - PromiseKit (= 6.8.0)
@@ -60,7 +60,7 @@ DEPENDENCIES:
   - web3swift.pod (= 2.1.5)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BigInt
     - FBAudienceNetwork
@@ -104,6 +104,6 @@ SPEC CHECKSUMS:
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
   web3swift.pod: df222a050e67b767529d2c81e0a87d979e5b7c5f
 
-PODFILE CHECKSUM: 3ec158c00f5763818bf7f6944fa4093664bf4538
+PODFILE CHECKSUM: 75f5c1af05741271b5831e57c4abcce97b1e4e59
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.8.3

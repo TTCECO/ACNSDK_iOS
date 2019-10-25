@@ -18,7 +18,7 @@ target 'ACNSDK' do
     pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '3.7.5' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
-    pod 'Google-Mobile-Ads-SDK', '7.37.0'
+    pod 'Google-Mobile-Ads-SDK'
     pod 'web3swift.pod', '2.1.5'
     pod 'PromiseKit', '6.8.0'
     pod 'GoogleMobileAdsMediationFacebook'
