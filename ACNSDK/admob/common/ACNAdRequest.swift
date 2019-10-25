@@ -18,7 +18,7 @@ public class ACNAdRequest: NSObject {
     
     @objc public var testDevices: NSArray? {
         didSet {
-            gadRequest.testDevices = testDevices as? [Any]
+            gadRequest.testDevices = testDevices as? [String] 
         }
     }
 }
