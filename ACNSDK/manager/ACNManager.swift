@@ -40,6 +40,8 @@ internal class ACNManager {
     var reward: Int = 0
     var bindStartTime: TimeInterval = 0
     var bindBackBlock: ((Bool, ACNSDKError?, _ address: String?) -> Void)?
+    /// 跳转的绑定钱包类型
+    var walletBindType: Int32 = 1
     
     /// 1 - development 2 - production
     var environment: Int32 = 1
@@ -131,6 +133,8 @@ extension ACNManager {
                 ACNPrint("Login failed: \(String(describing: error?.errorDescription))")
             }
         })
+        
+        fetchWalletType()
     }
 
     func logout() {
@@ -277,6 +281,12 @@ extension ACNManager {
             requestPrivateKeyAndAddressRetry()
         }
     }
+    
+    func fetchWalletType() {
+        ACNNetworkManager.fetchScheme { (type, error) in
+            self.walletBindType = type
+        }
+    }
 }
 
 // MARK: - bind -
@@ -287,7 +297,7 @@ extension ACNManager {
 
         let scheme = params["wltScheme"]
         
-        if scheme == "TTCWallet" {
+        if scheme == "ACNWallet" {
             self.walletAddress = params["address"]
             self.walletScheme = params["wltScheme"]
             self.walletLanguage = params["language"] ?? "en"
@@ -300,7 +310,7 @@ extension ACNManager {
             } else {
                 ACNPrint("bind - User not login")
             }
-        } else if scheme == "TTCBindBack" {
+        } else if scheme == "ACNBindBack" {
             
             if let bindBlock = self.bindBackBlock {
                 
@@ -324,9 +334,17 @@ extension ACNManager {
     /// back wallet -1 cancel， 0 faile，1 success，
     func backWallet(bindState: Int, reward: Int32, symbol: String) {
         
-        var scheme = "FTWallet"
-        if self.environment == 2 {
-            scheme = "TTCWallet"
+        var scheme: String
+        if self.walletBindType == 1 {
+            scheme = "FTACNWallet"
+            if self.environment == 2 {
+                scheme = "ACNWallet"
+            }
+        } else {
+            scheme = "FTWallet"
+            if self.environment == 2 {
+                scheme = "TTCWallet"
+            }
         }
         
         let walletUrlStr = scheme + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)&symbol=\(symbol)"
@@ -371,10 +389,17 @@ extension ACNManager {
             appName = info!["CFBundleDisplayName"] as! String
         }
         
-        var scheme = "FTWallet"
-        
-        if self.environment == 2 {
-            scheme = "TTCWallet"
+        var scheme: String
+        if self.walletBindType == 1 {
+            scheme = "FTACNWallet"
+            if self.environment == 2 {
+                scheme = "ACNWallet"
+            }
+        } else {
+            scheme = "FTWallet"
+            if self.environment == 2 {
+                scheme = "TTCWallet"
+            }
         }
         
         var iconString = ""
@@ -395,7 +420,15 @@ extension ACNManager {
                 } else {
                     ACNPrint("bind - Return failure")
                     result(false, ACNSDKError(description: "not open TTC Connect"), nil)
-                    guard let downloadURL = URL(string: "https://wallet.ttc.eco/download?appID=\(self.appId.description)") else { return }
+                    
+                    let url: String
+                    if self.walletBindType == 1 {
+                        url = "https://acn.eco/acornbox/download?appID=\(self.appId.description)"
+                    } else {
+                        url = "https://wallet.ttc.eco/download?appID=\(self.appId.description)"
+                    }
+                    
+                    guard let downloadURL = URL(string: url) else { return }
                     UIApplication.shared.open(downloadURL, options: [:]) { (_) in
                     }
                 }
@@ -404,7 +437,13 @@ extension ACNManager {
             if !UIApplication.shared.openURL(wltUrl) {
                 ACNPrint("bind - Return failure")
                 result(false, ACNSDKError(description: "not open TTC Connect"), nil)
-                guard let downloadURL = URL(string: "https://wallet.ttc.eco/download?appID=\(self.appId.description)") else { return }
+                let url: String
+                if self.walletBindType == 1 {
+                    url = "https://acn.eco/acornbox/download?appID=\(self.appId.description)"
+                } else {
+                    url = "https://wallet.ttc.eco/download?appID=\(self.appId.description)"
+                }
+                guard let downloadURL = URL(string: url) else { return }
                 UIApplication.shared.openURL(downloadURL)
             } else {
                 self.bindBackBlock = result
