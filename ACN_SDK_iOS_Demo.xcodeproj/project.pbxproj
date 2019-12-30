@@ -172,6 +172,8 @@
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
 		97CCF63A210191A5008C14CE /* VersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCF639210191A5008C14CE /* VersionRequest.swift */; };
 		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
+		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
+		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
 		C699406E20FEF974007E96C8 /* ACNSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = C699406C20FEF974007E96C8 /* ACNSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C699409E20FEF9A6007E96C8 /* ACNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699407620FEF9A6007E96C8 /* ACNSDK.swift */; };
 		C699409F20FEF9A6007E96C8 /* ACNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699407920FEF9A6007E96C8 /* ACNViewController.swift */; };
@@ -307,7 +309,6 @@
 		4282588F2282C5DC0050A0F8 /* close_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_highlighted@2x.png"; sourceTree = "<group>"; };
 		428258902282C5DC0050A0F8 /* TTCWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTCWallet@2x.png"; sourceTree = "<group>"; };
 		428258912282C5DC0050A0F8 /* selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected@2x.png"; sourceTree = "<group>"; };
-		428258922282C5DC0050A0F8 /* Relation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Relation@2x.png"; sourceTree = "<group>"; };
 		428258932282C5DC0050A0F8 /* close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_normal@2x.png"; sourceTree = "<group>"; };
 		428258942282C5DC0050A0F8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		428258952282C5DC0050A0F8 /* select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select@2x.png"; sourceTree = "<group>"; };
@@ -437,6 +438,8 @@
 		97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNUploadViewController.swift; sourceTree = "<group>"; };
 		97CCF639210191A5008C14CE /* VersionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionRequest.swift; sourceTree = "<group>"; };
 		A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACNWallet@2x.png"; sourceTree = "<group>"; };
+		BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+++@2x.png"; sourceTree = "<group>"; };
 		C6993FE720FEF1EE007E96C8 /* ACNSDKBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACNSDKBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C699406A20FEF974007E96C8 /* ACNSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ACNSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C699406C20FEF974007E96C8 /* ACNSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNSDK.h; sourceTree = "<group>"; };
@@ -577,8 +580,9 @@
 			children = (
 				4282588F2282C5DC0050A0F8 /* close_highlighted@2x.png */,
 				428258902282C5DC0050A0F8 /* TTCWallet@2x.png */,
+				BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */,
+				BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */,
 				428258912282C5DC0050A0F8 /* selected@2x.png */,
-				428258922282C5DC0050A0F8 /* Relation@2x.png */,
 				428258932282C5DC0050A0F8 /* close_normal@2x.png */,
 				428258942282C5DC0050A0F8 /* Info.plist */,
 				428258952282C5DC0050A0F8 /* select@2x.png */,
@@ -1187,6 +1191,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */,
+				BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -129,8 +129,8 @@ class ACNActionManager {
         let i = key.index(key.startIndex, offsetBy: 64)
         key = String(key.prefix(upTo: i))
         let data = key.data(using: .utf8) ?? Data()
-        cfg = Realm.Configuration.init(fileURL: URL(string: realmPath), encryptionKey: data, readOnly: false, schemaVersion: 4, migrationBlock: { migration, oldSchemaVersion in
-            if oldSchemaVersion < 4 {
+        cfg = Realm.Configuration.init(fileURL: URL(string: realmPath), encryptionKey: data, readOnly: false, schemaVersion: 5, migrationBlock: { migration, oldSchemaVersion in
+            if oldSchemaVersion < 5 {
                 
             }
         }, deleteRealmIfMigrationNeeded: false, shouldCompactOnLaunch: nil, objectTypes: [ACNActionInfo.self])
@@ -164,11 +164,13 @@ class ACNActionManager {
         realmQueue.async {
             let realm = self.realm
             try? realm.write {
-                realm.add(actionInfo, update: true)
+                realm.add(actionInfo, update: .modified)
             }
             //            ACNPrint(actionInfo)
             self.actionWriteBlockChain(actionInfo: actionInfo)
         }
+        
+        self.queriesActionAndUpload()
     }
     
     /// remove behavior from database
@@ -192,7 +194,7 @@ class ACNActionManager {
             if self.isUploadAction { return }
             guard let userinfo = ACNManager.shared.userInfo else { return }
             
-            let results = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isUpload = 0")
+            let results = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND isUpload = 0")
             if results.count >= self.uploadCountLimit {
                 self.isUploadAction = true
                 
@@ -312,7 +314,7 @@ class ACNActionManager {
                     try? realm.write {
                         action?.actionHash = hex
                         action?.nonce = Int64(nonce.description) ?? 0
-                        action?.isUpload = 0 // 有可能被上传服务器后设为1了
+//                        action?.isUpload = 0 // 有可能被上传服务器后设为1了
                         action?.uptime = Int64(Date().timeIntervalSince1970*1000)
                     }
                 }
@@ -330,7 +332,7 @@ class ACNActionManager {
                 self.isTransaction = false
                 /// Inquire whether there is no transaction, initiate a transaction
                 self.queriesActionAndTransaction()
-                self.queriesActionAndUpload()
+//                self.queriesActionAndUpload()
             case .failure(let error):
                 
                 ACNPrint("Transaction failed: \(error)")
@@ -602,7 +604,7 @@ class ACNActionManager {
                     info.actionHash = ""  // Hash restore
                     info.isCheck = 2      // Block failure
                     info.nonce = nonce
-                    info.isUpload = 0     // may be 1
+//                    info.isUpload = 0     // may be 1
                     info.blockNumber = 0   // reset block number
                 }
             }
