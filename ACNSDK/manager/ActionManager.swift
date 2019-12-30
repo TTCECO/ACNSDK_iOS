@@ -164,7 +164,7 @@ class ACNActionManager {
         realmQueue.async {
             let realm = self.realm
             try? realm.write {
-                realm.add(actionInfo, update: true)
+                realm.add(actionInfo, update: .modified)
             }
             //            ACNPrint(actionInfo)
             self.actionWriteBlockChain(actionInfo: actionInfo)

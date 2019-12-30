@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire'
   s.dependency 'TrustCore', '0.0.7'
   s.dependency 'TrezorCrypto', '0.0.9'
-  s.dependency 'RealmSwift', '3.7.5'
+  s.dependency 'RealmSwift'
   s.dependency 'SwiftyRSA'
   s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'web3swift.pod', '2.1.5'

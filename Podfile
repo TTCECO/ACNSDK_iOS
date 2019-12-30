@@ -16,7 +16,7 @@ target 'ACNSDK' do
 #    pod 'CryptoSwift', :git=>'https://github.com/Easoncc/CryptoSwift', :branch=>'newCC' #加密函数
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.9'
-    pod 'RealmSwift', '3.7.5' #数据库
+    pod 'RealmSwift' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK'
     pod 'web3swift.pod', '2.1.5'
