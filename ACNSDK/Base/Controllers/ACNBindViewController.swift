@@ -166,6 +166,7 @@ internal class ACNBindViewController: ACNViewController {
             sender.isEnabled = true
             
             if success, let bindInfo = info {
+                ACNManager.shared.userInfo?.wallet = ACNManager.shared.walletAddress
                 ACNPrint("bind - Bind successfully, address: \(ACNManager.shared.walletAddress!)")
                 ACNManager.shared.backWallet(bindState: 1, reward: bindInfo.reward, symbol: bindInfo.symbol)
                 self.dismiss(animated: true, completion: nil)

@@ -306,6 +306,7 @@ extension ACNManager {
             if self.isLogin {
                 ACNPrint("bind - go to binding page")
                 let bindVC = ACNBindViewController(language: self.walletLanguage)
+                bindVC.modalPresentationStyle = .fullScreen
                 ACNWindow.shared.rootViewController?.present(bindVC, animated: true, completion: nil)
             } else {
                 ACNPrint("bind - User not login")
