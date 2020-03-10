@@ -21,7 +21,8 @@ target 'ACNSDK' do
     pod 'Google-Mobile-Ads-SDK'
     pod 'web3swift.pod', '2.1.5'
     pod 'PromiseKit', '6.8.0'
-    pod 'GoogleMobileAdsMediationFacebook'
+#    pod 'GoogleMobileAdsMediationFacebook'
+    pod 'TTCPay'
     
     #代码格式工具
 #    pod 'SwiftLint', '0.26.0'

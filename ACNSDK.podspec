@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK"
-  s.version      = "0.2.22"
+  s.version      = "0.2.23"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -31,6 +31,5 @@ Pod::Spec.new do |s|
   s.dependency 'Google-Mobile-Ads-SDK'
   s.dependency 'web3swift.pod', '2.1.5'
   s.dependency 'PromiseKit', '6.8.0'
-  s.dependency 'GoogleMobileAdsMediationFacebook'
 	
 end

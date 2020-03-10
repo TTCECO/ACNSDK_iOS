@@ -31,8 +31,6 @@
 		4245D8B62175C452004BE3DD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245D8B52175C452004BE3DD /* UserDefaults.swift */; };
 		425E0BC6228420A20094928B /* ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; };
 		425E0BC7228420A20094928B /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		425E0BCB228420A60094928B /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
-		425E0BCC228420A70094928B /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		425E0BD322842D5D0094928B /* ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; };
 		425E0BD422842D5D0094928B /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		427D6985211441C3006AE7AD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D6984211441C3006AE7AD /* Error.swift */; };
@@ -45,9 +43,6 @@
 		4282668122855EF8007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4282668222855EFB007F7BF4 /* ACN_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; };
 		4282668322855EFB007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		428A565321C7AFD800742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
-		428A565621C7B56900742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
-		428A565721C7B56900742FE6 /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		428A565F21C7B8F900742FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A565E21C7B8F900742FE6 /* AppDelegate.swift */; };
 		428A566121C7B8F900742FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A566021C7B8F900742FE6 /* ViewController.swift */; };
 		428A566421C7B8F900742FE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428A566221C7B8F900742FE6 /* Main.storyboard */; };
@@ -64,8 +59,6 @@
 		42C61C4A21D731B3001A7FFD /* ACNAdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C4921D731B3001A7FFD /* ACNAdBanner.swift */; };
 		42C61C4C21D74E5B001A7FFD /* ACNAdSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C4B21D74E5B001A7FFD /* ACNAdSize.swift */; };
 		42C61C4E21D75D53001A7FFD /* ACNAdBannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C4D21D75D53001A7FFD /* ACNAdBannerDelegate.swift */; };
-		42C61C6D21D77424001A7FFD /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
-		42C61C6E21D77425001A7FFD /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42C61C7921DCA6BD001A7FFD /* ACNAdInterstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7821DCA6BD001A7FFD /* ACNAdInterstitial.swift */; };
 		42C61C7B21DDCADF001A7FFD /* ACNAdRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7A21DDCADF001A7FFD /* ACNAdRequest.swift */; };
 		42C61C7D21DDCD30001A7FFD /* ACNAdLoadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7C21DDCD30001A7FFD /* ACNAdLoadProtocol.swift */; };
@@ -250,7 +243,6 @@
 			files = (
 				4282667F22855EEB007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */,
 				42EAD11522CB1AB000D455F5 /* ACNSDK.framework in Embed Frameworks */,
-				428A565721C7B56900742FE6 /* TTCPay.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,7 +255,6 @@
 			files = (
 				425E0BC7228420A20094928B /* ACNSDK.framework in Embed Frameworks */,
 				4282668122855EF8007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */,
-				425E0BCC228420A70094928B /* TTCPay.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +267,6 @@
 			files = (
 				425E0BD422842D5D0094928B /* ACNSDK.framework in Embed Frameworks */,
 				4282668322855EFB007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */,
-				42C61C6E21D77425001A7FFD /* TTCPay.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +306,6 @@
 		428258982282C5DC0050A0F8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		428258AD2282C7DB0050A0F8 /* ACNSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ACNSDKBundle.bundle; sourceTree = SOURCE_ROOT; };
 		4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ACN_SDK_NET.framework; sourceTree = SOURCE_ROOT; };
-		428A565221C7AFD800742FE6 /* TTCPay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTCPay.framework; sourceTree = SOURCE_ROOT; };
 		428A565C21C7B8F900742FE6 /* TTC_SDK_Pay_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTC_SDK_Pay_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428A565E21C7B8F900742FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428A566021C7B8F900742FE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -480,7 +469,6 @@
 				425E0BC6228420A20094928B /* ACNSDK.framework in Frameworks */,
 				6C93C069CD2121A194F760AA /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */,
 				4282668022855EF8007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
-				425E0BCB228420A60094928B /* TTCPay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +484,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42C61C6D21D77424001A7FFD /* TTCPay.framework in Frameworks */,
 				425E0BD322842D5D0094928B /* ACNSDK.framework in Frameworks */,
 				4282668222855EFB007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
 				CA44EFEFFDABE71425D4D61B /* Pods_ACN_SDK_admob_Demo.framework in Frameworks */,
@@ -508,7 +495,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42EAD11422CB1AB000D455F5 /* ACNSDK.framework in Frameworks */,
-				428A565621C7B56900742FE6 /* TTCPay.framework in Frameworks */,
 				4282667E22855EEB007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
 				BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */,
 			);
@@ -525,7 +511,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				428A565321C7AFD800742FE6 /* TTCPay.framework in Frameworks */,
 				4282667D22855EAF007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
 				785FCB616B4D1CA5AFB34B18 /* Pods_ACNSDK.framework in Frameworks */,
 			);
@@ -859,7 +844,6 @@
 				C699408020FEF9A6007E96C8 /* Utils */,
 				C699406D20FEF974007E96C8 /* Info.plist */,
 				4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */,
-				428A565221C7AFD800742FE6 /* TTCPay.framework */,
 				428258AD2282C7DB0050A0F8 /* ACNSDKBundle.bundle */,
 			);
 			path = ACNSDK;
