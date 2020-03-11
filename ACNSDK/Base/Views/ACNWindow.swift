@@ -15,7 +15,7 @@ class ACNWindow: UIWindow {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.windowLevel = UIWindowLevelNormal + 100
+        self.windowLevel = UIWindow.Level.normal + 100
         self.backgroundColor = UIColor.white
 
         let viewController = ACNViewController()

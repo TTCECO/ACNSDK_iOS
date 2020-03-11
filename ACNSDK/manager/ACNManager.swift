@@ -10,12 +10,15 @@ import Foundation
 import BigInt
 import ACN_SDK_NET
 import TTCPay
+import web3swift
 
 internal class ACNManager {
 
     static let shared = ACNManager()
     /// Dapp Private key
     var privateKey: String?
+    /// current Private key·s address
+    var currentAddress: String?
     /// Dapp address
     var actionAddress: String?
     var isRequestPrivatekey: Bool = false
@@ -37,6 +40,8 @@ internal class ACNManager {
     var reward: Int = 0
     var bindStartTime: TimeInterval = 0
     var bindBackBlock: ((Bool, ACNSDKError?, _ address: String?) -> Void)?
+    /// 跳转的绑定钱包类型
+    var walletBindType: Int32 = 1
     
     /// 1 - development 2 - production
     var environment: Int32 = 1
@@ -101,25 +106,6 @@ extension ACNManager {
         ACNActionManager.shared.timer?.invalidate()
     }
     
-    @objc func becomeActive() {
-        ACNPrint("becomeActive")
-        
-        if !ACNManager.shared.SDKEnabled {
-            return
-        }
-        
-        let time: TimeInterval = Date().timeIntervalSince1970
-        let currentDay = Int(ceil(time/86400))
-        
-        if UserDefaults.lastDayNumber < currentDay {
-            ACNUploadAction.uploadAction(actionType: actionTypeLogin, extra: "") { (success, error) in
-                if success {
-                    UserDefaults.lastDayNumber = currentDay
-                }
-            }
-        }
-    }
-    
     func login(userInfo: ACNUserInfo, result: @escaping (Bool, ACNSDKError?, ACNUserInfo?) -> Void) {
         
         setDefault()
@@ -138,8 +124,6 @@ extension ACNManager {
                 ACNPrint("login successful userId: \(String(describing: self.userInfo?.userId))")
                 result(true, nil, self.userInfo)
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(self.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-                
                 ACNActionManager.shared.setDefaultManager()
                 self.requestPrivateKeyAndAddressRetry()
                 
@@ -149,6 +133,8 @@ extension ACNManager {
                 ACNPrint("Login failed: \(String(describing: error?.errorDescription))")
             }
         })
+        
+        fetchWalletType()
     }
 
     func logout() {
@@ -156,8 +142,6 @@ extension ACNManager {
         ACNPrint("sign out")
         /// user logout
         setDefault()
-        NotificationCenter.default.removeObserver(self)
-        
     }
 
     func update(userInfo: ACNUserInfo, result: @escaping (Bool, ACNSDKError?, ACNUserInfo?) -> Void) {
@@ -297,6 +281,12 @@ extension ACNManager {
             requestPrivateKeyAndAddressRetry()
         }
     }
+    
+    func fetchWalletType() {
+        ACNNetworkManager.fetchScheme { (type, error) in
+            self.walletBindType = type
+        }
+    }
 }
 
 // MARK: - bind -
@@ -307,7 +297,7 @@ extension ACNManager {
 
         let scheme = params["wltScheme"]
         
-        if scheme == "TTCWallet" {
+        if scheme == "ACNWallet" {
             self.walletAddress = params["address"]
             self.walletScheme = params["wltScheme"]
             self.walletLanguage = params["language"] ?? "en"
@@ -316,11 +306,12 @@ extension ACNManager {
             if self.isLogin {
                 ACNPrint("bind - go to binding page")
                 let bindVC = ACNBindViewController(language: self.walletLanguage)
+                bindVC.modalPresentationStyle = .fullScreen
                 ACNWindow.shared.rootViewController?.present(bindVC, animated: true, completion: nil)
             } else {
                 ACNPrint("bind - User not login")
             }
-        } else if scheme == "TTCBindBack" {
+        } else if scheme == "ACNBindBack" {
             
             if let bindBlock = self.bindBackBlock {
                 
@@ -342,9 +333,22 @@ extension ACNManager {
     }
 
     /// back wallet -1 cancel， 0 faile，1 success，
-    func backWallet(bindState: Int) {
+    func backWallet(bindState: Int, reward: Int32, symbol: String) {
         
-        let walletUrlStr = (self.walletScheme ?? "") + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)"
+        var scheme: String
+        if self.walletBindType == 1 {
+            scheme = "FTACNWallet"
+            if self.environment == 2 {
+                scheme = "ACNWallet"
+            }
+        } else {
+            scheme = "FTWallet"
+            if self.environment == 2 {
+                scheme = "TTCWallet"
+            }
+        }
+        
+        let walletUrlStr = scheme + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)&symbol=\(symbol)"
         let walletUrl = URL(string: walletUrlStr)
 
         guard let wltUrl = walletUrl else { return }
@@ -358,7 +362,7 @@ extension ACNManager {
 
         let userid = ACNManager.shared.userInfo?.userId
         
-        ACNNetworkManager.bindingDapp(isBind: false, walletAddress: self.userInfo?.wallet ?? "") { (success, error) -> Void in
+        ACNNetworkManager.bindingDapp(isBind: false, walletAddress: self.userInfo?.wallet ?? "") { (success, error, info) -> Void in
 
             if success {
                 
@@ -386,10 +390,17 @@ extension ACNManager {
             appName = info!["CFBundleDisplayName"] as! String
         }
         
-        var scheme = "FTWallet"
-        
-        if self.environment == 2 {
-            scheme = "TTCWallet"
+        var scheme: String
+        if self.walletBindType == 1 {
+            scheme = "FTACNWallet"
+            if self.environment == 2 {
+                scheme = "ACNWallet"
+            }
+        } else {
+            scheme = "FTWallet"
+            if self.environment == 2 {
+                scheme = "TTCWallet"
+            }
         }
         
         var iconString = ""
@@ -402,11 +413,43 @@ extension ACNManager {
         
         guard let wltUrl = walletUrl else { return }
         
-        if !UIApplication.shared.openURL(wltUrl) {
-            ACNPrint("bind - Return failure")
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(wltUrl, options: [:]) { (success) in
+                if success {
+                    self.bindBackBlock = result
+                    self.bindStartTime = Date().timeIntervalSince1970
+                } else {
+                    ACNPrint("bind - Return failure")
+                    result(false, ACNSDKError(description: "not open TTC Connect"), nil)
+                    
+                    let url: String
+                    if self.walletBindType == 1 {
+                        url = "https://acn.eco/acornbox/download?appID=\(self.appId.description)"
+                    } else {
+                        url = "https://wallet.ttc.eco/download?appID=\(self.appId.description)"
+                    }
+                    
+                    guard let downloadURL = URL(string: url) else { return }
+                    UIApplication.shared.open(downloadURL, options: [:]) { (_) in
+                    }
+                }
+            }
         } else {
-            self.bindBackBlock = result
-            self.bindStartTime = Date().timeIntervalSince1970
+            if !UIApplication.shared.openURL(wltUrl) {
+                ACNPrint("bind - Return failure")
+                result(false, ACNSDKError(description: "not open TTC Connect"), nil)
+                let url: String
+                if self.walletBindType == 1 {
+                    url = "https://acn.eco/acornbox/download?appID=\(self.appId.description)"
+                } else {
+                    url = "https://wallet.ttc.eco/download?appID=\(self.appId.description)"
+                }
+                guard let downloadURL = URL(string: url) else { return }
+                UIApplication.shared.openURL(downloadURL)
+            } else {
+                self.bindBackBlock = result
+                self.bindStartTime = Date().timeIntervalSince1970
+            }
         }
     }
 }
@@ -426,7 +469,7 @@ extension ACNManager {
             
             self.isRegister = success
             if success {
-                self.becomeActive()
+                ACNActionManager.shared.isEnoughBalance()
                 ACNActionManager.shared.getChainID()
                 ACNActionManager.shared.getTransactionCount()
             } else {

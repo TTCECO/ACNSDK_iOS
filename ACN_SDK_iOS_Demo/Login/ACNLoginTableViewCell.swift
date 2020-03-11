@@ -16,12 +16,12 @@ class ACNLoginTableViewCell: UITableViewCell {
 
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
         
 
-        NotificationCenter.default.addObserver(self, selector: #selector(handleTextFieldTextDidChange), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTextFieldTextDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     @objc private func handleTextFieldTextDidChange(notification: Notification) {

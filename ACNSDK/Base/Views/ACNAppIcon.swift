@@ -20,15 +20,17 @@ class ACNAppIcon: UIView {
         appIcon.backgroundColor = UIColor.lightGray
         appIcon.layer.cornerRadius = 10
         appIcon.layer.masksToBounds = true
+        appIcon.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        appIcon.layer.borderWidth = 1
         self.addSubview(appIcon)
 
-        let layerFrame = CGRect(x: appIcon.frame.origin.x - 1, y: appIcon.frame.origin.y - 1, width: appIcon.frame.size.width + 2, height: appIcon.frame.size.height + 2)
-        let shadowPath = UIBezierPath(roundedRect: layerFrame, cornerRadius: 4.5)
-        let layer = CALayer()
-        layer.shadowPath = shadowPath.cgPath
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.insertSublayer(layer, at: 0)
+//        let layerFrame = CGRect(x: appIcon.frame.origin.x - 1, y: appIcon.frame.origin.y - 1, width: appIcon.frame.size.width + 2, height: appIcon.frame.size.height + 2)
+//        let shadowPath = UIBezierPath(roundedRect: layerFrame, cornerRadius: 4.5)
+//        let layer = CALayer()
+//        layer.shadowPath = shadowPath.cgPath
+//        layer.shadowOpacity = 0.3
+//        layer.shadowOffset = CGSize(width: 0, height: 2)
+//        self.layer.insertSublayer(layer, at: 0)
         
         titleLabel.frame = CGRect(x: 0, y: 77, width: frame.size.width, height: 16)
         titleLabel.font = UIFont.systemFont(ofSize: 14)

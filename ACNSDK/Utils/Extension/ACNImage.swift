@@ -19,7 +19,7 @@ extension UIImage {
     }
     
     static func getBundle() -> Bundle? {
-        if let path = Bundle(for: ACNSDK.self).path(forResource: "TTCSDKBundle", ofType: "bundle") {
+        if let path = Bundle(for: ACNSDK.self).path(forResource: "ACNSDKBundle", ofType: "bundle") {
             return Bundle(path: path)
         }
         

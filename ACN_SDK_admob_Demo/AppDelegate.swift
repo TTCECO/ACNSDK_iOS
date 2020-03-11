@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ACNSDK.log(isEnabled: true)
 
-        ACNSDK.register(appId: "SDKTest", secretKey: "9d1990b8fc9cf1328d88af73b8f89e4d", environment: 1) { (result, error) in
+        ACNSDK.register(appId: "SDKTest", secretKey: "9d1990b8fc9cf1328d88af73b8f89e4d", environment: ACNENV
+        .develop) { (result, error) in
             if result {
                 print("register success")
             } else {
