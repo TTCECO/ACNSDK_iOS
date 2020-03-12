@@ -113,7 +113,7 @@ public class ACNSDK: NSObject {
     
     /// set environment
     /// 1 - development 2 - production
-    static func setEnvironment(environment: ACNENV = .develop) {
+    @objc static func setEnvironment(environment: ACNENV = .develop) {
         
         if environment == .product {
             acnServer = ACNServer(apiURL: "http://sdk-pro.ttcnet.io/", actionURL: "http://test.ttcnet.io/", ACNURL: "http://ttcnet.io/")
@@ -127,7 +127,7 @@ public class ACNSDK: NSObject {
     
     /// change Value to BigInt
     /// eg: ACNSDK.toBigIntString(value: "123.456", decimal: 18)   ==  "123456000000000000000"
-    static func toBigIntString(value: String, decimal: Int) -> String {
+    @objc static func toBigIntString(value: String, decimal: Int) -> String {
         return EtherNumberFormatter().number(from: value, decimals: decimal)?.description ?? "0"
     }
 }
