@@ -273,7 +273,6 @@ SWIFT_CLASS("_TtC6TTCPay8TTCOrder")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TTCPayError;
 
 SWIFT_CLASS("_TtC6TTCPay6TTCPay")
 @interface TTCPay : NSObject
@@ -291,13 +290,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TTCPay * _No
 /// Your app scheme
 @property (nonatomic, copy) NSString * _Nonnull scheme;
 /// Callback query order after successful payment
-@property (nonatomic, copy) void (^ _Nullable payBack)(BOOL, TTCOrder * _Nullable, TTCPayError * _Nullable);
+/// payBack(textHash,  orderID)
+@property (nonatomic, copy) void (^ _Nullable payBack)(NSString * _Nullable, NSString * _Nullable);
 @property (nonatomic, copy) NSString * _Nonnull apiURL;
 /// 1 = development 2 = production
 @property (nonatomic) int32_t environment;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class TTCPayError;
 
 @interface TTCPay (SWIFT_EXTENSION(TTCPay))
 /// Create an order and jump to the wallet to pay
