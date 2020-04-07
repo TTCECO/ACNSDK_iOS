@@ -2,6 +2,9 @@ PODS:
   - Alamofire (4.9.1)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
+  - FBAudienceNetwork (5.6.0):
+    - FBSDKCoreKit/Basics (>= 5.6.0)
+  - FBSDKCoreKit/Basics (6.2.0)
   - Google-Mobile-Ads-SDK (7.53.1):
     - GoogleAppMeasurement (~> 6.0)
   - GoogleAppMeasurement (6.1.7):
@@ -10,6 +13,9 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
+  - GoogleMobileAdsMediationFacebook (5.6.0.0):
+    - FBAudienceNetwork (= 5.6.0)
+    - Google-Mobile-Ads-SDK (>= 7.51.0)
   - GoogleUtilities/AppDelegateSwizzler (6.4.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -72,6 +78,7 @@ DEPENDENCIES:
   - Alamofire
   - BigInt (~> 3.0)
   - Google-Mobile-Ads-SDK
+  - GoogleMobileAdsMediationFacebook (= 5.6.0)
   - JSONRPCKit
   - PromiseKit (= 6.8.0)
   - RealmSwift
@@ -86,8 +93,11 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BigInt
+    - FBAudienceNetwork
+    - FBSDKCoreKit
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
+    - GoogleMobileAdsMediationFacebook
     - GoogleUtilities
     - JSONRPCKit
     - keccak.c
@@ -109,8 +119,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  FBAudienceNetwork: 1ea63543665445a3a5b4a059e8210a343b6ab3c1
+  FBSDKCoreKit: a7bb9f5ac56c1e11d5f8ae0b90a3610f8744b43a
   Google-Mobile-Ads-SDK: fac081606dbd438d8db57198b83ba8b5f875a601
   GoogleAppMeasurement: db118eb61a97dd8c4f7014e368d3c335cbbcf80a
+  GoogleMobileAdsMediationFacebook: 2306b9822775e4ddb50c29fc758d6b45efcf6a72
   GoogleUtilities: 29bd0d8f850efbd28cff6d99e8b7da1f8d236bcf
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   keccak.c: 859583afdaccb4e4fcc0f0096064d101580313f4
@@ -129,6 +142,6 @@ SPEC CHECKSUMS:
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
   web3swift.pod: df222a050e67b767529d2c81e0a87d979e5b7c5f
 
-PODFILE CHECKSUM: 3126868ce953d776c08c36adb98d5f299d851aee
+PODFILE CHECKSUM: 4ff4a435659891465110ad74f207a4ec0860c92a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
