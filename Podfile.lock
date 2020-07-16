@@ -4,42 +4,43 @@ PODS:
     - SipHash (~> 1.2)
   - FBAudienceNetwork (5.6.0):
     - FBSDKCoreKit/Basics (>= 5.6.0)
-  - FBSDKCoreKit/Basics (6.2.0)
-  - Google-Mobile-Ads-SDK (7.53.1):
+  - FBSDKCoreKit/Basics (7.1.1)
+  - Google-Mobile-Ads-SDK (7.62.0):
     - GoogleAppMeasurement (~> 6.0)
-  - GoogleAppMeasurement (6.1.7):
+  - GoogleAppMeasurement (6.6.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (= 0.3.9011)
+    - nanopb (~> 1.30905.0)
   - GoogleMobileAdsMediationFacebook (5.6.0.0):
     - FBAudienceNetwork (= 5.6.0)
     - Google-Mobile-Ads-SDK (>= 7.51.0)
-  - GoogleUtilities/AppDelegateSwizzler (6.4.0):
+  - GoogleUtilities/AppDelegateSwizzler (6.7.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.4.0)
-  - GoogleUtilities/Logger (6.4.0):
+  - GoogleUtilities/Environment (6.7.1):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.7.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.4.0):
+  - GoogleUtilities/MethodSwizzler (6.7.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.4.0):
+  - GoogleUtilities/Network (6.7.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.4.0)"
-  - GoogleUtilities/Reachability (6.4.0):
+  - "GoogleUtilities/NSData+zlib (6.7.1)"
+  - GoogleUtilities/Reachability (6.7.1):
     - GoogleUtilities/Logger
   - JSONRPCKit (3.0.0):
     - Result (~> 3.2.0)
   - keccak.c (0.1.3)
-  - nanopb (0.3.9011):
-    - nanopb/decode (= 0.3.9011)
-    - nanopb/encode (= 0.3.9011)
-  - nanopb/decode (0.3.9011)
-  - nanopb/encode (0.3.9011)
+  - nanopb (1.30905.0):
+    - nanopb/decode (= 1.30905.0)
+    - nanopb/encode (= 1.30905.0)
+  - nanopb/decode (1.30905.0)
+  - nanopb/encode (1.30905.0)
   - PromiseKit (6.8.0):
     - PromiseKit/CorePromise (= 6.8.0)
     - PromiseKit/Foundation (= 6.8.0)
@@ -49,11 +50,12 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.0):
     - PromiseKit/CorePromise
-  - Realm (4.3.0):
-    - Realm/Headers (= 4.3.0)
-  - Realm/Headers (4.3.0)
-  - RealmSwift (4.3.0):
-    - Realm (= 4.3.0)
+  - PromisesObjC (1.2.9)
+  - Realm (5.3.0):
+    - Realm/Headers (= 5.3.0)
+  - Realm/Headers (5.3.0)
+  - RealmSwift (5.3.0):
+    - Realm (= 5.3.0)
   - Result (3.2.4)
   - scrypt.c (0.1.1)
   - secp256k1.c (0.1.2)
@@ -67,7 +69,7 @@ PODS:
   - TrustCore (0.0.7):
     - BigInt
     - TrezorCrypto
-  - web3swift.pod (2.1.5):
+  - web3swift.pod (2.1.10):
     - BigInt (~> 3.1)
     - keccak.c (~> 0.1)
     - PromiseKit (~> 6.4)
@@ -87,7 +89,7 @@ DEPENDENCIES:
   - SwiftyRSA
   - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
-  - web3swift.pod (= 2.1.5)
+  - web3swift.pod
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -103,6 +105,7 @@ SPEC REPOS:
     - keccak.c
     - nanopb
     - PromiseKit
+    - PromisesObjC
     - Realm
     - RealmSwift
     - Result
@@ -120,17 +123,18 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   FBAudienceNetwork: 1ea63543665445a3a5b4a059e8210a343b6ab3c1
-  FBSDKCoreKit: a7bb9f5ac56c1e11d5f8ae0b90a3610f8744b43a
-  Google-Mobile-Ads-SDK: fac081606dbd438d8db57198b83ba8b5f875a601
-  GoogleAppMeasurement: db118eb61a97dd8c4f7014e368d3c335cbbcf80a
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  Google-Mobile-Ads-SDK: c92c27666fbf684c964259785a6b3cdd3068e06f
+  GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
   GoogleMobileAdsMediationFacebook: 2306b9822775e4ddb50c29fc758d6b45efcf6a72
-  GoogleUtilities: 29bd0d8f850efbd28cff6d99e8b7da1f8d236bcf
+  GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   keccak.c: 859583afdaccb4e4fcc0f0096064d101580313f4
-  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromiseKit: 02c93833283c37ce94ef7d25de63d48d62b0754e
-  Realm: 9357c3589555793e1860a7104a7412bca4a48d99
-  RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
+  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  Realm: 81b533e4d02518e3e36a702d43a716b48bf89ed6
+  RealmSwift: d8954b0c203d532cfa8412ab18e2da01eb071aa4
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   scrypt.c: b42ae06183251329d2b2c620c226fb541a4a3592
   secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
@@ -140,8 +144,8 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
-  web3swift.pod: df222a050e67b767529d2c81e0a87d979e5b7c5f
+  web3swift.pod: e3bd1c18a84e9fc1c4bfab8ebc0754b0806a7bcd
 
-PODFILE CHECKSUM: 4ff4a435659891465110ad74f207a4ec0860c92a
+PODFILE CHECKSUM: 3104c007958aed91e4aedd0fcefb55faa1207548
 
 COCOAPODS: 1.9.1

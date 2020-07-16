@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.dependency 'RealmSwift'
   s.dependency 'SwiftyRSA'
   s.dependency 'Google-Mobile-Ads-SDK'
-  s.dependency 'web3swift.pod', '2.2.1'
+  s.dependency 'web3swift.pod', '2.1.10'
   s.dependency 'PromiseKit', '6.8.0'
   s.dependency 'GoogleMobileAdsMediationFacebook', '5.6.0'
 	
