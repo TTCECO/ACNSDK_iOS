@@ -84,6 +84,7 @@ DEPENDENCIES:
   - JSONRPCKit
   - PromiseKit (= 6.8.0)
   - RealmSwift
+  - secp256k1.c (~> 0.1)
   - SnapKit
   - SwiftProtobuf (= 1.0.3)
   - SwiftyRSA
@@ -146,6 +147,6 @@ SPEC CHECKSUMS:
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
   web3swift.pod: e3bd1c18a84e9fc1c4bfab8ebc0754b0806a7bcd
 
-PODFILE CHECKSUM: 3104c007958aed91e4aedd0fcefb55faa1207548
+PODFILE CHECKSUM: b859eac331674e242ae2f961f1b7f3cae6ed035d
 
 COCOAPODS: 1.9.1
