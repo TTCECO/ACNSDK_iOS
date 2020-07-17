@@ -160,7 +160,7 @@ class ACNRPCManager: NSObject {
         
         let hash = signer.hash(transaction: tmptrans)
         
-        guard let pk = ACNManager.shared.privateKey?.to0x, let keyData = Data(hexString: pk) else {
+        guard let pk = ACNManager.shared.privateKey?.to0x, let keyData = Data(hexString: pk), keyData.count > 0 else {
             return nil
         }
         

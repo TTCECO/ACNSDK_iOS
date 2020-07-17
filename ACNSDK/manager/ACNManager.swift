@@ -96,8 +96,8 @@ extension ACNManager {
     func setDefault() {
         
         userInfo = nil
-        privateKey = ""
-        actionAddress = ""
+        privateKey = nil
+        actionAddress = nil
         isRequestPrivatekey = false
         
         isRegister = false
@@ -277,7 +277,7 @@ extension ACNManager {
         
         ACNActionManager.shared.insertAction(actionInfo: actionInfo)
         
-        if !self.isRegister {
+        if !self.isRegister || self.privateKey == nil {
             requestPrivateKeyAndAddressRetry()
         }
     }
@@ -552,7 +552,10 @@ extension ACNManager {
                         return
                     }
                     
-                    self.privateKey = privateKey
+                    if privateKey.count == 64 {
+                        self.privateKey = privateKey
+                    }
+                    
                     self.actionAddress = dappActionAddress
                     ACNPrint("Request private key success, actionAddress: \(dappActionAddress)")
                     result(true, nil)
