@@ -420,7 +420,7 @@ extension ACNManager {
                     self.bindStartTime = Date().timeIntervalSince1970
                 } else {
                     ACNPrint("bind - Return failure")
-                    result(false, ACNSDKError(description: "not open TTC Connect"), nil)
+                    result(false, ACNSDKError(description: "not open app"), nil)
                     
                     let url: String
                     if self.walletBindType == 1 {
@@ -437,7 +437,7 @@ extension ACNManager {
         } else {
             if !UIApplication.shared.openURL(wltUrl) {
                 ACNPrint("bind - Return failure")
-                result(false, ACNSDKError(description: "not open TTC Connect"), nil)
+                result(false, ACNSDKError(description: "not open app"), nil)
                 let url: String
                 if self.walletBindType == 1 {
                     url = "https://acn.eco/acornbox/download?appID=\(self.appId.description)"

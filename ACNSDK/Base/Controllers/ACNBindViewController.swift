@@ -19,26 +19,26 @@ enum Language {
         if key == "zh" {
             switch self {
             case .TTCWallet:
-                return "TTC Connect"
+                return "MARO Connect"
             case .Bind:
                 return "绑定"
             case .Title:
                 if reward == 0 {
                     return "绑定"
                 }
-                return "绑定后领取\(reward)TTC"
+                return "绑定后领取\(reward)MARO"
             }
         } else {
             switch self {
             case .TTCWallet:
-                return "TTC Connect"
+                return "MARO Connect"
             case .Bind:
                 return "Bind"
             case .Title:
                 if reward == 0 {
                     return "Bind"
                 }
-                return "Receive \(reward)TTC after binding"
+                return "Receive \(reward)MARO after binding"
             }
         }
     }
