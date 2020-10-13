@@ -19,8 +19,8 @@ target 'ACNSDK' do
     pod 'RealmSwift' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK'
-    pod 'web3swift.pod'
-    pod 'PromiseKit', '6.8.0'
+    pod 'web3swiftSuper.pod'
+    pod 'PromiseKit', '6.8.4'
     pod 'GoogleMobileAdsMediationFacebook', '5.6.0'
     
     #代码格式工具

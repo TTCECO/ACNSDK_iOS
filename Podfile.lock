@@ -41,14 +41,14 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
-  - PromiseKit (6.8.0):
-    - PromiseKit/CorePromise (= 6.8.0)
-    - PromiseKit/Foundation (= 6.8.0)
-    - PromiseKit/UIKit (= 6.8.0)
-  - PromiseKit/CorePromise (6.8.0)
-  - PromiseKit/Foundation (6.8.0):
+  - PromiseKit (6.8.4):
+    - PromiseKit/CorePromise (= 6.8.4)
+    - PromiseKit/Foundation (= 6.8.4)
+    - PromiseKit/UIKit (= 6.8.4)
+  - PromiseKit/CorePromise (6.8.4)
+  - PromiseKit/Foundation (6.8.4):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.8.0):
+  - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
   - PromisesObjC (1.2.9)
   - Realm (5.3.0):
@@ -69,10 +69,10 @@ PODS:
   - TrustCore (0.0.7):
     - BigInt
     - TrezorCrypto
-  - web3swift.pod (2.1.10):
+  - web3swiftSuper.pod (2.1.16):
     - BigInt (~> 3.1)
     - keccak.c (~> 0.1)
-    - PromiseKit (~> 6.4)
+    - PromiseKit (= 6.8.4)
     - scrypt.c (~> 0.1)
     - secp256k1.c (~> 0.1)
 
@@ -82,15 +82,14 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - GoogleMobileAdsMediationFacebook (= 5.6.0)
   - JSONRPCKit
-  - PromiseKit (= 6.8.0)
+  - PromiseKit (= 6.8.4)
   - RealmSwift
-  - secp256k1.c (~> 0.1)
   - SnapKit
   - SwiftProtobuf (= 1.0.3)
   - SwiftyRSA
   - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
-  - web3swift.pod
+  - web3swiftSuper.pod
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -118,7 +117,7 @@ SPEC REPOS:
     - SwiftyRSA
     - TrezorCrypto
     - TrustCore
-    - web3swift.pod
+    - web3swiftSuper.pod
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -132,7 +131,7 @@ SPEC CHECKSUMS:
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   keccak.c: 859583afdaccb4e4fcc0f0096064d101580313f4
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  PromiseKit: 02c93833283c37ce94ef7d25de63d48d62b0754e
+  PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Realm: 81b533e4d02518e3e36a702d43a716b48bf89ed6
   RealmSwift: d8954b0c203d532cfa8412ab18e2da01eb071aa4
@@ -145,8 +144,8 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
-  web3swift.pod: e3bd1c18a84e9fc1c4bfab8ebc0754b0806a7bcd
+  web3swiftSuper.pod: ea31d6a3a7d289a339530f13d600b03c56673c2c
 
-PODFILE CHECKSUM: b859eac331674e242ae2f961f1b7f3cae6ed035d
+PODFILE CHECKSUM: a5fa0b2df4377946db9c7091a807022bf630428a
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
