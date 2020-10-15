@@ -16,7 +16,7 @@ target 'ACNSDK' do
 #    pod 'CryptoSwift', :git=>'https://github.com/Easoncc/CryptoSwift', :branch=>'newCC' #加密函数
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.9'
-    pod 'RealmSwift' #数据库
+    pod 'RealmSwift', '5.4.7' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK'
     pod 'web3swiftSuper.pod'
@@ -43,4 +43,10 @@ target 'ACN_SDK_admob_Demo' do
   
   pod 'SnapKit'
   
+end
+
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  end
 end
