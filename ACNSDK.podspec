@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.frameworks = "Foundation", 'UIKit'
   s.vendored_frameworks = 'ACN_SDK_NET.framework', 'TTCPay.framework'
   s.static_framework = true
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64', 'ONLY_ACTIVE_ARCH' => 'YES' }
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
   s.dependency 'SwiftProtobuf', '1.0.3'
