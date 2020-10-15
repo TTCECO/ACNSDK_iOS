@@ -1784,6 +1784,7 @@
 		};
 		9766CCED20FC4BE800A873D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
@@ -1794,6 +1795,7 @@
 		};
 		9766CCEE20FC4BE800A873D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
@@ -1803,6 +1805,7 @@
 		};
 		9797810320EA14AD007FA763 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1864,6 +1867,7 @@
 		};
 		9797810420EA14AD007FA763 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
