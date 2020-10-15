@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK"
-  s.version      = "0.2.33"
+  s.version      = "0.2.34"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
   s.frameworks = "Foundation", 'UIKit'
   s.vendored_frameworks = 'ACN_SDK_NET.framework', 'TTCPay.framework'
   s.static_framework = true
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
   s.dependency 'SwiftProtobuf', '1.0.3'
   s.dependency 'BigInt', '3.1.0'
