@@ -61,7 +61,7 @@ PODS:
   - secp256k1.c (0.1.2)
   - SipHash (1.2.2)
   - SnapKit (4.2.0)
-  - SwiftProtobuf (1.0.3)
+  - SwiftProtobuf (1.2.0)
   - SwiftyRSA (1.5.0):
     - SwiftyRSA/ObjC (= 1.5.0)
   - SwiftyRSA/ObjC (1.5.0)
@@ -85,7 +85,7 @@ DEPENDENCIES:
   - PromiseKit (= 6.8.4)
   - RealmSwift (= 5.4.7)
   - SnapKit
-  - SwiftProtobuf (= 1.0.3)
+  - SwiftProtobuf (= 1.2.0)
   - SwiftyRSA
   - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
@@ -140,12 +140,12 @@ SPEC CHECKSUMS:
   secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SwiftProtobuf: 5ccc0e4054e37c75800e5744acb2aa80bb72b39c
+  SwiftProtobuf: 91a9856079044ef4ec762b2344c763cd9e5a73c1
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
   web3swiftSuper.pod: ea31d6a3a7d289a339530f13d600b03c56673c2c
 
-PODFILE CHECKSUM: fd75da93004ba721b12d7bf2052a10bace330d97
+PODFILE CHECKSUM: 2d70f98031c5a34ed34e15fd830bc6717115eb1e
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

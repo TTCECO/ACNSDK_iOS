@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
-  s.dependency 'SwiftProtobuf', '1.0.3'
+  s.dependency 'SwiftProtobuf', '1.2.0'
   s.dependency 'BigInt', '3.1.0'
   s.dependency 'JSONRPCKit'
   s.dependency 'Alamofire'

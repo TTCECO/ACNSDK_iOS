@@ -7,7 +7,7 @@ target 'ACNSDK' do
     use_frameworks!
     
     #protobuf
-    pod 'SwiftProtobuf', '1.0.3'
+    pod 'SwiftProtobuf', '1.2.0'
     
     pod 'BigInt', '~> 3.0' # 任意宽度整数
     pod 'JSONRPCKit' #RPC json库
@@ -47,6 +47,6 @@ end
 
 post_install do |installer|
   installer.pods_project.build_configurations.each do |config|
-    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64 arm7"
   end
 end
