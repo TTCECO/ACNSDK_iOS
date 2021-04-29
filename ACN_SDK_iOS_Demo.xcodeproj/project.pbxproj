@@ -171,15 +171,15 @@
 		97AE5DC62101E3FD00211D2F /* ACNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */; };
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
 		97CCF63A210191A5008C14CE /* VersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCF639210191A5008C14CE /* VersionRequest.swift */; };
+		AFBD180F263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1810263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1811263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1812263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1813263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1814263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
 		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
 		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
 		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
-		BF1E63A32538054A00BB0D03 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */; };
-		BF1E63A42538054C00BB0D03 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */; };
-		BF1E63A52538054D00BB0D03 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */; };
-		BF1E63A62538054E00BB0D03 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */; };
-		BF1E63A72538054F00BB0D03 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */; };
-		BF62C69C2536D77F009FF2CC /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */; };
 		C699406E20FEF974007E96C8 /* ACNSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = C699406C20FEF974007E96C8 /* ACNSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C699409E20FEF9A6007E96C8 /* ACNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699407620FEF9A6007E96C8 /* ACNSDK.swift */; };
 		C699409F20FEF9A6007E96C8 /* ACNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699407920FEF9A6007E96C8 /* ACNViewController.swift */; };
@@ -447,6 +447,7 @@
 		97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNUploadViewController.swift; sourceTree = "<group>"; };
 		97CCF639210191A5008C14CE /* VersionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionRequest.swift; sourceTree = "<group>"; };
 		A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBD180E263AB72200896641 /* xcode12Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
 		BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACNWallet@2x.png"; sourceTree = "<group>"; };
 		BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+++@2x.png"; sourceTree = "<group>"; };
 		BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
@@ -802,6 +803,7 @@
 		979780EA20EA14AC007FA763 = {
 			isa = PBXGroup;
 			children = (
+				AFBD180E263AB72200896641 /* xcode12Config.xcconfig */,
 				979780F520EA14AC007FA763 /* ACN_SDK_iOS_Demo */,
 				428A565D21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */,
 				428258822282C5DC0050A0F8 /* ACN_SDK_admob_Demo */,
@@ -1171,9 +1173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				428A566921C7B8FA00742FE6 /* LaunchScreen.storyboard in Resources */,
-				BF1E63A42538054C00BB0D03 /* xcode12Config.xcconfig in Resources */,
 				428A566621C7B8FA00742FE6 /* Assets.xcassets in Resources */,
 				428A566421C7B8F900742FE6 /* Main.storyboard in Resources */,
+				AFBD1810263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1181,7 +1183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1E63A72538054F00BB0D03 /* xcode12Config.xcconfig in Resources */,
+				AFBD1814263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,9 +1192,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42121D46228417E0003B6D15 /* Assets.xcassets in Resources */,
-				BF1E63A52538054D00BB0D03 /* xcode12Config.xcconfig in Resources */,
 				420392A52282EDD2003A7B21 /* LaunchScreen.storyboard in Resources */,
 				420392A62282EDD2003A7B21 /* Main.storyboard in Resources */,
+				AFBD1811263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1201,9 +1203,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				976D86522109CB200092CF88 /* ACNSDKBundle.bundle in Resources */,
-				BF62C69C2536D77F009FF2CC /* xcode12Config.xcconfig in Resources */,
 				9797810120EA14AD007FA763 /* LaunchScreen.storyboard in Resources */,
 				979780FE20EA14AD007FA763 /* Assets.xcassets in Resources */,
+				AFBD180F263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1212,7 +1214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */,
-				BF1E63A62538054E00BB0D03 /* xcode12Config.xcconfig in Resources */,
+				AFBD1813263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 				BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1222,7 +1224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				428258AE2282C7DB0050A0F8 /* ACNSDKBundle.bundle in Resources */,
-				BF1E63A32538054A00BB0D03 /* xcode12Config.xcconfig in Resources */,
+				AFBD1812263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2213,7 +2215,7 @@
 		};
 		BF62C6A32536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
+			baseConfigurationReference = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
