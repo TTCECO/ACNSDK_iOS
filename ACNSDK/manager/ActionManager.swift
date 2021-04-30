@@ -72,11 +72,21 @@ class ACNActionManager {
     
     let realmQueue = DispatchQueue(label: "realmQueue")
     let cfg: Realm.Configuration
-    var realm: Realm {
+//    var realm: Realm {
+//        get {
+//            return try! Realm(configuration: cfg)
+//        }
+//    }
+    var realm: Realm? {
         get {
-            return try! Realm(configuration: cfg)
+            do {
+                return try Realm(configuration: cfg)
+            } catch  {
+                return nil
+            }
         }
     }
+    
     var timer: Timer?
     
     /// gas limit
@@ -162,11 +172,13 @@ class ACNActionManager {
     /// Behavior write to database
     func insertAction(actionInfo: ACNActionInfo) {
         realmQueue.async {
-            let realm = self.realm
-            try? realm.write {
-                realm.add(actionInfo, update: .modified)
-            }
             //            ACNPrint(actionInfo)
+            if let realm = self.realm {
+                try? realm.write {
+                    realm.add(actionInfo, update: .modified)
+                }
+            }
+            
             self.actionWriteBlockChain(actionInfo: actionInfo)
         }
         
@@ -180,10 +192,11 @@ class ACNActionManager {
             
             guard let userinfo = ACNManager.shared.userInfo else { return }
             
-            let realm = self.realm
-            let actionInfos = realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isUpload = 1 AND isCheck = 3")
-            try? realm.write {
-                realm.delete(actionInfos)
+            if let realm = self.realm {
+                let actionInfos = realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isUpload = 1 AND isCheck = 3")
+                try? realm.write {
+                    realm.delete(actionInfos)
+                }
             }
         }
     }
@@ -193,18 +206,19 @@ class ACNActionManager {
         realmQueue.async {
             if self.isUploadAction { return }
             guard let userinfo = ACNManager.shared.userInfo else { return }
-            
-            let results = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND isUpload = 0")
-            if results.count >= self.uploadCountLimit {
-                self.isUploadAction = true
-                
-                var ecoActions: [ACNNETActionInfo] = []
-                for action in results {
-                    ecoActions.append(action.transitionProto())
+            if let realm = self.realm {
+                let results = realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND isUpload = 0")
+                if results.count >= self.uploadCountLimit {
+                    self.isUploadAction = true
+                    
+                    var ecoActions: [ACNNETActionInfo] = []
+                    for action in results {
+                        ecoActions.append(action.transitionProto())
+                    }
+                    
+                    ACNPrint("start upload behavior....")
+                    self.uploadAction(ecoActions: ecoActions)
                 }
-                
-                ACNPrint("start upload behavior....")
-                self.uploadAction(ecoActions: ecoActions)
             }
         }
     }
@@ -212,11 +226,12 @@ class ACNActionManager {
     /// Update upload status to uploaded
     func updateAction(actionInfos: [ACNNETActionInfo]) {
         realmQueue.async {
-            let realm = self.realm
-            for action in actionInfos {
-                guard let act = realm.objects(ACNActionInfo.self).filter("timestamp = \(action.timestamp)").first else { return }
-                try? realm.write {
-                    act.isUpload = 1
+            if let realm = self.realm {
+                for action in actionInfos {
+                    guard let act = realm.objects(ACNActionInfo.self).filter("timestamp = \(action.timestamp)").first else { return }
+                    try? realm.write {
+                        act.isUpload = 1
+                    }
                 }
             }
             self.isUploadAction = false
@@ -228,12 +243,13 @@ class ACNActionManager {
         realmQueue.async {
             if self.isTransaction { return }
             guard let userinfo = ACNManager.shared.userInfo else { return }
-            
-            if let actionInfo = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = '' AND nonce != 0").first {
-                self.actionWriteBlockChain(actionInfo: actionInfo)
-            } else {
-                guard let actionInfo = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = ''").first else { return }
-                self.actionWriteBlockChain(actionInfo: actionInfo)
+            if let realm = self.realm {
+                if let actionInfo = realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = '' AND nonce != 0").first {
+                    self.actionWriteBlockChain(actionInfo: actionInfo)
+                } else {
+                    guard let actionInfo = realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash = ''").first else { return }
+                    self.actionWriteBlockChain(actionInfo: actionInfo)
+                }
             }
         }
     }
@@ -309,14 +325,16 @@ class ACNActionManager {
                 self.realmQueue.async {
                     
                     /// update database
-                    let realm = self.realm
-                    let action = realm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first
-                    try? realm.write {
-                        action?.actionHash = hex
-                        action?.nonce = Int64(nonce.description) ?? 0
-//                        action?.isUpload = 0 // 有可能被上传服务器后设为1了
-                        action?.uptime = Int64(Date().timeIntervalSince1970*1000)
+                    if let realm = self.realm {
+                        let action = realm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first
+                        try? realm.write {
+                            action?.actionHash = hex
+                            action?.nonce = Int64(nonce.description) ?? 0
+    //                        action?.isUpload = 0 // 有可能被上传服务器后设为1了
+                            action?.uptime = Int64(Date().timeIntervalSince1970*1000)
+                        }
                     }
+                    
                 }
                 
                 //                ACNRPCManager.getTransaction(hash: hex) { (result) in
@@ -439,8 +457,7 @@ class ACNActionManager {
         if isChecking { return }
         
         let userid = ACNManager.shared.userInfo?.userId
-        
-        if let actionInfo = self.realm.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isCheck < 3").sorted(byKeyPath: "nonce").first {
+        if let actionInfo = self.realm?.objects(ACNActionInfo.self).filter("fromUserID = '\(userinfo.userId)' AND actionHash != '' AND isCheck < 3").sorted(byKeyPath: "nonce").first {
             
             if userid != userinfo.userId { return }
             isChecking = true
@@ -458,10 +475,11 @@ class ACNActionManager {
                     
                     if recepit.status {
                         self.realmQueue.async {
-                            let tmpRealm = self.realm
-                            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
-                                try? tmpRealm.write {
-                                    info.isCheck = 3 // Check successful
+                            if let tmpRealm = self.realm {
+                                if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
+                                    try? tmpRealm.write {
+                                        info.isCheck = 3 // Check successful
+                                    }
                                 }
                             }
                             
@@ -598,14 +616,15 @@ class ACNActionManager {
     func resetHahsWithNonce(_ timestamp: Int64, nonce: Int64) {
         
         self.realmQueue.async {
-            let tmpRealm = self.realm
-            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
-                try? tmpRealm.write {
-                    info.actionHash = ""  // Hash restore
-                    info.isCheck = 2      // Block failure
-                    info.nonce = nonce
-//                    info.isUpload = 0     // may be 1
-                    info.blockNumber = 0   // reset block number
+            if let tmpRealm = self.realm {
+                if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
+                    try? tmpRealm.write {
+                        info.actionHash = ""  // Hash restore
+                        info.isCheck = 2      // Block failure
+                        info.nonce = nonce
+    //                    info.isUpload = 0     // may be 1
+                        info.blockNumber = 0   // reset block number
+                    }
                 }
             }
             
@@ -676,11 +695,12 @@ class ACNActionManager {
                     ACNPrint("save block number")
                     
                     self.realmQueue.async {
-                        let tmpRealm = self.realm
-                        if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
-                            try? tmpRealm.write {
-                                info.isCheck = 3 // Check successful
-                                info.blockNumber = blockNumber
+                        if let tmpRealm = self.realm {
+                            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
+                                try? tmpRealm.write {
+                                    info.isCheck = 3 // Check successful
+                                    info.blockNumber = blockNumber
+                                }
                             }
                         }
                         

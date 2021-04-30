@@ -171,6 +171,12 @@
 		97AE5DC62101E3FD00211D2F /* ACNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */; };
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
 		97CCF63A210191A5008C14CE /* VersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCF639210191A5008C14CE /* VersionRequest.swift */; };
+		AFBD180F263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1810263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1811263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1812263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1813263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
+		AFBD1814263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
 		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
 		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
 		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
@@ -286,6 +292,7 @@
 /* Begin PBXFileReference section */
 		067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		094EBB3D22A3CC0D22715A3C /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
 		0BDB6D0980B8CF433FE66374 /* Pods-ACNSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACNSDK/Pods-ACNSDK.release.xcconfig"; sourceTree = "<group>"; };
 		17C9069569D9CA7BD957B0DF /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		2B12FDC8084C4F13A07A5302 /* Pods_ACN_SDK_admob_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_admob_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,9 +423,11 @@
 		42EA1C1422CB128900E4C162 /* ChaCha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChaCha20.swift; sourceTree = "<group>"; };
 		42EA1C1522CB128900E4C162 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-ACNSDK/Pods-ACNSDK.newdebug.xcconfig"; sourceTree = "<group>"; };
 		5F301D0138084585AE7D4158 /* Pods_TTC_SDK_Pay_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTC_SDK_Pay_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		628324287CDC23B0E562237C /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		849EEC3CBA6804E92E0695CA /* Pods-ACNSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACNSDK/Pods-ACNSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
 		9766CEBA20FDF08D00A873D8 /* ACNActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNActionCell.swift; sourceTree = "<group>"; };
 		9766CEBE20FDFE3400A873D8 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		9766CEC020FE020400A873D8 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -438,8 +447,10 @@
 		97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNUploadViewController.swift; sourceTree = "<group>"; };
 		97CCF639210191A5008C14CE /* VersionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionRequest.swift; sourceTree = "<group>"; };
 		A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBD180E263AB72200896641 /* xcode12Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
 		BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACNWallet@2x.png"; sourceTree = "<group>"; };
 		BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+++@2x.png"; sourceTree = "<group>"; };
+		BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
 		C6993FE720FEF1EE007E96C8 /* ACNSDKBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACNSDKBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C699406A20FEF974007E96C8 /* ACNSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ACNSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C699406C20FEF974007E96C8 /* ACNSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNSDK.h; sourceTree = "<group>"; };
@@ -470,6 +481,7 @@
 		C699409B20FEF9A6007E96C8 /* ACNConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNConstant.swift; sourceTree = "<group>"; };
 		C699409D20FEF9A6007E96C8 /* ActionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
 		D7389AD203B125BAE78A2B1B /* Pods_ACNSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACNSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -545,6 +557,10 @@
 				351F55A477E092E5FB719B52 /* Pods-ACN_SDK_admob_Demo.release.xcconfig */,
 				17C9069569D9CA7BD957B0DF /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */,
 				628324287CDC23B0E562237C /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */,
+				4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */,
+				0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */,
+				8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */,
+				F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -593,6 +609,7 @@
 		428258962282C5DC0050A0F8 /* ACNSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */,
 				428258972282C5DC0050A0F8 /* ACNSDKTests.swift */,
 				428258982282C5DC0050A0F8 /* Info.plist */,
 			);
@@ -786,6 +803,7 @@
 		979780EA20EA14AC007FA763 = {
 			isa = PBXGroup;
 			children = (
+				AFBD180E263AB72200896641 /* xcode12Config.xcconfig */,
 				979780F520EA14AC007FA763 /* ACN_SDK_iOS_Demo */,
 				428A565D21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */,
 				428258822282C5DC0050A0F8 /* ACN_SDK_admob_Demo */,
@@ -1157,6 +1175,7 @@
 				428A566921C7B8FA00742FE6 /* LaunchScreen.storyboard in Resources */,
 				428A566621C7B8FA00742FE6 /* Assets.xcassets in Resources */,
 				428A566421C7B8F900742FE6 /* Main.storyboard in Resources */,
+				AFBD1810263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,6 +1183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBD1814263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,6 +1194,7 @@
 				42121D46228417E0003B6D15 /* Assets.xcassets in Resources */,
 				420392A52282EDD2003A7B21 /* LaunchScreen.storyboard in Resources */,
 				420392A62282EDD2003A7B21 /* Main.storyboard in Resources */,
+				AFBD1811263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,6 +1205,7 @@
 				976D86522109CB200092CF88 /* ACNSDKBundle.bundle in Resources */,
 				9797810120EA14AD007FA763 /* LaunchScreen.storyboard in Resources */,
 				979780FE20EA14AD007FA763 /* Assets.xcassets in Resources */,
+				AFBD180F263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,6 +1214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */,
+				AFBD1813263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 				BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1201,6 +1224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				428258AE2282C7DB0050A0F8 /* ACNSDKBundle.bundle in Resources */,
+				AFBD1812263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1762,6 +1786,7 @@
 		};
 		9766CCED20FC4BE800A873D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
@@ -1772,6 +1797,7 @@
 		};
 		9766CCEE20FC4BE800A873D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
@@ -1781,6 +1807,7 @@
 		};
 		9797810320EA14AD007FA763 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1842,6 +1869,7 @@
 		};
 		9797810420EA14AD007FA763 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1957,6 +1985,263 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		BF62C69D2536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = newDebug;
+		};
+		BF62C69E2536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ACNSDK/Network",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ACNSDK",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tataufo.ACN-SDK-iOS-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = newDebug;
+		};
+		BF62C69F2536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ACNSDK",
+				);
+				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.payDemo.TTC-SDK-Pay-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = newDebug;
+		};
+		BF62C6A02536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ACNSDK",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.admobDemo.ACN-SDK-admob-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = newDebug;
+		};
+		BF62C6A12536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ACNSDK/Network",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"BigInt\"",
+					"-framework",
+					"\"JSONRPCKit\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Result\"",
+					"-framework",
+					"\"SipHash\"",
+					"-framework",
+					"\"SwiftProtobuf\"",
+					"-framework",
+					"\"TrezorCrypto\"",
+					"-framework",
+					"\"TrustCore\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = newDebug;
+		};
+		BF62C6A22536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = newDebug;
+		};
+		BF62C6A32536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AS4N82Q9E;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = newDebug;
+		};
+		BF62C6A42536D9CA009FF2CC /* newDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AS4N82Q9E;
+				INFOPLIST_FILE = ACNSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cc.ACNSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = newDebug;
 		};
 		C6993FEB20FEF1EE007E96C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2129,73 +2414,81 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				428A566B21C7B8FA00742FE6 /* Debug */,
+				BF62C69F2536D9CA009FF2CC /* newDebug */,
 				428A566C21C7B8FA00742FE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		42A1AAE8211BEC80007D0D0D /* Build configuration list for PBXNativeTarget "ACNSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				42A1AAE9211BEC80007D0D0D /* Debug */,
+				BF62C6A42536D9CA009FF2CC /* newDebug */,
 				42A1AAEA211BEC80007D0D0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		42C61C6A21D773AE001A7FFD /* Build configuration list for PBXNativeTarget "ACN_SDK_admob_Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				42C61C6B21D773AE001A7FFD /* Debug */,
+				BF62C6A02536D9CA009FF2CC /* newDebug */,
 				42C61C6C21D773AE001A7FFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		9766CCEF20FC4BE800A873D8 /* Build configuration list for PBXAggregateTarget "ACN_SDK_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9766CCED20FC4BE800A873D8 /* Debug */,
+				BF62C6A32536D9CA009FF2CC /* newDebug */,
 				9766CCEE20FC4BE800A873D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		979780EE20EA14AC007FA763 /* Build configuration list for PBXProject "ACN_SDK_iOS_Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9797810320EA14AD007FA763 /* Debug */,
+				BF62C69D2536D9CA009FF2CC /* newDebug */,
 				9797810420EA14AD007FA763 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		9797810520EA14AD007FA763 /* Build configuration list for PBXNativeTarget "ACN_SDK_iOS_Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9797810620EA14AD007FA763 /* Debug */,
+				BF62C69E2536D9CA009FF2CC /* newDebug */,
 				9797810720EA14AD007FA763 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		C6993FEA20FEF1EE007E96C8 /* Build configuration list for PBXNativeTarget "ACNSDKBundle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6993FEB20FEF1EE007E96C8 /* Debug */,
+				BF62C6A22536D9CA009FF2CC /* newDebug */,
 				C6993FEC20FEF1EE007E96C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 		C699407320FEF974007E96C8 /* Build configuration list for PBXNativeTarget "ACNSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C699407420FEF974007E96C8 /* Debug */,
+				BF62C6A12536D9CA009FF2CC /* newDebug */,
 				C699407520FEF974007E96C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = newDebug;
 		};
 /* End XCConfigurationList section */
 	};

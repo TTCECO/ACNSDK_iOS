@@ -124,6 +124,12 @@ public class ACNSDK: NSObject {
         ACNManager.shared.environment = Int32(environment.rawValue)
         TTCPay.setEnvironment(environment: Int32(environment.rawValue))
     }
+    
+    /// change Value to BigInt
+    /// eg: ACNSDK.toBigIntString(value: "123.456", decimal: 18)   ==  "123456000000000000000"
+    @objc public static func toBigIntString(value: String, decimal: Int) -> String {
+        return EtherNumberFormatter().number(from: value, decimals: decimal)?.description ?? "0"
+    }
 }
 
 // MARK: - User
