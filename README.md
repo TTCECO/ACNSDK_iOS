@@ -10,6 +10,6 @@ Install by CocoaPods
 # open use_frameworks!
 use_frameworks!
 
-pod 'ACNSDK'
+pod 'ACNSDK_ios'
 ```
 Note: If your DAPP is developed in Object-C, please select the swift version 4.1+.
