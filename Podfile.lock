@@ -2,45 +2,46 @@ PODS:
   - Alamofire (4.9.1)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
+  - CryptoSwift (1.4.0)
   - FBAudienceNetwork (5.6.0):
     - FBSDKCoreKit/Basics (>= 5.6.0)
-  - FBSDKCoreKit/Basics (7.1.1)
+  - FBSDKCoreKit/Basics (9.3.0)
   - Google-Mobile-Ads-SDK (7.62.0):
     - GoogleAppMeasurement (~> 6.0)
-  - GoogleAppMeasurement (6.6.2):
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GoogleUtilities/Network (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 1.30905.0)
+  - GoogleAppMeasurement (6.9.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
+    - nanopb (~> 1.30906.0)
   - GoogleMobileAdsMediationFacebook (5.6.0.0):
     - FBAudienceNetwork (= 5.6.0)
     - Google-Mobile-Ads-SDK (>= 7.51.0)
-  - GoogleUtilities/AppDelegateSwizzler (6.7.1):
+  - GoogleUtilities/AppDelegateSwizzler (6.7.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.7.1):
+  - GoogleUtilities/Environment (6.7.2):
     - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (6.7.1):
+  - GoogleUtilities/Logger (6.7.2):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.7.1):
+  - GoogleUtilities/MethodSwizzler (6.7.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.7.1):
+  - GoogleUtilities/Network (6.7.2):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.7.1)"
-  - GoogleUtilities/Reachability (6.7.1):
+  - "GoogleUtilities/NSData+zlib (6.7.2)"
+  - GoogleUtilities/Reachability (6.7.2):
     - GoogleUtilities/Logger
   - JSONRPCKit (3.0.0):
     - Result (~> 3.2.0)
   - keccak.c (0.1.3)
-  - nanopb (1.30905.0):
-    - nanopb/decode (= 1.30905.0)
-    - nanopb/encode (= 1.30905.0)
-  - nanopb/decode (1.30905.0)
-  - nanopb/encode (1.30905.0)
+  - nanopb (1.30906.0):
+    - nanopb/decode (= 1.30906.0)
+    - nanopb/encode (= 1.30906.0)
+  - nanopb/decode (1.30906.0)
+  - nanopb/encode (1.30906.0)
   - PromiseKit (6.8.4):
     - PromiseKit/CorePromise (= 6.8.4)
     - PromiseKit/Foundation (= 6.8.4)
@@ -50,18 +51,18 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
-  - PromisesObjC (1.2.9)
-  - Realm (5.4.7):
-    - Realm/Headers (= 5.4.7)
-  - Realm/Headers (5.4.7)
-  - RealmSwift (5.4.7):
-    - Realm (= 5.4.7)
+  - PromisesObjC (1.2.12)
+  - Realm (5.5.1):
+    - Realm/Headers (= 5.5.1)
+  - Realm/Headers (5.5.1)
+  - RealmSwift (5.5.1):
+    - Realm (= 5.5.1)
   - Result (3.2.4)
   - scrypt.c (0.1.1)
   - secp256k1.c (0.1.2)
   - SipHash (1.2.2)
   - SnapKit (4.2.0)
-  - SwiftProtobuf (1.2.0)
+  - SwiftProtobuf (1.17.0)
   - SwiftyRSA (1.5.0):
     - SwiftyRSA/ObjC (= 1.5.0)
   - SwiftyRSA/ObjC (1.5.0)
@@ -69,7 +70,7 @@ PODS:
   - TrustCore (0.0.7):
     - BigInt
     - TrezorCrypto
-  - web3swiftSuper.pod (2.1.16):
+  - web3swiftSuper.pod (2.1.17):
     - BigInt (~> 3.1)
     - keccak.c (~> 0.1)
     - PromiseKit (= 6.8.4)
@@ -79,13 +80,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BigInt (~> 3.0)
-  - Google-Mobile-Ads-SDK
+  - CryptoSwift (= 1.4.0)
+  - Google-Mobile-Ads-SDK (= 7.62.0)
   - GoogleMobileAdsMediationFacebook (= 5.6.0)
   - JSONRPCKit
   - PromiseKit (= 6.8.4)
-  - RealmSwift (= 5.4.7)
+  - RealmSwift (~> 5.5.0)
   - SnapKit
-  - SwiftProtobuf (= 1.2.0)
+  - SwiftProtobuf (= 1.17.0)
   - SwiftyRSA
   - TrezorCrypto (= 0.0.9)
   - TrustCore (~> 0.0.7)
@@ -95,6 +97,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BigInt
+    - CryptoSwift
     - FBAudienceNetwork
     - FBSDKCoreKit
     - Google-Mobile-Ads-SDK
@@ -122,30 +125,31 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   FBAudienceNetwork: 1ea63543665445a3a5b4a059e8210a343b6ab3c1
-  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   Google-Mobile-Ads-SDK: c92c27666fbf684c964259785a6b3cdd3068e06f
-  GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
+  GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleMobileAdsMediationFacebook: 2306b9822775e4ddb50c29fc758d6b45efcf6a72
-  GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
+  GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   keccak.c: 859583afdaccb4e4fcc0f0096064d101580313f4
-  nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
-  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
-  Realm: 4bfc08e376b2e30c84ec3200ebe715574da05cc0
-  RealmSwift: ed40f371b62e8677141939e05b44a0c1a0a2d965
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Realm: c2ffe0667f9c98c9ba65f608ba85684d39826145
+  RealmSwift: 5a35c1c35c3e1925e6fcd092c881d5cc4a826bff
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   scrypt.c: b42ae06183251329d2b2c620c226fb541a4a3592
   secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SwiftProtobuf: 91a9856079044ef4ec762b2344c763cd9e5a73c1
+  SwiftProtobuf: 9c85136c6ba74b0a1b84279dbf0f6db8efb714e0
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TrustCore: 688df9a241008cf9cfa3842ec8ef28777a8b7534
-  web3swiftSuper.pod: ea31d6a3a7d289a339530f13d600b03c56673c2c
+  web3swiftSuper.pod: 3b7f1a504d2989da2802d4160cdac5b6b41b8ee8
 
-PODFILE CHECKSUM: 2d70f98031c5a34ed34e15fd830bc6717115eb1e
+PODFILE CHECKSUM: dd10f6ce775a16e8b8fba2a13c770b6ccfbc2d52
 
 COCOAPODS: 1.10.0

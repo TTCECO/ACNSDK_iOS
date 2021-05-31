@@ -11,6 +11,7 @@ import BigInt
 import ACN_SDK_NET
 import TTCPay
 import web3swift
+import CryptoSwift
 
 internal class ACNManager {
 

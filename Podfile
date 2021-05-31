@@ -7,24 +7,22 @@ target 'ACNSDK' do
     use_frameworks!
     
     #protobuf
-    pod 'SwiftProtobuf', '1.2.0'
+    pod 'SwiftProtobuf', '1.17.0'
     
     pod 'BigInt', '~> 3.0' # 任意宽度整数
     pod 'JSONRPCKit' #RPC json库
     pod 'Alamofire' #网络请求
-#    pod 'CryptoSwift', '0.12.0'#加密库
-#    pod 'CryptoSwift', :git=>'https://github.com/Easoncc/CryptoSwift', :branch=>'newCC' #加密函数
+    pod 'CryptoSwift', '1.4.0'
+
     pod 'TrustCore', '~> 0.0.7'
     pod 'TrezorCrypto', '0.0.9'
-    pod 'RealmSwift', '5.4.7' #数据库
+    pod 'RealmSwift', '~> 5.5.0' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
-    pod 'Google-Mobile-Ads-SDK'
+    pod 'Google-Mobile-Ads-SDK', '7.62.0'
     pod 'web3swiftSuper.pod'
     pod 'PromiseKit', '6.8.4'
     pod 'GoogleMobileAdsMediationFacebook', '5.6.0'
     
-    #代码格式工具
-#    pod 'SwiftLint', '0.26.0'
 end
 
 target 'ACN_SDK_iOS_Demo' do
@@ -44,9 +42,13 @@ target 'ACN_SDK_admob_Demo' do
   pod 'SnapKit'
   
 end
-
-post_install do |installer|
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64 arm7"
-  end
-end
+#
+#post_install do |installer|
+#  installer.pods_project.targets.each do |target|
+#    target.build_configurations.each do |config|
+#      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+#      config.build_settings['EXCLUDED_ARCHS[sdk=watchsimulator*]'] = 'arm64'
+#      config.build_settings['EXCLUDED_ARCHS[sdk=appletvsimulator*]'] = 'arm64'
+#    end
+#  end
+#end
