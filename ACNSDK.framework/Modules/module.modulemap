@@ -1,0 +1,11 @@
+framework module ACNSDK {
+  umbrella header "ACNSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module ACNSDK.Swift {
+    header "ACNSDK-Swift.h"
+    requires objc
+}

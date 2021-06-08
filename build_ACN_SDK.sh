@@ -36,6 +36,11 @@ clean build
 # BUILD_ROOT="${BUILD_ROOT}" \
 # clean build
 
+if [ $? -ne 0 ]; then
+    echo "xcodebuild failed"
+    exit 1
+fi
+
 #拷备framework
 # cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}"
 cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework" "${PROJECT_DIR}"
