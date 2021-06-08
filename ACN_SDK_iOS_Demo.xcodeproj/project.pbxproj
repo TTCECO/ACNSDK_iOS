@@ -96,12 +96,6 @@
 		97AE5DC62101E3FD00211D2F /* ACNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */; };
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
 		97CCF63A210191A5008C14CE /* VersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCF639210191A5008C14CE /* VersionRequest.swift */; };
-		AFBD180F263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
-		AFBD1810263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
-		AFBD1811263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
-		AFBD1812263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
-		AFBD1813263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
-		AFBD1814263AB72200896641 /* xcode12Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */; };
 		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
 		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
 		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
@@ -300,7 +294,6 @@
 		AFBD180E263AB72200896641 /* xcode12Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
 		BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACNWallet@2x.png"; sourceTree = "<group>"; };
 		BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+++@2x.png"; sourceTree = "<group>"; };
-		BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
 		C6993FE720FEF1EE007E96C8 /* ACNSDKBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACNSDKBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C699406A20FEF974007E96C8 /* ACNSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ACNSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C699406C20FEF974007E96C8 /* ACNSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACNSDK.h; sourceTree = "<group>"; };
@@ -459,7 +452,6 @@
 		428258962282C5DC0050A0F8 /* ACNSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */,
 				428258972282C5DC0050A0F8 /* ACNSDKTests.swift */,
 				428258982282C5DC0050A0F8 /* Info.plist */,
 			);
@@ -851,7 +843,7 @@
 			attributes = {
 				CLASSPREFIX = TTC;
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = tataufo;
 				TargetAttributes = {
 					428A565B21C7B8F900742FE6 = {
@@ -874,7 +866,7 @@
 					};
 					C699406920FEF974007E96C8 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -910,7 +902,6 @@
 				428A566921C7B8FA00742FE6 /* LaunchScreen.storyboard in Resources */,
 				428A566621C7B8FA00742FE6 /* Assets.xcassets in Resources */,
 				428A566421C7B8F900742FE6 /* Main.storyboard in Resources */,
-				AFBD1810263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,7 +909,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFBD1814263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,7 +919,6 @@
 				42121D46228417E0003B6D15 /* Assets.xcassets in Resources */,
 				420392A52282EDD2003A7B21 /* LaunchScreen.storyboard in Resources */,
 				420392A62282EDD2003A7B21 /* Main.storyboard in Resources */,
-				AFBD1811263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,7 +929,6 @@
 				976D86522109CB200092CF88 /* ACNSDKBundle.bundle in Resources */,
 				9797810120EA14AD007FA763 /* LaunchScreen.storyboard in Resources */,
 				979780FE20EA14AD007FA763 /* Assets.xcassets in Resources */,
-				AFBD180F263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,7 +937,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */,
-				AFBD1813263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 				BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,7 +946,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				428258AE2282C7DB0050A0F8 /* ACNSDKBundle.bundle in Resources */,
-				AFBD1812263AB72200896641 /* xcode12Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,7 +1286,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1310,7 +1296,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1328,7 +1314,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1338,7 +1324,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1358,7 +1344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
 				INFOPLIST_FILE = ACNSDKTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1378,7 +1364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
 				INFOPLIST_FILE = ACNSDKTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1395,7 +1381,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 094EBB3D22A3CC0D22715A3C /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1405,13 +1391,14 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.admobDemo.ACN-SDK-admob-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1423,7 +1410,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 351F55A477E092E5FB719B52 /* Pods-ACN_SDK_admob_Demo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1433,12 +1420,13 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.admobDemo.ACN-SDK-admob-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1448,7 +1436,6 @@
 		};
 		9766CCED20FC4BE800A873D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1460,7 +1447,6 @@
 		};
 		9766CCEE20FC4BE800A873D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1471,7 +1457,6 @@
 		};
 		9797810320EA14AD007FA763 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1496,6 +1481,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1522,18 +1508,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		9797810420EA14AD007FA763 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1558,6 +1544,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1578,11 +1565,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1591,7 +1579,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 17C9069569D9CA7BD957B0DF /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1603,7 +1591,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1620,7 +1608,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 628324287CDC23B0E562237C /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1637,7 +1625,7 @@
 					"RELEASE=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1652,7 +1640,6 @@
 		};
 		BF62C69D2536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF62C69B2536D77F009FF2CC /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1677,6 +1664,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1703,12 +1691,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = newDebug;
 		};
@@ -1716,7 +1705,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1728,7 +1717,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1745,7 +1734,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1755,7 +1744,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1773,7 +1762,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
@@ -1783,13 +1772,14 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.admobDemo.ACN-SDK-admob-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1801,7 +1791,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1819,7 +1809,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1852,7 +1842,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1862,14 +1852,14 @@
 		BF62C6A22536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1898,7 +1888,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
 				INFOPLIST_FILE = ACNSDKTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1914,14 +1904,14 @@
 		C6993FEB20FEF1EE007E96C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1934,14 +1924,14 @@
 		C6993FEC20FEF1EE007E96C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1955,7 +1945,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 849EEC3CBA6804E92E0695CA /* Pods-ACNSDK.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1973,13 +1963,13 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2006,7 +1996,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2017,7 +2007,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BDB6D0980B8CF433FE66374 /* Pods-ACNSDK.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -2040,7 +2030,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2072,7 +2062,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

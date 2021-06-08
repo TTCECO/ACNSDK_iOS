@@ -535,7 +535,7 @@ extension ACNManager {
                 let secretKey: [UInt8] = Array(self.secretKey.utf8)
 
                 do {
-                    var decrypted = try AES(key: secretKey, blockMode: CBC(iv: iv), padding: .zeroPadding).decrypt(crypted)
+                    var decrypted = try CryptoSwift.AES(key: secretKey, blockMode: CBC(iv: iv), padding: .zeroPadding).decrypt(crypted)
                     if let padding = decrypted.last {
                         let length = decrypted.count - Int(padding)
                         decrypted = Array(decrypted.prefix(length))
