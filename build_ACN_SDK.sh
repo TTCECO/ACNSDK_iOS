@@ -13,12 +13,12 @@ echo "编译环境：${CONFIGURATION}"
 
 #build devices and simulator architectures
 echo "编译真机"
+
 xcodebuild \
 -workspace ACN_SDK_iOS_Demo.xcworkspace \
 -scheme ACNSDK \
 -configuration "${CONFIGURATION}" \
 -sdk iphoneos \
--UseModernBuildSystem=NO \
 ONLY_ACTIVE_ARCH=NO \
 BUILD_DIR="${BUILD_DIR}" \
 BUILD_ROOT="${BUILD_ROOT}" \
