@@ -30,6 +30,7 @@ Pod::Spec.new do |s|
   s.dependency 'TrezorCrypto', '0.0.9'
   s.dependency 'RealmSwift'
   s.dependency 'SwiftyRSA'
+  s.dependency 'CryptoSwift', '1.4.0'
   s.dependency 'Google-Mobile-Ads-SDK', '7.69'
   s.dependency 'web3swiftSuper.pod', '2.1.16'
   s.dependency 'PromiseKit', '6.8.4'
