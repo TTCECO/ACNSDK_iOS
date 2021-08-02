@@ -1,16 +1,16 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK_ios"
-  s.version      = "0.2.37"
+  s.version      = "0.2.38"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "zhangliang" => "zhangliang@tataufo.com" }
 
-  s.ios.deployment_target = '9.0'
-  s.swift_version    = "4.2"
+  s.ios.deployment_target = '10.0'
+  s.swift_version    = "5.4"
   s.platform         = :ios
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source       = { :git => "https://github.com/TTCECO/ACNSDK_iOS.git", :tag => "#{s.version}" }
   s.source_files  = "ACNSDK/**/*.swift"
@@ -23,16 +23,11 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
   s.dependency 'SwiftProtobuf', '1.17.0'
-  s.dependency 'BigInt', '3.1.0'
-  s.dependency 'JSONRPCKit'
   s.dependency 'Alamofire'
-  s.dependency 'TrustCore', '0.0.7'
-  s.dependency 'TrezorCrypto', '0.0.9'
   s.dependency 'RealmSwift'
   s.dependency 'SwiftyRSA'
   s.dependency 'Google-Mobile-Ads-SDK', '7.69'
-  s.dependency 'web3swiftSuper.pod', '2.1.16'
-  s.dependency 'PromiseKit', '6.8.4'
+  s.dependency 'web3swift', '2.3.0'
   s.dependency 'GoogleMobileAdsMediationFacebook', '5.6.0'
 
 end

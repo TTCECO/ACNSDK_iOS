@@ -629,15 +629,11 @@ SWIFT_CLASS("_TtC6ACNSDK6ACNSDK")
 ///   </li>
 /// </ul>
 + (void)updateUserInfo:(ACNUserInfo * _Nonnull)userInfo result:(void (^ _Nonnull)(BOOL, ACNSDKError * _Nullable, ACNUserInfo * _Nullable))result;
-/// Query the balance of current user’s account
+/// Query the balance of current user’s account in Wei units (1 ETH = 10^18 Wei).
 /// \param result Return balance
 ///
 + (void)queryAccountBalanceWithResult:(void (^ _Nonnull)(BOOL, ACNSDKError * _Nullable, NSString * _Nonnull))result;
-/// Query the TTC balance of the current user’s wallet
-/// \param result Return balance
-///
-+ (void)queryWalletBalanceWithResult:(void (^ _Nonnull)(BOOL, ACNSDKError * _Nullable, NSString * _Nonnull))result;
-/// Query the ACN balance of the current user’s wallet
+/// Query the ACN balance of the current user’s wallet in Wei units (1 ETH = 10^18 Wei).
 /// \param result Return balance
 ///
 + (void)queryWalletACNBalanceWithResult:(void (^ _Nonnull)(BOOL, ACNSDKError * _Nullable, NSString * _Nonnull))result;
