@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import JSONRPCKit
 import BigInt
-import TrustCore
 import ACN_SDK_NET
 import Alamofire
+import web3swift
+import PromiseKit
 
 enum RPCErrorType: Int32 {
     case null = 133
@@ -22,231 +22,168 @@ enum RPCErrorType: Int32 {
 
 class ACNRPCManager: NSObject {
     
-    // 解析error
-    static func isRespondError(result: Result<Any>) -> Result<Any> {
-        switch result {
-        case .success(let resultValue):
-            
-            if resultValue is NSNull {
-                return Result.failure(ACNRPCError.RPCSuccessError(RPCErrorType.null.rawValue, "null"))
-            }
-            
-            guard let value = resultValue as? [String: Any] else {
-                return Result.failure(ACNRPCError.RPCSuccessError(RPCErrorType.NotDic.rawValue, "Can't as [String: Any]"))
-            }
-            
-            if let e = value["error"] {
-                if let error = e as? [String: Any] {
-                    let message = error["message"] as! String
-                    let code: Int32 = error["code"] as! Int32
-                    return Result.failure(ACNRPCError.RPCSuccessError(code, message))
-                } else {
-                    return Result.failure(ACNRPCError.RPCSuccessError(RPCErrorType.NotGetError.rawValue, "Failed to get error"))
-                }
-            } else {
-                
-                if value["result"] is NSNull {
-                    return Result.failure(ACNRPCError.RPCSuccessError(RPCErrorType.null.rawValue, "null"))
-                }
-            
-                return Result.success(value)
-            }
-            
-        case .failure(let error):
-            return Result.failure(error)
+    let web: web3
+    
+    init?(url: URL) {
+        do {
+            let web3 = try Web3.new(url)
+            self.web = web3
+        } catch {
+            return nil
         }
     }
     
-    // MARK: - RPC request
-    static func getEthBalance(for address: String, completion: @escaping (Result<Balance>) -> Void) {
-        ACNServiceRequest(batch: BatchFactory().create(BalanceRequest(address: address.to0x)), url: acnServer.ACNURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+    func getEthBalance(for address: String, completion: @escaping (Swift.Result<BigUInt, ACNRPCError>) -> Void) {
+        
+        DispatchQueue.global().async {
             
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                let balance = Balance(value: BigInt(result.drop0x, radix: 16) ?? BigInt(0))
-                completion(Result.success(balance))
-            case .failure(let error):
-                completion(Result.failure(error))
+            if let addr = EthereumAddress(address.to0x) {
+                
+                do {
+                    let balance = try self.web.eth.getBalance(address: addr)
+                    completion(.success(balance))
+                } catch {
+                    completion(.failure(.getBalanceError))
+                }
+            } else {
+                completion(.failure(.getBalanceError))
             }
-        })
+        }
+    }
+}
+
+class ACNActionRPCManager: NSObject {
+    
+    let web: web3
+    
+    init?(url: URL, privateKey: Data) {
+        do {
+            let web3 = try Web3.new(url)
+            
+            if let eKeyStore = try EthereumKeystoreV3(privateKey: privateKey,
+                                                      password: "LocalDefaultPassword") {
+                let keystore = KeystoreManager([eKeyStore])
+                web3.addKeystoreManager(keystore)
+                self.web = web3
+            } else {
+                return nil
+            }
+        } catch {
+            return nil
+        }
     }
     
-    static func getSideBalance(for address: String, completion: @escaping (Result<Balance>) -> Void) {
-        ACNServiceRequest(batch: BatchFactory().create(BalanceRequest(address: address.to0x)), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+    func getSideBalance(for address: String,
+                        completion: @escaping (Swift.Result<BigUInt, ACNRPCError>) -> Void) {
+        
+        DispatchQueue.global().async {
             
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                let balance = Balance(value: BigInt(result.drop0x, radix: 16) ?? BigInt(0))
-                completion(Result.success(balance))
-            case .failure(let error):
-                completion(Result.failure(error))
+            if let addr = EthereumAddress(address.to0x) {
+                
+                do {
+                    let balance = try self.web.eth.getBalance(address: addr)
+                    completion(.success(balance))
+                } catch {
+                    completion(.failure(.getBalanceError))
+                }
+            } else {
+                completion(.failure(.getBalanceError))
             }
-        })
+        }
     }
     
     /// fetch latest Nonce
-    static func getTransactionCount(address: String, completion: @escaping (Result<BigInt>) -> Void) {
+    func getTransactionCount(address: String,
+                             completion: @escaping (Swift.Result<BigInt, ACNRPCError>) -> Void) {
         
-        ACNServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(address: address.to0x, state: "latest")), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        DispatchQueue.global().async {
             
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                let nonce = BigInt(result.drop0x, radix: 16) ?? BigInt()
-                completion(Result.success(nonce))
-            case .failure(let error):
-                completion(Result.failure(error))
+            if let addr = EthereumAddress(address.to0x) {
+                
+                do {
+                    let transactionCount = try self.web.eth.getTransactionCount(address: addr)
+                    completion(.success(BigInt(transactionCount)))
+                } catch {
+                    completion(.failure(.getTransactionCountError))
+                }
+            } else {
+                completion(.failure(.getTransactionCountError))
             }
-        })
+        }
     }
     
     /// fetch pending Nonce
-    static func getTransactionPendingCount(address: String, completion: @escaping (Result<BigInt>) -> Void) {
+    func getTransactionPendingCount(address: String,
+                                    completion: @escaping (Swift.Result<BigInt, ACNRPCError>) -> Void) {
         
-        ACNServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(address: address.to0x, state: "pending")), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
+        DispatchQueue.global().async {
             
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                let nonce = BigInt(result.drop0x, radix: 16) ?? BigInt()
-                completion(Result.success(nonce))
-            case .failure(let error):
-                completion(Result.failure(error))
+            if let addr = EthereumAddress(address.to0x) {
+                
+                do {
+                    let transactionCount = try self.web.eth.getTransactionCount(address: addr, onBlock: "pending")
+                    completion(.success(BigInt(transactionCount)))
+                } catch {
+                    completion(.failure(.getTransactionCountError))
+                }
+            } else {
+                completion(.failure(.getTransactionCountError))
             }
-        })
-    }
-    
-    /// fetch version
-    static func fetchVersion(completion: @escaping (Result<String>) -> Void) {
-        
-        ACNServiceRequest(batch: BatchFactory().create(VersionRequest()), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
-            
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                completion(Result.success(result))
-            case .failure(let error):
-                completion(Result.failure(error))
-            }
-        })
-    }
-    
-    static func sendTransaction(transaction: Transaction, completion: @escaping (Result<String>) -> Void) {
-        ACNRPCManager.signAndSend(transaction: transaction, completion: completion)
-    }
-    
-    static private func signAndSend(transaction: Transaction, completion: @escaping (Result<String>) -> Void) {
-        let data = signTransaction(transaction)
-        
-        guard let signData = data else {
-            completion(Result.failure(ACNRPCError.failedToSignTransaction))
-            return
         }
-        
-        ACNRPCManager.approve(transaction: transaction, data: signData, completion: completion)
     }
     
-    static private func signTransaction(_ transaction: Transaction) -> Data? {
-        let signer: Signer = EIP155Signer(chainId: BigInt(transaction.chainID))
+    func sendTransaction(from: EthereumAddress,
+                         to: EthereumAddress,
+                         gasLimit: BigUInt,
+                         gasPrice: BigUInt,
+                         value: BigUInt,
+                         nonce: BigUInt,
+                         data: Data,
+                         completion: @escaping (Swift.Result<String, ACNRPCError>) -> Void) {
         
-        let tmptrans = Transaction.init(from: transaction.from.to0x, to: transaction.to.to0x, gasLimit: transaction.gasLimit, gasPrice: transaction.gasPrice, value: transaction.value, nonce: transaction.nonce, data: transaction.data, chainID: transaction.chainID)
-        
-        let hash = signer.hash(transaction: tmptrans)
-        
-        guard let pk = ACNManager.shared.privateKey?.to0x, let keyData = Data(hexString: pk), keyData.count > 0 else {
-            return nil
+        DispatchQueue.global().async {
+            do {
+                var trans = EthereumTransaction(gasPrice: gasPrice, gasLimit: gasLimit, to: to, value: value, data: data)
+                trans.nonce = nonce
+                trans.UNSAFE_setChainID(self.web.provider.network?.chainID)
+                
+                var options = TransactionOptions()
+                options.callOnBlock = .pending
+                options.from = from
+                options.nonce = .manual(nonce)
+                options.gasLimit = .manual(gasLimit)
+                options.gasPrice = .manual(gasPrice)
+                
+                let result = try self.web.eth.sendTransaction(trans, transactionOptions: options, password: "LocalDefaultPassword")
+                completion(.success(result.hash))
+            } catch {
+                completion(.failure(.sendTransactionError))
+            }
         }
-        
-        let signature = EthereumCrypto.sign(hash: hash, privateKey: keyData)
-        let (r, s, v) = signer.values(transaction: tmptrans, signature: signature)
-        let data = RLP.encode([
-            tmptrans.nonce,
-            tmptrans.gasPrice,
-            tmptrans.gasLimit,
-            Data(hexString: tmptrans.to) ?? Data(),
-            tmptrans.value,
-            tmptrans.data,
-            v, r, s
-            ])
-        return data
     }
     
-    static private func approve(transaction: Transaction, data: Data, completion: @escaping (Result<String>) -> Void) {
-        let dataHex = data.hexEncoded
-        ACNServiceRequest(batch: BatchFactory().create(SendRawTransactionRequest(signedTransaction: dataHex)), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
-            
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                completion(Result.success(result))
-            case .failure(let error):
-                completion(Result.failure(error))
+    func getTransactionReceipt(txhash: String,
+                               completion: @escaping (Swift.Result<TransactionReceipt, ACNRPCError>) -> Void) {
+        DispatchQueue.global().async {
+            do {
+                let result = try self.web.eth.getTransactionReceipt(txhash.to0x)
+                completion(.success(result))
+            } catch {
+                completion(.failure(.getTransactionReceiptError))
             }
-        })
+        }
     }
     
-    static func getTransaction(hash: String, completion: @escaping (Result<[String: Any]>) -> Void) {
+    func getBlockNumber(completion: @escaping (Swift.Result<BigUInt, ACNRPCError>) -> Void) {
         
-        ACNServiceRequest(batch: BatchFactory().create(GetTransactionRequest(hash: hash.to0x)), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
-            
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                let value = responseValue as! [String: Any]
-                let result = value["result"] as! [String: Any]
-                completion(Result.success(result))
-            case .failure(let error):
-                completion(Result.failure(error))
+        DispatchQueue.global().async {
+            do {
+                let result = try self.web.eth.getBlockNumber()
+                completion(.success(result))
+            } catch {
+                completion(.failure(.getBlockNumberError))
             }
-        })
-    }
-    
-    static func getTransactionReceipt(hash: String, completion: @escaping (Result<TransactionReceipt>) -> Void) {
-        
-        ACNServiceRequest(batch: BatchFactory().create(GetTransactionReceiptRequest(hash: hash.to0x)), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
-            
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                
-                let value = responseValue as! [String: Any]
-                let result = value["result"] as! [String: Any]
-                
-                let blockNumberString = result["blockNumber"] as! String
-                let statusString = result["status"] as! String
-                let blockNumber = BigInt(blockNumberString.drop0x, radix: 16) ?? BigInt(0)
-                
-                let receipt = TransactionReceipt(status: statusString == "0x1" ? true : false, blockNumber: blockNumber)
-                
-                completion(Result.success(receipt))
-            case .failure(let error):
-                completion(Result.failure(error))
-            }
-        })
-    }
-    
-    static func getBlockNumber(completion: @escaping (Result<BigInt>) -> Void) {
-        
-        ACNServiceRequest(batch: BatchFactory().create(BlockNumberRequest()), url: acnServer.actionURL).getRequest()?.validate().responseJSON(completionHandler: { response in
-            
-            switch ACNRPCManager.isRespondError(result: response.result) {
-            case .success(let responseValue):
-                
-                let value = responseValue as! [String: Any]
-                let result: String = value["result"] as! String
-                let number = BigInt(result.drop0x, radix: 16) ?? BigInt()
-                
-                completion(Result.success(number))
-            case .failure(let error):
-                completion(Result.failure(error))
-            }
-        })
+        }
     }
     
 }

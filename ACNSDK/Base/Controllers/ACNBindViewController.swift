@@ -160,22 +160,22 @@ internal class ACNBindViewController: ACNViewController {
     }
 
     @objc private func bindBtnClick(_ sender: UIButton) {
-
+        
         sender.isEnabled = false
-        ACNNetworkManager.bindingDapp(isBind: true, walletAddress: ACNManager.shared.walletAddress!) { (success, error, info) in
+        ACNNetworkManager.bindingDapp(isBind: true, walletAddress: ACNManager.shared.walletAddress!) { resultValue in
             sender.isEnabled = true
             
-            if success, let bindInfo = info {
+            switch resultValue {
+            case .success(let info):
                 ACNManager.shared.userInfo?.wallet = ACNManager.shared.walletAddress
                 ACNPrint("bind - Bind successfully, address: \(ACNManager.shared.walletAddress!)")
-                ACNManager.shared.backWallet(bindState: 1, reward: bindInfo.reward, symbol: bindInfo.symbol)
+                ACNManager.shared.backWallet(bindState: 1, reward: info.reward, symbol: info.symbol)
                 self.dismiss(animated: true, completion: nil)
-            } else {
-                ACNPrint("bind - Bind failed: \(String(describing: error?.errorDescription))")
+            case .failure(let error):
+                ACNPrint("bind - Bind failed: \(String(describing: error.errorDescription))")
                 ACNManager.shared.backWallet(bindState: 0, reward: 0, symbol: "")
                 self.dismiss(animated: true, completion: nil)
             }
-
         }
     }
     

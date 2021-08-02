@@ -58,16 +58,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func queryWalletBalance() {
-        ACNSDK.queryWalletBalance { (success, error, balance) in
-            if success {
-                TWToast.showToast(text: "wallet balance: \(balance)")
-            } else {
-                TWToast.showToast(text: "error: \(String(describing: error?.errorDescription))")
-            }
-        }
-    }
-    
     func queryWalletACNBalance() {
         
         ACNSDK.queryWalletACNBalance { (success, error, balance) in
@@ -179,7 +169,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
             queryAccountBalance()
         case 4:
             print(dataArr[4])
-            queryWalletBalance()
         case 5:
             print(dataArr[5])
             unBindWallet()

@@ -23,6 +23,6 @@ class ACNAdupload {
         behavior.adUnitID = adUnitID
         behavior.handleType = handleType
         behavior.countryCode = ACNManager.shared.location.countryCode
-        ACNNetworkManager.uploadAdBehavior(behavior: behavior) { (success, error) in }
+        ACNNetworkManager.uploadAdBehavior(behavior: behavior) { _ in }
     }
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 import TTCPay
+import BigInt
+import web3swift
 
 @objc public enum ACNENV: Int32 {
     case develop = 1
@@ -128,7 +130,8 @@ public class ACNSDK: NSObject {
     /// change Value to BigInt
     /// eg: ACNSDK.toBigIntString(value: "123.456", decimal: 18)   ==  "123456000000000000000"
     @objc public static func toBigIntString(value: String, decimal: Int) -> String {
-        return EtherNumberFormatter().number(from: value, decimals: decimal)?.description ?? "0"
+        
+        return Web3.Utils.parseToBigUInt(value, decimals: decimal)?.description ?? "0"
     }
 }
 
@@ -201,7 +204,7 @@ extension ACNSDK {
         ACNManager.shared.update(userInfo: userInfo.copyItem(), result: result)
     }
 
-    /// Query the balance of current user's account
+    /// Query the balance of current user's account in Wei units (1 ETH = 10^18 Wei).
     ///
     /// - Parameter result: Return balance
     @objc public static func queryAccountBalance(result: @escaping (Bool, ACNSDKError?, String) -> Void ) {
@@ -225,36 +228,8 @@ extension ACNSDK {
             result(false, ACNSDKError(type: .LoginNo), "0")
         }
     }
-
-    /// Query the TTC balance of the current user's wallet
-    ///
-    /// - Parameter result: Return balance
-    @objc public static func queryWalletBalance(result: @escaping (Bool, ACNSDKError?, String) -> Void ) {
-        
-        if !ACNManager.shared.SDKEnabled {
-            result(false, ACNSDKError(type: .SDKDisable), "0")
-            return
-        }
-        
-        if ACNManager.shared.appId == nil
-            || ACNManager.shared.appId.isEmpty
-            || ACNManager.shared.secretKey == nil
-            || ACNManager.shared.secretKey.isEmpty {
-            result(false, ACNSDKError(type: .RegisterNo), "0")
-            return
-        }
-        
-        if !ACNManager.shared.isLogin {
-            result(false, ACNSDKError(type: .LoginNo), "0")
-        } else if ACNManager.shared.userInfo?.wallet == nil {
-            result(false, ACNSDKError(type: .Unbind), "0")
-        } else {
-            ACNManager.shared.queryWalletBalance(resulted: result)
-        }
-
-    }
     
-    /// Query the ACN balance of the current user's wallet
+    /// Query the ACN balance of the current user's wallet in Wei units (1 ETH = 10^18 Wei).
     ///
     /// - Parameter result: Return balance
     @objc public static func queryWalletACNBalance(result: @escaping (Bool, ACNSDKError?, String) -> Void ) {

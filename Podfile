@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
@@ -9,18 +9,14 @@ target 'ACNSDK' do
     #protobuf
     pod 'SwiftProtobuf', '1.17.0'
     
-    pod 'BigInt', '~> 3.0' # 任意宽度整数
-    pod 'JSONRPCKit' #RPC json库
     pod 'Alamofire' #网络请求
     pod 'CryptoSwift', '1.4.0'
 
-    pod 'TrustCore', '~> 0.0.7'
-    pod 'TrezorCrypto', '0.0.9'
     pod 'RealmSwift', '~> 5.5.0' #数据库
     pod 'SwiftyRSA'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK', '7.62.0'
-    pod 'web3swiftSuper.pod'
-    pod 'PromiseKit', '6.8.4'
+    pod 'web3swift', :git => "https://github.com/skywinder/web3swift"
+    pod 'PromiseKit'
     pod 'GoogleMobileAdsMediationFacebook', '5.6.0'
     
 end
