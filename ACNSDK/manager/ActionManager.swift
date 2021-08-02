@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import BigInt
 import Alamofire
-import JSONRPCKit
+import web3swift
 import ACN_SDK_NET
 
 class ACNActionInfo: Object {
@@ -90,15 +90,12 @@ class ACNActionManager {
     var timer: Timer?
     
     /// gas limit
-    var gasLimit: BigInt = BigInt(210000)
+    var gasLimit: BigUInt = BigUInt(210000)
     /// gas price
-    var gasPrice: BigInt = BigInt("500000000000") // 500 gwei
+    var gasPrice: BigUInt = BigUInt("500000000000") // 500 gwei
     
     /// nonce
     var nonce: BigInt = BigInt(-1)
-    
-    /// chainID
-    var chainID: BigInt?
     
     /// Maximum upload behavior
     let uploadCountLimit = 1
@@ -122,6 +119,25 @@ class ACNActionManager {
     
     /// creat queue of checking transaction
     let checkQueue: DispatchQueue = DispatchQueue(label: "com.ttc.eco.checkQueue")
+
+    private var _actionRPCManager: ACNActionRPCManager?
+    var actionRPCManager: ACNActionRPCManager? {
+        
+        if let curl = _actionRPCManager?.web.provider.url,
+           curl.absoluteString == acnServer.actionURL {
+            
+            return _actionRPCManager
+        }
+        
+        guard let url = URL(string: acnServer.actionURL),
+              let pkStr = ACNManager.shared.privateKey else {
+            return nil
+        }
+        
+        let pkData = Data(hex: pkStr)
+        _actionRPCManager = ACNActionRPCManager(url: url, privateKey: pkData)
+        return _actionRPCManager
+    }
     
     var timeInterval: TimeInterval = 15
     
@@ -156,8 +172,8 @@ class ACNActionManager {
     
     func setDefaultManager() {
         
-        self.gasLimit = BigInt(210000)
-        self.gasPrice = BigInt("5000000000") // 500 gwei
+        self.gasLimit = BigUInt(210000)
+        self.gasPrice = BigUInt("5000000000") // 500 gwei
         self.nonce = BigInt(-1)
         
         self.transactionErrorCount = 0
@@ -262,12 +278,6 @@ class ACNActionManager {
             return
         }
         
-        /// get chainid
-        guard let chainId = self.chainID else {
-            getChainID()
-            return
-        }
-        
         /// fetch nonce
         if self.nonce == BigInt(-1) {
             getTransactionCount()
@@ -282,15 +292,15 @@ class ACNActionManager {
         /// start transaction
         self.isTransaction = true
         
-        var nonce: BigInt
+        var nonce: BigUInt
         let data: Data
         let timestamp: Int64
-        let gasLimit: BigInt
-        let gasPrice: BigInt
+        let gasLimit: BigUInt
+        let gasPrice: BigUInt
         
-        nonce = self.nonce
+        nonce = BigUInt(self.nonce)
         if actionInfo.nonce != 0, actionInfo.nonce != -1 {
-            nonce = BigInt(actionInfo.nonce)
+            nonce = BigUInt(actionInfo.nonce)
         }
         
         data = actionInfo.hashData()
@@ -308,18 +318,22 @@ class ACNActionManager {
             return
         }
         
-        let trans = Transaction(
-            from: ACNManager.shared.actionAddress?.to0x ?? "",
-            to: userinfo.address?.to0x ?? "",
-            gasLimit: gasLimit,
-            gasPrice: gasPrice,
-            value: EtherNumberFormatter.full.number(from: String(Int(0)), units: EthereumUnit.wei) ?? BigInt(0),
-            nonce: nonce,
-            data: data,
-            chainID: chainId)
+        guard let from = EthereumAddress(ACNManager.shared.actionAddress?.to0x ?? ""),
+            let to = EthereumAddress(userinfo.address?.to0x ?? "") else {
+            
+            self.isTransaction = false
+            return
+        }
         
-        ACNRPCManager.sendTransaction(transaction: trans) { (result) in
-            switch result {
+        actionRPCManager?.sendTransaction(from: from,
+                                          to: to,
+                                          gasLimit: gasLimit,
+                                          gasPrice: gasPrice,
+                                          value: BigUInt(0),
+                                          nonce: nonce,
+                                          data: data) { resultValue in
+            
+            switch resultValue {
             case .success(let hex):
                 ACNPrint("Transaction success -> hash: \(hex)")
                 self.realmQueue.async {
@@ -330,27 +344,19 @@ class ACNActionManager {
                         try? realm.write {
                             action?.actionHash = hex
                             action?.nonce = Int64(nonce.description) ?? 0
-    //                        action?.isUpload = 0 // 有可能被上传服务器后设为1了
+                            //                        action?.isUpload = 0 // 有可能被上传服务器后设为1了
                             action?.uptime = Int64(Date().timeIntervalSince1970*1000)
                         }
                     }
                     
                 }
                 
-                //                ACNRPCManager.getTransaction(hash: hex) { (result) in
-                //                    switch result {
-                //                    case .success(let transaction):
-                //                        ACNPrint("Transaction hash: \(hex), info: \(transaction)")
-                //                    case .failure(_): break
-                //                    }
-                //                }
-                
                 self.nonce += 1
                 ACNPrint("current nonce: \(self.nonce)")
                 self.isTransaction = false
                 /// Inquire whether there is no transaction, initiate a transaction
                 self.queriesActionAndTransaction()
-//                self.queriesActionAndUpload()
+            //                self.queriesActionAndUpload()
             case .failure(let error):
                 
                 ACNPrint("Transaction failed: \(error)")
@@ -374,17 +380,16 @@ class ACNActionManager {
             return
         }
         
-        ACNNetworkManager.uploadAction(actionInfoList: ecoActions, result: { (success, error) in
-
-            if success {
+        ACNNetworkManager.uploadAction(actionInfoList: ecoActions) { error in
+            if error != nil {
+                self.isUploadAction = false
+                ACNPrint("Upload behavior failed: \(String(describing: error?.errorDescription))")
+            } else {
                 ACNPrint("Upload behavior succeeded")
                 self.updateAction(actionInfos: ecoActions)
                 self.queriesActionAndUpload()
-            } else {
-                self.isUploadAction = false
-                ACNPrint("Upload behavior failed: \(String(describing: error?.errorDescription))")
             }
-        })
+        }
     }
     
     // query transaction count
@@ -395,7 +400,7 @@ class ACNActionManager {
         }
         
         let userid = ACNManager.shared.userInfo?.userId
-        ACNRPCManager.getTransactionPendingCount(address: address) { (result) in
+        self.actionRPCManager?.getTransactionPendingCount(address: address) { (result) in
             switch result {
             case .success(let nonce):
                 ACNPrint("fetch nonce success, nonce: \(nonce.description)")
@@ -419,19 +424,6 @@ class ACNActionManager {
         }
     }
     
-    // version
-    func getChainID() {
-        ACNRPCManager.fetchVersion { (result) in
-            switch result {
-            case .success(let version):
-                ACNPrint("Get chainid success: \(version)")
-                self.chainID = BigInt(version)
-            case .failure(let error):
-                ACNPrint("Get chainid failed: \(error)")
-            }
-        }
-    }
-    
     func afterCheck(_ afterTime: Int = 2) {
         
         let time = DispatchTime.now() + DispatchTimeInterval.seconds(afterTime)
@@ -445,7 +437,11 @@ class ACNActionManager {
     // check transaction and upload action
     @objc func checkAndupload() {
         afterCheck()
-        getTransactionCount()
+        
+        DispatchQueue.global().async {
+            
+            self.getTransactionCount()
+        }
     }
     
     // check transaction
@@ -469,11 +465,12 @@ class ACNActionManager {
             let lastBlockNumber = actionInfo.blockNumber
             
             ACNPrint("In checking, getTransactionReceipt, time: \(Date().timeIntervalSince1970.description)")
-            ACNRPCManager.getTransactionReceipt(hash: hash) { (result) in
+            
+            self.actionRPCManager?.getTransactionReceipt(txhash: hash) { (result) in
                 switch result {
                 case .success(let recepit):
                     
-                    if recepit.status {
+                    if recepit.status == .ok {
                         self.realmQueue.async {
                             if let tmpRealm = self.realm {
                                 if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
@@ -497,97 +494,10 @@ class ACNActionManager {
                         self.resetHash(timestamp)
                     }
                     
-                case .failure(let error):
-                    guard let _: ACNRPCError = error as? ACNRPCError else { self.isChecking = false; return }
+                case .failure(_):
                     self.gerReciptError(timestamp, lastBlockNumber: lastBlockNumber, hash: hash)
                 }
             }
-            
-//            ACNRPCManager.getTransaction(hash: hash) { (result) in
-//                switch result {
-//                case .success(let transaction):
-//                    //                    ACNPrint("Transaction hash: \(hash), info: \(transaction)")
-//
-//                    if userid != userinfo.userId { self.isChecking = false; return }
-//
-//                    let blockNumberStr = transaction["blockNumber"] as? String ?? ""
-//                    let blockNumber = BigInt(blockNumberStr.drop0x, radix: 16) ?? BigInt(0)
-//                    let nonceString = transaction["nonce"] as? String ?? ""
-//                    let nonce = BigInt(nonceString.drop0x, radix: 16) ?? BigInt(0)
-//
-//                    if blockNumber > BigInt(0) {
-//
-//                        /// update database
-//                        self.realmQueue.async {
-//                            let tmpRealm = self.realm
-//                            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
-//                                try? tmpRealm.write {
-//                                    info.isCheck = 3 // Check successful
-//                                }
-//                            }
-//
-//                            DispatchQueue.main.async {
-//                                self.isChecking = false
-//
-//                                /// Continue to check
-//                                self.afterCheck()
-//                            }
-//                        }
-//
-//                        ACNPrint("Transaction hash: \(hash), blockNumber = \(blockNumber), nonce : \(nonce.description)")
-//
-//                    } else {
-//
-//                        /// wait block
-//                        self.realmQueue.async {
-//                            let tmpRealm = self.realm
-//                            if let info = tmpRealm.objects(ACNActionInfo.self).filter("timestamp = \(timestamp)").first {
-//                                try? tmpRealm.write {
-//                                    info.isCheck = 1 // Not yet successful
-//                                }
-//                            }
-//
-//                            DispatchQueue.main.async {
-//                                self.isChecking = false
-//                                /// Continue to check
-//                                self.afterCheck(10)
-//                            }
-//                        }
-//
-//                        ACNPrint("Transaction hash: \(hash), blockNumber: 0, nonce : \(nonce.description)")
-//                    }
-//
-//                case .failure(let error):
-//
-//                    ACNPrint("Get transaction failed, hash:\(hash), failed: \(error)")
-//
-//                    guard let RPCError: ACNRPCError = error as? ACNRPCError else { self.isChecking = false; return }
-//
-//                    switch RPCError {
-//                    case .RPCSuccessError(let code, _):
-//                        if code == RPCErrorType.null.rawValue {
-//                            /// 一般情况是nonce过大，为了追求实时性，重新上传
-//                            /// The general situation is that the nonce is too large, in order to pursue real-time, re-upload
-//                            ACNPrint("is null, reset ------- \(hash)")
-//                            self.resetHash(timestamp)
-//                        } else {
-//                            let curr = Int64(Date().timeIntervalSince1970*1000)
-//                            let upt = uptime == 0 ? timestamp : uptime
-//                            if curr > (upt+60*60*2*1000) {
-//                                self.resetHash(timestamp)
-//                                ACNPrint("Transaction hash: \(hash), hash timeout, reset")
-//                            }
-//                        }
-//                    default:
-//                        let curr = Int64(Date().timeIntervalSince1970*1000)
-//                        let upt = uptime == 0 ? timestamp : uptime
-//                        if curr > (upt+60*60*2*1000) {
-//                            self.resetHash(timestamp)
-//                            ACNPrint("Transaction hash: \(hash), hash timeout, reset")
-//                        }
-//                    }
-//                }
-//            }
         } else {
             ACNPrint("all is checked")
         }
@@ -600,7 +510,7 @@ class ACNActionManager {
             return
         }
         
-        ACNRPCManager.getTransactionCount(address: address) { (result) in
+        self.actionRPCManager?.getTransactionCount(address: address) { (result) in
             switch result {
             case .success(let nonce):
                 ACNPrint("fetch nonce success, nonce: \(nonce.description)")
@@ -665,11 +575,11 @@ class ACNActionManager {
     func isEnoughBalance() {
         
         if let address = ACNManager.shared.actionAddress, !address.isEmpty {
-            ACNRPCManager.getSideBalance(for: address, completion: { (result) in
+            self.actionRPCManager?.getSideBalance(for: address, completion: { (result) in
                 switch result {
-                case .success(let b):
+                case .success(let balance):
                     let gas = self.gasLimit*self.gasPrice
-                    if b.value < gas {
+                    if balance < gas {
                         self.isBalance = false
                     } else {
                         self.isBalance = true
@@ -683,7 +593,7 @@ class ACNActionManager {
  
     func gerReciptError(_ timestamp: Int64, lastBlockNumber: Int32, hash: String) {
         
-        ACNRPCManager.getBlockNumber(completion: { (result) in
+        self.actionRPCManager?.getBlockNumber() { result in
             switch result {
             case .success(let number):
                 
@@ -730,6 +640,6 @@ class ACNActionManager {
                     self.afterCheck()
                 }
             }
-        })
+        }
     }
 }

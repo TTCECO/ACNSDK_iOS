@@ -13,6 +13,29 @@ import TTCPay
 import web3swift
 import CryptoSwift
 
+extension Web3Utils.Units {
+    var decimalsCount: Int {
+        get {
+            switch self {
+            case .eth:
+                return 18
+            case .wei:
+                return 0
+            case .Kwei:
+                return 3
+            case .Mwei:
+                return 6
+            case .Gwei:
+                return 9
+            case .Microether:
+                return 12
+            case .Finney:
+                return 15
+            }
+        }
+    }
+}
+
 internal class ACNManager {
 
     static let shared = ACNManager()
@@ -66,6 +89,27 @@ internal class ACNManager {
     // location
     let location = ACNLocationManager()
     
+    lazy var tokenManager: ACNTokenManager = {
+        return ACNTokenManager()
+    }()
+    
+    private var _acnRPCManager: ACNRPCManager?
+    var acnRPCManager: ACNRPCManager? {
+        
+        if let curl = _acnRPCManager?.web.provider.url,
+           curl.absoluteString == acnServer.ACNURL {
+            
+            return _acnRPCManager
+        }
+        
+        guard let url = URL(string: acnServer.ACNURL) else {
+            return nil
+        }
+        
+        _acnRPCManager = ACNRPCManager(url: url)
+        return _acnRPCManager
+    }
+    
     /// Register to start the SDK
     func register(appId: String, secretKey: String) {
 
@@ -84,8 +128,6 @@ internal class ACNManager {
         TTCPay.shared.secretKey = secretKey
         TTCPay.shared.apiURL = acnServer.apiURL
         
-        // get chainID
-//        ACNActionManager.shared.getChainID()
         // Open positioning
         location.locate()
     }
@@ -148,7 +190,7 @@ extension ACNManager {
     func update(userInfo: ACNUserInfo, result: @escaping (Bool, ACNSDKError?, ACNUserInfo?) -> Void) {
         
         let userid = ACNManager.shared.userInfo?.userId
-
+        
         var kvInfoArr: [ACNNETKVInfo] = []
         
         let kvInfo = ACNNETKVInfo()
@@ -189,10 +231,9 @@ extension ACNManager {
         }
         
         /// Update info
-        ACNNetworkManager.updateUserInfo(InfoArr: kvInfoArr) { (success, error, userInfoList) -> Void in
-
-            if success {
-                
+        ACNNetworkManager.updateUserInfo(InfoArr: kvInfoArr) { resultValue in
+            switch resultValue {
+            case .success(let list):
                 if userid != ACNManager.shared.userInfo?.userId {
                     result(false, ACNSDKError(type: .UserChanged), nil)
                     return
@@ -200,11 +241,6 @@ extension ACNManager {
                 
                 self.userInfo = userInfo
                 
-                guard let list = userInfoList else {
-                    ACNPrint("Update user information successfully, but return data is null")
-                    result(true, nil, self.userInfo)
-                    return
-                }
                 for kvInfo in list {
                     if kvInfo.key == "wallet" {
                         self.userInfo?.wallet = kvInfo.value
@@ -214,52 +250,42 @@ extension ACNManager {
                 }
                 ACNPrint("Update user information successfully")
                 result(true, nil, self.userInfo)
-            } else {
-                ACNPrint("Update user information faile: \(String(describing: error?.errorDescription))")
+            case .failure(let error):
+                ACNPrint("Update user information faile: \(String(describing: error.errorDescription))")
                 result(false, ACNSDKError(error: error), nil)
             }
         }
     }
     
-    /// query account balance
+    /// query account balance in Wei units (1 ETH = 10^18 Wei).
     func queryAccountBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
         
-        ACNRPCManager.getEthBalance(for: self.userInfo?.address ?? "") { (result) in
-            switch result {
-            case .success(let balance):
-                ACNPrint("query account balance successfully, balance: \(balance.amountFull)")
-                resulted(true, nil, balance.amountFull)
-            case .failure(let error):
-                ACNPrint("query account balance faile: \(error)")
-                resulted(false, ACNSDKError(description: String(describing: error)), "0")
+        if let manager = self.acnRPCManager {
+            manager.getEthBalance(for: self.userInfo?.address ?? "") { (result) in
+                switch result {
+                case .success(let balance):
+                    let balanceStr = Web3.Utils.formatToEthereumUnits(BigInt(balance), toUnits: .wei, decimals: Web3.Utils.Units.wei.decimalsCount, decimalSeparator: ".") ?? "0"
+                    ACNPrint("query account balance successfully, balance: \(balanceStr)")
+                    resulted(true, nil, balanceStr)
+                case .failure(let error):
+                    ACNPrint("query account balance faile: \(error)")
+                    resulted(false, ACNSDKError(description: String(describing: error)), "0")
+                }
             }
+        } else {
+            resulted(false, ACNSDKError(code: "997", description: "Query Account Balance Error"), "0")
         }
     }
     
-    /// query wallet TTC balance
-    func queryWalletBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
-        
-        ACNRPCManager.getEthBalance(for: self.userInfo?.wallet ?? "") { (result) in
-            switch result {
-            case .success(let balance):
-                ACNPrint("query wallet balance successfully, balance: \(balance.amountFull)")
-                resulted(true, nil, balance.amountFull)
-            case .failure(let error):
-                ACNPrint("query wallet balance faile: \(error)")
-                resulted(false, ACNSDKError(description: String(describing: error)), "0")
-            }
-        }
-    }
-    
-    /// query wallet ACN balance
+    /// query wallet ACN balance in Wei units (1 ETH = 10^18 Wei).
     func queryWalletACNBalance(resulted: @escaping (Bool, ACNSDKError?, String) -> Void) {
         
-        ACNTokenManager.shared.banlance(self.userInfo?.wallet ?? "") { (result) in
+        tokenManager.banlance(self.userInfo?.wallet ?? "") { (result) in
             switch result {
-            case .success(let b):
-                let balance = Balance(value: BigInt(b))
-                ACNPrint("query wallet balance successfully, balance: \(balance.amountFull)")
-                resulted(true, nil, balance.amountFull)
+            case .success(let balance):
+                let balanceStr = Web3.Utils.formatToEthereumUnits(BigInt(balance), toUnits: .wei, decimals: Web3.Utils.Units.wei.decimalsCount, decimalSeparator: ".") ?? "0"
+                ACNPrint("query wallet balance successfully, balance: \(balanceStr)")
+                resulted(true, nil, balanceStr)
             case .failure(let error):
                 ACNPrint("query wallet balance faile: \(error)")
                 resulted(false, ACNSDKError(description: String(describing: error)), "0")
@@ -284,8 +310,13 @@ extension ACNManager {
     }
     
     func fetchWalletType() {
-        ACNNetworkManager.fetchScheme { (type, error) in
-            self.walletBindType = type
+        ACNNetworkManager.fetchScheme { resultValue in
+            switch resultValue {
+            case .success(let type):
+                self.walletBindType = type
+            case .failure:
+                break
+            }
         }
     }
 }
@@ -350,23 +381,22 @@ extension ACNManager {
         }
         
         let walletUrlStr = scheme + "://Bind?bundleID=\(Bundle.main.bundleIdentifier ?? "")&bindState=\(bindState)&reward=\(ACNManager.shared.reward)&symbol=\(symbol)"
-        let walletUrl = URL(string: walletUrlStr)
 
-        guard let wltUrl = walletUrl else { return }
-
-        if !UIApplication.shared.openURL(wltUrl) {
-            ACNPrint("bind - Return failure")
+        if let wltUrl = URL(string: walletUrlStr) {
+            UIApplication.shared.open(wltUrl, options: [:]) { success in
+                if !success {
+                    ACNPrint("bind - Return failure")
+                }
+            }
         }
     }
 
     func unBindWallet(usetId: String, result: @escaping (Bool, ACNSDKError?) -> Void) {
-
-        let userid = ACNManager.shared.userInfo?.userId
         
-        ACNNetworkManager.bindingDapp(isBind: false, walletAddress: self.userInfo?.wallet ?? "") { (success, error, info) -> Void in
-
-            if success {
-                
+        let userid = ACNManager.shared.userInfo?.userId
+        ACNNetworkManager.bindingDapp(isBind: false, walletAddress: self.userInfo?.wallet ?? "") { resultValue in
+            switch resultValue {
+            case .success:
                 if userid != ACNManager.shared.userInfo?.userId {
                     result(false, ACNSDKError(type: .UserChanged))
                     return
@@ -375,8 +405,8 @@ extension ACNManager {
                 self.userInfo?.wallet = nil
                 ACNPrint("Unbind wallet successfully")
                 result(true, nil)
-            } else {
-                ACNPrint("Unbind wallet failed: \(String(describing: error?.errorDescription))")
+            case .failure(let error):
+                ACNPrint("Unbind wallet failed: \(String(describing: error.errorDescription))")
                 result(false, ACNSDKError(error: error))
             }
         }
@@ -461,34 +491,26 @@ extension ACNManager {
     /// Request private key to automatically re-request if it fails. Up to five times
     /// get privateKey,address,gas price,gas limit,
     func requestPrivateKeyAndAddressRetry() {
-
+        
         if !self.isLogin {
             return
         }
-
-        requestPrivateKeyAndAddress { (success, error) -> Void in
+        
+        self.requestPrivateKeyAndAddress { (success, error) -> Void in
             
             self.isRegister = success
             if success {
-                ACNActionManager.shared.isEnoughBalance()
-                ACNActionManager.shared.getChainID()
-                ACNActionManager.shared.getTransactionCount()
-            } else {
-                if error != nil {
-                    switch error {
-                    case .requesting?:
-                        return
-                    default: break
-                    }
+                DispatchQueue.global().async {
+                    ACNActionManager.shared.isEnoughBalance()
+                    ACNActionManager.shared.getTransactionCount()
                 }
             }
         }
     }
-
+    
     func requestPrivateKeyAndAddress(result: @escaping (Bool, ACNInternalError?) -> Void) {
-
+        
         if self.isRequestPrivatekey {
-            result(false, .requesting)
             return
         }
         
@@ -496,15 +518,11 @@ extension ACNManager {
         self.isRequestPrivatekey = true
         
         /// Get the private key used by Dapp uploading behavior, decrypt with Dapp's secretKey
-        ACNNetworkManager.getBaseInfo { (success, error, dataMessage) -> Void in
+        ACNNetworkManager.getBaseInfo { resultValue in
             self.isRequestPrivatekey = false
             
-            if success {
-                
-                guard let data = dataMessage else {
-                    result(false, .responseDataParseError)
-                    return
-                }
+            switch resultValue {
+            case .success(let data):
                 
                 contracts = data.contracts
                 
@@ -513,78 +531,67 @@ extension ACNManager {
                 }
                 
                 if !data.uploadOperationLogGasPrice.isEmpty, data.uploadOperationLogGasLimit != 0 {
-                    ACNActionManager.shared.gasPrice = BigInt(data.uploadOperationLogGasPrice) ?? BigInt("500000000000")
-                    ACNActionManager.shared.gasLimit = BigInt(data.uploadOperationLogGasLimit)
+                    ACNActionManager.shared.gasPrice = BigUInt(data.uploadOperationLogGasPrice) ?? BigUInt("500000000000")
+                    ACNActionManager.shared.gasLimit = BigUInt(data.uploadOperationLogGasLimit)
                 }
-
-                guard let encodePrivateKey = dataMessage?.encodePrivateKey, let dappActionAddress = dataMessage?.dappActionAddress else {
-                    ACNPrint("Private key is empty")
-                    result(false, .responseDataParseError)
+                
+                let encodePrivateKey = data.encodePrivateKey
+                let dappActionAddress = data.dappActionAddress
+                
+                guard let baseData = Data(base64Encoded: encodePrivateKey, options: []),
+                      baseData.count > 16 else {
+                    
+                    ACNPrint("Private key failed to data")
+                    result(false, .serverError)
                     return
                 }
                 
-                guard let baseData = Data(base64Encoded: encodePrivateKey, options: []), baseData.count > 16 else {
-                    ACNPrint("Private key failed to data")
-                    result(false, .responseDataParseError)
-                    return
-                }
-
                 let bytes: [UInt8] = Array(baseData)
                 let iv: [UInt8] = Array(bytes.prefix(16))
                 let crypted: [UInt8] = Array(bytes.suffix(bytes.count - 16))
                 let secretKey: [UInt8] = Array(self.secretKey.utf8)
-
+                
                 do {
                     var decrypted = try CryptoSwift.AES(key: secretKey, blockMode: CBC(iv: iv), padding: .zeroPadding).decrypt(crypted)
                     if let padding = decrypted.last {
                         let length = decrypted.count - Int(padding)
                         decrypted = Array(decrypted.prefix(length))
                     }
-
-                    let keyData = Data(bytes: decrypted)
-                    guard let privateKey = String(data: keyData, encoding: .utf8) else {
-                        ACNPrint("Private key failed to string")
-                        result(false, .responseDataParseError)
-                        return
-                    }
                     
                     if userid != ACNManager.shared.userInfo?.userId {
-                        result(false, .responseDataParseError)
+                        result(false, .serverError)
                         return
                     }
                     
-                    if privateKey.count == 64 {
-                        self.privateKey = privateKey
+                    if let pk = String(data: Data(decrypted), encoding: .utf8),
+                       pk.count == 64 {
+                        
+                        self.privateKey = pk
+                        self.actionAddress = dappActionAddress
                     }
                     
-                    self.actionAddress = dappActionAddress
                     ACNPrint("Request private key success, actionAddress: \(dappActionAddress)")
                     result(true, nil)
                 } catch {
                     ACNPrint("Failed to decrypt the private key: \(error)")
-                    result(false, .responseDataParseError)
+                    result(false, .serverError)
                 }
-
-            } else {
+            case .failure(let error):
                 ACNPrint("Failed to get the private key: \(String(describing: error))")
-                guard let err = error else {
-                    result(false, .responseDataParseError)
-                    return
-                }
-                result(false, err)
+                result(false, error)
             }
         }
     }
-
+    
     func requestRegisterUser(result: @escaping (Bool, ACNInternalError?) -> Void) {
-
-        ACNNetworkManager.registerUser { (success, error, dataMessage) -> Void in
-
-            if success, let data = dataMessage {
+        
+        ACNNetworkManager.registerUser { resultValue in
+            switch resultValue {
+            case .success(let infos):
                 var isHashUnique = false
                 var isHashPosition = false
                 
-                for KVInfo in data {
+                for KVInfo in infos {
                     if KVInfo.key == "wallet", !KVInfo.value.isEmpty {
                         self.userInfo?.wallet = KVInfo.value
                     } else if KVInfo.key == "address", !KVInfo.value.isEmpty {
@@ -622,7 +629,7 @@ extension ACNManager {
                 self.updateInfo(InfoArr: infoArr)
                 
                 result(true, nil)
-            } else {
+            case .failure(let error):
                 result(false, error)
             }
         }
@@ -639,6 +646,6 @@ fileprivate extension ACNManager {
     
     func updateInfo(InfoArr: [ACNNETKVInfo]) {
         if InfoArr.isEmpty { return }
-        ACNNetworkManager.updateUserInfo(InfoArr: InfoArr) { (success, error, userInfoList) -> Void in}
+        ACNNetworkManager.updateUserInfo(InfoArr: InfoArr) { _ in }
     }
 }

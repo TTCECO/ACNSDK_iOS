@@ -82,8 +82,6 @@
 		9766CEBF20FDFE3400A873D8 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766CEBE20FDFE3400A873D8 /* user.swift */; };
 		9766CEC120FE020400A873D8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766CEC020FE020400A873D8 /* Toast.swift */; };
 		9766CEC32100601500A873D8 /* ACNConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766CEC22100601500A873D8 /* ACNConfig.swift */; };
-		976D864F210867B00092CF88 /* GetTransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976D864E210867B00092CF88 /* GetTransactionRequest.swift */; };
-		976D86512109A8080092CF88 /* GetTransactionReceiptRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976D86502109A8080092CF88 /* GetTransactionReceiptRequest.swift */; };
 		976D86522109CB200092CF88 /* ACNSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C6993FE720FEF1EE007E96C8 /* ACNSDKBundle.bundle */; };
 		97723A4D2105888000063D38 /* ACNImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97723A4C2105888000063D38 /* ACNImage.swift */; };
 		97723A902105DF9500063D38 /* ACNLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97723A8F2105DF9500063D38 /* ACNLog.swift */; };
@@ -95,7 +93,6 @@
 		97AE5DC52101E3FD00211D2F /* ACNLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC12101E3FD00211D2F /* ACNLoginModel.swift */; };
 		97AE5DC62101E3FD00211D2F /* ACNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */; };
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
-		97CCF63A210191A5008C14CE /* VersionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCF639210191A5008C14CE /* VersionRequest.swift */; };
 		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
 		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
 		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
@@ -107,20 +104,8 @@
 		C69940A220FEF9A6007E96C8 /* ACNAppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699407D20FEF9A6007E96C8 /* ACNAppIcon.swift */; };
 		C69940A320FEF9A6007E96C8 /* ACNWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699407E20FEF9A6007E96C8 /* ACNWindow.swift */; };
 		C69940A520FEF9A6007E96C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408220FEF9A6007E96C8 /* String.swift */; };
-		C69940A620FEF9A6007E96C8 /* DataHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408320FEF9A6007E96C8 /* DataHex.swift */; };
 		C69940A720FEF9A6007E96C8 /* ACNRPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408520FEF9A6007E96C8 /* ACNRPCManager.swift */; };
 		C69940A820FEF9A6007E96C8 /* ACNRPCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408620FEF9A6007E96C8 /* ACNRPCRequest.swift */; };
-		C69940A920FEF9A6007E96C8 /* CastError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408820FEF9A6007E96C8 /* CastError.swift */; };
-		C69940AA20FEF9A6007E96C8 /* EthereumUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408920FEF9A6007E96C8 /* EthereumUnit.swift */; };
-		C69940AB20FEF9A6007E96C8 /* EtherNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408A20FEF9A6007E96C8 /* EtherNumberFormatter.swift */; };
-		C69940AC20FEF9A6007E96C8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408B20FEF9A6007E96C8 /* Data.swift */; };
-		C69940AD20FEF9A6007E96C8 /* BalanceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408C20FEF9A6007E96C8 /* BalanceProtocol.swift */; };
-		C69940AE20FEF9A6007E96C8 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408D20FEF9A6007E96C8 /* Balance.swift */; };
-		C69940AF20FEF9A6007E96C8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408E20FEF9A6007E96C8 /* Transaction.swift */; };
-		C69940B020FEF9A6007E96C8 /* TransactionSigning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699408F20FEF9A6007E96C8 /* TransactionSigning.swift */; };
-		C69940B120FEF9A6007E96C8 /* GetTransactionCountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409020FEF9A6007E96C8 /* GetTransactionCountRequest.swift */; };
-		C69940B220FEF9A6007E96C8 /* SendRawTransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409120FEF9A6007E96C8 /* SendRawTransactionRequest.swift */; };
-		C69940B320FEF9A6007E96C8 /* BalanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409220FEF9A6007E96C8 /* BalanceRequest.swift */; };
 		C69940B920FEF9A6007E96C8 /* ACNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409920FEF9A6007E96C8 /* ACNManager.swift */; };
 		C69940BA20FEF9A6007E96C8 /* ACNUploadAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409A20FEF9A6007E96C8 /* ACNUploadAction.swift */; };
 		C69940BB20FEF9A6007E96C8 /* ACNConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409B20FEF9A6007E96C8 /* ACNConstant.swift */; };
@@ -276,8 +261,6 @@
 		9766CEBE20FDFE3400A873D8 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		9766CEC020FE020400A873D8 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		9766CEC22100601500A873D8 /* ACNConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNConfig.swift; sourceTree = "<group>"; };
-		976D864E210867B00092CF88 /* GetTransactionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTransactionRequest.swift; sourceTree = "<group>"; };
-		976D86502109A8080092CF88 /* GetTransactionReceiptRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTransactionReceiptRequest.swift; sourceTree = "<group>"; };
 		97723A4C2105888000063D38 /* ACNImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNImage.swift; sourceTree = "<group>"; };
 		97723A8F2105DF9500063D38 /* ACNLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNLog.swift; sourceTree = "<group>"; };
 		979780F320EA14AC007FA763 /* ACN_SDK_iOS_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACN_SDK_iOS_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,9 +272,7 @@
 		97AE5DC12101E3FD00211D2F /* ACNLoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNLoginModel.swift; sourceTree = "<group>"; };
 		97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNLoginTableViewCell.swift; sourceTree = "<group>"; };
 		97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNUploadViewController.swift; sourceTree = "<group>"; };
-		97CCF639210191A5008C14CE /* VersionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionRequest.swift; sourceTree = "<group>"; };
 		A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFBD180E263AB72200896641 /* xcode12Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = xcode12Config.xcconfig; sourceTree = "<group>"; };
 		BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACNWallet@2x.png"; sourceTree = "<group>"; };
 		BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+++@2x.png"; sourceTree = "<group>"; };
 		C6993FE720FEF1EE007E96C8 /* ACNSDKBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACNSDKBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,20 +286,8 @@
 		C699407D20FEF9A6007E96C8 /* ACNAppIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNAppIcon.swift; sourceTree = "<group>"; };
 		C699407E20FEF9A6007E96C8 /* ACNWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNWindow.swift; sourceTree = "<group>"; };
 		C699408220FEF9A6007E96C8 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		C699408320FEF9A6007E96C8 /* DataHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHex.swift; sourceTree = "<group>"; };
 		C699408520FEF9A6007E96C8 /* ACNRPCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNRPCManager.swift; sourceTree = "<group>"; };
 		C699408620FEF9A6007E96C8 /* ACNRPCRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNRPCRequest.swift; sourceTree = "<group>"; };
-		C699408820FEF9A6007E96C8 /* CastError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastError.swift; sourceTree = "<group>"; };
-		C699408920FEF9A6007E96C8 /* EthereumUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthereumUnit.swift; sourceTree = "<group>"; };
-		C699408A20FEF9A6007E96C8 /* EtherNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtherNumberFormatter.swift; sourceTree = "<group>"; };
-		C699408B20FEF9A6007E96C8 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		C699408C20FEF9A6007E96C8 /* BalanceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceProtocol.swift; sourceTree = "<group>"; };
-		C699408D20FEF9A6007E96C8 /* Balance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
-		C699408E20FEF9A6007E96C8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		C699408F20FEF9A6007E96C8 /* TransactionSigning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionSigning.swift; sourceTree = "<group>"; };
-		C699409020FEF9A6007E96C8 /* GetTransactionCountRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTransactionCountRequest.swift; sourceTree = "<group>"; };
-		C699409120FEF9A6007E96C8 /* SendRawTransactionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendRawTransactionRequest.swift; sourceTree = "<group>"; };
-		C699409220FEF9A6007E96C8 /* BalanceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceRequest.swift; sourceTree = "<group>"; };
 		C699409920FEF9A6007E96C8 /* ACNManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNManager.swift; sourceTree = "<group>"; };
 		C699409A20FEF9A6007E96C8 /* ACNUploadAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNUploadAction.swift; sourceTree = "<group>"; };
 		C699409B20FEF9A6007E96C8 /* ACNConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNConstant.swift; sourceTree = "<group>"; };
@@ -531,7 +500,6 @@
 		979780EA20EA14AC007FA763 = {
 			isa = PBXGroup;
 			children = (
-				AFBD180E263AB72200896641 /* xcode12Config.xcconfig */,
 				979780F520EA14AC007FA763 /* ACN_SDK_iOS_Demo */,
 				428A565D21C7B8F900742FE6 /* TTC_SDK_Pay_Demo */,
 				428258822282C5DC0050A0F8 /* ACN_SDK_admob_Demo */,
@@ -655,7 +623,6 @@
 			children = (
 				97723A4C2105888000063D38 /* ACNImage.swift */,
 				C699408220FEF9A6007E96C8 /* String.swift */,
-				C699408320FEF9A6007E96C8 /* DataHex.swift */,
 				427D6984211441C3006AE7AD /* Error.swift */,
 				4245D8B52175C452004BE3DD /* UserDefaults.swift */,
 			);
@@ -668,30 +635,8 @@
 				C699408520FEF9A6007E96C8 /* ACNRPCManager.swift */,
 				C699408620FEF9A6007E96C8 /* ACNRPCRequest.swift */,
 				42DAFE8522C20C1100BC97C3 /* ACNTokenManager.swift */,
-				C699408720FEF9A6007E96C8 /* ACNRequests */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		C699408720FEF9A6007E96C8 /* ACNRequests */ = {
-			isa = PBXGroup;
-			children = (
-				C699408820FEF9A6007E96C8 /* CastError.swift */,
-				C699408920FEF9A6007E96C8 /* EthereumUnit.swift */,
-				C699408A20FEF9A6007E96C8 /* EtherNumberFormatter.swift */,
-				C699408B20FEF9A6007E96C8 /* Data.swift */,
-				C699408C20FEF9A6007E96C8 /* BalanceProtocol.swift */,
-				C699408D20FEF9A6007E96C8 /* Balance.swift */,
-				C699408E20FEF9A6007E96C8 /* Transaction.swift */,
-				C699408F20FEF9A6007E96C8 /* TransactionSigning.swift */,
-				C699409020FEF9A6007E96C8 /* GetTransactionCountRequest.swift */,
-				C699409120FEF9A6007E96C8 /* SendRawTransactionRequest.swift */,
-				C699409220FEF9A6007E96C8 /* BalanceRequest.swift */,
-				97CCF639210191A5008C14CE /* VersionRequest.swift */,
-				976D864E210867B00092CF88 /* GetTransactionRequest.swift */,
-				976D86502109A8080092CF88 /* GetTransactionReceiptRequest.swift */,
-			);
-			path = ACNRequests;
 			sourceTree = "<group>";
 		};
 		C699409C20FEF9A6007E96C8 /* manager */ = {
@@ -1157,42 +1102,30 @@
 			files = (
 				4282667622854EFA007F7BF4 /* ACNAdupload.swift in Sources */,
 				42C61C8521DDF698001A7FFD /* ACNAdRewardBasedVideoAd.swift in Sources */,
-				C69940AB20FEF9A6007E96C8 /* EtherNumberFormatter.swift in Sources */,
 				C69940BC20FEF9A6007E96C8 /* ActionManager.swift in Sources */,
 				421445CD2200533700ED4726 /* KeychainSwift.swift in Sources */,
 				421445CE2200533700ED4726 /* KeychainSwiftAccessOptions.swift in Sources */,
 				C69940BA20FEF9A6007E96C8 /* ACNUploadAction.swift in Sources */,
 				C69940B920FEF9A6007E96C8 /* ACNManager.swift in Sources */,
-				C69940AC20FEF9A6007E96C8 /* Data.swift in Sources */,
-				C69940B120FEF9A6007E96C8 /* GetTransactionCountRequest.swift in Sources */,
 				C699409F20FEF9A6007E96C8 /* ACNViewController.swift in Sources */,
 				C69940A220FEF9A6007E96C8 /* ACNAppIcon.swift in Sources */,
 				97723A902105DF9500063D38 /* ACNLog.swift in Sources */,
 				9766CEC32100601500A873D8 /* ACNConfig.swift in Sources */,
 				421445CF2200533700ED4726 /* TegKeychainConstants.swift in Sources */,
 				C69940A020FEF9A6007E96C8 /* ACNBindViewController.swift in Sources */,
-				C69940A920FEF9A6007E96C8 /* CastError.swift in Sources */,
 				42C61C7D21DDCD30001A7FFD /* ACNAdLoadProtocol.swift in Sources */,
 				C69940A820FEF9A6007E96C8 /* ACNRPCRequest.swift in Sources */,
-				976D86512109A8080092CF88 /* GetTransactionReceiptRequest.swift in Sources */,
 				97723A4D2105888000063D38 /* ACNImage.swift in Sources */,
 				42C61C7921DCA6BD001A7FFD /* ACNAdInterstitial.swift in Sources */,
-				976D864F210867B00092CF88 /* GetTransactionRequest.swift in Sources */,
 				42C61C8921DDFBB6001A7FFD /* ACNAdRewardBasedVideoAdDelegate.swift in Sources */,
 				C69940A720FEF9A6007E96C8 /* ACNRPCManager.swift in Sources */,
 				422CF9D621EF311B000A38D2 /* ACNLocationManager.swift in Sources */,
 				42C61C4721D631A9001A7FFD /* ACNAdMob.swift in Sources */,
-				C69940AF20FEF9A6007E96C8 /* Transaction.swift in Sources */,
 				42C61C4A21D731B3001A7FFD /* ACNAdBanner.swift in Sources */,
 				4245D8B62175C452004BE3DD /* UserDefaults.swift in Sources */,
 				42C61C4C21D74E5B001A7FFD /* ACNAdSize.swift in Sources */,
 				42C61C7F21DDDD33001A7FFD /* ACNAdInterstitialDelegate.swift in Sources */,
-				C69940AD20FEF9A6007E96C8 /* BalanceProtocol.swift in Sources */,
 				C699409E20FEF9A6007E96C8 /* ACNSDK.swift in Sources */,
-				C69940AE20FEF9A6007E96C8 /* Balance.swift in Sources */,
-				97CCF63A210191A5008C14CE /* VersionRequest.swift in Sources */,
-				C69940A620FEF9A6007E96C8 /* DataHex.swift in Sources */,
-				C69940AA20FEF9A6007E96C8 /* EthereumUnit.swift in Sources */,
 				42C61C7B21DDCADF001A7FFD /* ACNAdRequest.swift in Sources */,
 				42C61C4E21D75D53001A7FFD /* ACNAdBannerDelegate.swift in Sources */,
 				C69940A120FEF9A6007E96C8 /* ACNNavigationController.swift in Sources */,
@@ -1201,9 +1134,6 @@
 				42C61C8721DDFA21001A7FFD /* ACNAdReward.swift in Sources */,
 				42DAFE8622C20C1100BC97C3 /* ACNTokenManager.swift in Sources */,
 				C69940A320FEF9A6007E96C8 /* ACNWindow.swift in Sources */,
-				C69940B020FEF9A6007E96C8 /* TransactionSigning.swift in Sources */,
-				C69940B320FEF9A6007E96C8 /* BalanceRequest.swift in Sources */,
-				C69940B220FEF9A6007E96C8 /* SendRawTransactionRequest.swift in Sources */,
 				C69940BB20FEF9A6007E96C8 /* ACNConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1296,13 +1226,14 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.payDemo.TTC-SDK-Pay-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1324,12 +1255,13 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.payDemo.TTC-SDK-Pay-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1344,7 +1276,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
 				INFOPLIST_FILE = ACNSDKTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1364,7 +1296,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
 				INFOPLIST_FILE = ACNSDKTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1391,14 +1323,14 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.admobDemo.ACN-SDK-admob-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1420,7 +1352,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1440,7 +1372,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1452,7 +1384,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1510,9 +1442,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1567,8 +1499,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1593,7 +1526,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1627,7 +1560,7 @@
 					"RELEASE=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1693,9 +1626,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1719,7 +1652,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_iOS_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1746,13 +1679,14 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = TTC_SDK_Pay_Demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "eco.ttc.payDemo.TTC-SDK-Pay-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1774,7 +1708,7 @@
 					"$(PROJECT_DIR)/ACNSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACN_SDK_admob_Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1811,7 +1745,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1824,21 +1758,11 @@
 					"-framework",
 					"\"BigInt\"",
 					"-framework",
-					"\"JSONRPCKit\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
 					"-framework",
-					"\"Result\"",
-					"-framework",
-					"\"SipHash\"",
-					"-framework",
 					"\"SwiftProtobuf\"",
-					"-framework",
-					"\"TrezorCrypto\"",
-					"-framework",
-					"\"TrustCore\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -1861,7 +1785,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1873,12 +1797,11 @@
 		};
 		BF62C6A32536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFBD180E263AB72200896641 /* xcode12Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1891,7 +1814,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6AS4N82Q9E;
 				INFOPLIST_FILE = ACNSDKTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1914,7 +1837,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1934,7 +1857,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDKBundle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDKBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1966,34 +1889,24 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-framework",
 					"\"BigInt\"",
 					"-framework",
-					"\"JSONRPCKit\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
 					"-framework",
-					"\"Result\"",
-					"-framework",
-					"\"SipHash\"",
-					"-framework",
 					"\"SwiftProtobuf\"",
-					"-framework",
-					"\"TrezorCrypto\"",
-					"-framework",
-					"\"TrustCore\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -2033,33 +1946,24 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ACNSDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-framework",
 					"\"BigInt\"",
 					"-framework",
-					"\"JSONRPCKit\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
 					"-framework",
-					"\"Result\"",
-					"-framework",
-					"\"SipHash\"",
-					"-framework",
 					"\"SwiftProtobuf\"",
-					"-framework",
-					"\"TrezorCrypto\"",
-					"-framework",
-					"\"TrustCore\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ttc.eco.ACNSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
