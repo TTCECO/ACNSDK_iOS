@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (5.4.3)
   - BigInt (5.2.0)
-  - CryptoSwift (1.4.0)
+  - CryptoSwift (1.4.1)
   - FBAudienceNetwork (5.6.0):
     - FBSDKCoreKit/Basics (>= 5.6.0)
   - FBSDKCoreKit/Basics (9.3.0)
@@ -69,10 +69,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - CryptoSwift (= 1.4.0)
   - Google-Mobile-Ads-SDK (= 7.62.0)
   - GoogleMobileAdsMediationFacebook (= 5.6.0)
-  - PromiseKit
   - RealmSwift (~> 5.5.0)
   - SnapKit
   - SwiftProtobuf (= 1.17.0)
@@ -113,7 +111,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BigInt: f668a80089607f521586bbe29513d708491ef2f7
-  CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
+  CryptoSwift: 0bc800a7e6a24c4fc9ebeab97d44b0d5f73a78bd
   FBAudienceNetwork: 1ea63543665445a3a5b4a059e8210a343b6ab3c1
   FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   Google-Mobile-Ads-SDK: c92c27666fbf684c964259785a6b3cdd3068e06f
@@ -132,6 +130,6 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   web3swift: dcc8da6f0944a062faa381869ce64114ddb5f8d3
 
-PODFILE CHECKSUM: 64ebbccc298b4e35912e71896bade6b214ce285e
+PODFILE CHECKSUM: d812f1ebda3f0e102ebdb80af914bdad48f881a3
 
 COCOAPODS: 1.10.1
