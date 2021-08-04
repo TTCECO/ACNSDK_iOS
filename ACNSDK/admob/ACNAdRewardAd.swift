@@ -16,7 +16,7 @@ import GoogleMobileAds
     /// Delegate for receiving video notifications.
     @objc public weak var delegate: ACNAdRewardAdDelegate?
     
-    public init(adUnitID: String) {
+    @objc public init(adUnitID: String) {
         self.adUnitID = adUnitID
         
         super.init()

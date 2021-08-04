@@ -402,6 +402,7 @@ SWIFT_CLASS("_TtC6ACNSDK13ACNAdRewardAd")
 @interface ACNAdRewardAd : NSObject
 /// Delegate for receiving video notifications.
 @property (nonatomic, weak) id <ACNAdRewardAdDelegate> _Nullable delegate;
+- (nonnull instancetype)initWithAdUnitID:(NSString * _Nonnull)adUnitID OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic) BOOL isReady;
 /// Initiates the request to fetch the reward based video ad. The |request| object supplies ad
 /// targeting information and must not be nil. The adUnitID is the ad unit id used for fetching an
