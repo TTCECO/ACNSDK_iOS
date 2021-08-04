@@ -7,9 +7,13 @@
 Install by CocoaPods
 
 ```
-# open use_frameworks!
-use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
 
-pod 'ACNSDK_ios'
+target '<Your Target Name>' do
+    use_frameworks!
+    pod 'ACNSDK_ios'
+    pod 'web3swift', :git => "https://github.com/skywinder/web3swift"
+end
 ```
 Note: If your DAPP is developed in Object-C, please select the swift version 4.1+.
