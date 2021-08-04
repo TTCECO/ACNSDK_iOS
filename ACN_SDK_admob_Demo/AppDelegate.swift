@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        ACNAdMob.configure(appID: "ca-app-pub-3081086010287406~7480279864")
+        ACNAdMob.start()
+        ACNAdMob.config(testDeviceIdentifiers: ["163a019cf4ded2950fee424c5170b9b1"])
         
         return true
     }

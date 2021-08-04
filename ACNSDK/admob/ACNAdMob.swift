@@ -8,19 +8,16 @@
 
 import GoogleMobileAds
 
-public let ACNkAdSimulatorID = kGADSimulatorID
-
 public class ACNAdMob: NSObject {
-    
-    /// Returns the shared ACNAdMob instance.
-    @objc public static let sharedInstance: ACNAdMob = ACNAdMob()
     
     /// Initialize the Ads SDK.
     /// Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
-    @objc public static func configure(appID: String) {
-        GADMobileAds.configure(withApplicationID: appID)
-//        GADMobileAds.sharedInstance().start { (_) in }
-        let _ = ACNAdupload.shared
+    @objc public class func start() {
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    }
+    
+    @objc public class func config(testDeviceIdentifiers: [String]) {
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = testDeviceIdentifiers
     }
     
 }

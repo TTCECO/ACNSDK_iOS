@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK_ios"
-  s.version      = "0.2.38"
+  s.version      = "0.2.39"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -23,11 +23,11 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
   s.dependency 'SwiftProtobuf', '1.17.0'
-  s.dependency 'Alamofire'
-  s.dependency 'RealmSwift'
-  s.dependency 'SwiftyRSA'
-  s.dependency 'Google-Mobile-Ads-SDK', '7.69'
+  s.dependency 'Alamofire', '5.4.3'
+  s.dependency 'RealmSwift', '5.5.1'
+  s.dependency 'SwiftyRSA', '1.5.0'
+  s.dependency 'Google-Mobile-Ads-SDK', '8.8.0'
   s.dependency 'web3swift', '2.3.0'
-  s.dependency 'GoogleMobileAdsMediationFacebook', '5.6.0'
+  s.dependency 'GoogleMobileAdsMediationFacebook', '6.5.1.0'
 
 end

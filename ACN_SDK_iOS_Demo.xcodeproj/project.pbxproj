@@ -33,8 +33,6 @@
 		425E0BC7228420A20094928B /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		425E0BCB228420A60094928B /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
 		425E0BCC228420A70094928B /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		425E0BD322842D5D0094928B /* ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; };
-		425E0BD422842D5D0094928B /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		427D6985211441C3006AE7AD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D6984211441C3006AE7AD /* Error.swift */; };
 		428258AE2282C7DB0050A0F8 /* ACNSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 428258AD2282C7DB0050A0F8 /* ACNSDKBundle.bundle */; };
 		4282667622854EFA007F7BF4 /* ACNAdupload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8C21E49130001A7FFD /* ACNAdupload.swift */; };
@@ -43,7 +41,6 @@
 		4282667F22855EEB007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4282668022855EF8007F7BF4 /* ACN_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; };
 		4282668122855EF8007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4282668222855EFB007F7BF4 /* ACN_SDK_NET.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; };
 		4282668322855EFB007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4282667C22855EAF007F7BF4 /* ACN_SDK_NET.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		428A565321C7AFD800742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
 		428A565621C7B56900742FE6 /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
@@ -64,15 +61,14 @@
 		42C61C4A21D731B3001A7FFD /* ACNAdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C4921D731B3001A7FFD /* ACNAdBanner.swift */; };
 		42C61C4C21D74E5B001A7FFD /* ACNAdSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C4B21D74E5B001A7FFD /* ACNAdSize.swift */; };
 		42C61C4E21D75D53001A7FFD /* ACNAdBannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C4D21D75D53001A7FFD /* ACNAdBannerDelegate.swift */; };
-		42C61C6D21D77424001A7FFD /* TTCPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; };
 		42C61C6E21D77425001A7FFD /* TTCPay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 428A565221C7AFD800742FE6 /* TTCPay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42C61C7921DCA6BD001A7FFD /* ACNAdInterstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7821DCA6BD001A7FFD /* ACNAdInterstitial.swift */; };
 		42C61C7B21DDCADF001A7FFD /* ACNAdRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7A21DDCADF001A7FFD /* ACNAdRequest.swift */; };
 		42C61C7D21DDCD30001A7FFD /* ACNAdLoadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7C21DDCD30001A7FFD /* ACNAdLoadProtocol.swift */; };
 		42C61C7F21DDDD33001A7FFD /* ACNAdInterstitialDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C7E21DDDD33001A7FFD /* ACNAdInterstitialDelegate.swift */; };
-		42C61C8521DDF698001A7FFD /* ACNAdRewardBasedVideoAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8421DDF698001A7FFD /* ACNAdRewardBasedVideoAd.swift */; };
+		42C61C8521DDF698001A7FFD /* ACNAdRewardAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8421DDF698001A7FFD /* ACNAdRewardAd.swift */; };
 		42C61C8721DDFA21001A7FFD /* ACNAdReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8621DDFA21001A7FFD /* ACNAdReward.swift */; };
-		42C61C8921DDFBB6001A7FFD /* ACNAdRewardBasedVideoAdDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8821DDFBB6001A7FFD /* ACNAdRewardBasedVideoAdDelegate.swift */; };
+		42C61C8921DDFBB6001A7FFD /* ACNAdRewardAdDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C61C8821DDFBB6001A7FFD /* ACNAdRewardAdDelegate.swift */; };
 		42DAFE8622C20C1100BC97C3 /* ACNTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAFE8522C20C1100BC97C3 /* ACNTokenManager.swift */; };
 		42EAD11422CB1AB000D455F5 /* ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; };
 		42EAD11522CB1AB000D455F5 /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -93,6 +89,7 @@
 		97AE5DC52101E3FD00211D2F /* ACNLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC12101E3FD00211D2F /* ACNLoginModel.swift */; };
 		97AE5DC62101E3FD00211D2F /* ACNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */; };
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
+		AF34A15726BA6D6E0057452F /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
 		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
 		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
@@ -115,13 +112,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		425E0BC8228420A20094928B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 979780EB20EA14AC007FA763 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C699406920FEF974007E96C8;
-			remoteInfo = ACNSDK;
-		};
-		425E0BD522842D5D0094928B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 979780EB20EA14AC007FA763 /* Project object */;
 			proxyType = 1;
@@ -184,7 +174,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				425E0BD422842D5D0094928B /* ACNSDK.framework in Embed Frameworks */,
+				AF34A15726BA6D6E0057452F /* ACNSDK.framework in Embed Frameworks */,
 				4282668322855EFB007F7BF4 /* ACN_SDK_NET.framework in Embed Frameworks */,
 				42C61C6E21D77425001A7FFD /* TTCPay.framework in Embed Frameworks */,
 			);
@@ -246,9 +236,9 @@
 		42C61C7A21DDCADF001A7FFD /* ACNAdRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdRequest.swift; sourceTree = "<group>"; };
 		42C61C7C21DDCD30001A7FFD /* ACNAdLoadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdLoadProtocol.swift; sourceTree = "<group>"; };
 		42C61C7E21DDDD33001A7FFD /* ACNAdInterstitialDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdInterstitialDelegate.swift; sourceTree = "<group>"; };
-		42C61C8421DDF698001A7FFD /* ACNAdRewardBasedVideoAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdRewardBasedVideoAd.swift; sourceTree = "<group>"; };
+		42C61C8421DDF698001A7FFD /* ACNAdRewardAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdRewardAd.swift; sourceTree = "<group>"; };
 		42C61C8621DDFA21001A7FFD /* ACNAdReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdReward.swift; sourceTree = "<group>"; };
-		42C61C8821DDFBB6001A7FFD /* ACNAdRewardBasedVideoAdDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdRewardBasedVideoAdDelegate.swift; sourceTree = "<group>"; };
+		42C61C8821DDFBB6001A7FFD /* ACNAdRewardAdDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdRewardAdDelegate.swift; sourceTree = "<group>"; };
 		42C61C8C21E49130001A7FFD /* ACNAdupload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdupload.swift; sourceTree = "<group>"; };
 		42DAFE8522C20C1100BC97C3 /* ACNTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNTokenManager.swift; sourceTree = "<group>"; };
 		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -320,9 +310,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42C61C6D21D77424001A7FFD /* TTCPay.framework in Frameworks */,
-				425E0BD322842D5D0094928B /* ACNSDK.framework in Frameworks */,
-				4282668222855EFB007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
 				CA44EFEFFDABE71425D4D61B /* Pods_ACN_SDK_admob_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +443,7 @@
 				42C61C4621D631A9001A7FFD /* ACNAdMob.swift */,
 				42C61C4921D731B3001A7FFD /* ACNAdBanner.swift */,
 				42C61C7821DCA6BD001A7FFD /* ACNAdInterstitial.swift */,
-				42C61C8421DDF698001A7FFD /* ACNAdRewardBasedVideoAd.swift */,
+				42C61C8421DDF698001A7FFD /* ACNAdRewardAd.swift */,
 				42C61C8321DDF548001A7FFD /* common */,
 				42C61C8221DDF526001A7FFD /* protocol */,
 			);
@@ -469,7 +456,7 @@
 				42C61C4D21D75D53001A7FFD /* ACNAdBannerDelegate.swift */,
 				42C61C7E21DDDD33001A7FFD /* ACNAdInterstitialDelegate.swift */,
 				42C61C7C21DDCD30001A7FFD /* ACNAdLoadProtocol.swift */,
-				42C61C8821DDFBB6001A7FFD /* ACNAdRewardBasedVideoAdDelegate.swift */,
+				42C61C8821DDFBB6001A7FFD /* ACNAdRewardAdDelegate.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -715,7 +702,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				425E0BD622842D5D0094928B /* PBXTargetDependency */,
 			);
 			name = ACN_SDK_admob_Demo;
 			productName = TTC_SDK_admob_Demo;
@@ -1101,7 +1087,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4282667622854EFA007F7BF4 /* ACNAdupload.swift in Sources */,
-				42C61C8521DDF698001A7FFD /* ACNAdRewardBasedVideoAd.swift in Sources */,
+				42C61C8521DDF698001A7FFD /* ACNAdRewardAd.swift in Sources */,
 				C69940BC20FEF9A6007E96C8 /* ActionManager.swift in Sources */,
 				421445CD2200533700ED4726 /* KeychainSwift.swift in Sources */,
 				421445CE2200533700ED4726 /* KeychainSwiftAccessOptions.swift in Sources */,
@@ -1117,7 +1103,7 @@
 				C69940A820FEF9A6007E96C8 /* ACNRPCRequest.swift in Sources */,
 				97723A4D2105888000063D38 /* ACNImage.swift in Sources */,
 				42C61C7921DCA6BD001A7FFD /* ACNAdInterstitial.swift in Sources */,
-				42C61C8921DDFBB6001A7FFD /* ACNAdRewardBasedVideoAdDelegate.swift in Sources */,
+				42C61C8921DDFBB6001A7FFD /* ACNAdRewardAdDelegate.swift in Sources */,
 				C69940A720FEF9A6007E96C8 /* ACNRPCManager.swift in Sources */,
 				422CF9D621EF311B000A38D2 /* ACNLocationManager.swift in Sources */,
 				42C61C4721D631A9001A7FFD /* ACNAdMob.swift in Sources */,
@@ -1145,11 +1131,6 @@
 			isa = PBXTargetDependency;
 			target = C699406920FEF974007E96C8 /* ACNSDK */;
 			targetProxy = 425E0BC8228420A20094928B /* PBXContainerItemProxy */;
-		};
-		425E0BD622842D5D0094928B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C699406920FEF974007E96C8 /* ACNSDK */;
-			targetProxy = 425E0BD522842D5D0094928B /* PBXContainerItemProxy */;
 		};
 		42A1AAE7211BEC80007D0D0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1220,6 +1201,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1249,6 +1231,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1317,6 +1300,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1346,6 +1330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1519,6 +1504,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ACNSDK/Network",
@@ -1548,6 +1535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ACNSDK/Network",
@@ -1645,6 +1633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ACNSDK/Network",
@@ -1673,6 +1662,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1702,6 +1692,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 42RPWUS9BA;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1738,6 +1729,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ACNSDK/Network",
@@ -1882,6 +1874,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ACNSDK/Network",
@@ -1934,6 +1927,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ACNSDK/Network",

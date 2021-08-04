@@ -9,13 +9,13 @@ target 'ACNSDK' do
     #protobuf
     pod 'SwiftProtobuf', '1.17.0'
     
-    pod 'Alamofire' #网络请求
+    pod 'Alamofire', '5.4.3' #网络请求
 
     pod 'RealmSwift', '~> 5.5.0' #数据库
-    pod 'SwiftyRSA'   #RSA加密签名等
-    pod 'Google-Mobile-Ads-SDK', '7.62.0'
+    pod 'SwiftyRSA', '1.5.0'   #RSA加密签名等
+    pod 'Google-Mobile-Ads-SDK'
     pod 'web3swift', :git => "https://github.com/skywinder/web3swift"
-    pod 'GoogleMobileAdsMediationFacebook', '5.6.0'
+    pod 'GoogleMobileAdsMediationFacebook'
     
 end
 

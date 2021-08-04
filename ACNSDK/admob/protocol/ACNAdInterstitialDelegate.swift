@@ -18,28 +18,27 @@ import UIKit
     
     /// Called when an interstitial ad request completed without an interstitial to
     /// show. This is common since interstitials are shown sparingly to users.
-    @objc optional func interstitialDidFailToReceiveAdWithError(ad: ACNAdInterstitial, error: Error)
+    @objc optional func interstitial(_: ACNAdInterstitial, didFailToReceiveAdWithError error: Error)
     
     // MARK: - Display-Time Lifecycle Notifications
+
+    /// Tells the delegate that an impression has been recorded for the ad.
+    @objc optional func interstitialDidRecordImpression(ad: ACNAdInterstitial)
     
-    /// Called just before presenting an interstitial. After this method finishes the interstitial will
-    /// animate onto the screen. Use this opportunity to stop animations and save the state of your
-    /// application in case the user leaves while the interstitial is on screen (e.g. to visit the App
-    /// Store from a link on the interstitial).
-    @objc optional func interstitialWillPresentScreen(ad: ACNAdInterstitial)
+    /// Tells the delegate that a click has been recorded for the ad.
+    @objc optional func interstitialDidRecordClick(ad: ACNAdInterstitial)
     
-    /// Called when |ad| fails to present.
-    @objc optional func interstitialDidFailToPresentScreen(ad: ACNAdInterstitial)
+    /// Tells the delegate that the ad failed to present full screen content.
+    @objc optional func interstitial(ad: ACNAdInterstitial, didFailToPresentFullScreenContentWithError error: Error)
     
-    /// Called before the interstitial is to be animated off the screen.
-    @objc optional func interstitialWillDismissScreen(ad: ACNAdInterstitial)
+    /// Tells the delegate that the ad presented full screen content.
+    @objc optional func interstitialDidPresentFullScreenContent(ad: ACNAdInterstitial)
     
-    /// Called just after dismissing an interstitial and it has animated off the screen.
-    @objc optional func interstitialDidDismissScreen(ad: ACNAdInterstitial)
+    /// Tells the delegate that the ad will dismiss full screen content.
+    @objc optional func interstitialWillDismissFullScreenContent(ad: ACNAdInterstitial)
     
-    /// Called just before the application will background or terminate because the user clicked on an
-    /// ad that will launch another application (such as the App Store). The normal
-    /// UIApplicationDelegate methods, like applicationDidEnterBackground:, will be called immediately
-    /// before this.
-    @objc optional func interstitialWillLeaveApplication(ad: ACNAdInterstitial)
+    /// Tells the delegate that the ad dismissed full screen content.
+    @objc optional func interstitialDidDismissFullScreenContent(ad: ACNAdInterstitial)
+
+    
 }
