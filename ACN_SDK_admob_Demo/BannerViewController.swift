@@ -18,11 +18,10 @@ class BannerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        banner = ACNAdBanner(adSize: .LargeBanner)
-        banner.rootViewController = self
+        banner = ACNAdBanner(adSize: .LargeBanner, adUnitID: "ca-app-pub-3081086010287406/7452359703", rootViewController: self)
         banner.delegate = self
         banner.adSizeDelegate = self
-        banner.adUnitID = "ca-app-pub-3081086010287406/7452359703"
+
         view.addSubview(banner.bannerView)
         banner.bannerView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
@@ -32,36 +31,40 @@ class BannerViewController: UIViewController {
     
     @IBAction func loadClick(_ sender: Any) {
         let request = ACNAdRequest()
-//        request.testDevices = [ACNkAdSimulatorID, "a6f4cc131cbe0effa815572262d24262"]
         banner.loadRequest(requset: request)
     }
 }
 
 extension BannerViewController: ACNAdBannerDelegate {
     
-    func adViewDidReceiveAd(_ banner: ACNAdBanner) {
-        print("adViewDidReceiveAd:"+Date().description)
+    func bannerViewDidReceiveAd(_ banner: ACNAdBanner) {
+        print(#function)
+    }
+
+    func bannerView(_ banner: ACNAdBanner, didFailToReceiveAdWithError error: Error) {
+        print(#function)
     }
     
-    func adViewDidFailToReceiveAd(banner: ACNAdBanner, error: Error) {
-        print("adViewDidFailToReceiveAd")
+    func bannerViewDidRecordImpression(banner: ACNAdBanner) {
+        print(#function)
+    }
+
+    func bannerViewDidRecordClick(banner: ACNAdBanner) {
+        print(#function)
     }
     
-    func adViewWillPresentScreen(banner: ACNAdBanner) {
-        print("adViewWillPresentScreen")
+    func bannerViewWillPresentScreen(banner: ACNAdBanner) {
+        print(#function)
     }
     
-    func adViewWillDismissScreen(banner: ACNAdBanner) {
-        print("adViewWillDismissScreen")
+    func bannerViewWillDismissScreen(banner: ACNAdBanner) {
+        print(#function)
     }
     
-    func adViewDidDismissScreen(banner: ACNAdBanner) {
-        print("adViewDidDismissScreen")
+    func bannerViewDidDismissScreen(banner: ACNAdBanner) {
+        print(#function)
     }
     
-    func adViewWillLeaveApplication(banner: ACNAdBanner) {
-        print("adViewWillLeaveApplication")
-    }
 }
 
 extension BannerViewController: ACNAdSizeDelegate {

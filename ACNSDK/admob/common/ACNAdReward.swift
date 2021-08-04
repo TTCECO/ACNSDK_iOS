@@ -12,24 +12,24 @@ import GoogleMobileAds
 /// Reward information for ACNAdRewardBasedVideoAd ads.
 @objc public class ACNAdReward: NSObject {
 
-    var reward: GADAdReward!
+    let reward: GADAdReward
+    
+    init(reward: GADAdReward) {
+        self.reward = reward
+        super.init()
+    }
     
     /// Type of the reward.
-    @objc public var rewardType: String? {
+    @objc public var rewardType: String {
         get {
             return reward.type
         }
     }
     
     /// Amount rewarded to the user.
-    @objc public var amount: NSDecimalNumber? {
+    @objc public var amount: NSDecimalNumber {
         get {
             return reward.amount
         }
-    }
-    
-    init(reward: GADAdReward) {
-        super.init()
-        self.reward = reward
     }
 }

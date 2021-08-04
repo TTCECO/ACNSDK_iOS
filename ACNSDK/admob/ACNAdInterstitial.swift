@@ -9,8 +9,12 @@
 import GoogleMobileAds
 
 @objc public class ACNAdInterstitial: NSObject {
-
-    var interstitial: GADInterstitial!
+    
+    private var interstitial: GADInterstitialAd?
+    private let adUnitID: String
+    
+    /// Optional delegate object that receives state change notifications from this GADInterstitalAd.
+    @objc public weak var delegate: ACNAdInterstitialDelegate?
     
     /// Initializes an interstitial with an ad unit created on the AdMob website. Create a new ad unit
     /// for every unique placement of an ad in your application. Set this to the ID assigned for this
@@ -18,99 +22,68 @@ import GoogleMobileAds
     ///
     /// Example AdMob ad unit ID: @"ca-app-pub-0123456789012345/0123456789"
     @objc public init(adUnitID: String) {
+        self.adUnitID = adUnitID
         super.init()
-        interstitial = GADInterstitial(adUnitID: adUnitID)
-        interstitial.delegate = self
     }
     
-    /// Required value created on the ACNAdMob website. Create a new ad unit for every unique placement of
-    /// an ad in your application. Set this to the ID assigned for this placement. Ad units are
-    /// important for targeting and statistics.
-    ///
-    /// Example AdMob ad unit ID: @"ca-app-pub-0123456789012345/0123456789"
-    @objc public var adUnitID: String? {
-        get {
-           return interstitial.adUnitID
-        }
-    }
+    @objc public var isReady: Bool = false
     
-    /// Optional delegate object that receives state change notifications from this GADInterstitalAd.
-    @objc public weak var delegate: ACNAdInterstitialDelegate?
-    
-    /// Returns YES if the interstitial is ready to be displayed. The delegate's
-    /// interstitialAdDidReceiveAd: will be called after this property switches from NO to YES.
-    @objc public var isReady: Bool {
-        get {
-            return interstitial.isReady
-        }
-    }
-    
-    /// Returns YES if this object has already been presented. Interstitial objects can only be used
-    /// once even with different requests.
-    @objc public var hasBeenUsed: Bool {
-        get {
-            return interstitial.hasBeenUsed
+    /// Loads an interstitial ad.
+    @objc public func loadRequest(requset: ACNAdRequest) {
+        GADInterstitialAd.load(withAdUnitID: adUnitID,
+                               request: requset.gadRequest) { ad, error in
+            
+            if let ad = ad {
+                self.isReady = true
+                self.interstitial = ad
+                self.interstitial?.fullScreenContentDelegate = self
+                
+                self.delegate?.interstitialDidReceiveAd?(ad: self)
+                
+            } else if let err = error {
+                self.isReady = false
+                self.delegate?.interstitial?(self, didFailToReceiveAdWithError: err)
+            }
         }
     }
 }
 
 extension ACNAdInterstitial {
     
-    /// Presents the interstitial ad which takes over the entire screen until the user dismisses it.
-    /// This has no effect unless isReady returns YES and/or the delegate's interstitialDidReceiveAd:
-    /// has been received.
+    /// Presents the interstitial ad. Must be called on the main thread.
     ///
-    /// Set rootViewController to the current view controller at the time this method is called. If your
-    /// application does not use view controllers pass in nil and your views will be removed from the
-    /// window to show the interstitial and restored when done. After the interstitial has been removed,
-    /// the delegate's interstitialDidDismissScreen: will be called.
+    /// @param rootViewController A view controller to present the ad.
     @objc public func present(rootViewController: UIViewController) {
-        interstitial.present(fromRootViewController: rootViewController)
+        interstitial?.present(fromRootViewController: rootViewController)
     }
 }
 
-extension ACNAdInterstitial: ACNAdLoadProtocol {
+extension ACNAdInterstitial: GADFullScreenContentDelegate {
     
-    /// Makes an interstitial ad request. Additional targeting options can be supplied with a request
-    /// object. Only one interstitial request is allowed at a time.
-    ///
-    /// This is best to do several seconds before the interstitial is needed to preload its content.
-    /// Then when transitioning between view controllers show the interstital with
-    /// presentFromViewController.
-    @objc public func loadRequest(requset: ACNAdRequest) {
-        interstitial.load(requset.gadRequest)
-    }
-}
-
-extension ACNAdInterstitial: GADInterstitialDelegate {
-
-    public func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        self.delegate?.interstitialDidReceiveAd?(ad: self)
+    public func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        self.delegate?.interstitialDidRecordImpression?(ad: self)
     }
     
-    public func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
-        self.delegate?.interstitialDidReceiveAd?(ad: self)
+    public func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+        ACNAdupload.upload(adUnitID: adUnitID, handleType: 2)
+        self.delegate?.interstitialDidRecordClick?(ad: self)
     }
     
-    public func interstitialWillPresentScreen(_ ad: GADInterstitial) {
-        ACNAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 1)
-        self.delegate?.interstitialWillPresentScreen?(ad: self)
+    public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        self.delegate?.interstitial?(ad: self, didFailToPresentFullScreenContentWithError: error)
     }
     
-    public func interstitialDidFail(toPresentScreen ad: GADInterstitial) {
-        self.delegate?.interstitialDidFailToPresentScreen?(ad: self)
+    public func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        
+        ACNAdupload.upload(adUnitID: adUnitID, handleType: 1)
+        self.delegate?.interstitialDidPresentFullScreenContent?(ad: self)
     }
     
-    public func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        self.delegate?.interstitialWillDismissScreen?(ad: self)
+    public func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        self.delegate?.interstitialWillDismissFullScreenContent?(ad: self)
     }
     
-    public func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        self.delegate?.interstitialDidDismissScreen?(ad: self)
-    }
-    
-    public func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
-        ACNAdupload.shared.upload(adUnitID: adUnitID ?? "", handleType: 2)
-        self.delegate?.interstitialWillLeaveApplication?(ad: self)
+    public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        self.delegate?.interstitialDidDismissFullScreenContent?(ad: self)
     }
 }

@@ -11,7 +11,7 @@ import ACNSDK
 
 class RewardBasedVideoAdViewController: UIViewController {
 
-    var rewardBasedVideo: ACNAdRewardBasedVideoAd!
+    var rewardBasedVideo: ACNAdRewardAd!
     
     let timeLenght: Int = 5
     
@@ -24,9 +24,8 @@ class RewardBasedVideoAdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rewardBasedVideo = ACNAdRewardBasedVideoAd.sharedInstance
+        rewardBasedVideo = ACNAdRewardAd(adUnitID: "ca-app-pub-3081086010287406/2909838839")
         rewardBasedVideo.delegate = self
-        
     }
 
     @IBOutlet weak var button: UIButton!
@@ -35,8 +34,7 @@ class RewardBasedVideoAdViewController: UIViewController {
         if !adRequestInProgress {
             
             let request = ACNAdRequest()
-//            request.testDevices = [ACNkAdSimulatorID, "a6f4cc131cbe0effa815572262d24262"]
-            rewardBasedVideo.loadRequest(request: request, adUnitID: "ca-app-pub-3081086010287406/2909838839")
+            rewardBasedVideo.loadRequest(request: request)
             
             timeLeft = timeLenght
             button.setTitle("\(timeLeft)", for: .normal)
@@ -64,39 +62,41 @@ class RewardBasedVideoAdViewController: UIViewController {
     }
 }
 
-extension RewardBasedVideoAdViewController: ACNAdRewardBasedVideoAdDelegate {
+extension RewardBasedVideoAdViewController: ACNAdRewardAdDelegate {
     
-    func rewardBasedVideoAd(rewardBasedVideoAd: ACNAdRewardBasedVideoAd, didRewardUserWithReward reward: ACNAdReward) {
-        print("receve: \(reward.amount?.description ?? "null") \(reward.rewardType?.description ?? "what?")")
+    func rewardAd(_: ACNAdRewardAd, didRewardUserWithReward reward: ACNAdReward) {
+        print(#function)
     }
     
-    func rewardBasedVideoAd(rewardBasedVideoAd: ACNAdRewardBasedVideoAd, didFailToLoadWithError error: Error)  {
-        adRequestInProgress = false
-        print("didFailTo" + error.localizedDescription)
+    func rewardAd(_: ACNAdRewardAd, didFailToLoadWithError error: Error) {
+        print(#function)
     }
     
-    func rewardBasedVideoAdDidReceiveAd(rewardBasedVideoAd: ACNAdRewardBasedVideoAd) {
-        adRequestInProgress = false
-        print("DidReceiveAd")
+    func rewardAdDidReceiveAd(rewardAd: ACNAdRewardAd) {
+        print(#function)
     }
     
-    func rewardBasedVideoAdDidOpen(rewardBasedVideoAd: ACNAdRewardBasedVideoAd) {
-        print("rewardBasedVideoAdDidOpen")
+    func rewardAdDidRecordImpression(rewardAd: ACNAdRewardAd) {
+        print(#function)
     }
     
-    func rewardBasedVideoAdDidStartPlaying(rewardBasedVideoAd: ACNAdRewardBasedVideoAd) {
-        print("rewardBasedVideoAdDidStartPlaying")
+    func rewardAdDidClicked(rewardAd: ACNAdRewardAd) {
+        print(#function)
     }
     
-    func rewardBasedVideoAdDidCompletePlaying(rewardBasedVideoAd: ACNAdRewardBasedVideoAd) {
-        print("rewardBasedVideoAdDidCompletePlaying")
+    func rewardAd(_: ACNAdRewardAd, didFailToPresentFullScreenContent error: Error) {
+        print(#function)
     }
     
-    func rewardBasedVideoAdDidClose(rewardBasedVideoAd: ACNAdRewardBasedVideoAd) {
-        print("rewardBasedVideoAdDidClose")
+    func rewardAdDidPresentFullScreenContent(rewardAd: ACNAdRewardAd) {
+        print(#function)
     }
     
-    func rewardBasedVideoAdWillLeaveApplication(rewardBasedVideoAd: ACNAdRewardBasedVideoAd) {
-        print("rewardBasedVideoAdWillLeaveApplication")
+    func rewardWillDismissFullScreenContent(rewardAd: ACNAdRewardAd) {
+        print(#function)
+    }
+    
+    func rewardAdDidDismissFullScreenContent(rewardAd: ACNAdRewardAd) {
+        print(#function)
     }
 }

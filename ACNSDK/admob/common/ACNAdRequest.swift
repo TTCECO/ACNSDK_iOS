@@ -15,10 +15,4 @@ public class ACNAdRequest: NSObject {
     }
     
     var gadRequest: GADRequest = GADRequest()
-    
-    @objc public var testDevices: NSArray? {
-        didSet {
-            gadRequest.testDevices = testDevices as? [String] 
-        }
-    }
 }

@@ -30,7 +30,6 @@ class InterstitialViewController: UIViewController {
         interstitial = ACNAdInterstitial(adUnitID: "ca-app-pub-3081086010287406/6838185997")
         interstitial.delegate = self
         let request = ACNAdRequest()
-//        request.testDevices = [ACNkAdSimulatorID, "a6f4cc131cbe0effa815572262d24262"]
         interstitial.loadRequest(requset: request)
         
         timeLeft = timeLenght
@@ -59,30 +58,34 @@ class InterstitialViewController: UIViewController {
 
 extension InterstitialViewController: ACNAdInterstitialDelegate {
     func interstitialDidReceiveAd(ad: ACNAdInterstitial) {
-        print("interstitialDidReceiveAd")
+        print(#function)
     }
     
-    func interstitialDidFailToReceiveAdWithError(ad: ACNAdInterstitial, error: Error) {
-        print("interstitialDidFailToReceiveAdWithError")
+    func interstitial(_: ACNAdInterstitial, didFailToReceiveAdWithError error: Error) {
+        print(#function)
     }
     
-    func interstitialWillPresentScreen(ad: ACNAdInterstitial) {
-        print("interstitialWillPresentScreen")
+    func interstitialDidRecordImpression(ad: ACNAdInterstitial) {
+        print(#function)
     }
     
-    func interstitialDidFailToPresentScreen(ad: ACNAdInterstitial) {
-        print("interstitialDidFailToPresentScreen")
+    func interstitialDidRecordClick(ad: ACNAdInterstitial) {
+        print(#function)
     }
     
-    func interstitialWillDismissScreen(ad: ACNAdInterstitial) {
-        print("interstitialWillDismissScreen")
+    func interstitial(ad: ACNAdInterstitial, didFailToPresentFullScreenContentWithError error: Error) {
+        print(#function)
     }
     
-    func interstitialDidDismissScreen(ad: ACNAdInterstitial) {
-        print("interstitialDidDismissScreen")
+    func interstitialDidPresentFullScreenContent(ad: ACNAdInterstitial) {
+        print(#function)
     }
     
-    func interstitialWillLeaveApplication(ad: ACNAdInterstitial) {
-        print("interstitialWillLeaveApplication")
+    func interstitialWillDismissFullScreenContent(ad: ACNAdInterstitial) {
+        print(#function)
+    }
+    
+    func interstitialDidDismissFullScreenContent(ad: ACNAdInterstitial) {
+        print(#function)
     }
 }

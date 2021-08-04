@@ -189,6 +189,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreGraphics;
+@import Foundation;
 @import GoogleMobileAds;
 @import ObjectiveC;
 #endif
@@ -209,50 +210,32 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 @class UIView;
-@class NSString;
-enum ACNAdSize : NSInteger;
-@class UIViewController;
 @protocol ACNAdBannerDelegate;
 @protocol ACNAdSizeDelegate;
+enum ACNAdSize : NSInteger;
+@class NSString;
+@class UIViewController;
 
 /// The view that displays banner ads. A minimum implementation to get an ad from within a
 /// UIViewController class is:
 SWIFT_CLASS("_TtC6ACNSDK11ACNAdBanner")
 @interface ACNAdBanner : NSObject
 @property (nonatomic, strong) UIView * _Null_unspecified bannerView;
-/// Required value created on the ACNAdMob website. Create a new ad unit for every unique placement of
-/// an ad in your application. Set this to the ID assigned for this placement. Ad units are
-/// important for targeting and statistics.
-/// Example AdMob ad unit ID: @“ca-app-pub-0123456789012345/0123456789”
-@property (nonatomic, copy) NSString * _Nullable adUnitID;
-/// Required to set this banner view to a proper size. Never create your own GADAdSize directly. Use
-/// one of the predefined standard ad sizes (such as kGADAdSizeBanner), or create one using the
-/// GADAdSizeFromCGSize method. If not using mediation, then changing the adSize after an ad has
-/// been shown will cause a new request (for an ad of the new size) to be sent. If using mediation,
-/// then a new request may not be sent.
-@property (nonatomic) enum ACNAdSize adSize;
-/// Required reference to the root view controller for the banner view. This is the view controller
-/// the banner will present from if necessary (for example, presenting a landing page after a user
-/// click). Most commonly, this is the view controller the banner is displayed in.
-@property (nonatomic, weak) UIViewController * _Nullable rootViewController;
 /// Optional delegate object that receives state change notifications from this ACNBanner.
 /// Typically this is a UIViewController.
 @property (nonatomic, weak) id <ACNAdBannerDelegate> _Nullable delegate;
 /// Optional delegate that is notified when creatives cause the banner to change size.
 @property (nonatomic, weak) id <ACNAdSizeDelegate> _Nullable adSizeDelegate;
-/// init
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-/// init with asSize
-- (nonnull instancetype)initWithAdSize:(enum ACNAdSize)adSize;
-/// init with asSize and origin
-- (nonnull instancetype)initWithAdSize:(enum ACNAdSize)adSize origin:(CGPoint)origin OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class GADBannerView;
-
-@interface ACNAdBanner (SWIFT_EXTENSION(ACNSDK)) <GADAdSizeDelegate>
-/// Called before the ad view changes to the new size.
-- (void)adView:(GADBannerView * _Nonnull)bannerView willChangeAdSizeTo:(GADAdSize)size;
+/// Init with adSize, adUnitID, rootViewController
+/// \param adSize banner view size
+///
+/// \param adUnitID Example AdMob ad unit ID: @“ca-app-pub-0123456789012345/0123456789”
+///
+/// \param rootViewController Required reference to a root view controller that is used by the banner to present full screen content after the user interacts with the ad. The root view controller is most commonly the view controller displaying the banner.
+///
+- (nonnull instancetype)initWithAdSize:(enum ACNAdSize)adSize adUnitID:(NSString * _Nonnull)adUnitID rootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class ACNAdRequest;
@@ -268,27 +251,33 @@ SWIFT_PROTOCOL("_TtP6ACNSDK17ACNAdLoadProtocol_")
 - (void)loadRequestWithRequset:(ACNAdRequest * _Nonnull)requset;
 @end
 
-@class GADRequestError;
+@class GADBannerView;
+
+@interface ACNAdBanner (SWIFT_EXTENSION(ACNSDK)) <GADAdSizeDelegate>
+/// Called before the ad view changes to the new size.
+- (void)adView:(GADBannerView * _Nonnull)bannerView willChangeAdSizeTo:(GADAdSize)size;
+@end
+
 
 @interface ACNAdBanner (SWIFT_EXTENSION(ACNSDK)) <GADBannerViewDelegate>
 /// Tells the delegate that an ad request successfully received an ad. The delegate may want to add
 /// the banner view to the view hierarchy if it hasn’t been added yet.
-- (void)adViewDidReceiveAd:(GADBannerView * _Nonnull)bannerView;
+- (void)bannerViewDidReceiveAd:(GADBannerView * _Nonnull)bannerView;
 /// Tells the delegate that an ad request failed. The failure is normally due to network
 /// connectivity or ad availablility (i.e., no fill).
-- (void)adView:(GADBannerView * _Nonnull)bannerView didFailToReceiveAdWithError:(GADRequestError * _Nonnull)error;
+- (void)bannerView:(GADBannerView * _Nonnull)bannerView didFailToReceiveAdWithError:(NSError * _Nonnull)error;
+/// Tells the delegate that an impression has been recorded for an ad.
+- (void)bannerViewDidRecordImpression:(GADBannerView * _Nonnull)bannerView;
+/// Tells the delegate that a click has been recorded for the ad.
+- (void)bannerViewDidRecordClick:(GADBannerView * _Nonnull)bannerView;
 /// Tells the delegate that a full screen view will be presented in response to the user clicking on
 /// an ad. The delegate may want to pause animations and time sensitive interactions.
-- (void)adViewWillPresentScreen:(GADBannerView * _Nonnull)bannerView;
+- (void)bannerViewWillPresentScreen:(GADBannerView * _Nonnull)bannerView;
 /// Tells the delegate that the full screen view will be dismissed.
-- (void)adViewWillDismissScreen:(GADBannerView * _Nonnull)bannerView;
+- (void)bannerViewWillDismissScreen:(GADBannerView * _Nonnull)bannerView;
 /// Tells the delegate that the full screen view has been dismissed. The delegate should restart
-/// anything paused while handling adViewWillPresentScreen:.
-- (void)adViewDidDismissScreen:(GADBannerView * _Nonnull)bannerView;
-/// Tells the delegate that the user click will open another app, backgrounding the current
-/// application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
-/// are called immediately before this method is called.
-- (void)adViewWillLeaveApplication:(GADBannerView * _Nonnull)bannerView;
+/// anything paused while handling bannerViewWillPresentScreen:.
+- (void)bannerViewDidDismissScreen:(GADBannerView * _Nonnull)bannerView;
 @end
 
 
@@ -297,22 +286,22 @@ SWIFT_PROTOCOL("_TtP6ACNSDK19ACNAdBannerDelegate_")
 @optional
 /// Tells the delegate that an ad request successfully received an ad. The delegate may want to add
 /// the banner view to the view hierarchy if it hasn’t been added yet.
-- (void)adViewDidReceiveAd:(ACNAdBanner * _Nonnull)banner;
+- (void)bannerViewDidReceiveAd:(ACNAdBanner * _Nonnull)banner;
 /// Tells the delegate that an ad request failed. The failure is normally due to network
 /// connectivity or ad availablility (i.e., no fill).
-- (void)adViewDidFailToReceiveAdWithBanner:(ACNAdBanner * _Nonnull)banner error:(NSError * _Nonnull)error;
+- (void)bannerView:(ACNAdBanner * _Nonnull)banner didFailToReceiveAdWithError:(NSError * _Nonnull)error;
+/// Tells the delegate that an impression has been recorded for an ad.
+- (void)bannerViewDidRecordImpressionWithBanner:(ACNAdBanner * _Nonnull)banner;
+/// Tells the delegate that a click has been recorded for the ad.
+- (void)bannerViewDidRecordClickWithBanner:(ACNAdBanner * _Nonnull)banner;
 /// Tells the delegate that a full screen view will be presented in response to the user clicking on
 /// an ad. The delegate may want to pause animations and time sensitive interactions.
-- (void)adViewWillPresentScreenWithBanner:(ACNAdBanner * _Nonnull)banner;
+- (void)bannerViewWillPresentScreenWithBanner:(ACNAdBanner * _Nonnull)banner;
 /// Tells the delegate that the full screen view will be dismissed.
-- (void)adViewWillDismissScreenWithBanner:(ACNAdBanner * _Nonnull)banner;
+- (void)bannerViewWillDismissScreenWithBanner:(ACNAdBanner * _Nonnull)banner;
 /// Tells the delegate that the full screen view has been dismissed. The delegate should restart
-/// anything paused while handling adViewWillPresentScreen:.
-- (void)adViewDidDismissScreenWithBanner:(ACNAdBanner * _Nonnull)banner;
-/// Tells the delegate that the user click will open another app, backgrounding the current
-/// application. The standard UIApplicationDelegate methods, like applicationDidEnterBackground:,
-/// are called immediately before this method is called.
-- (void)adViewWillLeaveApplicationWithBanner:(ACNAdBanner * _Nonnull)banner;
+/// anything paused while handling bannerViewWillPresentScreen:.
+- (void)bannerViewDidDismissScreenWithBanner:(ACNAdBanner * _Nonnull)banner;
 @end
 
 @protocol ACNAdInterstitialDelegate;
@@ -320,60 +309,36 @@ SWIFT_PROTOCOL("_TtP6ACNSDK19ACNAdBannerDelegate_")
 
 SWIFT_CLASS("_TtC6ACNSDK17ACNAdInterstitial")
 @interface ACNAdInterstitial : NSObject
+/// Optional delegate object that receives state change notifications from this GADInterstitalAd.
+@property (nonatomic, weak) id <ACNAdInterstitialDelegate> _Nullable delegate;
 /// Initializes an interstitial with an ad unit created on the AdMob website. Create a new ad unit
 /// for every unique placement of an ad in your application. Set this to the ID assigned for this
 /// placement. Ad units are important for targeting and statistics.
 /// Example AdMob ad unit ID: @“ca-app-pub-0123456789012345/0123456789”
 - (nonnull instancetype)initWithAdUnitID:(NSString * _Nonnull)adUnitID OBJC_DESIGNATED_INITIALIZER;
-/// Required value created on the ACNAdMob website. Create a new ad unit for every unique placement of
-/// an ad in your application. Set this to the ID assigned for this placement. Ad units are
-/// important for targeting and statistics.
-/// Example AdMob ad unit ID: @“ca-app-pub-0123456789012345/0123456789”
-@property (nonatomic, readonly, copy) NSString * _Nullable adUnitID;
-/// Optional delegate object that receives state change notifications from this GADInterstitalAd.
-@property (nonatomic, weak) id <ACNAdInterstitialDelegate> _Nullable delegate;
-/// Returns YES if the interstitial is ready to be displayed. The delegate’s
-/// interstitialAdDidReceiveAd: will be called after this property switches from NO to YES.
-@property (nonatomic, readonly) BOOL isReady;
-/// Returns YES if this object has already been presented. Interstitial objects can only be used
-/// once even with different requests.
-@property (nonatomic, readonly) BOOL hasBeenUsed;
+@property (nonatomic) BOOL isReady;
+/// Loads an interstitial ad.
+- (void)loadRequestWithRequset:(ACNAdRequest * _Nonnull)requset;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 @interface ACNAdInterstitial (SWIFT_EXTENSION(ACNSDK))
-/// Presents the interstitial ad which takes over the entire screen until the user dismisses it.
-/// This has no effect unless isReady returns YES and/or the delegate’s interstitialDidReceiveAd:
-/// has been received.
-/// Set rootViewController to the current view controller at the time this method is called. If your
-/// application does not use view controllers pass in nil and your views will be removed from the
-/// window to show the interstitial and restored when done. After the interstitial has been removed,
-/// the delegate’s interstitialDidDismissScreen: will be called.
+/// Presents the interstitial ad. Must be called on the main thread.
+/// @param rootViewController A view controller to present the ad.
 - (void)presentWithRootViewController:(UIViewController * _Nonnull)rootViewController;
 @end
 
+@protocol GADFullScreenPresentingAd;
 
-@interface ACNAdInterstitial (SWIFT_EXTENSION(ACNSDK)) <ACNAdLoadProtocol>
-/// Makes an interstitial ad request. Additional targeting options can be supplied with a request
-/// object. Only one interstitial request is allowed at a time.
-/// This is best to do several seconds before the interstitial is needed to preload its content.
-/// Then when transitioning between view controllers show the interstital with
-/// presentFromViewController.
-- (void)loadRequestWithRequset:(ACNAdRequest * _Nonnull)requset;
-@end
-
-@class GADInterstitial;
-
-@interface ACNAdInterstitial (SWIFT_EXTENSION(ACNSDK)) <GADInterstitialDelegate>
-- (void)interstitialDidReceiveAd:(GADInterstitial * _Nonnull)ad;
-- (void)interstitial:(GADInterstitial * _Nonnull)ad didFailToReceiveAdWithError:(GADRequestError * _Nonnull)error;
-- (void)interstitialWillPresentScreen:(GADInterstitial * _Nonnull)ad;
-- (void)interstitialDidFailToPresentScreen:(GADInterstitial * _Nonnull)ad;
-- (void)interstitialWillDismissScreen:(GADInterstitial * _Nonnull)ad;
-- (void)interstitialDidDismissScreen:(GADInterstitial * _Nonnull)ad;
-- (void)interstitialWillLeaveApplication:(GADInterstitial * _Nonnull)ad;
+@interface ACNAdInterstitial (SWIFT_EXTENSION(ACNSDK)) <GADFullScreenContentDelegate>
+- (void)adDidRecordImpression:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)adDidRecordClick:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)ad:(id <GADFullScreenPresentingAd> _Nonnull)ad didFailToPresentFullScreenContentWithError:(NSError * _Nonnull)error;
+- (void)adDidPresentFullScreenContent:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)adWillDismissFullScreenContent:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)adDidDismissFullScreenContent:(id <GADFullScreenPresentingAd> _Nonnull)ad;
 @end
 
 
@@ -385,44 +350,36 @@ SWIFT_PROTOCOL("_TtP6ACNSDK25ACNAdInterstitialDelegate_")
 - (void)interstitialDidReceiveAdWithAd:(ACNAdInterstitial * _Nonnull)ad;
 /// Called when an interstitial ad request completed without an interstitial to
 /// show. This is common since interstitials are shown sparingly to users.
-- (void)interstitialDidFailToReceiveAdWithErrorWithAd:(ACNAdInterstitial * _Nonnull)ad error:(NSError * _Nonnull)error;
-/// Called just before presenting an interstitial. After this method finishes the interstitial will
-/// animate onto the screen. Use this opportunity to stop animations and save the state of your
-/// application in case the user leaves while the interstitial is on screen (e.g. to visit the App
-/// Store from a link on the interstitial).
-- (void)interstitialWillPresentScreenWithAd:(ACNAdInterstitial * _Nonnull)ad;
-/// Called when |ad| fails to present.
-- (void)interstitialDidFailToPresentScreenWithAd:(ACNAdInterstitial * _Nonnull)ad;
-/// Called before the interstitial is to be animated off the screen.
-- (void)interstitialWillDismissScreenWithAd:(ACNAdInterstitial * _Nonnull)ad;
-/// Called just after dismissing an interstitial and it has animated off the screen.
-- (void)interstitialDidDismissScreenWithAd:(ACNAdInterstitial * _Nonnull)ad;
-/// Called just before the application will background or terminate because the user clicked on an
-/// ad that will launch another application (such as the App Store). The normal
-/// UIApplicationDelegate methods, like applicationDidEnterBackground:, will be called immediately
-/// before this.
-- (void)interstitialWillLeaveApplicationWithAd:(ACNAdInterstitial * _Nonnull)ad;
+- (void)interstitial:(ACNAdInterstitial * _Nonnull)_ didFailToReceiveAdWithError:(NSError * _Nonnull)error;
+/// Tells the delegate that an impression has been recorded for the ad.
+- (void)interstitialDidRecordImpressionWithAd:(ACNAdInterstitial * _Nonnull)ad;
+/// Tells the delegate that a click has been recorded for the ad.
+- (void)interstitialDidRecordClickWithAd:(ACNAdInterstitial * _Nonnull)ad;
+/// Tells the delegate that the ad failed to present full screen content.
+- (void)interstitialWithAd:(ACNAdInterstitial * _Nonnull)ad didFailToPresentFullScreenContentWithError:(NSError * _Nonnull)error;
+/// Tells the delegate that the ad presented full screen content.
+- (void)interstitialDidPresentFullScreenContentWithAd:(ACNAdInterstitial * _Nonnull)ad;
+/// Tells the delegate that the ad will dismiss full screen content.
+- (void)interstitialWillDismissFullScreenContentWithAd:(ACNAdInterstitial * _Nonnull)ad;
+/// Tells the delegate that the ad dismissed full screen content.
+- (void)interstitialDidDismissFullScreenContentWithAd:(ACNAdInterstitial * _Nonnull)ad;
 @end
 
 
 
 SWIFT_CLASS("_TtC6ACNSDK8ACNAdMob")
 @interface ACNAdMob : NSObject
-/// Returns the shared ACNAdMob instance.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ACNAdMob * _Nonnull sharedInstance;)
-+ (ACNAdMob * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 /// Initialize the Ads SDK.
 /// Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
-+ (void)configureWithAppID:(NSString * _Nonnull)appID;
++ (void)start;
++ (void)configWithTestDeviceIdentifiers:(NSArray<NSString *> * _Nonnull)testDeviceIdentifiers;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSArray;
 
 SWIFT_CLASS("_TtC6ACNSDK12ACNAdRequest")
 @interface ACNAdRequest : NSObject
 + (ACNAdRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic, strong) NSArray * _Nullable testDevices;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -432,84 +389,68 @@ SWIFT_CLASS("_TtC6ACNSDK12ACNAdRequest")
 SWIFT_CLASS("_TtC6ACNSDK11ACNAdReward")
 @interface ACNAdReward : NSObject
 /// Type of the reward.
-@property (nonatomic, readonly, copy) NSString * _Nullable rewardType;
+@property (nonatomic, readonly, copy) NSString * _Nonnull rewardType;
 /// Amount rewarded to the user.
-@property (nonatomic, readonly, strong) NSDecimalNumber * _Nullable amount;
+@property (nonatomic, readonly, strong) NSDecimalNumber * _Nonnull amount;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@protocol ACNAdRewardBasedVideoAdDelegate;
+@protocol ACNAdRewardAdDelegate;
 
-SWIFT_CLASS("_TtC6ACNSDK23ACNAdRewardBasedVideoAd")
-@interface ACNAdRewardBasedVideoAd : NSObject
-/// Returns the shared ACNAdRewardBasedVideoAd instance.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ACNAdRewardBasedVideoAd * _Nonnull sharedInstance;)
-+ (ACNAdRewardBasedVideoAd * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+SWIFT_CLASS("_TtC6ACNSDK13ACNAdRewardAd")
+@interface ACNAdRewardAd : NSObject
 /// Delegate for receiving video notifications.
-@property (nonatomic, weak) id <ACNAdRewardBasedVideoAdDelegate> _Nullable delegate;
-/// Indicates if the receiver is ready to be presented full screen.
-@property (nonatomic, readonly) BOOL isReady;
-/// A unique identifier used to identify the user when making server-to-server reward callbacks.
-/// This value is used at both request time and during ad display. New values must only be set
-/// before ad requests.
-@property (nonatomic, copy) NSString * _Nullable userIdentifier;
-/// Optional custom reward string to include in the server-to-server callback.
-@property (nonatomic, copy) NSString * _Nullable customRewardString;
+@property (nonatomic, weak) id <ACNAdRewardAdDelegate> _Nullable delegate;
+@property (nonatomic) BOOL isReady;
+/// Initiates the request to fetch the reward based video ad. The |request| object supplies ad
+/// targeting information and must not be nil. The adUnitID is the ad unit id used for fetching an
+/// ad and must not be nil.
+- (void)loadRequestWithRequest:(ACNAdRequest * _Nonnull)request;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-@interface ACNAdRewardBasedVideoAd (SWIFT_EXTENSION(ACNSDK))
+@interface ACNAdRewardAd (SWIFT_EXTENSION(ACNSDK))
 /// Presents the reward based video ad with the provided view controller.
 - (void)presentWithRootViewController:(UIViewController * _Nonnull)rootViewController;
 @end
 
 
-@interface ACNAdRewardBasedVideoAd (SWIFT_EXTENSION(ACNSDK))
-/// Initiates the request to fetch the reward based video ad. The |request| object supplies ad
-/// targeting information and must not be nil. The adUnitID is the ad unit id used for fetching an
-/// ad and must not be nil.
-- (void)loadRequestWithRequest:(ACNAdRequest * _Nonnull)request adUnitID:(NSString * _Nonnull)adUnitID;
-@end
-
-@class GADRewardBasedVideoAd;
-@class GADAdReward;
-
-@interface ACNAdRewardBasedVideoAd (SWIFT_EXTENSION(ACNSDK)) <GADRewardBasedVideoAdDelegate>
-- (void)rewardBasedVideoAd:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd didRewardUserWithReward:(GADAdReward * _Nonnull)reward;
-- (void)rewardBasedVideoAd:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd didFailToLoadWithError:(NSError * _Nonnull)error;
-- (void)rewardBasedVideoAdDidReceiveAd:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-- (void)rewardBasedVideoAdDidOpen:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-- (void)rewardBasedVideoAdDidStartPlaying:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-- (void)rewardBasedVideoAdDidCompletePlaying:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-- (void)rewardBasedVideoAdDidClose:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-- (void)rewardBasedVideoAdWillLeaveApplication:(GADRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
+@interface ACNAdRewardAd (SWIFT_EXTENSION(ACNSDK)) <GADFullScreenContentDelegate>
+- (void)adDidRecordImpression:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)adDidRecordClick:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)ad:(id <GADFullScreenPresentingAd> _Nonnull)ad didFailToPresentFullScreenContentWithError:(NSError * _Nonnull)error;
+- (void)adDidPresentFullScreenContent:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)adWillDismissFullScreenContent:(id <GADFullScreenPresentingAd> _Nonnull)ad;
+- (void)adDidDismissFullScreenContent:(id <GADFullScreenPresentingAd> _Nonnull)ad;
 @end
 
 
-/// Delegate for receiving state change messages from a ACNAdRewardBasedVideoAd such as ad requests
+/// Delegate for receiving state change messages from a ACNAdRewardAd such as ad requests
 /// succeeding/failing.
-SWIFT_PROTOCOL("_TtP6ACNSDK31ACNAdRewardBasedVideoAdDelegate_")
-@protocol ACNAdRewardBasedVideoAdDelegate
-/// Tells the delegate that the reward based video ad has rewarded the user.
-- (void)rewardBasedVideoAdWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd didRewardUserWithReward:(ACNAdReward * _Nonnull)reward;
+SWIFT_PROTOCOL("_TtP6ACNSDK21ACNAdRewardAdDelegate_")
+@protocol ACNAdRewardAdDelegate
 @optional
-/// Tells the delegate that the reward based video ad failed to load.
-- (void)rewardBasedVideoAdWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd didFailToLoadWithError:(NSError * _Nonnull)error;
-/// Tells the delegate that a reward based video ad was received.
-- (void)rewardBasedVideoAdDidReceiveAdWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-/// Tells the delegate that the reward based video ad opened.
-- (void)rewardBasedVideoAdDidOpenWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-/// Tells the delegate that the reward based video ad started playing.
-- (void)rewardBasedVideoAdDidStartPlayingWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-/// Tells the delegate that the reward based video ad completed playing.
-- (void)rewardBasedVideoAdDidCompletePlayingWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-/// Tells the delegate that the reward based video ad closed.
-- (void)rewardBasedVideoAdDidCloseWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
-/// Tells the delegate that the reward based video ad will leave the application.
-- (void)rewardBasedVideoAdWillLeaveApplicationWithRewardBasedVideoAd:(ACNAdRewardBasedVideoAd * _Nonnull)rewardBasedVideoAd;
+/// Tells the delegate that the reward ad has rewarded the user.
+- (void)rewardAd:(ACNAdRewardAd * _Nonnull)_ didRewardUserWithReward:(ACNAdReward * _Nonnull)reward;
+/// Tells the delegate that the reward ad failed to load.
+- (void)rewardAd:(ACNAdRewardAd * _Nonnull)_ didFailToLoadWithError:(NSError * _Nonnull)error;
+/// Tells the delegate that a reward ad was received.
+- (void)rewardAdDidReceiveAdWithRewardAd:(ACNAdRewardAd * _Nonnull)rewardAd;
+/// Tells the delegate that an impression has been recorded for the ad.
+- (void)rewardAdDidRecordImpressionWithRewardAd:(ACNAdRewardAd * _Nonnull)rewardAd;
+/// Tells the delegate that the reward clicked.
+- (void)rewardAdDidClickedWithRewardAd:(ACNAdRewardAd * _Nonnull)rewardAd;
+/// Tells the delegate that the reward ad fail to present.
+- (void)rewardAd:(ACNAdRewardAd * _Nonnull)_ didFailToPresentFullScreenContent:(NSError * _Nonnull)error;
+/// Tells the delegate that the reward ad did present full screen
+- (void)rewardAdDidPresentFullScreenContentWithRewardAd:(ACNAdRewardAd * _Nonnull)rewardAd;
+/// Tells the delegate that the reward ad will dismiss full screen.
+- (void)rewardWillDismissFullScreenContentWithRewardAd:(ACNAdRewardAd * _Nonnull)rewardAd;
+/// Tells the delegate that the reward ad did dismiss full screen.
+- (void)rewardAdDidDismissFullScreenContentWithRewardAd:(ACNAdRewardAd * _Nonnull)rewardAd;
 @end
 
 typedef SWIFT_ENUM(NSInteger, ACNAdSize, closed) {

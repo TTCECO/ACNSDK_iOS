@@ -11,14 +11,7 @@ import ACN_SDK_NET
 
 class ACNAdupload {
     
-    static let shared: ACNAdupload = ACNAdupload()
-//    fileprivate let location = ACNLocationManager()
-//
-//    init() {
-//        location.locate()
-//    }
-    
-    func upload(adUnitID: String, handleType: Int32) {
+    class func upload(adUnitID: String, handleType: Int32) {
         let behavior = ACNAdBehavior()
         behavior.adUnitID = adUnitID
         behavior.handleType = handleType

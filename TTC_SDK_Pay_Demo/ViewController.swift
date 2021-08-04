@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         createOrder.description_p = "\(jiaType.name)，\(latiaoType.name)辣条，\(count)包"
         createOrder.outTradeNo = num.description
         createOrder.totalFee = total.description
-        createOrder.payType = 1
+        createOrder.payType = .ACN
         createOrder.requestSign = TTCSign.signOrder(order: createOrder)
 
         
@@ -123,16 +123,15 @@ class ViewController: UIViewController {
             }
         }
         
-        TTCPay.shared.payBack = { success, order, error in
-            if success, order != nil, !order!.txHash.isEmpty {
-                self.textLabel.text = order!.txHash
+        TTCPay.shared.payBack = { textHash, orderID in
+            if let textHash = textHash, let orderID = orderID {
+                self.textLabel.text = textHash
                 self.stateLabel.textColor = UIColor.green
                 self.stateLabel.text = "支付成功"
-                print("txhash: ",order?.txHash ?? "txhash")
+                print("txhash: ",  textHash)
             } else {
                 self.stateLabel.textColor = UIColor.red
                 self.stateLabel.text = "支付失败"
-                print(error?.errorDescription ?? "error")
             }
         }
     }
