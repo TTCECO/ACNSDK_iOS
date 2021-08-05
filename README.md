@@ -16,4 +16,4 @@ target '<Your Target Name>' do
     pod 'web3swift', :git => "https://github.com/skywinder/web3swift"
 end
 ```
-Note: If your DAPP is developed in Object-C, please select the swift version 4.1+.
+Note: If your DAPP is developed in Object-C, please select the swift version 5.0+.
