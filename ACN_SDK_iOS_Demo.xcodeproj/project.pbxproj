@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0055D5A0143046E8D11281B1 /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6CD898A6E24A2FA43672F0 /* Pods_ACN_SDK_iOS_Demo.framework */; };
+		2730181085FCEA7B52F60DA3 /* Pods_ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C914441C19501A6D61A50EAF /* Pods_ACNSDK.framework */; };
 		420392A52282EDD2003A7B21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428258862282C5DC0050A0F8 /* LaunchScreen.storyboard */; };
 		420392A62282EDD2003A7B21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428258882282C5DC0050A0F8 /* Main.storyboard */; };
 		42121D46228417E0003B6D15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428258842282C5DC0050A0F8 /* Assets.xcassets */; };
@@ -72,8 +74,6 @@
 		42DAFE8622C20C1100BC97C3 /* ACNTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAFE8522C20C1100BC97C3 /* ACNTokenManager.swift */; };
 		42EAD11422CB1AB000D455F5 /* ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; };
 		42EAD11522CB1AB000D455F5 /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6C93C069CD2121A194F760AA /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F301D0138084585AE7D4158 /* Pods_TTC_SDK_Pay_Demo.framework */; };
-		785FCB616B4D1CA5AFB34B18 /* Pods_ACNSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7389AD203B125BAE78A2B1B /* Pods_ACNSDK.framework */; };
 		9766CEBB20FDF08D00A873D8 /* ACNActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766CEBA20FDF08D00A873D8 /* ACNActionCell.swift */; };
 		9766CEBF20FDFE3400A873D8 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766CEBE20FDFE3400A873D8 /* user.swift */; };
 		9766CEC120FE020400A873D8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766CEC020FE020400A873D8 /* Toast.swift */; };
@@ -90,7 +90,6 @@
 		97AE5DC62101E3FD00211D2F /* ACNLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */; };
 		97AE5DC82101E43C00211D2F /* ACNUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */; };
 		AF34A15726BA6D6E0057452F /* ACNSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C699406A20FEF974007E96C8 /* ACNSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */; };
 		BF0ED93D23B5F08D0049E6FE /* ACNWallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */; };
 		BF0ED93F23B5F0CC0049E6FE /* +++@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */; };
 		C699406E20FEF974007E96C8 /* ACNSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = C699406C20FEF974007E96C8 /* ACNSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,7 +106,8 @@
 		C69940BA20FEF9A6007E96C8 /* ACNUploadAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409A20FEF9A6007E96C8 /* ACNUploadAction.swift */; };
 		C69940BB20FEF9A6007E96C8 /* ACNConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409B20FEF9A6007E96C8 /* ACNConstant.swift */; };
 		C69940BC20FEF9A6007E96C8 /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699409D20FEF9A6007E96C8 /* ActionManager.swift */; };
-		CA44EFEFFDABE71425D4D61B /* Pods_ACN_SDK_admob_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B12FDC8084C4F13A07A5302 /* Pods_ACN_SDK_admob_Demo.framework */; };
+		EDF599F847FDCDAA6675BB6B /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 319AC98F81A7B9AEBE0846FE /* Pods_TTC_SDK_Pay_Demo.framework */; };
+		FE8EC482549906E6369F5CA9 /* Pods_ACN_SDK_admob_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22FA7D52F63BAA804628637 /* Pods_ACN_SDK_admob_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,13 +184,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.release.xcconfig"; sourceTree = "<group>"; };
-		094EBB3D22A3CC0D22715A3C /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
-		0BDB6D0980B8CF433FE66374 /* Pods-ACNSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACNSDK/Pods-ACNSDK.release.xcconfig"; sourceTree = "<group>"; };
-		17C9069569D9CA7BD957B0DF /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		2B12FDC8084C4F13A07A5302 /* Pods_ACN_SDK_admob_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_admob_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		351F55A477E092E5FB719B52 /* Pods-ACN_SDK_admob_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		10CABB5C7191B9BCD124C51A /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.release.xcconfig"; path = "Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		319AC98F81A7B9AEBE0846FE /* Pods_TTC_SDK_Pay_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTC_SDK_Pay_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A7F11C1454F83993B616D6D /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig"; path = "Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
 		421445CA2200533700ED4726 /* KeychainSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
 		421445CB2200533700ED4726 /* KeychainSwiftAccessOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftAccessOptions.swift; sourceTree = "<group>"; };
 		421445CC2200533700ED4726 /* TegKeychainConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegKeychainConstants.swift; sourceTree = "<group>"; };
@@ -241,12 +237,10 @@
 		42C61C8821DDFBB6001A7FFD /* ACNAdRewardAdDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdRewardAdDelegate.swift; sourceTree = "<group>"; };
 		42C61C8C21E49130001A7FFD /* ACNAdupload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNAdupload.swift; sourceTree = "<group>"; };
 		42DAFE8522C20C1100BC97C3 /* ACNTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNTokenManager.swift; sourceTree = "<group>"; };
-		49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-ACNSDK/Pods-ACNSDK.newdebug.xcconfig"; sourceTree = "<group>"; };
-		5F301D0138084585AE7D4158 /* Pods_TTC_SDK_Pay_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTC_SDK_Pay_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		628324287CDC23B0E562237C /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.release.xcconfig"; sourceTree = "<group>"; };
-		849EEC3CBA6804E92E0695CA /* Pods-ACNSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACNSDK/Pods-ACNSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
+		4B42B328DEB8C37919EB7574 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.newdebug.xcconfig"; path = "Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
+		72AE83F296A337A270D038B6 /* Pods-ACNSDK.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.newdebug.xcconfig"; path = "Target Support Files/Pods-ACNSDK/Pods-ACNSDK.newdebug.xcconfig"; sourceTree = "<group>"; };
+		7F965528090B8709F75BD9BB /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.release.xcconfig"; path = "Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		8E6CD898A6E24A2FA43672F0 /* Pods_ACN_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9766CEBA20FDF08D00A873D8 /* ACNActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNActionCell.swift; sourceTree = "<group>"; };
 		9766CEBE20FDFE3400A873D8 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		9766CEC020FE020400A873D8 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -262,7 +256,12 @@
 		97AE5DC12101E3FD00211D2F /* ACNLoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNLoginModel.swift; sourceTree = "<group>"; };
 		97AE5DC22101E3FD00211D2F /* ACNLoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNLoginTableViewCell.swift; sourceTree = "<group>"; };
 		97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACNUploadViewController.swift; sourceTree = "<group>"; };
-		A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_iOS_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A22FA7D52F63BAA804628637 /* Pods_ACN_SDK_admob_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACN_SDK_admob_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A29FC7E542E243D55922CD24 /* Pods-ACNSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.release.xcconfig"; path = "Target Support Files/Pods-ACNSDK/Pods-ACNSDK.release.xcconfig"; sourceTree = "<group>"; };
+		AA98141DE037C35E70928E6D /* Pods-ACNSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACNSDK.debug.xcconfig"; path = "Target Support Files/Pods-ACNSDK/Pods-ACNSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		AD431D3DFE5DF38A5615123A /* Pods-ACN_SDK_admob_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.release.xcconfig"; path = "Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.release.xcconfig"; sourceTree = "<group>"; };
+		AE99C938EC926B4FF3608353 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig"; path = "Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
+		B3527CCD050FBAAC28AEBB02 /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_iOS_Demo.debug.xcconfig"; path = "Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		BF0ED93C23B5F08D0049E6FE /* ACNWallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACNWallet@2x.png"; sourceTree = "<group>"; };
 		BF0ED93E23B5F0CC0049E6FE /* +++@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+++@2x.png"; sourceTree = "<group>"; };
 		C6993FE720FEF1EE007E96C8 /* ACNSDKBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACNSDKBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,8 +281,9 @@
 		C699409A20FEF9A6007E96C8 /* ACNUploadAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNUploadAction.swift; sourceTree = "<group>"; };
 		C699409B20FEF9A6007E96C8 /* ACNConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACNConstant.swift; sourceTree = "<group>"; };
 		C699409D20FEF9A6007E96C8 /* ActionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
-		D7389AD203B125BAE78A2B1B /* Pods_ACNSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACNSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig"; path = "Pods/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig"; sourceTree = "<group>"; };
+		C914441C19501A6D61A50EAF /* Pods_ACNSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACNSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC39ECEEDB7E7549AB3BBEC8 /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACN_SDK_admob_Demo.debug.xcconfig"; path = "Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		FCB3DB3EADFC2F647B06C009 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; path = "Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,9 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				425E0BC6228420A20094928B /* ACNSDK.framework in Frameworks */,
-				6C93C069CD2121A194F760AA /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */,
 				4282668022855EF8007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
 				425E0BCB228420A60094928B /* TTCPay.framework in Frameworks */,
+				EDF599F847FDCDAA6675BB6B /* Pods_TTC_SDK_Pay_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA44EFEFFDABE71425D4D61B /* Pods_ACN_SDK_admob_Demo.framework in Frameworks */,
+				FE8EC482549906E6369F5CA9 /* Pods_ACN_SDK_admob_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +321,7 @@
 				42EAD11422CB1AB000D455F5 /* ACNSDK.framework in Frameworks */,
 				428A565621C7B56900742FE6 /* TTCPay.framework in Frameworks */,
 				4282667E22855EEB007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
-				BD8054AE3AAE4D38C2D0C11F /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */,
+				0055D5A0143046E8D11281B1 /* Pods_ACN_SDK_iOS_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,32 +338,13 @@
 			files = (
 				428A565321C7AFD800742FE6 /* TTCPay.framework in Frameworks */,
 				4282667D22855EAF007F7BF4 /* ACN_SDK_NET.framework in Frameworks */,
-				785FCB616B4D1CA5AFB34B18 /* Pods_ACNSDK.framework in Frameworks */,
+				2730181085FCEA7B52F60DA3 /* Pods_ACNSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		34C3F15A159F54ADCD520030 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */,
-				067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */,
-				849EEC3CBA6804E92E0695CA /* Pods-ACNSDK.debug.xcconfig */,
-				0BDB6D0980B8CF433FE66374 /* Pods-ACNSDK.release.xcconfig */,
-				094EBB3D22A3CC0D22715A3C /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */,
-				351F55A477E092E5FB719B52 /* Pods-ACN_SDK_admob_Demo.release.xcconfig */,
-				17C9069569D9CA7BD957B0DF /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */,
-				628324287CDC23B0E562237C /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */,
-				4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */,
-				0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */,
-				8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */,
-				F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		421445C92200531D00ED4726 /* third */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,15 +454,24 @@
 			path = common;
 			sourceTree = "<group>";
 		};
-		6BD7A33B339184CC93F06044 /* Frameworks */ = {
+		72AFED5D85EE0C9955B8669C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D7389AD203B125BAE78A2B1B /* Pods_ACNSDK.framework */,
-				A3F4E2C3A6BB76DE9DA8D237 /* Pods_ACN_SDK_iOS_Demo.framework */,
-				2B12FDC8084C4F13A07A5302 /* Pods_ACN_SDK_admob_Demo.framework */,
-				5F301D0138084585AE7D4158 /* Pods_TTC_SDK_Pay_Demo.framework */,
+				AA98141DE037C35E70928E6D /* Pods-ACNSDK.debug.xcconfig */,
+				72AE83F296A337A270D038B6 /* Pods-ACNSDK.newdebug.xcconfig */,
+				A29FC7E542E243D55922CD24 /* Pods-ACNSDK.release.xcconfig */,
+				DC39ECEEDB7E7549AB3BBEC8 /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */,
+				4B42B328DEB8C37919EB7574 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */,
+				AD431D3DFE5DF38A5615123A /* Pods-ACN_SDK_admob_Demo.release.xcconfig */,
+				B3527CCD050FBAAC28AEBB02 /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */,
+				AE99C938EC926B4FF3608353 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */,
+				10CABB5C7191B9BCD124C51A /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */,
+				FCB3DB3EADFC2F647B06C009 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */,
+				3A7F11C1454F83993B616D6D /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */,
+				7F965528090B8709F75BD9BB /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		979780EA20EA14AC007FA763 = {
@@ -494,8 +484,8 @@
 				4282588E2282C5DC0050A0F8 /* ACNSDKBundle */,
 				428258962282C5DC0050A0F8 /* ACNSDKTests */,
 				979780F420EA14AC007FA763 /* Products */,
-				34C3F15A159F54ADCD520030 /* Pods */,
-				6BD7A33B339184CC93F06044 /* Frameworks */,
+				72AFED5D85EE0C9955B8669C /* Pods */,
+				AFC4A85502BEE0AAD2B47F4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -545,6 +535,17 @@
 				97AE5DC72101E43C00211D2F /* ACNUploadViewController.swift */,
 			);
 			path = UploadAction;
+			sourceTree = "<group>";
+		};
+		AFC4A85502BEE0AAD2B47F4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C914441C19501A6D61A50EAF /* Pods_ACNSDK.framework */,
+				A22FA7D52F63BAA804628637 /* Pods_ACN_SDK_admob_Demo.framework */,
+				8E6CD898A6E24A2FA43672F0 /* Pods_ACN_SDK_iOS_Demo.framework */,
+				319AC98F81A7B9AEBE0846FE /* Pods_TTC_SDK_Pay_Demo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C699406B20FEF974007E96C8 /* ACNSDK */ = {
@@ -653,12 +654,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 428A566D21C7B8FA00742FE6 /* Build configuration list for PBXNativeTarget "TTC_SDK_Pay_Demo" */;
 			buildPhases = (
-				DDEFC6A46856CFCB0AD790E5 /* [CP] Check Pods Manifest.lock */,
+				D243451D86A10FFD6B1E8584 /* [CP] Check Pods Manifest.lock */,
 				428A565821C7B8F900742FE6 /* Sources */,
 				428A565921C7B8F900742FE6 /* Frameworks */,
 				428A565A21C7B8F900742FE6 /* Resources */,
-				BE78315932540E91FF6FBD62 /* [CP] Embed Pods Frameworks */,
 				425E0BCA228420A20094928B /* Embed Frameworks */,
+				4A9DD33FB16532820FF5534A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -692,12 +693,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42C61C6A21D773AE001A7FFD /* Build configuration list for PBXNativeTarget "ACN_SDK_admob_Demo" */;
 			buildPhases = (
-				6545D73DE758D38E6BAE5F79 /* [CP] Check Pods Manifest.lock */,
+				25ED1C0BEAA37050A3F59590 /* [CP] Check Pods Manifest.lock */,
 				42C61C5721D773AC001A7FFD /* Sources */,
 				42C61C5821D773AC001A7FFD /* Frameworks */,
 				42C61C5921D773AC001A7FFD /* Resources */,
 				42C61C6F21D77425001A7FFD /* Embed Frameworks */,
-				1703C854F218CD2C23F0946C /* [CP] Embed Pods Frameworks */,
+				B0691DFDE7D79FBBF0137C73 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -712,12 +713,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9797810520EA14AD007FA763 /* Build configuration list for PBXNativeTarget "ACN_SDK_iOS_Demo" */;
 			buildPhases = (
-				D15C539503AB9B70F6D8CF2F /* [CP] Check Pods Manifest.lock */,
+				A2DEF38F9AFB275323A27997 /* [CP] Check Pods Manifest.lock */,
 				979780EF20EA14AC007FA763 /* Sources */,
 				979780F020EA14AC007FA763 /* Frameworks */,
 				979780F120EA14AC007FA763 /* Resources */,
-				0F6CB047A4B904D7179C75AA /* [CP] Embed Pods Frameworks */,
 				42039BF8216F44AF001398D6 /* Embed Frameworks */,
+				16EAAFD8A6241F20D453D2A1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -750,7 +751,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C699407320FEF974007E96C8 /* Build configuration list for PBXNativeTarget "ACNSDK" */;
 			buildPhases = (
-				67C904B0CF971F538D947E23 /* [CP] Check Pods Manifest.lock */,
+				40832C11F3D1FF3BEA5401A1 /* [CP] Check Pods Manifest.lock */,
 				C699406520FEF974007E96C8 /* Sources */,
 				C699406620FEF974007E96C8 /* Frameworks */,
 				C699406720FEF974007E96C8 /* Headers */,
@@ -883,7 +884,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F6CB047A4B904D7179C75AA /* [CP] Embed Pods Frameworks */ = {
+		16EAAFD8A6241F20D453D2A1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -900,24 +901,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_iOS_Demo/Pods-ACN_SDK_iOS_Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1703C854F218CD2C23F0946C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6545D73DE758D38E6BAE5F79 /* [CP] Check Pods Manifest.lock */ = {
+		25ED1C0BEAA37050A3F59590 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -939,16 +923,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67C904B0CF971F538D947E23 /* [CP] Check Pods Manifest.lock */ = {
+		40832C11F3D1FF3BEA5401A1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ACNSDK-checkManifestLockResult.txt",
 			);
@@ -957,20 +945,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9766CCF020FC4BF200A873D8 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\n#echo \"${SRCROOT}\"\n#echo \"${BUILD_DIR}\"\n${SRCROOT}/build_ACN_SDK.sh\n";
-		};
-		BE78315932540E91FF6FBD62 /* [CP] Embed Pods Frameworks */ = {
+		4A9DD33FB16532820FF5534A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -987,16 +962,33 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTC_SDK_Pay_Demo/Pods-TTC_SDK_Pay_Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D15C539503AB9B70F6D8CF2F /* [CP] Check Pods Manifest.lock */ = {
+		9766CCF020FC4BF200A873D8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n#echo \"${SRCROOT}\"\n#echo \"${BUILD_DIR}\"\n${SRCROOT}/build_ACN_SDK.sh\n";
+		};
+		A2DEF38F9AFB275323A27997 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ACN_SDK_iOS_Demo-checkManifestLockResult.txt",
 			);
@@ -1005,7 +997,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDEFC6A46856CFCB0AD790E5 /* [CP] Check Pods Manifest.lock */ = {
+		B0691DFDE7D79FBBF0137C73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ACN_SDK_admob_Demo/Pods-ACN_SDK_admob_Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D243451D86A10FFD6B1E8584 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1195,7 +1204,7 @@
 /* Begin XCBuildConfiguration section */
 		428A566B21C7B8FA00742FE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49A0317ACEE8CE06D2565D35 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */;
+			baseConfigurationReference = FCB3DB3EADFC2F647B06C009 /* Pods-TTC_SDK_Pay_Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1225,7 +1234,7 @@
 		};
 		428A566C21C7B8FA00742FE6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 067166D6678695C8FFC17F60 /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */;
+			baseConfigurationReference = 7F965528090B8709F75BD9BB /* Pods-TTC_SDK_Pay_Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1294,7 +1303,7 @@
 		};
 		42C61C6B21D773AE001A7FFD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 094EBB3D22A3CC0D22715A3C /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */;
+			baseConfigurationReference = DC39ECEEDB7E7549AB3BBEC8 /* Pods-ACN_SDK_admob_Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1324,7 +1333,7 @@
 		};
 		42C61C6C21D773AE001A7FFD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 351F55A477E092E5FB719B52 /* Pods-ACN_SDK_admob_Demo.release.xcconfig */;
+			baseConfigurationReference = AD431D3DFE5DF38A5615123A /* Pods-ACN_SDK_admob_Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1497,7 +1506,7 @@
 		};
 		9797810620EA14AD007FA763 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17C9069569D9CA7BD957B0DF /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */;
+			baseConfigurationReference = B3527CCD050FBAAC28AEBB02 /* Pods-ACN_SDK_iOS_Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1528,7 +1537,7 @@
 		};
 		9797810720EA14AD007FA763 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 628324287CDC23B0E562237C /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */;
+			baseConfigurationReference = 10CABB5C7191B9BCD124C51A /* Pods-ACN_SDK_iOS_Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1626,7 +1635,7 @@
 		};
 		BF62C69E2536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B7A015FF5F360C28056FFC5 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */;
+			baseConfigurationReference = AE99C938EC926B4FF3608353 /* Pods-ACN_SDK_iOS_Demo.newdebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1656,7 +1665,7 @@
 		};
 		BF62C69F2536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F86CDDAEAB3CD7BA0F34E584 /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */;
+			baseConfigurationReference = 3A7F11C1454F83993B616D6D /* Pods-TTC_SDK_Pay_Demo.newdebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1686,7 +1695,7 @@
 		};
 		BF62C6A02536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A7DB780AB2F43F0F139DAB6 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */;
+			baseConfigurationReference = 4B42B328DEB8C37919EB7574 /* Pods-ACN_SDK_admob_Demo.newdebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1716,7 +1725,7 @@
 		};
 		BF62C6A12536D9CA009FF2CC /* newDebug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F2427DAD01FFC8E49003542 /* Pods-ACNSDK.newdebug.xcconfig */;
+			baseConfigurationReference = 72AE83F296A337A270D038B6 /* Pods-ACNSDK.newdebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1861,7 +1870,7 @@
 		};
 		C699407420FEF974007E96C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 849EEC3CBA6804E92E0695CA /* Pods-ACNSDK.debug.xcconfig */;
+			baseConfigurationReference = AA98141DE037C35E70928E6D /* Pods-ACNSDK.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1914,7 +1923,7 @@
 		};
 		C699407520FEF974007E96C8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BDB6D0980B8CF433FE66374 /* Pods-ACNSDK.release.xcconfig */;
+			baseConfigurationReference = A29FC7E542E243D55922CD24 /* Pods-ACNSDK.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
