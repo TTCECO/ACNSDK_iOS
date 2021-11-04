@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ACNSDK_ios"
-  s.version      = "0.2.41"
+  s.version      = "0.2.42"
   s.summary      = "ACNSDK"
   s.homepage     = "https://github.com/TTCECO"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'SwiftProtobuf', '1.17.0'
   s.dependency 'Alamofire', '5.4.3'
-  s.dependency 'RealmSwift', '10.7.7'
+  s.dependency 'RealmSwift', '10.18.0'
   s.dependency 'SwiftyRSA', '1.5.0'
   s.dependency 'Google-Mobile-Ads-SDK', '8.8.0'
   s.dependency 'web3swift', '2.3.0'

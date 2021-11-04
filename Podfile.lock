@@ -59,11 +59,11 @@ PODS:
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
   - PromisesObjC (2.0.0)
-  - Realm (10.7.7):
-    - Realm/Headers (= 10.7.7)
-  - Realm/Headers (10.7.7)
-  - RealmSwift (10.7.7):
-    - Realm (= 10.7.7)
+  - Realm (10.18.0):
+    - Realm/Headers (= 10.18.0)
+  - Realm/Headers (10.18.0)
+  - RealmSwift (10.18.0):
+    - Realm (= 10.18.0)
   - secp256k1.c (0.1.2)
   - SnapKit (5.0.1)
   - Starscream (4.0.4)
@@ -82,7 +82,7 @@ DEPENDENCIES:
   - Alamofire (= 5.4.3)
   - Google-Mobile-Ads-SDK
   - GoogleMobileAdsMediationFacebook
-  - RealmSwift (= 10.7.7)
+  - RealmSwift (= 10.18.0)
   - SnapKit
   - SwiftProtobuf (= 1.17.0)
   - SwiftyRSA (= 1.5.0)
@@ -134,8 +134,8 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Realm: 8010af8b7a576ba501729bcbc54a3cd1f1f7dca3
-  RealmSwift: dc17e6d649c12a8996f9e962c3fe6cef356885c4
+  Realm: b8b0a36bf48c39c50fd8cee7ac34005e6d887ddd
+  RealmSwift: fe2f33d731f47aaf4c3618930f9f7cf7b935c33f
   secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
@@ -143,6 +143,6 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   web3swift: dcc8da6f0944a062faa381869ce64114ddb5f8d3
 
-PODFILE CHECKSUM: 18392b02250cea55e0db7301361e71f652618c50
+PODFILE CHECKSUM: 64d4140528705f60c1715165aa63962a4ad04b8e
 
 COCOAPODS: 1.10.2

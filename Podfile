@@ -11,7 +11,7 @@ target 'ACNSDK' do
     
     pod 'Alamofire', '5.4.3' #网络请求
 
-    pod 'RealmSwift', '10.7.7' #数据库
+    pod 'RealmSwift', '10.18.0' #数据库
     pod 'SwiftyRSA', '1.5.0'   #RSA加密签名等
     pod 'Google-Mobile-Ads-SDK'
     pod 'web3swift', :git => "https://github.com/skywinder/web3swift"
